@@ -1,0 +1,96 @@
+grammar ic.ac.uk.xdrone.XDrone with org.eclipse.xtext.common.Terminals
+
+generate xDrone "http://www.ac.ic/uk/xdrone/XDrone"
+
+Program :
+  main = Main
+;
+  
+Main :
+	
+  (commands+=Snapshot';'?)?
+  ((takeoff+=Takeoff';'?)
+ 		 ((commands+=SuperCommand) ';'?)*
+  (land+=Land';'?))?
+ 
+  
+;
+
+RecordedFlight:
+	'RECORDFLIGHT' '('video_name = ID')';
+
+UserFunction:
+	(name = ID) '()'
+	'{'
+	(func+=Command';'?)*
+	'}'
+;
+
+DownwardCamera: 'USEDOWNWARDCAMERA';
+
+FaceDetect: 'FACEDETECT';
+
+FeatureMatch:
+	'FEATUREMATCH' '('image_name = ID')'
+;
+
+Takeoff: 'TAKEOFF';
+Land : 'LAND';
+
+SuperCommand:
+	Command
+	| FunctionName
+;
+
+Command:
+	Up 
+	| Down 
+	| Left 
+	| Right 
+	| Forward 
+	| Backward
+	| RotateL
+	| RotateR
+	| Wait
+	| Snapshot
+;
+
+DOUBLE:
+	INT '.' INT
+;
+
+Snapshot:
+	'SNAPSHOT' '('image_name = ID')'
+;
+Up: 
+	'UP' '('distance = DOUBLE')'
+;
+	
+Down: 
+	'DOWN' '('distance = DOUBLE')'
+;
+Left: 
+	'LEFT' '('distance = DOUBLE')'
+;
+Right: 
+	'RIGHT' '('distance = DOUBLE')'
+;
+Forward: 
+	'FORWARD' '('distance = DOUBLE')'
+;
+Backward: 
+	'BACKWARD' '('distance = DOUBLE')'
+;
+RotateL: 
+	'ROTATELEFT' '('angle = INT')'
+;
+RotateR: 
+	'ROTATERIGHT' '('angle = INT')'
+;
+Wait:
+	'WAIT' '(' seconds = DOUBLE ')'
+;
+
+FunctionName:
+	func_name = ID '()'
+;

@@ -1,0 +1,4 @@
+include 'ic.ac.uk.xdrone'
+include 'ic.ac.uk.xdrone.ide'
+include 'ic.ac.uk.xdrone.web'
+include 'ic.ac.uk.xdrone.tests'

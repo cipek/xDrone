@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.ac.ic/uk/xdrone/XDrone"
+			class = "ic.ac.uk.xdrone.xDrone.XDronePackage"
+			genModel = "model/generated/XDrone.genmodel" />
+	</extension>
+</plugin>

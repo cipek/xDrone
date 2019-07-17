@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ic.ac.uk.xdrone.ide
+Bundle-SymbolicName: ic.ac.uk.xdrone.ide; singleton:=true
+Export-Package: ic.ac.uk.xdrone.ide.contentassist.antlr.internal,ic.ac
+ .uk.xdrone.ide.contentassist.antlr
+Bundle-Name: ic.ac.uk.xdrone.ide
+Bundle-Version: 1.0.0.201907171424
+Require-Bundle: ic.ac.uk.xdrone,org.eclipse.xtext.ide,org.eclipse.xtex
+ t.xbase.ide,org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: My Company
+

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='ic.ac.uk.xdrone.ui.tests' version='1.0.0.201907171424'>
+    <properties size='5'>
+      <property name='artifact.size' value='3387'/>
+      <property name='download.size' value='3387'/>
+      <property name='maven-groupId' value='ic.ac.uk.xdrone'/>
+      <property name='maven-artifactId' value='ic.ac.uk.xdrone.ui.tests'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+</artifacts>
