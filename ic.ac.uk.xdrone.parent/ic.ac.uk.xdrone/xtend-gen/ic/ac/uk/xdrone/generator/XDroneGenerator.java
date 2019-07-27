@@ -4,21 +4,11 @@
 package ic.ac.uk.xdrone.generator;
 
 import com.google.common.collect.Iterables;
-import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Command;
-import ic.ac.uk.xdrone.xDrone.Down;
-import ic.ac.uk.xdrone.xDrone.Forward;
-import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Right;
-import ic.ac.uk.xdrone.xDrone.RotateL;
-import ic.ac.uk.xdrone.xDrone.RotateR;
-import ic.ac.uk.xdrone.xDrone.SuperCommand;
-import ic.ac.uk.xdrone.xDrone.Up;
-import ic.ac.uk.xdrone.xDrone.Wait;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -320,167 +310,176 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("rospy.sleep(0.1)");
     _builder.newLine();
     _builder.newLine();
-    {
-      EList<String> _takeoff = main.getTakeoff();
-      for(final String to : _takeoff) {
-        _builder.append("takeoff = rospy.Publisher(\'/ardrone/takeoff\', Empty, queue_size=1)");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("while takeoff.get_num_connections() < 1:");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("rospy.sleep(0.1)");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("takeoff.publish(empty)");
-        _builder.newLine();
-        _builder.append("rospy.sleep(5)");
-        _builder.newLine();
-      }
-    }
+    _builder.append("�FOR to : main.takeoff�  ");
     _builder.newLine();
-    {
-      EList<SuperCommand> _commands = main.getCommands();
-      for(final SuperCommand f : _commands) {
-        {
-          if ((f instanceof Command)) {
-            CharSequence _compile = this.compile(((Command)f));
-            _builder.append(_compile);
-            _builder.newLineIfNotEmpty();
-          }
-        }
-      }
-    }
+    _builder.append("\t");
+    _builder.append("takeoff = rospy.Publisher(\'/ardrone/takeoff\', Empty, queue_size=1)");
     _builder.newLine();
-    {
-      EList<String> _land = main.getLand();
-      for(final String to_1 : _land) {
-        _builder.append("land = rospy.Publisher(\'/ardrone/land\', Empty, queue_size=1)");
-        _builder.newLine();
-        _builder.append("\t\t\t");
-        _builder.newLine();
-        _builder.append("while land.get_num_connections() < 1:");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("rospy.sleep(0.1)");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("land.publish(empty)");
-        _builder.newLine();
-      }
-    }
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("while takeoff.get_num_connections() < 1:");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("rospy.sleep(0.1)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("takeoff.publish(empty)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("rospy.sleep(5)");
+    _builder.newLine();
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("�FOR f : main.commands�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�IF f instanceof Command�");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("�f.compile�");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("�FOR to : main.land�  ");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("land = rospy.Publisher(\'/ardrone/land\', Empty, queue_size=1)");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("while land.get_num_connections() < 1:");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("rospy.sleep(0.1)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("land.publish(empty)");
+    _builder.newLine();
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
     return _builder;
   }
   
   public CharSequence compile(final Command cmd) {
     StringConcatenation _builder = new StringConcatenation();
-    {
-      if ((cmd instanceof Up)) {
-        _builder.append("move(0.1, ");
-        String _distance = ((Up)cmd).getDistance();
-        _builder.append(_distance);
-        _builder.append(", True, \"z\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Down)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_1 = ((Down)cmd).getDistance();
-        _builder.append(_distance_1, "\t  \t");
-        _builder.append(", False, \"z\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Left)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_2 = ((Left)cmd).getDistance();
-        _builder.append(_distance_2, "\t  \t");
-        _builder.append(", True, \"y\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Right)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_3 = ((Right)cmd).getDistance();
-        _builder.append(_distance_3, "\t  \t");
-        _builder.append(", False, \"y\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Forward)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_4 = ((Forward)cmd).getDistance();
-        _builder.append(_distance_4, "\t  \t");
-        _builder.append(", True, \"x\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Backward)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_5 = ((Backward)cmd).getDistance();
-        _builder.append(_distance_5, "\t  \t");
-        _builder.append(", False, \"x\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof RotateL)) {
-        _builder.append("rotate(30, ");
-        int _angle = ((RotateL)cmd).getAngle();
-        _builder.append(_angle);
-        _builder.append(", False)");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof RotateR)) {
-        _builder.append("\t  \t");
-        _builder.append("rotate(30, ");
-        int _angle_1 = ((RotateR)cmd).getAngle();
-        _builder.append(_angle_1, "\t  \t");
-        _builder.append(", True)");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Wait)) {
-        _builder.append("\t  \t");
-        _builder.append("rospy.sleep(");
-        String _seconds = ((Wait)cmd).getSeconds();
-        _builder.append(_seconds, "\t  \t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.append("�IF cmd instanceof Up �");
+    _builder.newLine();
+    _builder.append("move(0.1, �cmd.distance�, True, \"z\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Down�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("move(0.1, �cmd.distance�, False, \"z\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Left �");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("move(0.1, �cmd.distance�, True, \"y\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Right�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("move(0.1, �cmd.distance�, False, \"y\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Forward�\t");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("move(0.1, �cmd.distance�, True, \"x\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Backward�\t");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("move(0.1, �cmd.distance�, False, \"x\")");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof RotateL�\t");
+    _builder.newLine();
+    _builder.append("rotate(30, �cmd.angle�, False)");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof RotateR�\t");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("rotate(30, �cmd.angle�, True)");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�IF cmd instanceof Wait�");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("rospy.sleep(�cmd.seconds�)");
+    _builder.newLine();
+    _builder.append("\t  \t");
+    _builder.append("�ENDIF�");
+    _builder.newLine();
     return _builder;
   }
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
+    System.out.println(("IN GENERATE: " + resource));
     Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
     for (final Main main : _filter) {
       {
+        System.out.println(("IN for: " + main));
         result = this.compile(main).toString();
-        fsa.generateFile("result.py", result);
+        System.out.println(("BEFORE2: " + result));
+        fsa.generateFile("/xdrone/result.py", result);
       }
     }
     try {
-      PrintWriter writer = new PrintWriter("WebRoot/result.py", "UTF-8");
+      File file = new File("/xdrone/result.py");
+      file.getParentFile().mkdirs();
+      PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
       writer.close();
+      System.out.println("IN TRY 2");
     } catch (final Throwable _t) {
       if (_t instanceof IOException) {
+        final IOException e = (IOException)_t;
+        String _string = e.toString();
+        String _plus = ("IN ERROR: " + _string);
+        System.out.println(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

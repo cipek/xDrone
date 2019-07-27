@@ -13,7 +13,7 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class XDroneUiModule extends AbstractXDroneUiModule {
-  public XDroneUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public XDroneUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }
