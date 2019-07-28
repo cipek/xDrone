@@ -141,7 +141,7 @@ class XDroneGenerator extends AbstractGenerator {
 		while state == 0:
 			rospy.sleep(0.1)
 		
-		«FOR to : main.takeoff»  
+		Â«FOR to : main.takeoffÂ»  
 			takeoff = rospy.Publisher('/ardrone/takeoff', Empty, queue_size=1)
 			
 			while takeoff.get_num_connections() < 1:
@@ -149,52 +149,52 @@ class XDroneGenerator extends AbstractGenerator {
 			
 			takeoff.publish(empty)
 			rospy.sleep(5)
-		«ENDFOR»
+		Â«ENDFORÂ»
 		
-		«FOR f : main.commands»
-			«IF f instanceof Command»
-				«f.compile»
-			«ENDIF»
-		«ENDFOR»
+		Â«FOR f : main.commandsÂ»
+			Â«IF f instanceof CommandÂ»
+				Â«f.compileÂ»
+			Â«ENDIFÂ»
+		Â«ENDFORÂ»
 		
-		«FOR to : main.land»  
+		Â«FOR to : main.landÂ»  
 			land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
 						
 			while land.get_num_connections() < 1:
 				rospy.sleep(0.1)
 			
 			land.publish(empty)
-		«ENDFOR»
+		Â«ENDFORÂ»
 	'''
 	
 	def compile(Command cmd) '''
-		«IF cmd instanceof Up »
-		move(0.1, «cmd.distance», True, "z")
-	  	«ENDIF»
-	  	«IF cmd instanceof Down»
-	  	move(0.1, «cmd.distance», False, "z")
-	  	«ENDIF»
-	  	«IF cmd instanceof Left »
-	  	move(0.1, «cmd.distance», True, "y")
-	  	«ENDIF»
-	  	«IF cmd instanceof Right»
-	  	move(0.1, «cmd.distance», False, "y")
-	  	«ENDIF»
-	  	«IF cmd instanceof Forward»	
-	  	move(0.1, «cmd.distance», True, "x")
-	  	«ENDIF»
-	  	«IF cmd instanceof Backward»	
-	  	move(0.1, «cmd.distance», False, "x")
-	  	«ENDIF»
-	  	«IF cmd instanceof RotateL»	
-		rotate(30, «cmd.angle», False)
-	  	«ENDIF»
-	  	«IF cmd instanceof RotateR»	
-	  	rotate(30, «cmd.angle», True)
-	  	«ENDIF»
-	  	«IF cmd instanceof Wait»
-	  	rospy.sleep(«cmd.seconds»)
-	  	«ENDIF»
+		Â«IF cmd instanceof Up Â»
+		move(0.1, Â«cmd.distanceÂ», True, "z")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof DownÂ»
+	  	move(0.1, Â«cmd.distanceÂ», False, "z")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof Left Â»
+	  	move(0.1, Â«cmd.distanceÂ», True, "y")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof RightÂ»
+	  	move(0.1, Â«cmd.distanceÂ», False, "y")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof ForwardÂ»	
+	  	move(0.1, Â«cmd.distanceÂ», True, "x")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof BackwardÂ»	
+	  	move(0.1, Â«cmd.distanceÂ», False, "x")
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof RotateLÂ»	
+		rotate(30, Â«cmd.angleÂ», False)
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof RotateRÂ»	
+	  	rotate(30, Â«cmd.angleÂ», True)
+	  	Â«ENDIFÂ»
+	  	Â«IF cmd instanceof WaitÂ»
+	  	rospy.sleep(Â«cmd.secondsÂ»)
+	  	Â«ENDIFÂ»
 	'''
 
 
