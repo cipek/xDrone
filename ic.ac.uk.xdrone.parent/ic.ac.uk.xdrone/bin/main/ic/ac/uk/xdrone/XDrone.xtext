@@ -91,6 +91,10 @@ Wait:
 	'WAIT' '(' seconds = DOUBLE ')'
 ;
 
+Move: 
+	'MOVE' '('x = INT ',' y = INT ',' z = INT')'
+;
+
 FunctionName:
 	func_name = ID '()'
 ;

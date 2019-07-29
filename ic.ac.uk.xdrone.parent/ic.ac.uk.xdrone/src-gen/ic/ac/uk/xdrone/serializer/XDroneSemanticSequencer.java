@@ -12,6 +12,7 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.RecordedFlight;
 import ic.ac.uk.xdrone.xDrone.Right;
@@ -67,6 +68,9 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case XDronePackage.MAIN:
 				sequence_Main(context, (Main) semanticObject); 
+				return; 
+			case XDronePackage.MOVE:
+				sequence_Move(context, (Move) semanticObject); 
 				return; 
 			case XDronePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
@@ -226,6 +230,30 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_Main(ISerializationContext context, Main semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Move returns Move
+	 *
+	 * Constraint:
+	 *     (x=INT y=INT z=INT)
+	 */
+	protected void sequence_Move(ISerializationContext context, Move semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__X) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__X));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__Y) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__Y));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__Z) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__Z));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMoveAccess().getXINTTerminalRuleCall_2_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getMoveAccess().getYINTTerminalRuleCall_4_0(), semanticObject.getY());
+		feeder.accept(grammarAccess.getMoveAccess().getZINTTerminalRuleCall_6_0(), semanticObject.getZ());
+		feeder.finish();
 	}
 	
 	

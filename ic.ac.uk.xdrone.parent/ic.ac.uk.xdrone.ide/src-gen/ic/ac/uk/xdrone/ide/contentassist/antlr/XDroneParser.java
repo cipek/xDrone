@@ -54,6 +54,7 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRotateLAccess().getGroup(), "rule__RotateL__Group__0");
 			builder.put(grammarAccess.getRotateRAccess().getGroup(), "rule__RotateR__Group__0");
 			builder.put(grammarAccess.getWaitAccess().getGroup(), "rule__Wait__Group__0");
+			builder.put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 			builder.put(grammarAccess.getFunctionNameAccess().getGroup(), "rule__FunctionName__Group__0");
 			builder.put(grammarAccess.getProgramAccess().getMainAssignment(), "rule__Program__MainAssignment");
 			builder.put(grammarAccess.getMainAccess().getCommandsAssignment_0_0(), "rule__Main__CommandsAssignment_0_0");
@@ -74,6 +75,9 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRotateLAccess().getAngleAssignment_2(), "rule__RotateL__AngleAssignment_2");
 			builder.put(grammarAccess.getRotateRAccess().getAngleAssignment_2(), "rule__RotateR__AngleAssignment_2");
 			builder.put(grammarAccess.getWaitAccess().getSecondsAssignment_2(), "rule__Wait__SecondsAssignment_2");
+			builder.put(grammarAccess.getMoveAccess().getXAssignment_2(), "rule__Move__XAssignment_2");
+			builder.put(grammarAccess.getMoveAccess().getYAssignment_4(), "rule__Move__YAssignment_4");
+			builder.put(grammarAccess.getMoveAccess().getZAssignment_6(), "rule__Move__ZAssignment_6");
 			builder.put(grammarAccess.getFunctionNameAccess().getFunc_nameAssignment_0(), "rule__FunctionName__Func_nameAssignment_0");
 		}
 	}

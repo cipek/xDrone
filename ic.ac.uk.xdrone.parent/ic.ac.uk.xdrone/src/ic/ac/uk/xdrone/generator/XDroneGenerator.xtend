@@ -21,6 +21,7 @@ import ic.ac.uk.xdrone.xDrone.Wait
 import java.io.PrintWriter
 import java.io.IOException
 import java.io.File
+import ic.ac.uk.xdrone.xDrone.Move
 
 /**
  * Generates code from your model files on save.
@@ -195,34 +196,28 @@ class XDroneGenerator extends AbstractGenerator {
 	  	«IF cmd instanceof Wait»
 	  	rospy.sleep(«cmd.seconds»)
 	  	«ENDIF»
+	  	«IF cmd instanceof Move»
+	  	«ENDIF»
 	'''
 
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
-		System.out.println("IN GENERATE: " + resource);
 		for(main : resource.allContents.toIterable.filter(Main)) {
-			
-			System.out.println("IN for: " + main);
 			result = main.compile.toString; 
-			System.out.println("BEFORE2: " + result);
 			fsa.generateFile('/xdrone/result.py', result)
 		}
 		
 		try {
-			//System.out.println("IN TRY 1: " + result);
 			var file = new File("/xdrone/result.py");
 			file.getParentFile().mkdirs();
-			
 			
 			var writer = new PrintWriter(file, "UTF-8");
 		    //var writer = new PrintWriter("result.py", "UTF-8"); 
 		    writer.println(result);
 		    writer.close();   
-			System.out.println("IN TRY 2");
 		} catch (IOException e) {
 		   // do something
-			System.out.println("IN ERROR: " + e.toString());
 		}
 		
 		fsa.generateFile('result.py', result)

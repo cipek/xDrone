@@ -2,7 +2,8 @@
 
 echo 'before'
 
-rosrun cipek ardrone_test_1.py
+source /opt/ros/kinetic/setup.bash
+python /xdrone/result.py
 
 echo 'after'
 

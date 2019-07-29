@@ -10,6 +10,7 @@ import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
@@ -463,19 +464,20 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    {
+      if ((cmd instanceof Move)) {
+      }
+    }
     return _builder;
   }
   
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
-    System.out.println(("IN GENERATE: " + resource));
     Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
     for (final Main main : _filter) {
       {
-        System.out.println(("IN for: " + main));
         result = this.compile(main).toString();
-        System.out.println(("BEFORE2: " + result));
         fsa.generateFile("/xdrone/result.py", result);
       }
     }
@@ -485,13 +487,8 @@ public class XDroneGenerator extends AbstractGenerator {
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
       writer.close();
-      System.out.println("IN TRY 2");
     } catch (final Throwable _t) {
       if (_t instanceof IOException) {
-        final IOException e = (IOException)_t;
-        String _string = e.toString();
-        String _plus = ("IN ERROR: " + _string);
-        System.out.println(_plus);
       } else {
         throw Exceptions.sneakyThrow(_t);
       }

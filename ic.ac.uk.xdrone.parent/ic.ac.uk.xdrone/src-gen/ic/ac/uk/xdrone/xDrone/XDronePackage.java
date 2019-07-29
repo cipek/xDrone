@@ -543,6 +543,52 @@ public interface XDronePackage extends EPackage
   int WAIT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.MoveImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
+   * @generated
+   */
+  int MOVE = 17;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__Y = 1;
+
+  /**
+   * The feature id for the '<em><b>Z</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__Z = 2;
+
+  /**
+   * The number of structural features of the '<em>Move</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl <em>Function Name</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -550,7 +596,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFunctionName()
    * @generated
    */
-  int FUNCTION_NAME = 17;
+  int FUNCTION_NAME = 18;
 
   /**
    * The feature id for the '<em><b>Func name</b></em>' attribute.
@@ -940,6 +986,49 @@ public interface XDronePackage extends EPackage
   EAttribute getWait_Seconds();
 
   /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Move</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Move
+   * @generated
+   */
+  EClass getMove();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Move#getX()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Move#getY()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_Y();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getZ <em>Z</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Z</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Move#getZ()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_Z();
+
+  /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FunctionName <em>Function Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1296,6 +1385,40 @@ public interface XDronePackage extends EPackage
      * @generated
      */
     EAttribute WAIT__SECONDS = eINSTANCE.getWait_Seconds();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.MoveImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
+     * @generated
+     */
+    EClass MOVE = eINSTANCE.getMove();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__X = eINSTANCE.getMove_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__Y = eINSTANCE.getMove_Y();
+
+    /**
+     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__Z = eINSTANCE.getMove_Z();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl <em>Function Name</em>}' class.

@@ -120,7 +120,7 @@ class XDroneServiceDispatcher extends XtextServiceDispatcher {
 						//println("preparing to run command: sudo /bin/bash -c /xdrone-deploy.sh "+file.getAbsolutePath()+" > /tmp/xdrone.log")
 						
 						val pb = new ProcessBuilder().inheritIO()
-						.command("sudo /bin/bash", "-c", "/xdrone/xdrone-deploy.sh").start();
+						.command("/bin/bash", "-c", "/xdrone/xdrone-deploy.sh").start();
 						//.command("/usr/bin/python", System.getProperty("user.dir")+"/WebRoot/result.py").start();
 						//.command("/usr/bin/python", "/home/osboxes/catkin_ws/src/cipek/src/ardrone_test_1.py").start();
 						//.command("/bin/bash", "-c", "/home/osboxes/Documents/xdrone-deploy.sh").start();

@@ -177,6 +177,15 @@ public interface XDroneFactory extends EFactory
   Wait createWait();
 
   /**
+   * Returns a new object of class '<em>Move</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Move</em>'.
+   * @generated
+   */
+  Move createMove();
+
+  /**
    * Returns a new object of class '<em>Function Name</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

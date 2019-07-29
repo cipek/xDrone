@@ -172,7 +172,7 @@ public class XDroneServiceDispatcher extends XtextServiceDispatcher {
               }
             }
             final XtextWebDocument document = this.getResourceDocument(resourceId, context);
-            final Process pb = new ProcessBuilder().inheritIO().command("sudo /bin/bash", "-c", "/xdrone/xdrone-deploy.sh").start();
+            final Process pb = new ProcessBuilder().inheritIO().command("/bin/bash", "-c", "/xdrone/xdrone-deploy.sh").start();
             pb.waitFor();
             boolean _isAlive = pb.isAlive();
             boolean _not = (!_isAlive);

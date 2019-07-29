@@ -161,6 +161,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createWaitAdapter();
       }
       @Override
+      public Adapter caseMove(Move object)
+      {
+        return createMoveAdapter();
+      }
+      @Override
       public Adapter caseFunctionName(FunctionName object)
       {
         return createFunctionNameAdapter();
@@ -438,6 +443,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWaitAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Move
+   * @generated
+   */
+  public Adapter createMoveAdapter()
   {
     return null;
   }
