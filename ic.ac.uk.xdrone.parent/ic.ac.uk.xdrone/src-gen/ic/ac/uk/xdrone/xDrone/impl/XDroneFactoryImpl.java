@@ -67,12 +67,9 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
     {
       case XDronePackage.PROGRAM: return createProgram();
       case XDronePackage.MAIN: return createMain();
-      case XDronePackage.RECORDED_FLIGHT: return createRecordedFlight();
       case XDronePackage.USER_FUNCTION: return createUserFunction();
-      case XDronePackage.FEATURE_MATCH: return createFeatureMatch();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
-      case XDronePackage.SNAPSHOT: return createSnapshot();
       case XDronePackage.UP: return createUp();
       case XDronePackage.DOWN: return createDown();
       case XDronePackage.LEFT: return createLeft();
@@ -116,32 +113,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordedFlight createRecordedFlight()
-  {
-    RecordedFlightImpl recordedFlight = new RecordedFlightImpl();
-    return recordedFlight;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public UserFunction createUserFunction()
   {
     UserFunctionImpl userFunction = new UserFunctionImpl();
     return userFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FeatureMatch createFeatureMatch()
-  {
-    FeatureMatchImpl featureMatch = new FeatureMatchImpl();
-    return featureMatch;
   }
 
   /**
@@ -164,17 +139,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     CommandImpl command = new CommandImpl();
     return command;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Snapshot createSnapshot()
-  {
-    SnapshotImpl snapshot = new SnapshotImpl();
-    return snapshot;
   }
 
   /**

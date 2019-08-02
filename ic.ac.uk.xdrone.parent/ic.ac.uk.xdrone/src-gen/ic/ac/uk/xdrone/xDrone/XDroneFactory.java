@@ -42,15 +42,6 @@ public interface XDroneFactory extends EFactory
   Main createMain();
 
   /**
-   * Returns a new object of class '<em>Recorded Flight</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Recorded Flight</em>'.
-   * @generated
-   */
-  RecordedFlight createRecordedFlight();
-
-  /**
    * Returns a new object of class '<em>User Function</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -58,15 +49,6 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   UserFunction createUserFunction();
-
-  /**
-   * Returns a new object of class '<em>Feature Match</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature Match</em>'.
-   * @generated
-   */
-  FeatureMatch createFeatureMatch();
 
   /**
    * Returns a new object of class '<em>Super Command</em>'.
@@ -85,15 +67,6 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Command createCommand();
-
-  /**
-   * Returns a new object of class '<em>Snapshot</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Snapshot</em>'.
-   * @generated
-   */
-  Snapshot createSnapshot();
 
   /**
    * Returns a new object of class '<em>Up</em>'.

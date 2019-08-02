@@ -21,18 +21,16 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XDroneGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Main_SemicolonKeyword_0_1_q;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_1_0_1_q;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_1_1_1_q;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_1_2_1_q;
+	protected AbstractElementAlias match_Main_SemicolonKeyword_1_1_q;
+	protected AbstractElementAlias match_Main_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_UserFunction_SemicolonKeyword_3_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XDroneGrammarAccess) access;
 		match_Main_SemicolonKeyword_0_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_0_1());
-		match_Main_SemicolonKeyword_1_0_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_1_0_1());
-		match_Main_SemicolonKeyword_1_1_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_1_1_1());
-		match_Main_SemicolonKeyword_1_2_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_1_2_1());
+		match_Main_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_1_1());
+		match_Main_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_2_1());
 		match_UserFunction_SemicolonKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getUserFunctionAccess().getSemicolonKeyword_3_1());
 	}
 	
@@ -50,12 +48,10 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_Main_SemicolonKeyword_0_1_q.equals(syntax))
 				emit_Main_SemicolonKeyword_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Main_SemicolonKeyword_1_0_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_1_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Main_SemicolonKeyword_1_1_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_1_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Main_SemicolonKeyword_1_2_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_1_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Main_SemicolonKeyword_1_1_q.equals(syntax))
+				emit_Main_SemicolonKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Main_SemicolonKeyword_2_1_q.equals(syntax))
+				emit_Main_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_UserFunction_SemicolonKeyword_3_1_q.equals(syntax))
 				emit_UserFunction_SemicolonKeyword_3_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -67,22 +63,10 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ';'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     commands+=Snapshot (ambiguity) (rule end)
-	 *     commands+=Snapshot (ambiguity) takeoff+=Takeoff
-	 */
-	protected void emit_Main_SemicolonKeyword_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
 	 *     takeoff+=Takeoff (ambiguity) commands+=SuperCommand
 	 *     takeoff+=Takeoff (ambiguity) land+=Land
 	 */
-	protected void emit_Main_SemicolonKeyword_1_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Main_SemicolonKeyword_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -94,7 +78,7 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     commands+=SuperCommand (ambiguity) commands+=SuperCommand
 	 *     commands+=SuperCommand (ambiguity) land+=Land
 	 */
-	protected void emit_Main_SemicolonKeyword_1_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Main_SemicolonKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -105,7 +89,7 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     land+=Land (ambiguity) (rule end)
 	 */
-	protected void emit_Main_SemicolonKeyword_1_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Main_SemicolonKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

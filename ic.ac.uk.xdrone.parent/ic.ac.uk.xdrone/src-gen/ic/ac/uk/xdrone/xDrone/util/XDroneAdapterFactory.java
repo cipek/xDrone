@@ -86,19 +86,9 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createMainAdapter();
       }
       @Override
-      public Adapter caseRecordedFlight(RecordedFlight object)
-      {
-        return createRecordedFlightAdapter();
-      }
-      @Override
       public Adapter caseUserFunction(UserFunction object)
       {
         return createUserFunctionAdapter();
-      }
-      @Override
-      public Adapter caseFeatureMatch(FeatureMatch object)
-      {
-        return createFeatureMatchAdapter();
       }
       @Override
       public Adapter caseSuperCommand(SuperCommand object)
@@ -109,11 +99,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCommand(Command object)
       {
         return createCommandAdapter();
-      }
-      @Override
-      public Adapter caseSnapshot(Snapshot object)
-      {
-        return createSnapshotAdapter();
       }
       @Override
       public Adapter caseUp(Up object)
@@ -223,21 +208,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.RecordedFlight <em>Recorded Flight</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.RecordedFlight
-   * @generated
-   */
-  public Adapter createRecordedFlightAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.UserFunction <em>User Function</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -248,21 +218,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUserFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.FeatureMatch <em>Feature Match</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.FeatureMatch
-   * @generated
-   */
-  public Adapter createFeatureMatchAdapter()
   {
     return null;
   }
@@ -293,21 +248,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Snapshot <em>Snapshot</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Snapshot
-   * @generated
-   */
-  public Adapter createSnapshotAdapter()
   {
     return null;
   }

@@ -10,25 +10,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/main"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Main">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Main/commands"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Main/takeoff"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Main/commands"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Main/land"/>
-    </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//RecordedFlight">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//RecordedFlight/video_name"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//UserFunction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//UserFunction/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//UserFunction/func"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//FeatureMatch">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FeatureMatch/image_name"/>
-    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//SuperCommand"/>
     <genClasses ecoreClass="XDrone.ecore#//Command"/>
-    <genClasses ecoreClass="XDrone.ecore#//Snapshot">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Snapshot/image_name"/>
-    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Up">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Up/distance"/>
     </genClasses>

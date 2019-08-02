@@ -6,18 +6,15 @@ package ic.ac.uk.xdrone.xDrone.impl;
 import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
-import ic.ac.uk.xdrone.xDrone.FeatureMatch;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Program;
-import ic.ac.uk.xdrone.xDrone.RecordedFlight;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
-import ic.ac.uk.xdrone.xDrone.Snapshot;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
@@ -59,21 +56,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass recordedFlightEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass userFunctionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass featureMatchEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,13 +71,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * @generated
    */
   private EClass commandEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass snapshotEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -271,9 +247,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMain_Commands()
+  public EAttribute getMain_Takeoff()
   {
-    return (EReference)mainEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)mainEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -281,9 +257,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMain_Takeoff()
+  public EReference getMain_Commands()
   {
-    return (EAttribute)mainEClass.getEStructuralFeatures().get(1);
+    return (EReference)mainEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -294,26 +270,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
   public EAttribute getMain_Land()
   {
     return (EAttribute)mainEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getRecordedFlight()
-  {
-    return recordedFlightEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRecordedFlight_Video_name()
-  {
-    return (EAttribute)recordedFlightEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -351,26 +307,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFeatureMatch()
-  {
-    return featureMatchEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFeatureMatch_Image_name()
-  {
-    return (EAttribute)featureMatchEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSuperCommand()
   {
     return superCommandEClass;
@@ -384,26 +320,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
   public EClass getCommand()
   {
     return commandEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSnapshot()
-  {
-    return snapshotEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSnapshot_Image_name()
-  {
-    return (EAttribute)snapshotEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -680,26 +596,17 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     createEReference(programEClass, PROGRAM__MAIN);
 
     mainEClass = createEClass(MAIN);
-    createEReference(mainEClass, MAIN__COMMANDS);
     createEAttribute(mainEClass, MAIN__TAKEOFF);
+    createEReference(mainEClass, MAIN__COMMANDS);
     createEAttribute(mainEClass, MAIN__LAND);
-
-    recordedFlightEClass = createEClass(RECORDED_FLIGHT);
-    createEAttribute(recordedFlightEClass, RECORDED_FLIGHT__VIDEO_NAME);
 
     userFunctionEClass = createEClass(USER_FUNCTION);
     createEAttribute(userFunctionEClass, USER_FUNCTION__NAME);
     createEReference(userFunctionEClass, USER_FUNCTION__FUNC);
 
-    featureMatchEClass = createEClass(FEATURE_MATCH);
-    createEAttribute(featureMatchEClass, FEATURE_MATCH__IMAGE_NAME);
-
     superCommandEClass = createEClass(SUPER_COMMAND);
 
     commandEClass = createEClass(COMMAND);
-
-    snapshotEClass = createEClass(SNAPSHOT);
-    createEAttribute(snapshotEClass, SNAPSHOT__IMAGE_NAME);
 
     upEClass = createEClass(UP);
     createEAttribute(upEClass, UP__DISTANCE);
@@ -767,7 +674,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Add supertypes to classes
     commandEClass.getESuperTypes().add(this.getSuperCommand());
-    snapshotEClass.getESuperTypes().add(this.getCommand());
     upEClass.getESuperTypes().add(this.getCommand());
     downEClass.getESuperTypes().add(this.getCommand());
     leftEClass.getESuperTypes().add(this.getCommand());
@@ -784,26 +690,17 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     initEReference(getProgram_Main(), this.getMain(), null, "main", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mainEClass, Main.class, "Main", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMain_Commands(), this.getSuperCommand(), null, "commands", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMain_Takeoff(), ecorePackage.getEString(), "takeoff", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMain_Commands(), this.getSuperCommand(), null, "commands", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMain_Land(), ecorePackage.getEString(), "land", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(recordedFlightEClass, RecordedFlight.class, "RecordedFlight", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRecordedFlight_Video_name(), ecorePackage.getEString(), "video_name", null, 0, 1, RecordedFlight.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(userFunctionEClass, UserFunction.class, "UserFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUserFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, UserFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUserFunction_Func(), this.getCommand(), null, "func", null, 0, -1, UserFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(featureMatchEClass, FeatureMatch.class, "FeatureMatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFeatureMatch_Image_name(), ecorePackage.getEString(), "image_name", null, 0, 1, FeatureMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(superCommandEClass, SuperCommand.class, "SuperCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(snapshotEClass, Snapshot.class, "Snapshot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSnapshot_Image_name(), ecorePackage.getEString(), "image_name", null, 0, 1, Snapshot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(upEClass, Up.class, "Up", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUp_Distance(), ecorePackage.getEString(), "distance", null, 0, 1, Up.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

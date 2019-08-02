@@ -96,22 +96,22 @@ public interface XDronePackage extends EPackage
   int MAIN = 1;
 
   /**
-   * The feature id for the '<em><b>Commands</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAIN__COMMANDS = 0;
-
-  /**
    * The feature id for the '<em><b>Takeoff</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAIN__TAKEOFF = 1;
+  int MAIN__TAKEOFF = 0;
+
+  /**
+   * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN__COMMANDS = 1;
 
   /**
    * The feature id for the '<em><b>Land</b></em>' attribute list.
@@ -132,34 +132,6 @@ public interface XDronePackage extends EPackage
   int MAIN_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl <em>Recorded Flight</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRecordedFlight()
-   * @generated
-   */
-  int RECORDED_FLIGHT = 2;
-
-  /**
-   * The feature id for the '<em><b>Video name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORDED_FLIGHT__VIDEO_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Recorded Flight</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORDED_FLIGHT_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl <em>User Function</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -167,7 +139,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUserFunction()
    * @generated
    */
-  int USER_FUNCTION = 3;
+  int USER_FUNCTION = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -197,34 +169,6 @@ public interface XDronePackage extends EPackage
   int USER_FUNCTION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl <em>Feature Match</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFeatureMatch()
-   * @generated
-   */
-  int FEATURE_MATCH = 4;
-
-  /**
-   * The feature id for the '<em><b>Image name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE_MATCH__IMAGE_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Feature Match</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE_MATCH_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SuperCommandImpl <em>Super Command</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -232,7 +176,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSuperCommand()
    * @generated
    */
-  int SUPER_COMMAND = 5;
+  int SUPER_COMMAND = 3;
 
   /**
    * The number of structural features of the '<em>Super Command</em>' class.
@@ -251,7 +195,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 6;
+  int COMMAND = 4;
 
   /**
    * The number of structural features of the '<em>Command</em>' class.
@@ -263,34 +207,6 @@ public interface XDronePackage extends EPackage
   int COMMAND_FEATURE_COUNT = SUPER_COMMAND_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl <em>Snapshot</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSnapshot()
-   * @generated
-   */
-  int SNAPSHOT = 7;
-
-  /**
-   * The feature id for the '<em><b>Image name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SNAPSHOT__IMAGE_NAME = COMMAND_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Snapshot</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SNAPSHOT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -298,7 +214,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUp()
    * @generated
    */
-  int UP = 8;
+  int UP = 5;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -326,7 +242,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDown()
    * @generated
    */
-  int DOWN = 9;
+  int DOWN = 6;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -354,7 +270,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeft()
    * @generated
    */
-  int LEFT = 10;
+  int LEFT = 7;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -382,7 +298,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRight()
    * @generated
    */
-  int RIGHT = 11;
+  int RIGHT = 8;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -410,7 +326,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getForward()
    * @generated
    */
-  int FORWARD = 12;
+  int FORWARD = 9;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -438,7 +354,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackward()
    * @generated
    */
-  int BACKWARD = 13;
+  int BACKWARD = 10;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -466,7 +382,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateL()
    * @generated
    */
-  int ROTATE_L = 14;
+  int ROTATE_L = 11;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -494,7 +410,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateR()
    * @generated
    */
-  int ROTATE_R = 15;
+  int ROTATE_R = 12;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -522,7 +438,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWait()
    * @generated
    */
-  int WAIT = 16;
+  int WAIT = 13;
 
   /**
    * The feature id for the '<em><b>Seconds</b></em>' attribute.
@@ -550,7 +466,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
    * @generated
    */
-  int MOVE = 17;
+  int MOVE = 14;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -596,7 +512,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFunctionName()
    * @generated
    */
-  int FUNCTION_NAME = 18;
+  int FUNCTION_NAME = 15;
 
   /**
    * The feature id for the '<em><b>Func name</b></em>' attribute.
@@ -649,17 +565,6 @@ public interface XDronePackage extends EPackage
   EClass getMain();
 
   /**
-   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Main#getCommands <em>Commands</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Commands</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Main#getCommands()
-   * @see #getMain()
-   * @generated
-   */
-  EReference getMain_Commands();
-
-  /**
    * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Main#getTakeoff <em>Takeoff</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -671,6 +576,17 @@ public interface XDronePackage extends EPackage
   EAttribute getMain_Takeoff();
 
   /**
+   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Main#getCommands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Commands</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Main#getCommands()
+   * @see #getMain()
+   * @generated
+   */
+  EReference getMain_Commands();
+
+  /**
    * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Main#getLand <em>Land</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -680,27 +596,6 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getMain_Land();
-
-  /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.RecordedFlight <em>Recorded Flight</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Recorded Flight</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.RecordedFlight
-   * @generated
-   */
-  EClass getRecordedFlight();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.RecordedFlight#getVideo_name <em>Video name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Video name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.RecordedFlight#getVideo_name()
-   * @see #getRecordedFlight()
-   * @generated
-   */
-  EAttribute getRecordedFlight_Video_name();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.UserFunction <em>User Function</em>}'.
@@ -735,27 +630,6 @@ public interface XDronePackage extends EPackage
   EReference getUserFunction_Func();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FeatureMatch <em>Feature Match</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Feature Match</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FeatureMatch
-   * @generated
-   */
-  EClass getFeatureMatch();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FeatureMatch#getImage_name <em>Image name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Image name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FeatureMatch#getImage_name()
-   * @see #getFeatureMatch()
-   * @generated
-   */
-  EAttribute getFeatureMatch_Image_name();
-
-  /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.SuperCommand <em>Super Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -774,27 +648,6 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EClass getCommand();
-
-  /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Snapshot <em>Snapshot</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Snapshot</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Snapshot
-   * @generated
-   */
-  EClass getSnapshot();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Snapshot#getImage_name <em>Image name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Image name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Snapshot#getImage_name()
-   * @see #getSnapshot()
-   * @generated
-   */
-  EAttribute getSnapshot_Image_name();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
@@ -1101,14 +954,6 @@ public interface XDronePackage extends EPackage
     EClass MAIN = eINSTANCE.getMain();
 
     /**
-     * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MAIN__COMMANDS = eINSTANCE.getMain_Commands();
-
-    /**
      * The meta object literal for the '<em><b>Takeoff</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1117,30 +962,20 @@ public interface XDronePackage extends EPackage
     EAttribute MAIN__TAKEOFF = eINSTANCE.getMain_Takeoff();
 
     /**
+     * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAIN__COMMANDS = eINSTANCE.getMain_Commands();
+
+    /**
      * The meta object literal for the '<em><b>Land</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute MAIN__LAND = eINSTANCE.getMain_Land();
-
-    /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl <em>Recorded Flight</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRecordedFlight()
-     * @generated
-     */
-    EClass RECORDED_FLIGHT = eINSTANCE.getRecordedFlight();
-
-    /**
-     * The meta object literal for the '<em><b>Video name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RECORDED_FLIGHT__VIDEO_NAME = eINSTANCE.getRecordedFlight_Video_name();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl <em>User Function</em>}' class.
@@ -1169,24 +1004,6 @@ public interface XDronePackage extends EPackage
     EReference USER_FUNCTION__FUNC = eINSTANCE.getUserFunction_Func();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl <em>Feature Match</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFeatureMatch()
-     * @generated
-     */
-    EClass FEATURE_MATCH = eINSTANCE.getFeatureMatch();
-
-    /**
-     * The meta object literal for the '<em><b>Image name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FEATURE_MATCH__IMAGE_NAME = eINSTANCE.getFeatureMatch_Image_name();
-
-    /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SuperCommandImpl <em>Super Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1205,24 +1022,6 @@ public interface XDronePackage extends EPackage
      * @generated
      */
     EClass COMMAND = eINSTANCE.getCommand();
-
-    /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl <em>Snapshot</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSnapshot()
-     * @generated
-     */
-    EClass SNAPSHOT = eINSTANCE.getSnapshot();
-
-    /**
-     * The meta object literal for the '<em><b>Image name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SNAPSHOT__IMAGE_NAME = eINSTANCE.getSnapshot_Image_name();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.

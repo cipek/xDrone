@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Main#getCommands <em>Commands</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Main#getTakeoff <em>Takeoff</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Main#getCommands <em>Commands</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Main#getLand <em>Land</em>}</li>
  * </ul>
  *
@@ -27,22 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Main extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
-   * The list contents are of type {@link ic.ac.uk.xdrone.xDrone.SuperCommand}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Commands</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Commands</em>' containment reference list.
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getMain_Commands()
-   * @model containment="true"
-   * @generated
-   */
-  EList<SuperCommand> getCommands();
-
   /**
    * Returns the value of the '<em><b>Takeoff</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
@@ -58,6 +42,22 @@ public interface Main extends EObject
    * @generated
    */
   EList<String> getTakeoff();
+
+  /**
+   * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
+   * The list contents are of type {@link ic.ac.uk.xdrone.xDrone.SuperCommand}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Commands</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Commands</em>' containment reference list.
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getMain_Commands()
+   * @model containment="true"
+   * @generated
+   */
+  EList<SuperCommand> getCommands();
 
   /**
    * Returns the value of the '<em><b>Land</b></em>' attribute list.

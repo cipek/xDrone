@@ -87,24 +87,10 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.RECORDED_FLIGHT:
-      {
-        RecordedFlight recordedFlight = (RecordedFlight)theEObject;
-        T result = caseRecordedFlight(recordedFlight);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case XDronePackage.USER_FUNCTION:
       {
         UserFunction userFunction = (UserFunction)theEObject;
         T result = caseUserFunction(userFunction);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XDronePackage.FEATURE_MATCH:
-      {
-        FeatureMatch featureMatch = (FeatureMatch)theEObject;
-        T result = caseFeatureMatch(featureMatch);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,15 +106,6 @@ public class XDroneSwitch<T> extends Switch<T>
         Command command = (Command)theEObject;
         T result = caseCommand(command);
         if (result == null) result = caseSuperCommand(command);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XDronePackage.SNAPSHOT:
-      {
-        Snapshot snapshot = (Snapshot)theEObject;
-        T result = caseSnapshot(snapshot);
-        if (result == null) result = caseCommand(snapshot);
-        if (result == null) result = caseSuperCommand(snapshot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -265,22 +242,6 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Recorded Flight</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Recorded Flight</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRecordedFlight(RecordedFlight object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>User Function</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -292,22 +253,6 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUserFunction(UserFunction object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature Match</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Feature Match</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFeatureMatch(FeatureMatch object)
   {
     return null;
   }
@@ -340,22 +285,6 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCommand(Command object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Snapshot</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Snapshot</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSnapshot(Snapshot object)
   {
     return null;
   }

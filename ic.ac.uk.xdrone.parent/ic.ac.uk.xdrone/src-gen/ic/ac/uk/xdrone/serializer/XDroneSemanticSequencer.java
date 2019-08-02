@@ -7,18 +7,15 @@ import com.google.inject.Inject;
 import ic.ac.uk.xdrone.services.XDroneGrammarAccess;
 import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Down;
-import ic.ac.uk.xdrone.xDrone.FeatureMatch;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Program;
-import ic.ac.uk.xdrone.xDrone.RecordedFlight;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
-import ic.ac.uk.xdrone.xDrone.Snapshot;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
 import ic.ac.uk.xdrone.xDrone.Wait;
@@ -54,9 +51,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.DOWN:
 				sequence_Down(context, (Down) semanticObject); 
 				return; 
-			case XDronePackage.FEATURE_MATCH:
-				sequence_FeatureMatch(context, (FeatureMatch) semanticObject); 
-				return; 
 			case XDronePackage.FORWARD:
 				sequence_Forward(context, (Forward) semanticObject); 
 				return; 
@@ -75,9 +69,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
-			case XDronePackage.RECORDED_FLIGHT:
-				sequence_RecordedFlight(context, (RecordedFlight) semanticObject); 
-				return; 
 			case XDronePackage.RIGHT:
 				sequence_Right(context, (Right) semanticObject); 
 				return; 
@@ -86,9 +77,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case XDronePackage.ROTATE_R:
 				sequence_RotateR(context, (RotateR) semanticObject); 
-				return; 
-			case XDronePackage.SNAPSHOT:
-				sequence_Snapshot(context, (Snapshot) semanticObject); 
 				return; 
 			case XDronePackage.UP:
 				sequence_Up(context, (Up) semanticObject); 
@@ -140,24 +128,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getDownAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     FeatureMatch returns FeatureMatch
-	 *
-	 * Constraint:
-	 *     image_name=ID
-	 */
-	protected void sequence_FeatureMatch(ISerializationContext context, FeatureMatch semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FEATURE_MATCH__IMAGE_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FEATURE_MATCH__IMAGE_NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFeatureMatchAccess().getImage_nameIDTerminalRuleCall_2_0(), semanticObject.getImage_name());
 		feeder.finish();
 	}
 	
@@ -226,7 +196,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Main returns Main
 	 *
 	 * Constraint:
-	 *     (commands+=Snapshot | (commands+=Snapshot takeoff+=Takeoff commands+=SuperCommand* land+=Land))?
+	 *     (takeoff+=Takeoff commands+=SuperCommand* land+=Land)
 	 */
 	protected void sequence_Main(ISerializationContext context, Main semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -271,24 +241,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getProgramAccess().getMainMainParserRuleCall_0(), semanticObject.getMain());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     RecordedFlight returns RecordedFlight
-	 *
-	 * Constraint:
-	 *     video_name=ID
-	 */
-	protected void sequence_RecordedFlight(ISerializationContext context, RecordedFlight semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.RECORDED_FLIGHT__VIDEO_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.RECORDED_FLIGHT__VIDEO_NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRecordedFlightAccess().getVideo_nameIDTerminalRuleCall_2_0(), semanticObject.getVideo_name());
 		feeder.finish();
 	}
 	
@@ -349,26 +301,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRotateRAccess().getAngleINTTerminalRuleCall_2_0(), semanticObject.getAngle());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     SuperCommand returns Snapshot
-	 *     Command returns Snapshot
-	 *     Snapshot returns Snapshot
-	 *
-	 * Constraint:
-	 *     image_name=ID
-	 */
-	protected void sequence_Snapshot(ISerializationContext context, Snapshot semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.SNAPSHOT__IMAGE_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.SNAPSHOT__IMAGE_NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSnapshotAccess().getImage_nameIDTerminalRuleCall_2_0(), semanticObject.getImage_name());
 		feeder.finish();
 	}
 	

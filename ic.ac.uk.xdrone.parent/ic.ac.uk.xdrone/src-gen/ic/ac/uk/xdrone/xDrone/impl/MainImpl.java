@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getTakeoff <em>Takeoff</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getCommands <em>Commands</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getLand <em>Land</em>}</li>
  * </ul>
  *
@@ -39,16 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MainImpl extends MinimalEObjectImpl.Container implements Main
 {
-  /**
-   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCommands()
-   * @generated
-   * @ordered
-   */
-  protected EList<SuperCommand> commands;
-
   /**
    * The cached value of the '{@link #getTakeoff() <em>Takeoff</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -58,6 +48,16 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * @ordered
    */
   protected EList<String> takeoff;
+
+  /**
+   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCommands()
+   * @generated
+   * @ordered
+   */
+  protected EList<SuperCommand> commands;
 
   /**
    * The cached value of the '{@link #getLand() <em>Land</em>}' attribute list.
@@ -95,20 +95,6 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SuperCommand> getCommands()
-  {
-    if (commands == null)
-    {
-      commands = new EObjectContainmentEList<SuperCommand>(SuperCommand.class, this, XDronePackage.MAIN__COMMANDS);
-    }
-    return commands;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<String> getTakeoff()
   {
     if (takeoff == null)
@@ -116,6 +102,20 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
       takeoff = new EDataTypeEList<String>(String.class, this, XDronePackage.MAIN__TAKEOFF);
     }
     return takeoff;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<SuperCommand> getCommands()
+  {
+    if (commands == null)
+    {
+      commands = new EObjectContainmentEList<SuperCommand>(SuperCommand.class, this, XDronePackage.MAIN__COMMANDS);
+    }
+    return commands;
   }
 
   /**
@@ -158,10 +158,10 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        return getCommands();
       case XDronePackage.MAIN__TAKEOFF:
         return getTakeoff();
+      case XDronePackage.MAIN__COMMANDS:
+        return getCommands();
       case XDronePackage.MAIN__LAND:
         return getLand();
     }
@@ -179,13 +179,13 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        getCommands().clear();
-        getCommands().addAll((Collection<? extends SuperCommand>)newValue);
-        return;
       case XDronePackage.MAIN__TAKEOFF:
         getTakeoff().clear();
         getTakeoff().addAll((Collection<? extends String>)newValue);
+        return;
+      case XDronePackage.MAIN__COMMANDS:
+        getCommands().clear();
+        getCommands().addAll((Collection<? extends SuperCommand>)newValue);
         return;
       case XDronePackage.MAIN__LAND:
         getLand().clear();
@@ -205,11 +205,11 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        getCommands().clear();
-        return;
       case XDronePackage.MAIN__TAKEOFF:
         getTakeoff().clear();
+        return;
+      case XDronePackage.MAIN__COMMANDS:
+        getCommands().clear();
         return;
       case XDronePackage.MAIN__LAND:
         getLand().clear();
@@ -228,10 +228,10 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        return commands != null && !commands.isEmpty();
       case XDronePackage.MAIN__TAKEOFF:
         return takeoff != null && !takeoff.isEmpty();
+      case XDronePackage.MAIN__COMMANDS:
+        return commands != null && !commands.isEmpty();
       case XDronePackage.MAIN__LAND:
         return land != null && !land.isEmpty();
     }

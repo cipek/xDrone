@@ -116,18 +116,18 @@ ruleMain returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMainAccess().getCommandsSnapshotParserRuleCall_0_0_0());
+						newCompositeNode(grammarAccess.getMainAccess().getTakeoffTakeoffParserRuleCall_0_0_0());
 					}
-					lv_commands_0_0=ruleSnapshot
+					lv_takeoff_0_0=ruleTakeoff
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMainRule());
 						}
 						add(
 							$current,
-							"commands",
-							lv_commands_0_0,
-							"ic.ac.uk.xdrone.XDrone.Snapshot");
+							"takeoff",
+							lv_takeoff_0_0,
+							"ic.ac.uk.xdrone.XDrone.Takeoff");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -138,91 +138,62 @@ ruleMain returns [EObject current=null]
 					newLeafNode(otherlv_1, grammarAccess.getMainAccess().getSemicolonKeyword_0_1());
 				}
 			)?
-		)?
+		)
 		(
 			(
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getMainAccess().getTakeoffTakeoffParserRuleCall_1_0_0_0());
-						}
-						lv_takeoff_2_0=ruleTakeoff
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getMainRule());
-							}
-							add(
-								$current,
-								"takeoff",
-								lv_takeoff_2_0,
-								"ic.ac.uk.xdrone.XDrone.Takeoff");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					otherlv_3=';'
 					{
-						newLeafNode(otherlv_3, grammarAccess.getMainAccess().getSemicolonKeyword_1_0_1());
+						newCompositeNode(grammarAccess.getMainAccess().getCommandsSuperCommandParserRuleCall_1_0_0());
 					}
-				)?
+					lv_commands_2_0=ruleSuperCommand
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMainRule());
+						}
+						add(
+							$current,
+							"commands",
+							lv_commands_2_0,
+							"ic.ac.uk.xdrone.XDrone.SuperCommand");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
 			(
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getMainAccess().getCommandsSuperCommandParserRuleCall_1_1_0_0());
-						}
-						lv_commands_4_0=ruleSuperCommand
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getMainRule());
-							}
-							add(
-								$current,
-								"commands",
-								lv_commands_4_0,
-								"ic.ac.uk.xdrone.XDrone.SuperCommand");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					otherlv_5=';'
-					{
-						newLeafNode(otherlv_5, grammarAccess.getMainAccess().getSemicolonKeyword_1_1_1());
-					}
-				)?
-			)*
+				otherlv_3=';'
+				{
+					newLeafNode(otherlv_3, grammarAccess.getMainAccess().getSemicolonKeyword_1_1());
+				}
+			)?
+		)*
+		(
 			(
 				(
-					(
-						{
-							newCompositeNode(grammarAccess.getMainAccess().getLandLandParserRuleCall_1_2_0_0());
-						}
-						lv_land_6_0=ruleLand
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getMainRule());
-							}
-							add(
-								$current,
-								"land",
-								lv_land_6_0,
-								"ic.ac.uk.xdrone.XDrone.Land");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
-				(
-					otherlv_7=';'
 					{
-						newLeafNode(otherlv_7, grammarAccess.getMainAccess().getSemicolonKeyword_1_2_1());
+						newCompositeNode(grammarAccess.getMainAccess().getLandLandParserRuleCall_2_0_0());
 					}
-				)?
+					lv_land_4_0=ruleLand
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMainRule());
+						}
+						add(
+							$current,
+							"land",
+							lv_land_4_0,
+							"ic.ac.uk.xdrone.XDrone.Land");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)?
-	)
+			(
+				otherlv_5=';'
+				{
+					newLeafNode(otherlv_5, grammarAccess.getMainAccess().getSemicolonKeyword_2_1());
+				}
+			)?
+		)
+	)?
 ;
 
 // Entry rule entryRuleTakeoff
@@ -401,15 +372,6 @@ ruleCommand returns [EObject current=null]
 			$current = $this_Wait_8.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getCommandAccess().getSnapshotParserRuleCall_9());
-		}
-		this_Snapshot_9=ruleSnapshot
-		{
-			$current = $this_Snapshot_9.current;
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 
@@ -447,55 +409,6 @@ ruleDOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 		}
 		{
 			newLeafNode(this_INT_2, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_2());
-		}
-	)
-;
-
-// Entry rule entryRuleSnapshot
-entryRuleSnapshot returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getSnapshotRule()); }
-	iv_ruleSnapshot=ruleSnapshot
-	{ $current=$iv_ruleSnapshot.current; }
-	EOF;
-
-// Rule Snapshot
-ruleSnapshot returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='SNAPSHOT'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getSnapshotAccess().getSNAPSHOTKeyword_0());
-		}
-		otherlv_1='('
-		{
-			newLeafNode(otherlv_1, grammarAccess.getSnapshotAccess().getLeftParenthesisKeyword_1());
-		}
-		(
-			(
-				lv_image_name_2_0=RULE_ID
-				{
-					newLeafNode(lv_image_name_2_0, grammarAccess.getSnapshotAccess().getImage_nameIDTerminalRuleCall_2_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSnapshotRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"image_name",
-						lv_image_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
-			)
-		)
-		otherlv_3=')'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getSnapshotAccess().getRightParenthesisKeyword_3());
 		}
 	)
 ;

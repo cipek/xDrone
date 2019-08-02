@@ -5,6 +5,8 @@
 	<title>Web Editor</title>
 	<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="./simulator-resources/index.css"/>
+
 	<script src="webjars/requirejs/2.3.6/require.min.js"></script>
 	<script type="text/javascript">
 		var baseUrl = window.location.pathname;
@@ -63,6 +65,7 @@
 			});
 		});
 	</script>
+
 </head>
 <body>
 
@@ -75,6 +78,27 @@
 		<div class="content">
 			<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
 		</div>
+	</div>
+
+	<!-- Simulator -->
+	<!-- <script src="./simulator-resources/three.js"></script> -->
+	<!-- <script src="./simulator-resources/LegacyJSONLoader.js"></script>
+	<script src="./simulator-resources/OrbitControls.js"></script> -->
+	<script src="./simulator-resources/scene.js"></script>
+
+	<div id="SIMULATOR">
+		<script>
+			let THREE;
+			require(['./simulator-resources/three.js'], function(moduleThree){
+				THREE = moduleThree;
+				require(['./simulator-resources/OrbitControls.js'], function(module){
+					require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
+						init();
+						animate();
+					})
+				})
+			})
+		</script>
 	</div>
 </body>
 </html>
