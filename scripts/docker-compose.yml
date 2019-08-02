@@ -1,0 +1,22 @@
+version: '2'
+services:
+  master:
+    image: "xdrone"
+    container_name: master
+    command: roscore
+  ardrone:
+    image: "xdrone"
+    container_name: ardrone
+    environment:
+      - "ROS_HOSTNAME=ardrone"
+      - "ROS_MASTER_URI=http://master:11311"
+    command: rosrun ardrone_autonomy ardrone_driver
+  tomcat:
+    image: "xdrone"
+    container_name: tomcat
+    environment:
+      - "ROS_HOSTNAME=tomcat"
+      - "ROS_MASTER_URI=http://master:11311"
+    ports: 
+    - "8888:8080"
+    command: sh /opt/tomcat/8_0/bin/catalina.sh run 
