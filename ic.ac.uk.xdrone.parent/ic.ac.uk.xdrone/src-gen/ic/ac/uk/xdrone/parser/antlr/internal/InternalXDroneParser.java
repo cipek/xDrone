@@ -2676,7 +2676,7 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDrone"
-    // InternalXDrone.g:1044:1: ruleDrone returns [EObject current=null] : (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_y_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_z_6_0= ruleDOUBLE ) ) otherlv_7= ')' ) ;
+    // InternalXDrone.g:1044:1: ruleDrone returns [EObject current=null] : (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_z_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_y_6_0= ruleDOUBLE ) ) otherlv_7= ')' ) ;
     public final EObject ruleDrone() throws RecognitionException {
         EObject current = null;
 
@@ -2687,20 +2687,20 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
         Token otherlv_7=null;
         AntlrDatatypeRuleToken lv_x_2_0 = null;
 
-        AntlrDatatypeRuleToken lv_y_4_0 = null;
+        AntlrDatatypeRuleToken lv_z_4_0 = null;
 
-        AntlrDatatypeRuleToken lv_z_6_0 = null;
+        AntlrDatatypeRuleToken lv_y_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXDrone.g:1050:2: ( (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_y_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_z_6_0= ruleDOUBLE ) ) otherlv_7= ')' ) )
-            // InternalXDrone.g:1051:2: (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_y_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_z_6_0= ruleDOUBLE ) ) otherlv_7= ')' )
+            // InternalXDrone.g:1050:2: ( (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_z_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_y_6_0= ruleDOUBLE ) ) otherlv_7= ')' ) )
+            // InternalXDrone.g:1051:2: (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_z_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_y_6_0= ruleDOUBLE ) ) otherlv_7= ')' )
             {
-            // InternalXDrone.g:1051:2: (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_y_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_z_6_0= ruleDOUBLE ) ) otherlv_7= ')' )
-            // InternalXDrone.g:1052:3: otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_y_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_z_6_0= ruleDOUBLE ) ) otherlv_7= ')'
+            // InternalXDrone.g:1051:2: (otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_z_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_y_6_0= ruleDOUBLE ) ) otherlv_7= ')' )
+            // InternalXDrone.g:1052:3: otherlv_0= 'DRONE' otherlv_1= '(' ( (lv_x_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_z_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_y_6_0= ruleDOUBLE ) ) otherlv_7= ')'
             {
             otherlv_0=(Token)match(input,30,FOLLOW_11); 
 
@@ -2745,17 +2745,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getDroneAccess().getCommaKeyword_3());
             		
-            // InternalXDrone.g:1083:3: ( (lv_y_4_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1084:4: (lv_y_4_0= ruleDOUBLE )
+            // InternalXDrone.g:1083:3: ( (lv_z_4_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1084:4: (lv_z_4_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1084:4: (lv_y_4_0= ruleDOUBLE )
-            // InternalXDrone.g:1085:5: lv_y_4_0= ruleDOUBLE
+            // InternalXDrone.g:1084:4: (lv_z_4_0= ruleDOUBLE )
+            // InternalXDrone.g:1085:5: lv_z_4_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_4_0());
+            					newCompositeNode(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_4_0());
             				
             pushFollow(FOLLOW_15);
-            lv_y_4_0=ruleDOUBLE();
+            lv_z_4_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -2765,8 +2765,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"y",
-            						lv_y_4_0,
+            						"z",
+            						lv_z_4_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				
@@ -2780,17 +2780,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getDroneAccess().getCommaKeyword_5());
             		
-            // InternalXDrone.g:1106:3: ( (lv_z_6_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1107:4: (lv_z_6_0= ruleDOUBLE )
+            // InternalXDrone.g:1106:3: ( (lv_y_6_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1107:4: (lv_y_6_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1107:4: (lv_z_6_0= ruleDOUBLE )
-            // InternalXDrone.g:1108:5: lv_z_6_0= ruleDOUBLE
+            // InternalXDrone.g:1107:4: (lv_y_6_0= ruleDOUBLE )
+            // InternalXDrone.g:1108:5: lv_y_6_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_6_0());
+            					newCompositeNode(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_6_0());
             				
             pushFollow(FOLLOW_13);
-            lv_z_6_0=ruleDOUBLE();
+            lv_y_6_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -2800,8 +2800,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"z",
-            						lv_z_6_0,
+            						"y",
+            						lv_y_6_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				
@@ -2874,7 +2874,7 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleObject"
-    // InternalXDrone.g:1140:1: ruleObject returns [EObject current=null] : ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sy_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sz_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_ly_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_lz_12_0= ruleDOUBLE ) ) otherlv_13= ')' ) ;
+    // InternalXDrone.g:1140:1: ruleObject returns [EObject current=null] : ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sz_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sy_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_lz_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_ly_12_0= ruleDOUBLE ) ) otherlv_13= ')' ) ;
     public final EObject ruleObject() throws RecognitionException {
         EObject current = null;
 
@@ -2888,26 +2888,26 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
         Token otherlv_13=null;
         AntlrDatatypeRuleToken lv_sx_2_0 = null;
 
-        AntlrDatatypeRuleToken lv_sy_4_0 = null;
+        AntlrDatatypeRuleToken lv_sz_4_0 = null;
 
-        AntlrDatatypeRuleToken lv_sz_6_0 = null;
+        AntlrDatatypeRuleToken lv_sy_6_0 = null;
 
         AntlrDatatypeRuleToken lv_lx_8_0 = null;
 
-        AntlrDatatypeRuleToken lv_ly_10_0 = null;
+        AntlrDatatypeRuleToken lv_lz_10_0 = null;
 
-        AntlrDatatypeRuleToken lv_lz_12_0 = null;
+        AntlrDatatypeRuleToken lv_ly_12_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXDrone.g:1146:2: ( ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sy_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sz_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_ly_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_lz_12_0= ruleDOUBLE ) ) otherlv_13= ')' ) )
-            // InternalXDrone.g:1147:2: ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sy_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sz_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_ly_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_lz_12_0= ruleDOUBLE ) ) otherlv_13= ')' )
+            // InternalXDrone.g:1146:2: ( ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sz_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sy_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_lz_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_ly_12_0= ruleDOUBLE ) ) otherlv_13= ')' ) )
+            // InternalXDrone.g:1147:2: ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sz_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sy_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_lz_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_ly_12_0= ruleDOUBLE ) ) otherlv_13= ')' )
             {
-            // InternalXDrone.g:1147:2: ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sy_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sz_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_ly_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_lz_12_0= ruleDOUBLE ) ) otherlv_13= ')' )
-            // InternalXDrone.g:1148:3: ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sy_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sz_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_ly_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_lz_12_0= ruleDOUBLE ) ) otherlv_13= ')'
+            // InternalXDrone.g:1147:2: ( ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sz_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sy_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_lz_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_ly_12_0= ruleDOUBLE ) ) otherlv_13= ')' )
+            // InternalXDrone.g:1148:3: ( (lv_object_name_0_0= RULE_ID ) ) otherlv_1= '(' ( (lv_sx_2_0= ruleDOUBLE ) ) otherlv_3= ',' ( (lv_sz_4_0= ruleDOUBLE ) ) otherlv_5= ',' ( (lv_sy_6_0= ruleDOUBLE ) ) otherlv_7= ',' ( (lv_lx_8_0= ruleDOUBLE ) ) otherlv_9= ',' ( (lv_lz_10_0= ruleDOUBLE ) ) otherlv_11= ',' ( (lv_ly_12_0= ruleDOUBLE ) ) otherlv_13= ')'
             {
             // InternalXDrone.g:1148:3: ( (lv_object_name_0_0= RULE_ID ) )
             // InternalXDrone.g:1149:4: (lv_object_name_0_0= RULE_ID )
@@ -2974,17 +2974,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getObjectAccess().getCommaKeyword_3());
             		
-            // InternalXDrone.g:1193:3: ( (lv_sy_4_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1194:4: (lv_sy_4_0= ruleDOUBLE )
+            // InternalXDrone.g:1193:3: ( (lv_sz_4_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1194:4: (lv_sz_4_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1194:4: (lv_sy_4_0= ruleDOUBLE )
-            // InternalXDrone.g:1195:5: lv_sy_4_0= ruleDOUBLE
+            // InternalXDrone.g:1194:4: (lv_sz_4_0= ruleDOUBLE )
+            // InternalXDrone.g:1195:5: lv_sz_4_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getObjectAccess().getSyDOUBLEParserRuleCall_4_0());
+            					newCompositeNode(grammarAccess.getObjectAccess().getSzDOUBLEParserRuleCall_4_0());
             				
             pushFollow(FOLLOW_15);
-            lv_sy_4_0=ruleDOUBLE();
+            lv_sz_4_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -2994,8 +2994,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"sy",
-            						lv_sy_4_0,
+            						"sz",
+            						lv_sz_4_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				
@@ -3009,17 +3009,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getObjectAccess().getCommaKeyword_5());
             		
-            // InternalXDrone.g:1216:3: ( (lv_sz_6_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1217:4: (lv_sz_6_0= ruleDOUBLE )
+            // InternalXDrone.g:1216:3: ( (lv_sy_6_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1217:4: (lv_sy_6_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1217:4: (lv_sz_6_0= ruleDOUBLE )
-            // InternalXDrone.g:1218:5: lv_sz_6_0= ruleDOUBLE
+            // InternalXDrone.g:1217:4: (lv_sy_6_0= ruleDOUBLE )
+            // InternalXDrone.g:1218:5: lv_sy_6_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getObjectAccess().getSzDOUBLEParserRuleCall_6_0());
+            					newCompositeNode(grammarAccess.getObjectAccess().getSyDOUBLEParserRuleCall_6_0());
             				
             pushFollow(FOLLOW_15);
-            lv_sz_6_0=ruleDOUBLE();
+            lv_sy_6_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -3029,8 +3029,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"sz",
-            						lv_sz_6_0,
+            						"sy",
+            						lv_sy_6_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				
@@ -3079,17 +3079,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_9, grammarAccess.getObjectAccess().getCommaKeyword_9());
             		
-            // InternalXDrone.g:1262:3: ( (lv_ly_10_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1263:4: (lv_ly_10_0= ruleDOUBLE )
+            // InternalXDrone.g:1262:3: ( (lv_lz_10_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1263:4: (lv_lz_10_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1263:4: (lv_ly_10_0= ruleDOUBLE )
-            // InternalXDrone.g:1264:5: lv_ly_10_0= ruleDOUBLE
+            // InternalXDrone.g:1263:4: (lv_lz_10_0= ruleDOUBLE )
+            // InternalXDrone.g:1264:5: lv_lz_10_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getObjectAccess().getLyDOUBLEParserRuleCall_10_0());
+            					newCompositeNode(grammarAccess.getObjectAccess().getLzDOUBLEParserRuleCall_10_0());
             				
             pushFollow(FOLLOW_15);
-            lv_ly_10_0=ruleDOUBLE();
+            lv_lz_10_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -3099,8 +3099,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"ly",
-            						lv_ly_10_0,
+            						"lz",
+            						lv_lz_10_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				
@@ -3114,17 +3114,17 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_11, grammarAccess.getObjectAccess().getCommaKeyword_11());
             		
-            // InternalXDrone.g:1285:3: ( (lv_lz_12_0= ruleDOUBLE ) )
-            // InternalXDrone.g:1286:4: (lv_lz_12_0= ruleDOUBLE )
+            // InternalXDrone.g:1285:3: ( (lv_ly_12_0= ruleDOUBLE ) )
+            // InternalXDrone.g:1286:4: (lv_ly_12_0= ruleDOUBLE )
             {
-            // InternalXDrone.g:1286:4: (lv_lz_12_0= ruleDOUBLE )
-            // InternalXDrone.g:1287:5: lv_lz_12_0= ruleDOUBLE
+            // InternalXDrone.g:1286:4: (lv_ly_12_0= ruleDOUBLE )
+            // InternalXDrone.g:1287:5: lv_ly_12_0= ruleDOUBLE
             {
 
-            					newCompositeNode(grammarAccess.getObjectAccess().getLzDOUBLEParserRuleCall_12_0());
+            					newCompositeNode(grammarAccess.getObjectAccess().getLyDOUBLEParserRuleCall_12_0());
             				
             pushFollow(FOLLOW_13);
-            lv_lz_12_0=ruleDOUBLE();
+            lv_ly_12_0=ruleDOUBLE();
 
             state._fsp--;
 
@@ -3134,8 +3134,8 @@ public class InternalXDroneParser extends AbstractInternalAntlrParser {
             					}
             					set(
             						current,
-            						"lz",
-            						lv_lz_12_0,
+            						"ly",
+            						lv_ly_12_0,
             						"ic.ac.uk.xdrone.XDrone.DOUBLE");
             					afterParserOrEnumRuleCall();
             				

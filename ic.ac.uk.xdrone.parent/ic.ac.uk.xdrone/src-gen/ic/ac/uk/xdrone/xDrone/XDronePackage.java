@@ -598,22 +598,22 @@ public interface XDronePackage extends EPackage
   int DRONE__X = 0;
 
   /**
-   * The feature id for the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DRONE__Y = 1;
-
-  /**
    * The feature id for the '<em><b>Z</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DRONE__Z = 2;
+  int DRONE__Z = 1;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__Y = 2;
 
   /**
    * The number of structural features of the '<em>Drone</em>' class.
@@ -653,22 +653,22 @@ public interface XDronePackage extends EPackage
   int OBJECT__SX = 1;
 
   /**
-   * The feature id for the '<em><b>Sy</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OBJECT__SY = 2;
-
-  /**
    * The feature id for the '<em><b>Sz</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT__SZ = 3;
+  int OBJECT__SZ = 2;
+
+  /**
+   * The feature id for the '<em><b>Sy</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__SY = 3;
 
   /**
    * The feature id for the '<em><b>Lx</b></em>' attribute.
@@ -680,22 +680,22 @@ public interface XDronePackage extends EPackage
   int OBJECT__LX = 4;
 
   /**
-   * The feature id for the '<em><b>Ly</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OBJECT__LY = 5;
-
-  /**
    * The feature id for the '<em><b>Lz</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT__LZ = 6;
+  int OBJECT__LZ = 5;
+
+  /**
+   * The feature id for the '<em><b>Ly</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__LY = 6;
 
   /**
    * The number of structural features of the '<em>Object</em>' class.
@@ -1141,17 +1141,6 @@ public interface XDronePackage extends EPackage
   EAttribute getDrone_X();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Y</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Drone#getY()
-   * @see #getDrone()
-   * @generated
-   */
-  EAttribute getDrone_Y();
-
-  /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1161,6 +1150,17 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getDrone_Z();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getY()
+   * @see #getDrone()
+   * @generated
+   */
+  EAttribute getDrone_Y();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Object <em>Object</em>}'.
@@ -1195,17 +1195,6 @@ public interface XDronePackage extends EPackage
   EAttribute getObject_Sx();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sy</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getSy()
-   * @see #getObject()
-   * @generated
-   */
-  EAttribute getObject_Sy();
-
-  /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSz <em>Sz</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1215,6 +1204,17 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getObject_Sz();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sy</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getSy()
+   * @see #getObject()
+   * @generated
+   */
+  EAttribute getObject_Sy();
 
   /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLx <em>Lx</em>}'.
@@ -1228,17 +1228,6 @@ public interface XDronePackage extends EPackage
   EAttribute getObject_Lx();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ly</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getLy()
-   * @see #getObject()
-   * @generated
-   */
-  EAttribute getObject_Ly();
-
-  /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLz <em>Lz</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1248,6 +1237,17 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getObject_Lz();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ly</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getLy()
+   * @see #getObject()
+   * @generated
+   */
+  EAttribute getObject_Ly();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1637,20 +1637,20 @@ public interface XDronePackage extends EPackage
     EAttribute DRONE__X = eINSTANCE.getDrone_X();
 
     /**
-     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DRONE__Y = eINSTANCE.getDrone_Y();
-
-    /**
      * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute DRONE__Z = eINSTANCE.getDrone_Z();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DRONE__Y = eINSTANCE.getDrone_Y();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.
@@ -1679,20 +1679,20 @@ public interface XDronePackage extends EPackage
     EAttribute OBJECT__SX = eINSTANCE.getObject_Sx();
 
     /**
-     * The meta object literal for the '<em><b>Sy</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OBJECT__SY = eINSTANCE.getObject_Sy();
-
-    /**
      * The meta object literal for the '<em><b>Sz</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute OBJECT__SZ = eINSTANCE.getObject_Sz();
+
+    /**
+     * The meta object literal for the '<em><b>Sy</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OBJECT__SY = eINSTANCE.getObject_Sy();
 
     /**
      * The meta object literal for the '<em><b>Lx</b></em>' attribute feature.
@@ -1703,20 +1703,20 @@ public interface XDronePackage extends EPackage
     EAttribute OBJECT__LX = eINSTANCE.getObject_Lx();
 
     /**
-     * The meta object literal for the '<em><b>Ly</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OBJECT__LY = eINSTANCE.getObject_Ly();
-
-    /**
      * The meta object literal for the '<em><b>Lz</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute OBJECT__LZ = eINSTANCE.getObject_Lz();
+
+    /**
+     * The meta object literal for the '<em><b>Ly</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OBJECT__LY = eINSTANCE.getObject_Ly();
 
   }
 

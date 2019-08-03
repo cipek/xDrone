@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getObject_name <em>Object name</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSx <em>Sx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSz <em>Sz</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLx <em>Lx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLz <em>Lz</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject()
@@ -82,32 +82,6 @@ public interface Object extends EObject
   void setSx(String value);
 
   /**
-   * Returns the value of the '<em><b>Sy</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Sy</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Sy</em>' attribute.
-   * @see #setSy(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Sy()
-   * @model
-   * @generated
-   */
-  String getSy();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sy</em>' attribute.
-   * @see #getSy()
-   * @generated
-   */
-  void setSy(String value);
-
-  /**
    * Returns the value of the '<em><b>Sz</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -132,6 +106,32 @@ public interface Object extends EObject
    * @generated
    */
   void setSz(String value);
+
+  /**
+   * Returns the value of the '<em><b>Sy</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sy</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sy</em>' attribute.
+   * @see #setSy(String)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Sy()
+   * @model
+   * @generated
+   */
+  String getSy();
+
+  /**
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sy</em>' attribute.
+   * @see #getSy()
+   * @generated
+   */
+  void setSy(String value);
 
   /**
    * Returns the value of the '<em><b>Lx</b></em>' attribute.
@@ -160,32 +160,6 @@ public interface Object extends EObject
   void setLx(String value);
 
   /**
-   * Returns the value of the '<em><b>Ly</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ly</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ly</em>' attribute.
-   * @see #setLy(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Ly()
-   * @model
-   * @generated
-   */
-  String getLy();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ly</em>' attribute.
-   * @see #getLy()
-   * @generated
-   */
-  void setLy(String value);
-
-  /**
    * Returns the value of the '<em><b>Lz</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -210,5 +184,31 @@ public interface Object extends EObject
    * @generated
    */
   void setLz(String value);
+
+  /**
+   * Returns the value of the '<em><b>Ly</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ly</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ly</em>' attribute.
+   * @see #setLy(String)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Ly()
+   * @model
+   * @generated
+   */
+  String getLy();
+
+  /**
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ly</em>' attribute.
+   * @see #getLy()
+   * @generated
+   */
+  void setLy(String value);
 
 } // Object

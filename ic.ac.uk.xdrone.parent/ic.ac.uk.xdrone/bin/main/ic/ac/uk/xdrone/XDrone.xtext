@@ -101,9 +101,9 @@ FunctionName:
 
 
 Drone:
-	'DRONE' '(' x = DOUBLE ',' y = DOUBLE ',' z = DOUBLE ')'
+	'DRONE' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
 ;
 
 Object:
-	object_name = ID '(' sx = DOUBLE ',' sy = DOUBLE ',' sz = DOUBLE ',' lx = DOUBLE ',' ly = DOUBLE ',' lz = DOUBLE')' 
+	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 ;

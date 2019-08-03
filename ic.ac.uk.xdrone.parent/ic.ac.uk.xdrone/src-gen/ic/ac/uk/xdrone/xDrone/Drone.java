@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone()
@@ -52,32 +52,6 @@ public interface Drone extends EObject
   void setX(String value);
 
   /**
-   * Returns the value of the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Y</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Y</em>' attribute.
-   * @see #setY(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_Y()
-   * @model
-   * @generated
-   */
-  String getY();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Y</em>' attribute.
-   * @see #getY()
-   * @generated
-   */
-  void setY(String value);
-
-  /**
    * Returns the value of the '<em><b>Z</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -102,5 +76,31 @@ public interface Drone extends EObject
    * @generated
    */
   void setZ(String value);
+
+  /**
+   * Returns the value of the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Y</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Y</em>' attribute.
+   * @see #setY(String)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_Y()
+   * @model
+   * @generated
+   */
+  String getY();
+
+  /**
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Y</em>' attribute.
+   * @see #getY()
+   * @generated
+   */
+  void setY(String value);
 
 } // Drone

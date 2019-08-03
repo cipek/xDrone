@@ -62,17 +62,17 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Drone">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/y"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/z"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/y"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Object">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/object_name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sx"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sz"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lx"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/ly"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lz"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/ly"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

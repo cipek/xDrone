@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getObject_name <em>Object name</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSx <em>Sx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSy <em>Sy</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSz <em>Sz</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSy <em>Sy</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLx <em>Lx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLy <em>Ly</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLz <em>Lz</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLy <em>Ly</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,26 +74,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
   protected String sx = SX_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSy() <em>Sy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSy()
-   * @generated
-   * @ordered
-   */
-  protected static final String SY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSy() <em>Sy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSy()
-   * @generated
-   * @ordered
-   */
-  protected String sy = SY_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getSz() <em>Sz</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -112,6 +92,26 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * @ordered
    */
   protected String sz = SZ_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSy() <em>Sy</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSy()
+   * @generated
+   * @ordered
+   */
+  protected static final String SY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSy() <em>Sy</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSy()
+   * @generated
+   * @ordered
+   */
+  protected String sy = SY_EDEFAULT;
 
   /**
    * The default value of the '{@link #getLx() <em>Lx</em>}' attribute.
@@ -134,26 +134,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
   protected String lx = LX_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getLy() <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLy()
-   * @generated
-   * @ordered
-   */
-  protected static final String LY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLy() <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLy()
-   * @generated
-   * @ordered
-   */
-  protected String ly = LY_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getLz() <em>Lz</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -172,6 +152,26 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * @ordered
    */
   protected String lz = LZ_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLy() <em>Ly</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLy()
+   * @generated
+   * @ordered
+   */
+  protected static final String LY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLy() <em>Ly</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLy()
+   * @generated
+   * @ordered
+   */
+  protected String ly = LY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -245,29 +245,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSy()
-  {
-    return sy;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSy(String newSy)
-  {
-    String oldSy = sy;
-    sy = newSy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SY, oldSy, sy));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getSz()
   {
     return sz;
@@ -284,6 +261,29 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     sz = newSz;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SZ, oldSz, sz));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getSy()
+  {
+    return sy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSy(String newSy)
+  {
+    String oldSy = sy;
+    sy = newSy;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SY, oldSy, sy));
   }
 
   /**
@@ -314,29 +314,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLy()
-  {
-    return ly;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLy(String newLy)
-  {
-    String oldLy = ly;
-    ly = newLy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__LY, oldLy, ly));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getLz()
   {
     return lz;
@@ -360,6 +337,29 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getLy()
+  {
+    return ly;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLy(String newLy)
+  {
+    String oldLy = ly;
+    ly = newLy;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__LY, oldLy, ly));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -369,16 +369,16 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
         return getObject_name();
       case XDronePackage.OBJECT__SX:
         return getSx();
-      case XDronePackage.OBJECT__SY:
-        return getSy();
       case XDronePackage.OBJECT__SZ:
         return getSz();
+      case XDronePackage.OBJECT__SY:
+        return getSy();
       case XDronePackage.OBJECT__LX:
         return getLx();
-      case XDronePackage.OBJECT__LY:
-        return getLy();
       case XDronePackage.OBJECT__LZ:
         return getLz();
+      case XDronePackage.OBJECT__LY:
+        return getLy();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -399,20 +399,20 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__SX:
         setSx((String)newValue);
         return;
-      case XDronePackage.OBJECT__SY:
-        setSy((String)newValue);
-        return;
       case XDronePackage.OBJECT__SZ:
         setSz((String)newValue);
+        return;
+      case XDronePackage.OBJECT__SY:
+        setSy((String)newValue);
         return;
       case XDronePackage.OBJECT__LX:
         setLx((String)newValue);
         return;
-      case XDronePackage.OBJECT__LY:
-        setLy((String)newValue);
-        return;
       case XDronePackage.OBJECT__LZ:
         setLz((String)newValue);
+        return;
+      case XDronePackage.OBJECT__LY:
+        setLy((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -434,20 +434,20 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__SX:
         setSx(SX_EDEFAULT);
         return;
-      case XDronePackage.OBJECT__SY:
-        setSy(SY_EDEFAULT);
-        return;
       case XDronePackage.OBJECT__SZ:
         setSz(SZ_EDEFAULT);
+        return;
+      case XDronePackage.OBJECT__SY:
+        setSy(SY_EDEFAULT);
         return;
       case XDronePackage.OBJECT__LX:
         setLx(LX_EDEFAULT);
         return;
-      case XDronePackage.OBJECT__LY:
-        setLy(LY_EDEFAULT);
-        return;
       case XDronePackage.OBJECT__LZ:
         setLz(LZ_EDEFAULT);
+        return;
+      case XDronePackage.OBJECT__LY:
+        setLy(LY_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -467,16 +467,16 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
         return OBJECT_NAME_EDEFAULT == null ? object_name != null : !OBJECT_NAME_EDEFAULT.equals(object_name);
       case XDronePackage.OBJECT__SX:
         return SX_EDEFAULT == null ? sx != null : !SX_EDEFAULT.equals(sx);
-      case XDronePackage.OBJECT__SY:
-        return SY_EDEFAULT == null ? sy != null : !SY_EDEFAULT.equals(sy);
       case XDronePackage.OBJECT__SZ:
         return SZ_EDEFAULT == null ? sz != null : !SZ_EDEFAULT.equals(sz);
+      case XDronePackage.OBJECT__SY:
+        return SY_EDEFAULT == null ? sy != null : !SY_EDEFAULT.equals(sy);
       case XDronePackage.OBJECT__LX:
         return LX_EDEFAULT == null ? lx != null : !LX_EDEFAULT.equals(lx);
-      case XDronePackage.OBJECT__LY:
-        return LY_EDEFAULT == null ? ly != null : !LY_EDEFAULT.equals(ly);
       case XDronePackage.OBJECT__LZ:
         return LZ_EDEFAULT == null ? lz != null : !LZ_EDEFAULT.equals(lz);
+      case XDronePackage.OBJECT__LY:
+        return LY_EDEFAULT == null ? ly != null : !LY_EDEFAULT.equals(ly);
     }
     return super.eIsSet(featureID);
   }
@@ -496,16 +496,16 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     result.append(object_name);
     result.append(", sx: ");
     result.append(sx);
-    result.append(", sy: ");
-    result.append(sy);
     result.append(", sz: ");
     result.append(sz);
+    result.append(", sy: ");
+    result.append(sy);
     result.append(", lx: ");
     result.append(lx);
-    result.append(", ly: ");
-    result.append(ly);
     result.append(", lz: ");
     result.append(lz);
+    result.append(", ly: ");
+    result.append(ly);
     result.append(')');
     return result.toString();
   }

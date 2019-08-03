@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getY <em>Y</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getZ <em>Z</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getY <em>Y</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,26 +51,6 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
   protected String x = X_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final String Y_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected String y = Y_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -89,6 +69,26 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * @ordered
    */
   protected String z = Z_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getY()
+   * @generated
+   * @ordered
+   */
+  protected static final String Y_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getY()
+   * @generated
+   * @ordered
+   */
+  protected String y = Y_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,29 +139,6 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getY()
-  {
-    return y;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setY(String newY)
-  {
-    String oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__Y, oldY, y));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getZ()
   {
     return z;
@@ -185,6 +162,29 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getY()
+  {
+    return y;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setY(String newY)
+  {
+    String oldY = y;
+    y = newY;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__Y, oldY, y));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -192,10 +192,10 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
     {
       case XDronePackage.DRONE__X:
         return getX();
-      case XDronePackage.DRONE__Y:
-        return getY();
       case XDronePackage.DRONE__Z:
         return getZ();
+      case XDronePackage.DRONE__Y:
+        return getY();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,11 +213,11 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
       case XDronePackage.DRONE__X:
         setX((String)newValue);
         return;
-      case XDronePackage.DRONE__Y:
-        setY((String)newValue);
-        return;
       case XDronePackage.DRONE__Z:
         setZ((String)newValue);
+        return;
+      case XDronePackage.DRONE__Y:
+        setY((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +236,11 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
       case XDronePackage.DRONE__X:
         setX(X_EDEFAULT);
         return;
-      case XDronePackage.DRONE__Y:
-        setY(Y_EDEFAULT);
-        return;
       case XDronePackage.DRONE__Z:
         setZ(Z_EDEFAULT);
+        return;
+      case XDronePackage.DRONE__Y:
+        setY(Y_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -258,10 +258,10 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
     {
       case XDronePackage.DRONE__X:
         return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case XDronePackage.DRONE__Y:
-        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
       case XDronePackage.DRONE__Z:
         return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
+      case XDronePackage.DRONE__Y:
+        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
     }
     return super.eIsSet(featureID);
   }
@@ -279,10 +279,10 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (x: ");
     result.append(x);
-    result.append(", y: ");
-    result.append(y);
     result.append(", z: ");
     result.append(z);
+    result.append(", y: ");
+    result.append(y);
     result.append(')');
     return result.toString();
   }

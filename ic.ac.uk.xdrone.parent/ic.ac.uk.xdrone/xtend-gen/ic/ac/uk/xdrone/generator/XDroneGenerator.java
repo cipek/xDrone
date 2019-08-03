@@ -47,7 +47,22 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     {
       EList<Drone> _drone = environment.getDrone();
-      for(final Drone to : _drone) {
+      for(final Drone d : _drone) {
+        _builder.append("\t");
+        _builder.append("drone.position.x = ");
+        String _x = d.getX();
+        _builder.append(_x, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("drone.position.z = ");
+        String _z = d.getZ();
+        _builder.append(_z, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("drone.position.y = ");
+        String _y = d.getY();
+        _builder.append(_y, "\t");
+        _builder.newLineIfNotEmpty();
       }
     }
     {
@@ -58,20 +73,20 @@ public class XDroneGenerator extends AbstractGenerator {
         String _sx = ob.getSx();
         _builder.append(_sx, "\t");
         _builder.append(", ");
-        String _sz = ob.getSz();
-        _builder.append(_sz, "\t");
-        _builder.append(", ");
         String _sy = ob.getSy();
         _builder.append(_sy, "\t");
+        _builder.append(", ");
+        String _sz = ob.getSz();
+        _builder.append(_sz, "\t");
         _builder.append(", ");
         String _lx = ob.getLx();
         _builder.append(_lx, "\t");
         _builder.append(", ");
-        String _lz = ob.getLz();
-        _builder.append(_lz, "\t");
-        _builder.append(", ");
         String _ly = ob.getLy();
         _builder.append(_ly, "\t");
+        _builder.append(", ");
+        String _lz = ob.getLz();
+        _builder.append(_lz, "\t");
         _builder.append(")");
         _builder.newLineIfNotEmpty();
       }
@@ -85,12 +100,12 @@ public class XDroneGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("function flySimulation(){");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("var canProceed = false;");
+    _builder.newLine();
     {
       EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
-        _builder.append("\t");
-        _builder.append("fly(\'y\', 0.7);");
-        _builder.newLine();
       }
     }
     _builder.append("}");

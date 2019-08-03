@@ -1083,17 +1083,17 @@ ruleDrone returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_4_0());
 				}
-				lv_y_4_0=ruleDOUBLE
+				lv_z_4_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDroneRule());
 					}
 					set(
 						$current,
-						"y",
-						lv_y_4_0,
+						"z",
+						lv_z_4_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1106,17 +1106,17 @@ ruleDrone returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_6_0());
 				}
-				lv_z_6_0=ruleDOUBLE
+				lv_y_6_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDroneRule());
 					}
 					set(
 						$current,
-						"z",
-						lv_z_6_0,
+						"y",
+						lv_y_6_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1193,17 +1193,17 @@ ruleObject returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getObjectAccess().getSyDOUBLEParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getObjectAccess().getSzDOUBLEParserRuleCall_4_0());
 				}
-				lv_sy_4_0=ruleDOUBLE
+				lv_sz_4_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getObjectRule());
 					}
 					set(
 						$current,
-						"sy",
-						lv_sy_4_0,
+						"sz",
+						lv_sz_4_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1216,17 +1216,17 @@ ruleObject returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getObjectAccess().getSzDOUBLEParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getObjectAccess().getSyDOUBLEParserRuleCall_6_0());
 				}
-				lv_sz_6_0=ruleDOUBLE
+				lv_sy_6_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getObjectRule());
 					}
 					set(
 						$current,
-						"sz",
-						lv_sz_6_0,
+						"sy",
+						lv_sy_6_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1262,17 +1262,17 @@ ruleObject returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getObjectAccess().getLyDOUBLEParserRuleCall_10_0());
+					newCompositeNode(grammarAccess.getObjectAccess().getLzDOUBLEParserRuleCall_10_0());
 				}
-				lv_ly_10_0=ruleDOUBLE
+				lv_lz_10_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getObjectRule());
 					}
 					set(
 						$current,
-						"ly",
-						lv_ly_10_0,
+						"lz",
+						lv_lz_10_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1285,17 +1285,17 @@ ruleObject returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getObjectAccess().getLzDOUBLEParserRuleCall_12_0());
+					newCompositeNode(grammarAccess.getObjectAccess().getLyDOUBLEParserRuleCall_12_0());
 				}
-				lv_lz_12_0=ruleDOUBLE
+				lv_ly_12_0=ruleDOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getObjectRule());
 					}
 					set(
 						$current,
-						"lz",
-						lv_lz_12_0,
+						"ly",
+						lv_ly_12_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}

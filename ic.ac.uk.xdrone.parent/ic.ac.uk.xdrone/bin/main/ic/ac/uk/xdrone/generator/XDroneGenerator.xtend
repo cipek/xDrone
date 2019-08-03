@@ -35,18 +35,21 @@ class XDroneGenerator extends AbstractGenerator {
 	def compile(Environment environment)'''
 	function environment()
 	{
-		«FOR to : environment.drone»
+		«FOR d : environment.drone»
+			drone.position.x = «d.x»
+			drone.position.z = «d.z»
+			drone.position.y = «d.y»
 		«ENDFOR»
 		«FOR ob : environment.objects»
-			addCube(«ob.sx», «ob.sz», «ob.sy», «ob.lx», «ob.lz», «ob.ly»)
+			addCube(«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
 		«ENDFOR»
 	}
 	'''
 	
 	def compileJS(Fly fly)'''
 		function flySimulation(){
+			var canProceed = false;
 			«FOR to : fly.takeoff» 
-				fly('y', 0.7);
 			«ENDFOR»
 		}
 	'''

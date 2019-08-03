@@ -1,12 +1,8 @@
-// var THREE = require('three');
-// import THREE from 'three';
-// import  { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-// console.log(THREE);
+//IMPORTANT!
+//y and z axis are swapped in respect to ROS. Y is down and up axis
 var scene, renderer, camera, drone;
 var cube;
 var controls;
-
-// const THREE = require('./three.js');
 
 function init()
 {
@@ -25,14 +21,7 @@ function init()
 
     scene = new THREE.Scene();
 
-    var cubeGeometry = new THREE.BoxGeometry (10,10,10);
-    var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
-    cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
-
-    cube.position.set (0, 0, 0);
-    //scene.add (cube);
-
-    camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 50);
+    camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 100);
     camera.position.y = 3;
     camera.position.z = 10;
     camera.position.x = 5;
@@ -40,7 +29,7 @@ function init()
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-    var gridXZ = new THREE.GridHelper(100, 10);
+    var gridXZ = new THREE.GridHelper(20, 20);
     gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
     scene.add(gridXZ);
 
@@ -93,17 +82,40 @@ function animate()
 
 function fly(axis, endPoint){
   if(endPoint>0){
-    if(drone.position[axis] < endPoint)
+    if(drone.position[axis] < endPoint){
       drone.position[axis] += 0.01;
+      return false;
+    }
+    else {
+      return true;
+    }
   }
   else{
-    if(drone.position[axis] > endPoint)
+    if(drone.position[axis] > endPoint){
       drone.position[axis] -= 0.01;
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+}
+
+function takeoff(){
+  return fly('y', 0.7);
+}
+
+function land(){
+  if(drone.position.y > 0){
+    drone.position.y -= 0.01;
+    return false;
+  }
+  else {
+    return true;
   }
 }
 
 function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
-  console.log("IN ADD CUBE");
   var cubeGeometry = new THREE.BoxGeometry (sizeX, sizeY, sizeZ);
   var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
