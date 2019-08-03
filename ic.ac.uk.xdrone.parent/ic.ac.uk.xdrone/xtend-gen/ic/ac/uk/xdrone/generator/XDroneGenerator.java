@@ -45,6 +45,15 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("{");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.x = 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.z = 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.y = 0;");
+    _builder.newLine();
     {
       EList<Drone> _drone = environment.getDrone();
       for(final Drone d : _drone) {
@@ -98,16 +107,62 @@ public class XDroneGenerator extends AbstractGenerator {
   
   public CharSequence compileJS(final Fly fly) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("function flySimulation(){");
+    _builder.append("var commands = [];");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("var canProceed = false;");
+    _builder.append("var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};");
+    _builder.newLine();
+    _builder.append("var goalDroneLocation = currentDroneLocation;");
     _builder.newLine();
     {
       EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
+        _builder.append("commands.push({x: 0, y: 0.7, z: 0}); ");
+        _builder.newLine();
       }
     }
+    {
+      EList<String> _land = fly.getLand();
+      for(final String to_1 : _land) {
+        _builder.append("commands.push({x: 0, y: -0.7, z: 0}); ");
+        _builder.newLine();
+      }
+    }
+    _builder.append("nextLocation();");
+    _builder.newLine();
+    _builder.append("function flySimulation(){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if(fly(goalDroneLocation)){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("nextLocation();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function nextLocation(){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if(commands && commands[0]){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("goalDroneLocation.x += commands[0].x;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("goalDroneLocation.y += commands[0].y;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("goalDroneLocation.z += commands[0].z;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("commands.shift();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;

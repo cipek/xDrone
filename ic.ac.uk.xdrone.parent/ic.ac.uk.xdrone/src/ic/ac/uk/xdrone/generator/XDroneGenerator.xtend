@@ -35,6 +35,9 @@ class XDroneGenerator extends AbstractGenerator {
 	def compile(Environment environment)'''
 	function environment()
 	{
+		drone.position.x = 0;
+		drone.position.z = 0;
+		drone.position.y = 0;
 		«FOR d : environment.drone»
 			drone.position.x = «d.x»
 			drone.position.z = «d.z»
@@ -47,10 +50,29 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compileJS(Fly fly)'''
+		var commands = [];
+		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
+		var goalDroneLocation = currentDroneLocation;
+		«FOR to : fly.takeoff»
+			commands.push({x: 0, y: 0.7, z: 0}); 
+		«ENDFOR»
+		«FOR to : fly.land»
+			commands.push({x: 0, y: -0.7, z: 0}); 
+		«ENDFOR»
+		nextLocation();
 		function flySimulation(){
-			var canProceed = false;
-			«FOR to : fly.takeoff» 
-			«ENDFOR»
+			if(fly(goalDroneLocation)){
+				nextLocation();
+			}
+		}
+		
+		function nextLocation(){
+			if(commands && commands[0]){
+				goalDroneLocation.x += commands[0].x;
+				goalDroneLocation.y += commands[0].y;
+				goalDroneLocation.z += commands[0].z;
+				commands.shift();
+			}
 		}
 	'''
 	

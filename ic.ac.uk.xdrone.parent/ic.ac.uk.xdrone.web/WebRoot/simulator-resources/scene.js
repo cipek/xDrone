@@ -80,25 +80,32 @@ function animate()
     renderer.render (scene, camera);
 }
 
-function fly(axis, endPoint){
-  if(endPoint>0){
-    if(drone.position[axis] < endPoint){
+function flySupporter(axis, currentLocation, endPoint){
+  if(endPoint > currentLocation){
+    if(drone.position[axis] < endPoint)
       drone.position[axis] += 0.01;
-      return false;
-    }
-    else {
-      return true;
-    }
   }
   else{
-    if(drone.position[axis] > endPoint){
+    if(drone.position[axis] > endPoint)
       drone.position[axis] -= 0.01;
-      return false;
-    }
-    else {
-      return true;
-    }
   }
+}
+
+function fly(goalPostion){
+  var stopped = true;
+  if(Math.abs(drone.position.x-goalPostion.x) > 0.02){ //0.2 acceptable movement error
+    flySupporter('x', drone.position.x, goalPostion.x);
+    stopped = false;
+  }
+  if(Math.abs(drone.position.y-goalPostion.y) > 0.02){
+    flySupporter('y', drone.position.y, goalPostion.y);
+    stopped = false;
+  }
+  if(Math.abs(drone.position.z-goalPostion.z) > 0.02){
+    flySupporter('z', drone.position.z, goalPostion.z);
+    stopped = false;
+  }
+  return stopped;
 }
 
 function takeoff(){
