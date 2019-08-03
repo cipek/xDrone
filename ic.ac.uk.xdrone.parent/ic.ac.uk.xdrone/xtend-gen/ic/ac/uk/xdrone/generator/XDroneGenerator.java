@@ -116,21 +116,56 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("var goalDroneLocation = currentDroneLocation;");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("//Drone\'s path");
+    _builder.newLine();
+    _builder.append("var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});");
+    _builder.newLine();
+    _builder.append("var lineGeometry = new THREE.Geometry();");
+    _builder.newLine();
+    _builder.append("lineGeometry.vertices.push(");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)");
+    _builder.newLine();
+    _builder.append(");");
+    _builder.newLine();
+    _builder.append("var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;");
+    _builder.newLine();
     {
       EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
         _builder.append("commands.push({x: 0, y: 0.7, z: 0}); ");
         _builder.newLine();
+        _builder.append("lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));");
+        _builder.newLine();
+        _builder.append("lastY += 0.7;");
+        _builder.newLine();
       }
     }
+    _builder.append("commands.push({x: 4, y: 0, z: 0}); ");
+    _builder.newLine();
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));");
+    _builder.newLine();
+    _builder.append("lastX += 4;");
+    _builder.newLine();
     {
       EList<String> _land = fly.getLand();
       for(final String to_1 : _land) {
         _builder.append("commands.push({x: 0, y: -0.7, z: 0}); ");
         _builder.newLine();
+        _builder.append("lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));");
+        _builder.newLine();
+        _builder.append("lastY -= 0.7;");
+        _builder.newLine();
       }
     }
     _builder.append("nextLocation();");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("var line = new THREE.Line( lineGeometry, lineMaterial );");
+    _builder.newLine();
+    _builder.append("scene.add( line );");
     _builder.newLine();
     _builder.append("function flySimulation(){");
     _builder.newLine();

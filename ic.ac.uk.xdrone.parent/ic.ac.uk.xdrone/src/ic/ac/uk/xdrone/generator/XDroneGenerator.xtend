@@ -54,13 +54,31 @@ class XDroneGenerator extends AbstractGenerator {
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
 		var goalDroneLocation = currentDroneLocation;
+		
+		//Drone's path
+		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
+		var lineGeometry = new THREE.Geometry();
+		lineGeometry.vertices.push(
+			new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)
+		);
+		var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
 		«FOR to : fly.takeoff»
 			commands.push({x: 0, y: 0.7, z: 0}); 
+			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
+			lastY += 0.7;
 		«ENDFOR»
+		commands.push({x: 4, y: 0, z: 0}); 
+		lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));
+		lastX += 4;
 		«FOR to : fly.land»
 			commands.push({x: 0, y: -0.7, z: 0}); 
+			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
+			lastY -= 0.7;
 		«ENDFOR»
 		nextLocation();
+		
+		var line = new THREE.Line( lineGeometry, lineMaterial );
+		scene.add( line );
 		function flySimulation(){
 			if(fly(goalDroneLocation)){
 				nextLocation();
@@ -254,7 +272,7 @@ class XDroneGenerator extends AbstractGenerator {
 		var time = System.currentTimeMillis();
 		for(fly : resource.allContents.toIterable.filter(Fly)) {
 			result = fly.compilePython.toString; 
-			fsa.generateFile('/xdrone/result.py', result);
+			fsa.generateFile('/xdrone/result.py', result); //Locally change path to 'result.py'
 		}
 		
 		try {
@@ -262,7 +280,6 @@ class XDroneGenerator extends AbstractGenerator {
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
-		    //var writer = new PrintWriter("result.py", "UTF-8"); 
 		    writer.println(result);
 		    writer.close();   
 		} catch (IOException e) {
@@ -274,7 +291,7 @@ class XDroneGenerator extends AbstractGenerator {
 		result = "";
 		for(fly : resource.allContents.toIterable.filter(Fly)) {
 			result = fly.compileJS.toString; 
-			fsa.generateFile('Webroot/simulator' + time +'.js', result);
+			fsa.generateFile('Webroot/simulator' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
 		}
 		
 		try {
@@ -282,7 +299,6 @@ class XDroneGenerator extends AbstractGenerator {
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
-		    //var writer = new PrintWriter("result.py", "UTF-8"); 
 		    writer.println(result);
 		    writer.close();   
 		} catch (IOException e) {
@@ -294,15 +310,14 @@ class XDroneGenerator extends AbstractGenerator {
 		result = "";
 		for(environment : resource.allContents.toIterable.filter(Environment)) {
 			result = environment.compile.toString; 
-			fsa.generateFile('Webroot/environment' + time +'.js', result);
+			fsa.generateFile('Webroot/environment' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
 		}
 		
 		try {
-			var file = new File('Webroot/environment' + time +'.js');
+			var file = new File('Webroot/environment' + time +'.js'); //locally change path to 'Webroot/simulator' + time +'.js'
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
-		    //var writer = new PrintWriter("result.py", "UTF-8"); 
 		    writer.println(result);
 		    writer.close();   
 		} catch (IOException e) {

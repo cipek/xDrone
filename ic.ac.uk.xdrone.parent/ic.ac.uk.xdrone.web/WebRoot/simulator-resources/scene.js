@@ -38,7 +38,6 @@ function init()
     scene.add(drone);
     loader = new THREE.LegacyJSONLoader();
     loader.load(baseUrl+'simulator-resources/drone.js', function (geometry, materials) {
-
       var matt = new THREE.MeshPhongMaterial( { color: new THREE.Color('red'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
@@ -47,14 +46,13 @@ function init()
       obj.receiveShadow = true;
       obj.castShadow = true;
       drone.add(obj);
+    });
 
-     });
-
-     loader = new THREE.LegacyJSONLoader();
+    loader = new THREE.LegacyJSONLoader();
     loader.load(baseUrl +'simulator-resources/drone-lights.js', function (geometry, materials) {
 
-      var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('red'),  transparent:true, opacity:1,  side: THREE.DoubleSide } );
-      var obj = new THREE.Mesh(geometry, matt);
+    var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('red'),  transparent:true, opacity:1,  side: THREE.DoubleSide } );
+    var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
       obj.scale.set(dronesize,dronesize,dronesize);
       obj.position.y = 0;
@@ -64,9 +62,22 @@ function init()
       obj.receiveShadow = true;
       obj.castShadow = true;
       drone.add(obj);
+    });
 
-     });
 
+    // var lineMaterial = new THREE.LineBasicMaterial({color: 0x0000ff});
+    //
+    // var lineGeometry = new THREE.Geometry();
+    // lineGeometry.vertices.push(
+    // 	new THREE.Vector3( -10, 0, 0 ),
+    // 	new THREE.Vector3( 0, 10, 0 ),
+    // 	new THREE.Vector3( 10, 0, 0 )
+    // );
+    //
+    // var line = new THREE.Line( lineGeometry, lineMaterial );
+    // line.name = "drones_path";
+    // scene.add( line );
+    // removeEntity(line);
 }
 
 function animate()
@@ -129,4 +140,10 @@ function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
 
   cube.position.set (locX, locY, locZ);
   scene.add(cube);
+}
+
+function removeEntity(object) {
+    var selectedObject = scene.getObjectByName(object.name);
+    scene.remove( selectedObject );
+    animate();
 }
