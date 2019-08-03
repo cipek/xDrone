@@ -54,6 +54,8 @@ class XDroneGenerator extends AbstractGenerator {
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
 		var goalDroneLocation = currentDroneLocation;
+		var goalDroneRotation = drone.rotation.y;
+		var currentFunction = "";
 		
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
@@ -67,29 +69,42 @@ class XDroneGenerator extends AbstractGenerator {
 			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			lastY += 0.7;
 		«ENDFOR»
-		commands.push({x: 4, y: 0, z: 0}); 
-		lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));
-		lastX += 4;
+		//commands.push({x: 4, y: 0, z: 0}); 
+		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));
+		//lastX += 4;
+		commands.push({r: 90 / 90 * (Math.PI/2)}); 
+		
+		//IMPORTATNT 
+		// -roation is right
+		
 		«FOR to : fly.land»
 			commands.push({x: 0, y: -0.7, z: 0}); 
 			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
 			lastY -= 0.7;
 		«ENDFOR»
-		nextLocation();
+		nextCommand();
 		
 		var line = new THREE.Line( lineGeometry, lineMaterial );
 		scene.add( line );
 		function flySimulation(){
-			if(fly(goalDroneLocation)){
-				nextLocation();
+			if((currentFunction == "MOVE" && fly(goalDroneLocation))
+				|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
+				nextCommand();
 			}
 		}
 		
-		function nextLocation(){
+		function nextCommand(){
 			if(commands && commands[0]){
-				goalDroneLocation.x += commands[0].x;
-				goalDroneLocation.y += commands[0].y;
-				goalDroneLocation.z += commands[0].z;
+				if(commands[0].r){
+					goalDroneRotation += commands[0].r;
+					currentFunction = "ROTATION";
+				}
+				else{
+					goalDroneLocation.x += commands[0].x;
+					goalDroneLocation.y += commands[0].y;
+					goalDroneLocation.z += commands[0].z;
+					currentFunction = "MOVE";
+				}
 				commands.shift();
 			}
 		}

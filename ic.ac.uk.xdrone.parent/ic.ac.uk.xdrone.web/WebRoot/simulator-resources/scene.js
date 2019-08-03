@@ -4,6 +4,9 @@ var scene, renderer, camera, drone;
 var cube;
 var controls;
 
+// Axes in the corner
+// http://jsfiddle.net/aqnL1mx9/
+
 function init()
 {
     var div = document.getElementById('SIMULATOR');
@@ -64,28 +67,13 @@ function init()
       drone.add(obj);
     });
 
-
-    // var lineMaterial = new THREE.LineBasicMaterial({color: 0x0000ff});
-    //
-    // var lineGeometry = new THREE.Geometry();
-    // lineGeometry.vertices.push(
-    // 	new THREE.Vector3( -10, 0, 0 ),
-    // 	new THREE.Vector3( 0, 10, 0 ),
-    // 	new THREE.Vector3( 10, 0, 0 )
-    // );
-    //
-    // var line = new THREE.Line( lineGeometry, lineMaterial );
-    // line.name = "drones_path";
-    // scene.add( line );
-    // removeEntity(line);
 }
 
 function animate()
 {
     controls.update();
     requestAnimationFrame ( animate );
-		// drone.position.y += 0.01;
-		// drone.rotation.y += 0.01;
+    //If simulator.js has been generated, execute 'flySimulation()'
     if(typeof flySimulation !== 'undefined' && flySimulation)
       flySimulation();
     renderer.render (scene, camera);
@@ -93,11 +81,11 @@ function animate()
 
 function flySupporter(axis, currentLocation, endPoint){
   if(endPoint > currentLocation){
-    if(drone.position[axis] < endPoint)
+    // if(drone.position[axis] < endPoint)
       drone.position[axis] += 0.01;
   }
   else{
-    if(drone.position[axis] > endPoint)
+    // if(drone.position[axis] > endPoint)
       drone.position[axis] -= 0.01;
   }
 }
@@ -114,6 +102,21 @@ function fly(goalPostion){
   }
   if(Math.abs(drone.position.z-goalPostion.z) > 0.02){
     flySupporter('z', drone.position.z, goalPostion.z);
+    stopped = false;
+  }
+  return stopped;
+}
+
+function rotation(goalRotation){
+  var stopped = true;
+  if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
+    console.log(drone.rotation.y, goalRotation);
+    if(drone.rotation.y > goalRotation){
+        drone.rotation.y -= 0.02;
+    }
+    else{
+        drone.rotation.y += 0.02;
+    }
     stopped = false;
   }
   return stopped;
@@ -140,10 +143,4 @@ function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
 
   cube.position.set (locX, locY, locZ);
   scene.add(cube);
-}
-
-function removeEntity(object) {
-    var selectedObject = scene.getObjectByName(object.name);
-    scene.remove( selectedObject );
-    animate();
 }

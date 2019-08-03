@@ -116,6 +116,10 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("var goalDroneLocation = currentDroneLocation;");
     _builder.newLine();
+    _builder.append("var goalDroneRotation = drone.rotation.y;");
+    _builder.newLine();
+    _builder.append("var currentFunction = \"\";");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("//Drone\'s path");
     _builder.newLine();
@@ -143,11 +147,19 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("commands.push({x: 4, y: 0, z: 0}); ");
+    _builder.append("//commands.push({x: 4, y: 0, z: 0}); ");
     _builder.newLine();
-    _builder.append("lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));");
+    _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));");
     _builder.newLine();
-    _builder.append("lastX += 4;");
+    _builder.append("//lastX += 4;");
+    _builder.newLine();
+    _builder.append("commands.push({r: 90 / 90 * (Math.PI/2)}); ");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("//IMPORTATNT ");
+    _builder.newLine();
+    _builder.append("// -roation is right");
+    _builder.newLine();
     _builder.newLine();
     {
       EList<String> _land = fly.getLand();
@@ -160,7 +172,7 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.newLine();
       }
     }
-    _builder.append("nextLocation();");
+    _builder.append("nextCommand();");
     _builder.newLine();
     _builder.newLine();
     _builder.append("var line = new THREE.Line( lineGeometry, lineMaterial );");
@@ -170,10 +182,13 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("function flySimulation(){");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("if(fly(goalDroneLocation)){");
+    _builder.append("if((currentFunction == \"MOVE\" && fly(goalDroneLocation))");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("nextLocation();");
+    _builder.append("|| (currentFunction == \"ROTATION\" && rotation(goalDroneRotation))){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("nextCommand();");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -181,19 +196,40 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("function nextLocation(){");
+    _builder.append("function nextCommand(){");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("if(commands && commands[0]){");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("if(commands[0].r){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("goalDroneRotation += commands[0].r;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"ROTATION\";");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else{");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("goalDroneLocation.x += commands[0].x;");
     _builder.newLine();
-    _builder.append("\t\t");
+    _builder.append("\t\t\t");
     _builder.append("goalDroneLocation.y += commands[0].y;");
     _builder.newLine();
-    _builder.append("\t\t");
+    _builder.append("\t\t\t");
     _builder.append("goalDroneLocation.z += commands[0].z;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"MOVE\";");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("commands.shift();");
