@@ -1,105 +1,127 @@
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="Content-Language" content="en-us">
-	<title>Web Editor</title>
-	<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<link rel="stylesheet" type="text/css" href="./simulator-resources/index.css"/>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Language" content="en-us">
+		<title>Web Editor</title>
+		<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="./simulator-resources/index.css"/>
 
-	<script src="webjars/requirejs/2.3.6/require.min.js"></script>
-	<script type="text/javascript">
-		var baseUrl = window.location.pathname;
-		var fileIndex = baseUrl.indexOf("index.html");
-		if (fileIndex > 0)
-			baseUrl = baseUrl.slice(0, fileIndex);
-		require.config({
-			baseUrl: baseUrl,
-			paths: {
-				"jquery": "webjars/jquery/3.3.1-1/jquery.min",
-				"ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
-				"xtext/xtext-ace": "xtext/2.17.0/xtext-ace"
-			}
-		});
-		require(["webjars/ace/1.3.3/src/ace"], function() {
-			require(["xtext/xtext-ace"], function(xtext) {
-				editor = xtext.createEditor({
-					baseUrl: baseUrl,
-					syntaxDefinition: "xtext-resources/generated/mode-xdrone"
-				});
+		<script src="webjars/requirejs/2.3.6/require.min.js"></script>
 
-				$('#generate-button').bind("click", function(e)
-					{
-						var data =
-						{
-							resource : editor.xtextServices.options.resourceId,
-							fullText : editor.getValue()
-						};
-						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
-							console.log("resource generated");
 
-						});
-
-						e.preventDefault();
+	</head>
+	<body>
+		<script type="text/javascript">
+			var baseUrl = window.location.pathname;
+			var fileIndex = baseUrl.indexOf("index.html");
+			if (fileIndex > 0)
+				baseUrl = baseUrl.slice(0, fileIndex);
+			require.config({
+				baseUrl: baseUrl,
+				paths: {
+					"jquery": "webjars/jquery/3.3.1-1/jquery.min",
+					"ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
+					"xtext/xtext-ace": "xtext/2.17.0/xtext-ace"
+				}
+			});
+			require(["webjars/ace/1.3.3/src/ace"], function() {
+				require(["xtext/xtext-ace"], function(xtext) {
+					editor = xtext.createEditor({
+						baseUrl: baseUrl,
+						syntaxDefinition: "xtext-resources/generated/mode-xdrone"
 					});
 
- 					$('#deploy-button').bind("click", function(e){
- 						var data = {
- 							resource : editor.xtextServices.options.resourceId,
- 							fullText : editor.getValue()
- 						};
+					$('#generate-button').bind("click", function(e)
+						{
+							var data =
+							{
+								resource : editor.xtextServices.options.resourceId,
+								fullText : editor.getValue()
+							};
+							$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
+								console.log("resource generated", result);
+								// console.log(require.undef);
+								// require.undef('./simulator.js');
+								// console.log(require.cache);
+								// console.log(require.cache['./simulator.js']);
+								// if(require.cache['./simulator.js'])
+								// 	delete require.cache['./simulator.js']
 
- 	 						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
- 								console.log("resource generated");
+								var pathSimulator = '', pathEnvironment = '';
+								result.artifacts.forEach(a =>{
+									if(a.name.includes('simulator'))
+										pathSimulator = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+									if(a.name.includes('environment'))
+										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+								})
+								require(['./' + pathSimulator], function(module){ //'./simulator.js'
+									require(['./' + pathEnvironment], function(module){ //'./simulator.js'
+										init();
+										environment();
+										animate();
+									})
+								})
 
- 								console.log("deploying resource");
+							});
 
- 		 						$.post(baseUrl+'xtext-service/deploy?resource='+editor.xtextServices.options.resourceId, data, function(result){
- 		 							console.log("deployment finished");
+							e.preventDefault();
+						});
 
- 								});
- 							});
- 							e.preventDefault();
- 					});
+	 					$('#deploy-button').bind("click", function(e){
+	 						var data = {
+	 							resource : editor.xtextServices.options.resourceId,
+	 							fullText : editor.getValue()
+	 						};
 
+	 						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
+								console.log("resource generated");
+
+								console.log("deploying resource");
+
+		 						$.post(baseUrl+'xtext-service/deploy?resource='+editor.xtextServices.options.resourceId, data, function(result){
+		 							console.log("deployment finished");
+
+								});
+							});
+							e.preventDefault();
+	 					});
+
+
+				});
 			});
-		});
-	</script>
+		</script>
 
-</head>
-<body>
-
-	<div class="container">
-		<!-- <div class="header">
-			<h1>Web Editor</h1>
-		</div> -->
-		<button id="generate-button" value="Generate" title="Generate">Generate</button>
-		<button id="deploy-button" value="Deploy" title="Deploy">Deploy</button>
-		<div class="content">
-			<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
+		<div class="container">
+			<!-- <div class="header">
+				<h1>Web Editor</h1>
+			</div> -->
+			<button id="generate-button" value="Generate" title="Generate">Generate</button>
+			<button id="deploy-button" value="Deploy" title="Deploy">Deploy</button>
+			<div class="content">
+				<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
+			</div>
 		</div>
-	</div>
 
-	<!-- Simulator -->
-	<!-- <script src="./simulator-resources/three.js"></script> -->
-	<!-- <script src="./simulator-resources/LegacyJSONLoader.js"></script>
-	<script src="./simulator-resources/OrbitControls.js"></script> -->
-	<script src="./simulator-resources/scene.js"></script>
+		<!-- Simulator -->
+		<!-- <script src="./simulator-resources/three.js"></script> -->
+		<!-- <script src="./simulator-resources/LegacyJSONLoader.js"></script>
+		<script src="./simulator-resources/OrbitControls.js"></script> -->
+		<script src="./simulator-resources/scene.js"></script>
 
-	<div id="SIMULATOR">
-		<script>
-			let THREE;
-			require(['./simulator-resources/three.js'], function(moduleThree){
-				THREE = moduleThree;
-				require(['./simulator-resources/OrbitControls.js'], function(module){
-					require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
-						init();
-						animate();
+		<div id="SIMULATOR">
+			<script>
+				let THREE;
+				require(['./simulator-resources/three.js'], function(moduleThree){
+					THREE = moduleThree;
+					require(['./simulator-resources/OrbitControls.js'], function(module){
+						require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
+							init();
+							animate();
+						})
 					})
 				})
-			})
-		</script>
-	</div>
-</body>
+			</script>
+		</div>
+	</body>
 </html>
-l>

@@ -38,7 +38,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected static final int X_EDEFAULT = 0;
+  protected static final String X_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getX() <em>X</em>}' attribute.
@@ -48,7 +48,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected int x = X_EDEFAULT;
+  protected String x = X_EDEFAULT;
 
   /**
    * The default value of the '{@link #getY() <em>Y</em>}' attribute.
@@ -58,7 +58,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected static final int Y_EDEFAULT = 0;
+  protected static final String Y_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
@@ -68,7 +68,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected int y = Y_EDEFAULT;
+  protected String y = Y_EDEFAULT;
 
   /**
    * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
@@ -78,7 +78,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected static final int Z_EDEFAULT = 0;
+  protected static final String Z_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
@@ -88,7 +88,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * @generated
    * @ordered
    */
-  protected int z = Z_EDEFAULT;
+  protected String z = Z_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getX()
+  public String getX()
   {
     return x;
   }
@@ -126,9 +126,9 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(int newX)
+  public void setX(String newX)
   {
-    int oldX = x;
+    String oldX = x;
     x = newX;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__X, oldX, x));
@@ -139,7 +139,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getY()
+  public String getY()
   {
     return y;
   }
@@ -149,9 +149,9 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setY(int newY)
+  public void setY(String newY)
   {
-    int oldY = y;
+    String oldY = y;
     y = newY;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__Y, oldY, y));
@@ -162,7 +162,7 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getZ()
+  public String getZ()
   {
     return z;
   }
@@ -172,9 +172,9 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setZ(int newZ)
+  public void setZ(String newZ)
   {
-    int oldZ = z;
+    String oldZ = z;
     z = newZ;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__Z, oldZ, z));
@@ -211,13 +211,13 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
     switch (featureID)
     {
       case XDronePackage.MOVE__X:
-        setX((Integer)newValue);
+        setX((String)newValue);
         return;
       case XDronePackage.MOVE__Y:
-        setY((Integer)newValue);
+        setY((String)newValue);
         return;
       case XDronePackage.MOVE__Z:
-        setZ((Integer)newValue);
+        setZ((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -257,11 +257,11 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
     switch (featureID)
     {
       case XDronePackage.MOVE__X:
-        return x != X_EDEFAULT;
+        return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
       case XDronePackage.MOVE__Y:
-        return y != Y_EDEFAULT;
+        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
       case XDronePackage.MOVE__Z:
-        return z != Z_EDEFAULT;
+        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
     }
     return super.eIsSet(featureID);
   }

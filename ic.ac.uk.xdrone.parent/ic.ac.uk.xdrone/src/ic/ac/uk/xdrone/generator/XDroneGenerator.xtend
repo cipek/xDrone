@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import ic.ac.uk.xdrone.xDrone.Main
+import ic.ac.uk.xdrone.xDrone.Fly
 import ic.ac.uk.xdrone.xDrone.Command
 import ic.ac.uk.xdrone.xDrone.Up
 import ic.ac.uk.xdrone.xDrone.Down
@@ -22,6 +22,8 @@ import java.io.PrintWriter
 import java.io.IOException
 import java.io.File
 import ic.ac.uk.xdrone.xDrone.Move
+import ic.ac.uk.xdrone.xDrone.Environment
+import ic.ac.uk.xdrone.xDrone.Drone
 
 /**
  * Generates code from your model files on save.
@@ -30,7 +32,27 @@ import ic.ac.uk.xdrone.xDrone.Move
  */
 class XDroneGenerator extends AbstractGenerator {
 
-	def compile(Main main)'''
+	def compile(Environment environment)'''
+	function environment()
+	{
+		«FOR to : environment.drone»
+		«ENDFOR»
+		«FOR ob : environment.objects»
+			addCube(«ob.sx», «ob.sz», «ob.sy», «ob.lx», «ob.lz», «ob.ly»)
+		«ENDFOR»
+	}
+	'''
+	
+	def compileJS(Fly fly)'''
+		function flySimulation(){
+			«FOR to : fly.takeoff» 
+				fly('y', 0.7);
+			«ENDFOR»
+		}
+	'''
+	
+
+	def compilePython(Fly fly)'''
 		#! /usr/bin/env python
 		import sys
 		sys.path.append('/opt/ros/indigo/lib/python2.7/dist-packages')
@@ -142,7 +164,7 @@ class XDroneGenerator extends AbstractGenerator {
 		while state == 0:
 			rospy.sleep(0.1)
 		
-		«FOR to : main.takeoff»  
+		«FOR to : fly.takeoff»  
 			takeoff = rospy.Publisher('/ardrone/takeoff', Empty, queue_size=1)
 			
 			while takeoff.get_num_connections() < 1:
@@ -152,13 +174,13 @@ class XDroneGenerator extends AbstractGenerator {
 			rospy.sleep(5)
 		«ENDFOR»
 		
-		«FOR f : main.commands»
+		«FOR f : fly.commands»
 			«IF f instanceof Command»
 				«f.compile»
 			«ENDIF»
 		«ENDFOR»
 		
-		«FOR to : main.land»  
+		«FOR to : fly.land»  
 			land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
 						
 			while land.get_num_connections() < 1:
@@ -203,9 +225,10 @@ class XDroneGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
-		for(main : resource.allContents.toIterable.filter(Main)) {
-			result = main.compile.toString; 
-			fsa.generateFile('/xdrone/result.py', result)
+		var time = System.currentTimeMillis();
+		for(fly : resource.allContents.toIterable.filter(Fly)) {
+			result = fly.compilePython.toString; 
+			fsa.generateFile('/xdrone/result.py', result);
 		}
 		
 		try {
@@ -219,7 +242,47 @@ class XDroneGenerator extends AbstractGenerator {
 		} catch (IOException e) {
 		   // do something
 		}
+//		fsa.generateFile('result.py', result)
+
 		
-		fsa.generateFile('result.py', result)
+		result = "";
+		for(fly : resource.allContents.toIterable.filter(Fly)) {
+			result = fly.compileJS.toString; 
+			fsa.generateFile('Webroot/simulator' + time +'.js', result);
+		}
+		
+		try {
+			var file = new File('Webroot/simulator' + time +'.js');
+			file.getParentFile().mkdirs();
+			
+			var writer = new PrintWriter(file, "UTF-8");
+		    //var writer = new PrintWriter("result.py", "UTF-8"); 
+		    writer.println(result);
+		    writer.close();   
+		} catch (IOException e) {
+		   // do something
+		}
+//		fsa.generateFile('result.py', result)
+		
+		
+		result = "";
+		for(environment : resource.allContents.toIterable.filter(Environment)) {
+			result = environment.compile.toString; 
+			fsa.generateFile('Webroot/environment' + time +'.js', result);
+		}
+		
+		try {
+			var file = new File('Webroot/environment' + time +'.js');
+			file.getParentFile().mkdirs();
+			
+			var writer = new PrintWriter(file, "UTF-8");
+		    //var writer = new PrintWriter("result.py", "UTF-8"); 
+		    writer.println(result);
+		    writer.close();   
+		} catch (IOException e) {
+		   // do something
+		}
+		
+//		fsa.generateFile('Webroot/simulator' + time +'.js', simulator)
 	}
 }

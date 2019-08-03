@@ -7,12 +7,17 @@
   <genPackages prefix="XDrone" basePackage="ic.ac.uk.xdrone" disposableProviderFactory="true"
       fileExtensions="xdrone" ecorePackage="XDrone.ecore#/">
     <genClasses ecoreClass="XDrone.ecore#//Program">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/main"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/fly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/environment"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Main">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Main/takeoff"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Main/commands"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Main/land"/>
+    <genClasses ecoreClass="XDrone.ecore#//Fly">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Fly/takeoff"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Fly/commands"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Fly/land"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Environment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/drone"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/objects"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//UserFunction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//UserFunction/name"/>
@@ -54,6 +59,20 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//FunctionName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FunctionName/func_name"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Drone">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/z"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Object">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/object_name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sx"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sz"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lx"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/ly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lz"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

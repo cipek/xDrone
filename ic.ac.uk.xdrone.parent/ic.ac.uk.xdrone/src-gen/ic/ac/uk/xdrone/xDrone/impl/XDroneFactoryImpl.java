@@ -3,7 +3,26 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.*;
+import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
+import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Program;
+import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.SuperCommand;
+import ic.ac.uk.xdrone.xDrone.Up;
+import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.XDroneFactory;
+import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -66,7 +85,8 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
     switch (eClass.getClassifierID())
     {
       case XDronePackage.PROGRAM: return createProgram();
-      case XDronePackage.MAIN: return createMain();
+      case XDronePackage.FLY: return createFly();
+      case XDronePackage.ENVIRONMENT: return createEnvironment();
       case XDronePackage.USER_FUNCTION: return createUserFunction();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
@@ -81,6 +101,8 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.WAIT: return createWait();
       case XDronePackage.MOVE: return createMove();
       case XDronePackage.FUNCTION_NAME: return createFunctionName();
+      case XDronePackage.DRONE: return createDrone();
+      case XDronePackage.OBJECT: return createObject();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -102,10 +124,21 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Main createMain()
+  public Fly createFly()
   {
-    MainImpl main = new MainImpl();
-    return main;
+    FlyImpl fly = new FlyImpl();
+    return fly;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Environment createEnvironment()
+  {
+    EnvironmentImpl environment = new EnvironmentImpl();
+    return environment;
   }
 
   /**
@@ -260,6 +293,28 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     FunctionNameImpl functionName = new FunctionNameImpl();
     return functionName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Drone createDrone()
+  {
+    DroneImpl drone = new DroneImpl();
+    return drone;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ic.ac.uk.xdrone.xDrone.Object createObject()
+  {
+    ObjectImpl object = new ObjectImpl();
+    return object;
   }
 
   /**

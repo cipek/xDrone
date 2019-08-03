@@ -3,7 +3,8 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -24,7 +25,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ProgramImpl#getMain <em>Main</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ProgramImpl#getFly <em>Fly</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ProgramImpl#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +34,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
   /**
-   * The cached value of the '{@link #getMain() <em>Main</em>}' containment reference.
+   * The cached value of the '{@link #getFly() <em>Fly</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMain()
+   * @see #getFly()
    * @generated
    * @ordered
    */
-  protected Main main;
+  protected Fly fly;
+
+  /**
+   * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnvironment()
+   * @generated
+   * @ordered
+   */
+  protected Environment environment;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +79,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public Main getMain()
+  public Fly getFly()
   {
-    return main;
+    return fly;
   }
 
   /**
@@ -77,13 +89,13 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMain(Main newMain, NotificationChain msgs)
+  public NotificationChain basicSetFly(Fly newFly, NotificationChain msgs)
   {
-    Main oldMain = main;
-    main = newMain;
+    Fly oldFly = fly;
+    fly = newFly;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__MAIN, oldMain, newMain);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__FLY, oldFly, newFly);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -94,20 +106,68 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMain(Main newMain)
+  public void setFly(Fly newFly)
   {
-    if (newMain != main)
+    if (newFly != fly)
     {
       NotificationChain msgs = null;
-      if (main != null)
-        msgs = ((InternalEObject)main).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__MAIN, null, msgs);
-      if (newMain != null)
-        msgs = ((InternalEObject)newMain).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__MAIN, null, msgs);
-      msgs = basicSetMain(newMain, msgs);
+      if (fly != null)
+        msgs = ((InternalEObject)fly).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__FLY, null, msgs);
+      if (newFly != null)
+        msgs = ((InternalEObject)newFly).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__FLY, null, msgs);
+      msgs = basicSetFly(newFly, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__MAIN, newMain, newMain));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__FLY, newFly, newFly));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Environment getEnvironment()
+  {
+    return environment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEnvironment(Environment newEnvironment, NotificationChain msgs)
+  {
+    Environment oldEnvironment = environment;
+    environment = newEnvironment;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__ENVIRONMENT, oldEnvironment, newEnvironment);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnvironment(Environment newEnvironment)
+  {
+    if (newEnvironment != environment)
+    {
+      NotificationChain msgs = null;
+      if (environment != null)
+        msgs = ((InternalEObject)environment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__ENVIRONMENT, null, msgs);
+      if (newEnvironment != null)
+        msgs = ((InternalEObject)newEnvironment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.PROGRAM__ENVIRONMENT, null, msgs);
+      msgs = basicSetEnvironment(newEnvironment, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.PROGRAM__ENVIRONMENT, newEnvironment, newEnvironment));
   }
 
   /**
@@ -120,8 +180,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case XDronePackage.PROGRAM__MAIN:
-        return basicSetMain(null, msgs);
+      case XDronePackage.PROGRAM__FLY:
+        return basicSetFly(null, msgs);
+      case XDronePackage.PROGRAM__ENVIRONMENT:
+        return basicSetEnvironment(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -136,8 +198,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case XDronePackage.PROGRAM__MAIN:
-        return getMain();
+      case XDronePackage.PROGRAM__FLY:
+        return getFly();
+      case XDronePackage.PROGRAM__ENVIRONMENT:
+        return getEnvironment();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,8 +216,11 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case XDronePackage.PROGRAM__MAIN:
-        setMain((Main)newValue);
+      case XDronePackage.PROGRAM__FLY:
+        setFly((Fly)newValue);
+        return;
+      case XDronePackage.PROGRAM__ENVIRONMENT:
+        setEnvironment((Environment)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -169,8 +236,11 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case XDronePackage.PROGRAM__MAIN:
-        setMain((Main)null);
+      case XDronePackage.PROGRAM__FLY:
+        setFly((Fly)null);
+        return;
+      case XDronePackage.PROGRAM__ENVIRONMENT:
+        setEnvironment((Environment)null);
         return;
     }
     super.eUnset(featureID);
@@ -186,8 +256,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case XDronePackage.PROGRAM__MAIN:
-        return main != null;
+      case XDronePackage.PROGRAM__FLY:
+        return fly != null;
+      case XDronePackage.PROGRAM__ENVIRONMENT:
+        return environment != null;
     }
     return super.eIsSet(featureID);
   }

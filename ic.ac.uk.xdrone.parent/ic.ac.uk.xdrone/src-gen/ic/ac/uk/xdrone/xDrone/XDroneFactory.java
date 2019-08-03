@@ -33,13 +33,22 @@ public interface XDroneFactory extends EFactory
   Program createProgram();
 
   /**
-   * Returns a new object of class '<em>Main</em>'.
+   * Returns a new object of class '<em>Fly</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Main</em>'.
+   * @return a new object of class '<em>Fly</em>'.
    * @generated
    */
-  Main createMain();
+  Fly createFly();
+
+  /**
+   * Returns a new object of class '<em>Environment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Environment</em>'.
+   * @generated
+   */
+  Environment createEnvironment();
 
   /**
    * Returns a new object of class '<em>User Function</em>'.
@@ -166,6 +175,24 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   FunctionName createFunctionName();
+
+  /**
+   * Returns a new object of class '<em>Drone</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Drone</em>'.
+   * @generated
+   */
+  Drone createDrone();
+
+  /**
+   * Returns a new object of class '<em>Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object</em>'.
+   * @generated
+   */
+  Object createObject();
 
   /**
    * Returns the package supported by this factory.

@@ -11,7 +11,10 @@ var controls;
 function init()
 {
     var div = document.getElementById('SIMULATOR');
-    console.log(div.offsetHeight);
+    //Removing old canvases
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    }
     renderer = new THREE.WebGLRenderer( {antialias:true} );
     var width = div.offsetWidth;
     var height = div.offsetHeight;
@@ -45,7 +48,7 @@ function init()
     var dronesize = 0.5;
     scene.add(drone);
     loader = new THREE.LegacyJSONLoader();
-    loader.load('http://localhost:8080/simulator-resources/drone.js', function (geometry, materials) {
+    loader.load(baseUrl+'simulator-resources/drone.js', function (geometry, materials) {
 
       var matt = new THREE.MeshPhongMaterial( { color: new THREE.Color('red'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
@@ -59,7 +62,7 @@ function init()
      });
 
      loader = new THREE.LegacyJSONLoader();
-    loader.load('http://localhost:8080/simulator-resources/drone-lights.js', function (geometry, materials) {
+    loader.load(baseUrl +'simulator-resources/drone-lights.js', function (geometry, materials) {
 
       var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('red'),  transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
@@ -74,6 +77,7 @@ function init()
       drone.add(obj);
 
      });
+
 }
 
 function animate()
@@ -82,12 +86,13 @@ function animate()
     requestAnimationFrame ( animate );
 		// drone.position.y += 0.01;
 		// drone.rotation.y += 0.01;
-    // fly('y', false, -1);
+    if(typeof flySimulation !== 'undefined' && flySimulation)
+      flySimulation();
     renderer.render (scene, camera);
 }
 
-function fly(axis, isForward, endPoint){
-  if(isForward){
+function fly(axis, endPoint){
+  if(endPoint>0){
     if(drone.position[axis] < endPoint)
       drone.position[axis] += 0.01;
   }
@@ -98,9 +103,11 @@ function fly(axis, isForward, endPoint){
 }
 
 function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
+  console.log("IN ADD CUBE");
   var cubeGeometry = new THREE.BoxGeometry (sizeX, sizeY, sizeZ);
   var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
 
   cube.position.set (locX, locY, locZ);
+  scene.add(cube);
 }

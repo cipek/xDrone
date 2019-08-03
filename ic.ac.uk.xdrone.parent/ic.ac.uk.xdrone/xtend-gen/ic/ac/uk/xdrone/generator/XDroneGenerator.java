@@ -7,9 +7,11 @@ import com.google.common.collect.Iterables;
 import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
+import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
-import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
@@ -37,7 +39,66 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class XDroneGenerator extends AbstractGenerator {
-  public CharSequence compile(final Main main) {
+  public CharSequence compile(final Environment environment) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("function environment()");
+    _builder.newLine();
+    _builder.append("{");
+    _builder.newLine();
+    {
+      EList<Drone> _drone = environment.getDrone();
+      for(final Drone to : _drone) {
+      }
+    }
+    {
+      EList<ic.ac.uk.xdrone.xDrone.Object> _objects = environment.getObjects();
+      for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
+        _builder.append("\t");
+        _builder.append("addCube(");
+        String _sx = ob.getSx();
+        _builder.append(_sx, "\t");
+        _builder.append(", ");
+        String _sz = ob.getSz();
+        _builder.append(_sz, "\t");
+        _builder.append(", ");
+        String _sy = ob.getSy();
+        _builder.append(_sy, "\t");
+        _builder.append(", ");
+        String _lx = ob.getLx();
+        _builder.append(_lx, "\t");
+        _builder.append(", ");
+        String _lz = ob.getLz();
+        _builder.append(_lz, "\t");
+        _builder.append(", ");
+        String _ly = ob.getLy();
+        _builder.append(_ly, "\t");
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compileJS(final Fly fly) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("function flySimulation(){");
+    _builder.newLine();
+    {
+      EList<String> _takeoff = fly.getTakeoff();
+      for(final String to : _takeoff) {
+        _builder.append("\t");
+        _builder.append("fly(\'y\', 0.7);");
+        _builder.newLine();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compilePython(final Fly fly) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#! /usr/bin/env python");
     _builder.newLine();
@@ -323,7 +384,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<String> _takeoff = main.getTakeoff();
+      EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
         _builder.append("takeoff = rospy.Publisher(\'/ardrone/takeoff\', Empty, queue_size=1)");
         _builder.newLine();
@@ -342,7 +403,7 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     {
-      EList<SuperCommand> _commands = main.getCommands();
+      EList<SuperCommand> _commands = fly.getCommands();
       for(final SuperCommand f : _commands) {
         {
           if ((f instanceof Command)) {
@@ -355,7 +416,7 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     {
-      EList<String> _land = main.getLand();
+      EList<String> _land = fly.getLand();
       for(final String to_1 : _land) {
         _builder.append("land = rospy.Publisher(\'/ardrone/land\', Empty, queue_size=1)");
         _builder.newLine();
@@ -474,10 +535,11 @@ public class XDroneGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
-    Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
-    for (final Main main : _filter) {
+    long time = System.currentTimeMillis();
+    Iterable<Fly> _filter = Iterables.<Fly>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Fly.class);
+    for (final Fly fly : _filter) {
       {
-        result = this.compile(main).toString();
+        result = this.compilePython(fly).toString();
         fsa.generateFile("/xdrone/result.py", result);
       }
     }
@@ -493,6 +555,45 @@ public class XDroneGenerator extends AbstractGenerator {
         throw Exceptions.sneakyThrow(_t);
       }
     }
-    fsa.generateFile("result.py", result);
+    result = "";
+    Iterable<Fly> _filter_1 = Iterables.<Fly>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Fly.class);
+    for (final Fly fly_1 : _filter_1) {
+      {
+        result = this.compileJS(fly_1).toString();
+        fsa.generateFile((("Webroot/simulator" + Long.valueOf(time)) + ".js"), result);
+      }
+    }
+    try {
+      File file = new File((("Webroot/simulator" + Long.valueOf(time)) + ".js"));
+      file.getParentFile().mkdirs();
+      PrintWriter writer = new PrintWriter(file, "UTF-8");
+      writer.println(result);
+      writer.close();
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    result = "";
+    Iterable<Environment> _filter_2 = Iterables.<Environment>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Environment.class);
+    for (final Environment environment : _filter_2) {
+      {
+        result = this.compile(environment).toString();
+        fsa.generateFile((("Webroot/environment" + Long.valueOf(time)) + ".js"), result);
+      }
+    }
+    try {
+      File file = new File((("Webroot/environment" + Long.valueOf(time)) + ".js"));
+      file.getParentFile().mkdirs();
+      PrintWriter writer = new PrintWriter(file, "UTF-8");
+      writer.println(result);
+      writer.close();
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
 }

@@ -11,8 +11,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -20,18 +18,10 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XDroneGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_0_1_q;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_1_1_q;
-	protected AbstractElementAlias match_Main_SemicolonKeyword_2_1_q;
-	protected AbstractElementAlias match_UserFunction_SemicolonKeyword_3_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XDroneGrammarAccess) access;
-		match_Main_SemicolonKeyword_0_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_0_1());
-		match_Main_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_1_1());
-		match_Main_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getMainAccess().getSemicolonKeyword_2_1());
-		match_UserFunction_SemicolonKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getUserFunctionAccess().getSemicolonKeyword_3_1());
 	}
 	
 	@Override
@@ -46,63 +36,8 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Main_SemicolonKeyword_0_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Main_SemicolonKeyword_1_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Main_SemicolonKeyword_2_1_q.equals(syntax))
-				emit_Main_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_UserFunction_SemicolonKeyword_3_1_q.equals(syntax))
-				emit_UserFunction_SemicolonKeyword_3_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     takeoff+=Takeoff (ambiguity) commands+=SuperCommand
-	 *     takeoff+=Takeoff (ambiguity) land+=Land
-	 */
-	protected void emit_Main_SemicolonKeyword_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     commands+=SuperCommand (ambiguity) commands+=SuperCommand
-	 *     commands+=SuperCommand (ambiguity) land+=Land
-	 */
-	protected void emit_Main_SemicolonKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     land+=Land (ambiguity) (rule end)
-	 */
-	protected void emit_Main_SemicolonKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     func+=Command (ambiguity) '}' (rule end)
-	 *     func+=Command (ambiguity) func+=Command
-	 */
-	protected void emit_UserFunction_SemicolonKeyword_3_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }
