@@ -35,6 +35,7 @@ class XDroneGenerator extends AbstractGenerator {
 	def compile(Environment environment)'''
 	function environment()
 	{
+		//resets drone location
 		drone.position.x = 0;
 		drone.position.z = 0;
 		drone.position.y = 0;

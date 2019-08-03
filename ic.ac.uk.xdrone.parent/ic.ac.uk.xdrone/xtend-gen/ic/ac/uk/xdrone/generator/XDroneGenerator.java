@@ -46,6 +46,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("{");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("//resets drone location");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("drone.position.x = 0;");
     _builder.newLine();
     _builder.append("\t");
