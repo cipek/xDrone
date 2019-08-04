@@ -67,14 +67,14 @@ class XDroneGenerator extends AbstractGenerator {
 		var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
 		«FOR to : fly.takeoff»
 			commands.push({x: 0, y: 0.7, z: 0}); 
-			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
+			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			lastY += 0.7;
 		«ENDFOR»
 		
 		//commands.push({w: 2}); 
 		
 		commands.push({x: 2, y: 0, z: 0}); 
-		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
+		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		lastX += 2;
 		
 		commands.push({r: 90 / 90 * (Math.PI/2)}); 
@@ -82,7 +82,7 @@ class XDroneGenerator extends AbstractGenerator {
 								
 		
 		commands.push({x: 2, y: 0, z: 0}); 
-		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
+		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		lastX += 2;
 		
 		//IMPORTATNT 
@@ -90,12 +90,15 @@ class XDroneGenerator extends AbstractGenerator {
 		
 		«FOR to : fly.land»
 			commands.push({x: 0, y: -0.7, z: 0}); 
-			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
+			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
 			lastY -= 0.7;
 		«ENDFOR»
 		nextCommand();
 		
-		var line = new THREE.Line( lineGeometry, lineMaterial );
+		line = new THREE.Line( lineGeometry, lineMaterial );
+		//line.geometry.verticesNeedUpdate = true;
+		//line.geometry.dynamic = true;
+		
 		scene.add( line );
 		function flySimulation(){
 			if(!finishSimulation){
@@ -123,6 +126,7 @@ class XDroneGenerator extends AbstractGenerator {
 					goalDroneLocation.y = commands[0].y;
 					goalDroneLocation.z = commands[0].z;
 					currentFunction = "MOVE";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				commands.shift();
 			}

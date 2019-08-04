@@ -6,6 +6,7 @@ var controls;
 var execute = true;
 var globalDroneRotation = 90, currentDroneRotation = 0;
 var coveredXDistance = 0, coveredYDistance = 0, coveredZDistance = 0;
+var line;
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -126,15 +127,35 @@ function fly(goalPostion){
   //   stopped = false;
   // }
   // console.log(drone.getWorldPosition());
-
+  drawNewLineSegment();
   if(stopped){
-    console.log("IN RESET");
     coveredXDistance = 0;
     coveredYDistance = 0;
     coveredZDistance = 0;
   }
 
   return stopped;
+}
+
+function drawNewLineSegment(){
+  // console.log("1:", lineGeometry.vertices);
+  var vertices = lineGeometry.vertices;
+  vertices.pop();
+  vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z));
+
+  // line.geometry.verticesNeedUpdate = true;
+  // line.geometry.lineDistancesNeedUpdate = true;
+  // line.geometry.uvsNeedUpdate = true;
+  // line.geometry.normalsNeedUpdate = true;
+  // console.log(line.geometry)
+
+  lineGeometry = new THREE.Geometry();
+	lineGeometry.vertices = vertices;
+
+  scene.remove( line );
+	line = new THREE.Line( lineGeometry, lineMaterial )
+	scene.add( line );
+    // console.log("2:", lineGeometry.vertices);
 }
 
 function rotation(goalRotation){
