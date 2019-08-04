@@ -56,7 +56,7 @@ class XDroneGenerator extends AbstractGenerator {
 		var goalDroneLocation = currentDroneLocation;
 		var goalDroneRotation = drone.rotation.y;
 		var currentFunction = "";
-		
+
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
 		var lineGeometry = new THREE.Geometry();
@@ -69,10 +69,19 @@ class XDroneGenerator extends AbstractGenerator {
 			lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			lastY += 0.7;
 		«ENDFOR»
-		//commands.push({x: 4, y: 0, z: 0}); 
-		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 4, lastY, lastZ));
-		//lastX += 4;
+		
+		commands.push({w: 2}); 
+		
+		commands.push({x: 2, y: 0, z: 0}); 
+		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
+		lastX += 2;
+		
 		commands.push({r: 90 / 90 * (Math.PI/2)}); 
+		
+		
+		commands.push({x: 2, y: 0, z: 0}); 
+		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
+		lastX += 2;
 		
 		//IMPORTATNT 
 		// -roation is right
@@ -98,6 +107,12 @@ class XDroneGenerator extends AbstractGenerator {
 				if(commands[0].r){
 					goalDroneRotation += commands[0].r;
 					currentFunction = "ROTATION";
+				}
+				else if(commands[0].w){
+					execute = false;
+					setTimeout(function () {
+						execute = true;
+					    }, (commands[0].w * 1000));
 				}
 				else{
 					goalDroneLocation.x += commands[0].x;

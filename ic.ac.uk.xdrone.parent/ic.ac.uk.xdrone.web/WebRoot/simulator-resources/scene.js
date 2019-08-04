@@ -3,6 +3,7 @@
 var scene, renderer, camera, drone;
 var cube;
 var controls;
+var execute = true;
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -67,58 +68,72 @@ function init()
       drone.add(obj);
     });
 
+    var axes2 = new THREE.AxisHelper( 2 );
+    drone.add( axes2 );
+
 }
 
 function animate()
 {
+
     controls.update();
     requestAnimationFrame ( animate );
     //If simulator.js has been generated, execute 'flySimulation()'
     if(typeof flySimulation !== 'undefined' && flySimulation)
-      flySimulation();
+      if(execute)
+        flySimulation();
     renderer.render (scene, camera);
 }
 
-function flySupporter(axis, currentLocation, endPoint){
+function flySupporter(currentLocation, endPoint){
   if(endPoint > currentLocation){
     // if(drone.position[axis] < endPoint)
-      drone.position[axis] += 0.01;
+      // drone.position[axis] += 0.01;
+    return 0.01;
   }
   else{
     // if(drone.position[axis] > endPoint)
-      drone.position[axis] -= 0.01;
+      // drone.position[axis] -= 0.01;
+    return -0.01;
   }
 }
 
 function fly(goalPostion){
   var stopped = true;
-  if(Math.abs(drone.position.x-goalPostion.x) > 0.02){ //0.2 acceptable movement error
-    flySupporter('x', drone.position.x, goalPostion.x);
+  if(Math.abs(drone.position.x-goalPostion.x) > 0.02){ //0.02 acceptable movement precision error
+    // flySupporter('x', drone.position.x, goalPostion.x);
+    console.log("X1", drone.position.x, goalPostion.x);
+    drone.translateX(flySupporter(drone.position.x, goalPostion.x));
+    console.log("X2", drone.position.x, goalPostion.x);
     stopped = false;
   }
   if(Math.abs(drone.position.y-goalPostion.y) > 0.02){
-    flySupporter('y', drone.position.y, goalPostion.y);
+    // flySupporter('y', drone.position.y, goalPostion.y);
+    drone.translateY(flySupporter(drone.position.y, goalPostion.y));
     stopped = false;
   }
-  if(Math.abs(drone.position.z-goalPostion.z) > 0.02){
-    flySupporter('z', drone.position.z, goalPostion.z);
-    stopped = false;
-  }
+  // if(Math.abs(drone.position.z-goalPostion.z) > 0.02){
+  //   // flySupporter('z', drone.position.z, goalPostion.z);
+  //   console.log("Z", drone.position.z, goalPostion.z);
+  //   drone.translateZ(flySupporter(drone.position.z, goalPostion.z));
+  //   stopped = false;
+  // }
+  // console.log(drone.getWorldPosition());
   return stopped;
 }
 
 function rotation(goalRotation){
   var stopped = true;
   if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
-    console.log(drone.rotation.y, goalRotation);
     if(drone.rotation.y > goalRotation){
-        drone.rotation.y -= 0.02;
+        drone.rotateY(-0.02);
     }
     else{
-        drone.rotation.y += 0.02;
+        drone.rotateY(0.02);
     }
     stopped = false;
   }
+  // console.log(drone.getWorldPosition());
   return stopped;
 }
 
