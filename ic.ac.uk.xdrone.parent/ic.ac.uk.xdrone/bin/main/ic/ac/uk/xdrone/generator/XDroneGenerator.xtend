@@ -56,6 +56,7 @@ class XDroneGenerator extends AbstractGenerator {
 		var goalDroneLocation = currentDroneLocation;
 		var goalDroneRotation = drone.rotation.y;
 		var currentFunction = "";
+		var finishSimulation = false;
 
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
@@ -70,14 +71,15 @@ class XDroneGenerator extends AbstractGenerator {
 			lastY += 0.7;
 		«ENDFOR»
 		
-		commands.push({w: 2}); 
+		//commands.push({w: 2}); 
 		
 		commands.push({x: 2, y: 0, z: 0}); 
 		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		lastX += 2;
 		
 		commands.push({r: 90 / 90 * (Math.PI/2)}); 
-		
+		//commands.push({r: 90}); 
+								
 		
 		commands.push({x: 2, y: 0, z: 0}); 
 		lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
@@ -96,9 +98,11 @@ class XDroneGenerator extends AbstractGenerator {
 		var line = new THREE.Line( lineGeometry, lineMaterial );
 		scene.add( line );
 		function flySimulation(){
-			if((currentFunction == "MOVE" && fly(goalDroneLocation))
-				|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
-				nextCommand();
+			if(!finishSimulation){
+				if((currentFunction == "MOVE" && fly(goalDroneLocation))
+					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
+					nextCommand();
+				}
 			}
 		}
 		
@@ -115,12 +119,15 @@ class XDroneGenerator extends AbstractGenerator {
 					    }, (commands[0].w * 1000));
 				}
 				else{
-					goalDroneLocation.x += commands[0].x;
-					goalDroneLocation.y += commands[0].y;
-					goalDroneLocation.z += commands[0].z;
+					goalDroneLocation.x = commands[0].x; //+
+					goalDroneLocation.y = commands[0].y;
+					goalDroneLocation.z = commands[0].z;
 					currentFunction = "MOVE";
 				}
 				commands.shift();
+			}
+			else{
+				finishSimulation = true;	
 			}
 		}
 	'''
