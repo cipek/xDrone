@@ -167,7 +167,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t\t\t\t\t");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("commands.push({x: 2, y: 0, z: 0}); ");
+    _builder.append("commands.push({x: -2, y: 0, z: 4}); ");
     _builder.newLine();
     _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));");
     _builder.newLine();
@@ -193,11 +193,12 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("nextCommand();");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("if(line)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("scene.remove( line );");
+    _builder.newLine();
     _builder.append("line = new THREE.Line( lineGeometry, lineMaterial );");
-    _builder.newLine();
-    _builder.append("//line.geometry.verticesNeedUpdate = true;");
-    _builder.newLine();
-    _builder.append("//line.geometry.dynamic = true;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("scene.add( line );");

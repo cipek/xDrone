@@ -81,7 +81,7 @@ class XDroneGenerator extends AbstractGenerator {
 		//commands.push({r: 90}); 
 								
 		
-		commands.push({x: 2, y: 0, z: 0}); 
+		commands.push({x: -2, y: 0, z: 4}); 
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		lastX += 2;
 		
@@ -95,9 +95,9 @@ class XDroneGenerator extends AbstractGenerator {
 		«ENDFOR»
 		nextCommand();
 		
+		if(line)
+			scene.remove( line );
 		line = new THREE.Line( lineGeometry, lineMaterial );
-		//line.geometry.verticesNeedUpdate = true;
-		//line.geometry.dynamic = true;
 		
 		scene.add( line );
 		function flySimulation(){

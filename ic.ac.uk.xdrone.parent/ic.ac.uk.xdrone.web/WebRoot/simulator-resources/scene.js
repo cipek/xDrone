@@ -71,8 +71,8 @@ function init()
       drone.add(obj);
     });
 
-    var axes2 = new THREE.AxisHelper( 2 );
-    drone.add( axes2 );
+    var axesDrone = new THREE.AxisHelper(1);
+    drone.add(axesDrone);
 }
 
 function animate()
@@ -120,13 +120,13 @@ function fly(goalPostion){
     drone.translateY(additionalDistance);
     stopped = false;
   }
-  // if(Math.abs(drone.position.z-goalPostion.z) > 0.02){
-  //   // flySupporter('z', drone.position.z, goalPostion.z);
-  //   console.log("Z", drone.position.z, goalPostion.z);
-  //   drone.translateZ(flySupporter(drone.position.z, goalPostion.z));
-  //   stopped = false;
-  // }
-  // console.log(drone.getWorldPosition());
+  if(Math.abs(coveredZDistance-goalPostion.z) > 0.04){
+    // flySupporter('z', drone.position.z, goalPostion.z);
+    var additionalDistance = flySupporter(coveredZDistance, goalPostion.z);
+    coveredZDistance += additionalDistance;
+    drone.translateZ(additionalDistance);
+    stopped = false;
+  }
   drawNewLineSegment();
   if(stopped){
     coveredXDistance = 0;
@@ -138,16 +138,9 @@ function fly(goalPostion){
 }
 
 function drawNewLineSegment(){
-  // console.log("1:", lineGeometry.vertices);
   var vertices = lineGeometry.vertices;
   vertices.pop();
   vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z));
-
-  // line.geometry.verticesNeedUpdate = true;
-  // line.geometry.lineDistancesNeedUpdate = true;
-  // line.geometry.uvsNeedUpdate = true;
-  // line.geometry.normalsNeedUpdate = true;
-  // console.log(line.geometry)
 
   lineGeometry = new THREE.Geometry();
 	lineGeometry.vertices = vertices;
@@ -155,7 +148,6 @@ function drawNewLineSegment(){
   scene.remove( line );
 	line = new THREE.Line( lineGeometry, lineMaterial )
 	scene.add( line );
-    // console.log("2:", lineGeometry.vertices);
 }
 
 function rotation(goalRotation){
