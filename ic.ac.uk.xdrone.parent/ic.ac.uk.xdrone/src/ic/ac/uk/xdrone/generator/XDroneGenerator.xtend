@@ -73,17 +73,17 @@ class XDroneGenerator extends AbstractGenerator {
 		
 		//commands.push({w: 2}); 
 		
-		commands.push({x: 2, y: 0, z: 0}); 
+		//commands.push({x: 2, y: 0, z: 0}); 
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
-		lastX += 2;
+		//lastX += 2;
 		
-		commands.push({r: 90 / 90 * (Math.PI/2)}); 
+		//commands.push({r: 90 / 90 * (Math.PI/2)}); 
 		//commands.push({r: 90}); 
 								
 		
-		commands.push({x: -2, y: 0, z: 4}); 
+		//commands.push({x: -2, y: 0, z: 4}); 
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
-		lastX += 2;
+		//lastX += 2;
 		
 		//IMPORTATNT 
 		// -roation is right
