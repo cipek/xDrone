@@ -30,7 +30,6 @@ function init()
 
     var div = document.getElementById('SIMULATOR');
     div.appendChild (renderer.domElement);
-    // document.body.appendChild (renderer.domElement);
 
     scene = new THREE.Scene();
 
@@ -49,6 +48,7 @@ function init()
 
     var gridXZ = new THREE.GridHelper(20, 20);
     gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+    gridXZ.name="GRID";
     scene.add(gridXZ);
 
     drone = new THREE.Group();
@@ -86,47 +86,26 @@ function init()
     drone.add(axesDrone);
 
     raycaster = new THREE.Raycaster(); // create once
-    console.log(raycaster);
     mouse = new THREE.Vector2(); // create once
     // projector = new THREE.Projector();
     // when the mouse moves, call the given function
     div.addEventListener('mousemove', onDocumentMouseMove, false);
 
+    createCubeGrid();
 }
 
 function onDocumentMouseMove(event) {
   // the following line would stop any other event handler from firing
   // (such as the mouse's TrackballControls)
-  // event.preventDefault();
+  event.preventDefault();
 
-  // update the mouse variable
-  // mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-	// mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
   var rect = renderer.domElement.getBoundingClientRect();
   mouse.x = ( ( event.clientX - rect.left ) / rect.width ) * 2 - 1;
   mouse.y = - ( ( event.clientY - rect.top ) / rect.height ) * 2 + 1;
-
-	raycaster.setFromCamera( mouse, camera );
-	// See if the ray from the camera into the world hits one of our meshes
-  var intersects = raycaster.intersectObjects( scene.children );
-	// Toggle rotation bool for meshes that we clicked
-  console.log(intersects);
-  if ( intersects.length > 0 ) {
-    if ( INTERSECTED != intersects[ 0 ].object ) {
-      if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-      INTERSECTED = intersects[ 0 ].object;
-      INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-      INTERSECTED.material.color.setHex( 0xff0000 );
-    }
-  } else {
-    if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-    INTERSECTED = null;
-  }
 }
 
 function animate()
 {
-  // console.log("IN animate");
     controls.update();
     requestAnimationFrame ( animate );
     //If simulator.js has been generated, execute 'flySimulation()'
@@ -134,35 +113,7 @@ function animate()
       if(execute)
         flySimulation();
 
-        /*
-        // create a Ray with origin at the mouse position
-     //   and direction into the scene (camera direction)
-     var vector = new THREE.Vector3(mouse.x, mouse.y, 1);
-     vector.unproject(camera);
-     var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-
-     // create an array containing all objects in the scene with which the ray intersects
-     var intersects = ray.intersectObjects(scene.children);
-     console.log(intersects);
-     */
-    //  console.log(mouse, camera);
-    //  raycaster.setFromCamera( mouse, camera );
-    //
-    //  for ( var i = 0; i < scene.children.length; i++ ) {
-    //    if(scene.children && scene.children[ i ] && scene.children[ i ].object)
-  	// 	   scene.children[ i ].object.material.color.set( 0xffffff );
-    //
-  	// }
-    //
-    //  var intersects = raycaster.intersectObjects(scene.children); // objects, recursiveFlag );
-    //  // console.log(intersects);
-    //
-    //  for ( var i = 0; i < intersects.length; i++ ) {
-    //
-  	// 	intersects[ i ].object.material.color.set( 0xff0000 );
-    //
-  	// }
-
+    raycating()
     renderer.render (scene, camera);
 }
 
@@ -329,26 +280,55 @@ function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
   scene.add(cube);
 }
 
-function render() {
-		theta += 0.1;
-		camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-		camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
-		camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-		camera.lookAt( scene.position );
-		camera.updateMatrixWorld();
-		// find intersections
-		raycaster.setFromCamera( mouse, camera );
-		var intersects = raycaster.intersectObjects( scene.children );
-		if ( intersects.length > 0 ) {
-			if ( INTERSECTED != intersects[ 0 ].object ) {
-				if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-				INTERSECTED = intersects[ 0 ].object;
-				INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-				INTERSECTED.material.emissive.setHex( 0xff0000 );
-			}
-		} else {
-			if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-			INTERSECTED = null;
+function raycating() {
+	// find intersections
+	raycaster.setFromCamera( mouse, camera );
+	var intersects = raycaster.intersectObjects( scene.children );
+  if ( intersects.length > 0 ) {
+    let pos = -1;
+    do{
+      pos++;
+    }while(pos < intersects.length
+      && intersects[pos].object.name != "POINT_ON_GRID")
+    if(intersects[ pos ])
+		// if ( intersects[ 0 ].object.name == "POINT_ON_GRID" && INTERSECTED != intersects[ 0 ].object ) {
+    if(pos > -1 && pos < intersects.length){ // && INTERSECTED != intersects[ pos ].object ){
+      console.log("IN1");
+      if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+			INTERSECTED = intersects[ pos ].object;
+			INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+			INTERSECTED.material.color.setHex( 0xff0000 );
 		}
-		renderer.render( scene, camera );
+    else {
+      console.log("IN2");
+
+  		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+  		INTERSECTED = null;
+  	}
+	} else {      console.log("IN3");
+
+		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+		INTERSECTED = null;
 	}
+	renderer.render( scene, camera );
+}
+
+//Creates points for showing position on the grid
+function createCubeGrid(){
+  for (var i = -10; i < 10; i++) {
+    for (var j = -10; j < 10; j++) {
+      var geometry = new THREE.SphereGeometry(0.2, 32, 32 );
+      // var material = new THREE.MeshPhongMaterial({
+      //   color: 'red',
+      //   opacity: 0.5,
+      //   transparent: false,
+      // });
+      var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
+
+      var sphere = new THREE.Mesh (geometry, material);
+      sphere.name = 'POINT_ON_GRID';
+      sphere.position.set (i, 0.1, j);
+      scene.add(sphere);
+    }
+  }
+}
