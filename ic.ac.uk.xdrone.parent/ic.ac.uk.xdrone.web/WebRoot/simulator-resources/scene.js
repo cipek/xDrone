@@ -85,16 +85,25 @@ function init()
     var axesDrone = new THREE.AxisHelper(1);
     drone.add(axesDrone);
 
-    raycaster = new THREE.Raycaster(); // create once
-    mouse = new THREE.Vector2(); // create once
-    // projector = new THREE.Projector();
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
     // when the mouse moves, call the given function
     simulator.addEventListener('mousemove', onDocumentMouseMove, false);
 
     createPointsOnGrid();
-    // addText();
     var centerLabel = addText(0, 0.7, 0, "(0,0,0)");
     scene.add( centerLabel );
+
+    drawWalls();
+}
+
+function drawWalls(){
+  var cubeGeometry = new THREE.BoxGeometry (6, 6, 6);
+  var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
+  var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
+  var wireframe = new THREE.LineSegments( geo, mat );
+  wireframe.position.set(0,0,0);
+  scene.add( wireframe );
 }
 
 function onDocumentMouseMove(event) {
@@ -352,9 +361,8 @@ function raycating() {
       pos++;
     }while(pos < intersects.length
       && intersects[pos].object.name != "POINT_ON_GRID")
-    // if(intersects[ pos ])
-		// if ( intersects[ 0 ].object.name == "POINT_ON_GRID" && INTERSECTED != intersects[ 0 ].object ) {
-    if(pos > -1 && pos < intersects.length){ // && INTERSECTED != intersects[ pos ].object ){
+
+    if(pos > -1 && pos < intersects.length){
       if ( INTERSECTED ) removeEntity(labelPoistion);
 			INTERSECTED = intersects[ pos ].object;
 
@@ -362,7 +370,7 @@ function raycating() {
       //Do not display one more in center
       if(!(position.x === 0 && position.z === 0)){
         labelPoistion = addText(position.x, 0.7, position.z,
-          "(" + position.x + ", " + 0 + "," + position.z + ")");
+          "(" + position.x + ",0," + position.z + ")");
         labelPoistion.name = "LABEL_POSITON";
         scene.add(labelPoistion);
       }
