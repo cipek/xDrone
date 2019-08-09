@@ -11,6 +11,7 @@ var raycaster;
 var mouse, INTERSECTED;
 var radius = 500, theta = 0;
 var frustumSize = 1000;
+var labelPoistion;
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -90,10 +91,10 @@ function init()
     // when the mouse moves, call the given function
     simulator.addEventListener('mousemove', onDocumentMouseMove, false);
 
-    createCubeGrid();
+    createPointsOnGrid();
     // addText();
-    var text = addText(new Array(0, 9), "it fucking works!!");
-    scene.add( text );
+    var centerLabel = addText(0, 0.7, 0, "(0,0,0)");
+    scene.add( centerLabel );
 }
 
 function onDocumentMouseMove(event) {
@@ -106,8 +107,8 @@ function onDocumentMouseMove(event) {
   mouse.y = - ( ( event.clientY - rect.top ) / rect.height ) * 2 + 1;
 }
 
-function addText(){
-  const canvas = makeLabelCanvas(10, "Lukasz");
+function addText(x, y, z, text){
+  const canvas = makeLabelCanvas(10, text);
   const labelGeometry = new THREE.PlaneBufferGeometry(1, 1);
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -122,12 +123,13 @@ function addText(){
     side: THREE.DoubleSide,
     transparent: true,
   });
-  
+
   const label = new THREE.Mesh(labelGeometry, labelMaterial);
-  label.position.y = 2;
-  label.position.z = 2;
-  label.position.z = 2;
-  scene.add(label);
+  label.position.x = x;
+  label.position.y = y;
+  label.position.z = z;
+  return label;
+  // scene.add(label);
 }
 
 
@@ -147,7 +149,7 @@ function makeLabelCanvas(size, name) {
   ctx.font = font;
   ctx.textBaseline = 'top';
 
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = "rgba(255, 255, 255, 0.0)";
   ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = 'white';
   ctx.fillText(name, borderSize, borderSize);
@@ -353,38 +355,53 @@ function raycating() {
     // if(intersects[ pos ])
 		// if ( intersects[ 0 ].object.name == "POINT_ON_GRID" && INTERSECTED != intersects[ 0 ].object ) {
     if(pos > -1 && pos < intersects.length){ // && INTERSECTED != intersects[ pos ].object ){
-      if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+      if ( INTERSECTED ) removeEntity(labelPoistion);
 			INTERSECTED = intersects[ pos ].object;
-			INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-			INTERSECTED.material.color.setHex( 0xff0000 );
+
+      let position = intersects[ pos ].object.position;
+      //Do not display one more in center
+      if(!(position.x === 0 && position.z === 0)){
+        labelPoistion = addText(position.x, 0.7, position.z,
+          "(" + position.x + ", " + 0 + "," + position.z + ")");
+        labelPoistion.name = "LABEL_POSITON";
+        scene.add(labelPoistion);
+      }
 		}
     else {
-  		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+  		if ( INTERSECTED ) removeEntity(labelPoistion);
   		INTERSECTED = null;
   	}
 	} else {
-		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+		if ( INTERSECTED ) removeEntity(labelPoistion);
 		INTERSECTED = null;
 	}
 	renderer.render( scene, camera );
 }
 
 //Creates points for showing position on the grid
-function createCubeGrid(){
+function createPointsOnGrid(){
   for (var i = -10; i < 10; i++) {
     for (var j = -10; j < 10; j++) {
       var geometry = new THREE.SphereGeometry(0.2, 32, 32 );
-      // var material = new THREE.MeshPhongMaterial({
-      //   color: 'red',
-      //   opacity: 0.5,
-      //   transparent: false,
-      // });
-      var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
+      var material = new THREE.MeshPhongMaterial({
+        color: 'white',
+        opacity: 0.0,
+        transparent: true,
+      });
+      // var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
 
       var sphere = new THREE.Mesh (geometry, material);
       sphere.name = 'POINT_ON_GRID';
-      sphere.position.set (i, 0.1, j);
+      sphere.position.set (i, 0, j);
       scene.add(sphere);
     }
+  }
+}
+
+//removes object from scene
+function removeEntity(object) {
+  if(object && object.name){
+    var selectedObject = scene.getObjectByName(object.name);
+    scene.remove( selectedObject );
   }
 }
