@@ -1,6 +1,6 @@
 //IMPORTANT!
 //y and z axis are swapped in respect to ROS. Y is down and up axis
-var scene, renderer, camera, drone;
+var scene, renderer, camera, drone, simulator;
 var cube;
 var controls;
 var execute = true;
@@ -17,23 +17,22 @@ var frustumSize = 1000;
 
 function init()
 {
-    var div = document.getElementById('SIMULATOR');
+    simulator = document.getElementById('SIMULATOR');
     //Removing old canvases
-    while (div.firstChild) {
-      div.removeChild(div.firstChild);
+    while (simulator.firstChild) {
+      simulator.removeChild(simulator.firstChild);
     }
     renderer = new THREE.WebGLRenderer( {antialias:true} );
-    var width = div.offsetWidth;
-    var height = div.offsetHeight;
+    var width = simulator.offsetWidth;
+    var height = simulator.offsetHeight;
     renderer.setSize (width, height);
     renderer.setPixelRatio( window.devicePixelRatio );
 
-    var div = document.getElementById('SIMULATOR');
-    div.appendChild (renderer.domElement);
+    simulator.appendChild (renderer.domElement);
 
     scene = new THREE.Scene();
 
-    camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 100);
+    camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 600);
     camera.position.y = 3;
     camera.position.z = 10;
     camera.position.x = 5;
@@ -41,7 +40,7 @@ function init()
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.minDistance = 1;
-		controls.maxDistance = 100;
+		controls.maxDistance = 600;
 		controls.maxPolarAngle = Math.PI / 2;
     controls.target.y = 0;
     controls.update();
@@ -89,9 +88,12 @@ function init()
     mouse = new THREE.Vector2(); // create once
     // projector = new THREE.Projector();
     // when the mouse moves, call the given function
-    div.addEventListener('mousemove', onDocumentMouseMove, false);
+    simulator.addEventListener('mousemove', onDocumentMouseMove, false);
 
     createCubeGrid();
+    // addText();
+    var text = addText(new Array(0, 9), "it fucking works!!");
+    scene.add( text );
 }
 
 function onDocumentMouseMove(event) {
@@ -102,6 +104,64 @@ function onDocumentMouseMove(event) {
   var rect = renderer.domElement.getBoundingClientRect();
   mouse.x = ( ( event.clientX - rect.left ) / rect.width ) * 2 - 1;
   mouse.y = - ( ( event.clientY - rect.top ) / rect.height ) * 2 + 1;
+}
+
+function addText(){
+  const canvas = makeLabelCanvas(10, "Lukasz");
+  const labelGeometry = new THREE.PlaneBufferGeometry(1, 1);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  // because our canvas is likely not a power of 2
+  // in both dimensions set the filtering appropriately.
+  texture.minFilter = THREE.LinearFilter;
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+
+  const labelMaterial = new THREE.MeshBasicMaterial({
+    map: texture,
+    side: THREE.DoubleSide,
+    transparent: true,
+  });
+  
+  const label = new THREE.Mesh(labelGeometry, labelMaterial);
+  label.position.y = 2;
+  label.position.z = 2;
+  label.position.z = 2;
+  scene.add(label);
+}
+
+
+function makeLabelCanvas(size, name) {
+  const borderSize = 2;
+  const ctx = document.createElement('canvas').getContext('2d');
+  const font =  `${size}px bold sans-serif`;
+  ctx.font = font;
+  // measure how long the name will be
+  const doubleBorderSize = borderSize * 2;
+  const width = ctx.measureText(name).width + doubleBorderSize;
+  const height = size + doubleBorderSize;
+  ctx.canvas.width = width;
+  ctx.canvas.height = height;
+
+  // need to set font again after resizing canvas
+  ctx.font = font;
+  ctx.textBaseline = 'top';
+
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = 'white';
+  ctx.fillText(name, borderSize, borderSize);
+
+  return ctx.canvas;
+}
+
+function toXYCoords (pos) {
+  camera.updateMatrixWorld()
+  // var vector = projector.projectVector(pos.clone(), camera);
+  var vector = pos.clone().unproject(camera);
+  vector.x = (vector.x + 1)/2 * window.innerWidth;
+  vector.y = -(vector.y - 1)/2 * window.innerHeight;
+  return vector;
 }
 
 function animate()
@@ -290,23 +350,19 @@ function raycating() {
       pos++;
     }while(pos < intersects.length
       && intersects[pos].object.name != "POINT_ON_GRID")
-    if(intersects[ pos ])
+    // if(intersects[ pos ])
 		// if ( intersects[ 0 ].object.name == "POINT_ON_GRID" && INTERSECTED != intersects[ 0 ].object ) {
     if(pos > -1 && pos < intersects.length){ // && INTERSECTED != intersects[ pos ].object ){
-      console.log("IN1");
       if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
 			INTERSECTED = intersects[ pos ].object;
 			INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
 			INTERSECTED.material.color.setHex( 0xff0000 );
 		}
     else {
-      console.log("IN2");
-
   		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
   		INTERSECTED = null;
   	}
-	} else {      console.log("IN3");
-
+	} else {
 		if ( INTERSECTED ) INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
 		INTERSECTED = null;
 	}
