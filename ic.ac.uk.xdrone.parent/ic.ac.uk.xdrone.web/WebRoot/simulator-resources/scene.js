@@ -11,7 +11,7 @@ var raycaster;
 var mouse, INTERSECTED;
 var radius = 500, theta = 0;
 var frustumSize = 1000;
-var labelPoistion;
+var labelPoistion, centerLabel, labelObjects = [];
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -91,7 +91,7 @@ function init()
     simulator.addEventListener('mousemove', onDocumentMouseMove, false);
 
     createPointsOnGrid();
-    var centerLabel = addText(0, 0.7, 0, "(0,0,0)");
+    centerLabel = addText(0, 0.7, 0, "(0,0,0)");
     scene.add( centerLabel );
 
     drawWalls();
@@ -137,6 +137,7 @@ function addText(x, y, z, text){
   label.position.x = x;
   label.position.y = y;
   label.position.z = z;
+
   return label;
   // scene.add(label);
 }
@@ -184,8 +185,15 @@ function animate()
       if(execute)
         flySimulation();
 
-    raycating()
+    raycating();
+    rotateLabels();
     renderer.render (scene, camera);
+}
+
+function rotateLabels(){
+  centerLabel.lookAt(camera.position);
+  labelPoistion.lookAt(camera.position);
+  labelObjects.forEach(ob => ob.lookAt(camera.position));
 }
 
 function flySupporter(currentLocation, endPoint){
@@ -348,9 +356,10 @@ function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ){
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
   cube.position.set (locX, locY, locZ);
 
-  var labelObject = addText(locX, locY + sizeY/2 + 1, locZ,
-    objectName);
-  scene.add(labelObject);
+  var text = addText(locX, locY + sizeY/2 + 1, locZ,
+    objectName)
+  labelObjects.push(text);
+  scene.add(text);
 
   scene.add(cube);
 }
@@ -392,20 +401,22 @@ function raycating() {
 
 //Creates points for showing position on the grid
 function createPointsOnGrid(){
-  for (var i = -10; i < 10; i++) {
-    for (var j = -10; j < 10; j++) {
-      var geometry = new THREE.SphereGeometry(0.2, 32, 32 );
-      var material = new THREE.MeshPhongMaterial({
-        color: 'white',
-        opacity: 0.0,
-        transparent: true,
-      });
-      // var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
+  var geometry = new THREE.SphereGeometry(0.2, 8, 8 );
+  var material = new THREE.MeshPhongMaterial({
+    color: 'white',
+    opacity: 0.0,
+    transparent: true,
+  });
+  // var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
 
-      var sphere = new THREE.Mesh (geometry, material);
-      sphere.name = 'POINT_ON_GRID';
-      sphere.position.set (i, 0, j);
-      scene.add(sphere);
+  var sphere = new THREE.Mesh (geometry, material);
+  sphere.name = 'POINT_ON_GRID';
+
+  for (var i = -10; i <= 10; i++) {
+    for (var j = -10; j <= 10; j++) {
+      instance = sphere.clone();
+      instance.position.set( i, 0, j );
+      scene.add( instance );
     }
   }
 }
