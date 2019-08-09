@@ -81,7 +81,10 @@ public class XDroneGenerator extends AbstractGenerator {
       EList<ic.ac.uk.xdrone.xDrone.Object> _objects = environment.getObjects();
       for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
         _builder.append("\t");
-        _builder.append("addCube(");
+        _builder.append("addCube(\"");
+        String _object_name = ob.getObject_name();
+        _builder.append(_object_name, "\t");
+        _builder.append("\",");
         String _sx = ob.getSx();
         _builder.append(_sx, "\t");
         _builder.append(", ");

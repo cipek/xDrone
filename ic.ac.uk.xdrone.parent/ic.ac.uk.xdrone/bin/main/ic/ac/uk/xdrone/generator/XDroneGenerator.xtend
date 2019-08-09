@@ -45,7 +45,7 @@ class XDroneGenerator extends AbstractGenerator {
 			drone.position.y = «d.y»
 		«ENDFOR»
 		«FOR ob : environment.objects»
-			addCube(«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
+			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
 		«ENDFOR»
 	}
 	'''

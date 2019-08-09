@@ -342,12 +342,16 @@ function land(){
   }
 }
 
-function addCube(sizeX, sizeY, sizeZ, locX, locY, locZ){
+function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ){
   var cubeGeometry = new THREE.BoxGeometry (sizeX, sizeY, sizeZ);
   var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
-
   cube.position.set (locX, locY, locZ);
+
+  var labelObject = addText(locX, locY + sizeY/2 + 1, locZ,
+    objectName);
+  scene.add(labelObject);
+
   scene.add(cube);
 }
 
