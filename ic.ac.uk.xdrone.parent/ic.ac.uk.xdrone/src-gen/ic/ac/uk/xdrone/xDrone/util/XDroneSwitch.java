@@ -23,6 +23,7 @@ import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -258,6 +259,13 @@ public class XDroneSwitch<T> extends Switch<T>
       {
         Size size = (Size)theEObject;
         T result = caseSize(size);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.VECTOR:
+      {
+        Vector vector = (Vector)theEObject;
+        T result = caseVector(vector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -604,6 +612,22 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSize(Size object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Vector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Vector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVector(Vector object)
   {
     return null;
   }

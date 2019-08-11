@@ -4,11 +4,14 @@
 package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Size;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,9 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl#getZ <em>Z</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl#getVector <em>Vector</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,64 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class SizeImpl extends MinimalEObjectImpl.Container implements Size
 {
   /**
-   * The default value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getVector() <em>Vector</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getVector()
    * @generated
    * @ordered
    */
-  protected static final String X_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getX()
-   * @generated
-   * @ordered
-   */
-  protected String x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected static final String Z_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected String z = Z_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final String Y_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected String y = Y_EDEFAULT;
+  protected Vector vector;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +67,9 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getX()
+  public Vector getVector()
   {
-    return x;
+    return vector;
   }
 
   /**
@@ -126,12 +77,16 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(String newX)
+  public NotificationChain basicSetVector(Vector newVector, NotificationChain msgs)
   {
-    String oldX = x;
-    x = newX;
+    Vector oldVector = vector;
+    vector = newVector;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.SIZE__X, oldX, x));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.SIZE__VECTOR, oldVector, newVector);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -139,9 +94,20 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getZ()
+  public void setVector(Vector newVector)
   {
-    return z;
+    if (newVector != vector)
+    {
+      NotificationChain msgs = null;
+      if (vector != null)
+        msgs = ((InternalEObject)vector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.SIZE__VECTOR, null, msgs);
+      if (newVector != null)
+        msgs = ((InternalEObject)newVector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.SIZE__VECTOR, null, msgs);
+      msgs = basicSetVector(newVector, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.SIZE__VECTOR, newVector, newVector));
   }
 
   /**
@@ -149,35 +115,15 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setZ(String newZ)
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    String oldZ = z;
-    z = newZ;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.SIZE__Z, oldZ, z));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getY()
-  {
-    return y;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setY(String newY)
-  {
-    String oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.SIZE__Y, oldY, y));
+    switch (featureID)
+    {
+      case XDronePackage.SIZE__VECTOR:
+        return basicSetVector(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -190,12 +136,8 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
   {
     switch (featureID)
     {
-      case XDronePackage.SIZE__X:
-        return getX();
-      case XDronePackage.SIZE__Z:
-        return getZ();
-      case XDronePackage.SIZE__Y:
-        return getY();
+      case XDronePackage.SIZE__VECTOR:
+        return getVector();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -210,14 +152,8 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
   {
     switch (featureID)
     {
-      case XDronePackage.SIZE__X:
-        setX((String)newValue);
-        return;
-      case XDronePackage.SIZE__Z:
-        setZ((String)newValue);
-        return;
-      case XDronePackage.SIZE__Y:
-        setY((String)newValue);
+      case XDronePackage.SIZE__VECTOR:
+        setVector((Vector)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,14 +169,8 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
   {
     switch (featureID)
     {
-      case XDronePackage.SIZE__X:
-        setX(X_EDEFAULT);
-        return;
-      case XDronePackage.SIZE__Z:
-        setZ(Z_EDEFAULT);
-        return;
-      case XDronePackage.SIZE__Y:
-        setY(Y_EDEFAULT);
+      case XDronePackage.SIZE__VECTOR:
+        setVector((Vector)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,35 +186,10 @@ public class SizeImpl extends MinimalEObjectImpl.Container implements Size
   {
     switch (featureID)
     {
-      case XDronePackage.SIZE__X:
-        return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case XDronePackage.SIZE__Z:
-        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
-      case XDronePackage.SIZE__Y:
-        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
+      case XDronePackage.SIZE__VECTOR:
+        return vector != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (x: ");
-    result.append(x);
-    result.append(", z: ");
-    result.append(z);
-    result.append(", y: ");
-    result.append(y);
-    result.append(')');
-    return result.toString();
   }
 
 } //SizeImpl

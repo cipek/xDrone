@@ -1056,79 +1056,25 @@ ruleDrone returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getDroneAccess().getDRONEKeyword_0());
 		}
-		otherlv_1='('
-		{
-			newLeafNode(otherlv_1, grammarAccess.getDroneAccess().getLeftParenthesisKeyword_1());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDroneAccess().getXDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getDroneAccess().getVectorVectorParserRuleCall_1_0());
 				}
-				lv_x_2_0=ruleDOUBLE
+				lv_vector_1_0=ruleVector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDroneRule());
 					}
 					set(
 						$current,
-						"x",
-						lv_x_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"vector",
+						lv_vector_1_0,
+						"ic.ac.uk.xdrone.XDrone.Vector");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=','
-		{
-			newLeafNode(otherlv_3, grammarAccess.getDroneAccess().getCommaKeyword_3());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_4_0());
-				}
-				lv_z_4_0=ruleDOUBLE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDroneRule());
-					}
-					set(
-						$current,
-						"z",
-						lv_z_4_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_5=','
-		{
-			newLeafNode(otherlv_5, grammarAccess.getDroneAccess().getCommaKeyword_5());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_6_0());
-				}
-				lv_y_6_0=ruleDOUBLE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDroneRule());
-					}
-					set(
-						$current,
-						"y",
-						lv_y_6_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_7=')'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getDroneAccess().getRightParenthesisKeyword_7());
-		}
 	)
 ;
 
@@ -1252,7 +1198,7 @@ ruleObject returns [EObject current=null]
 										set(
 											$current,
 											"color",
-											true,
+											lv_color_5_0,
 											"ic.ac.uk.xdrone.XDrone.Color");
 										afterParserOrEnumRuleCall();
 									}
@@ -1302,79 +1248,25 @@ ruleOrigin returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getOriginAccess().getEqualsSignKeyword_1());
 		}
-		otherlv_2='('
-		{
-			newLeafNode(otherlv_2, grammarAccess.getOriginAccess().getLeftParenthesisKeyword_2());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getOriginAccess().getXDOUBLEParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getOriginAccess().getVectorVectorParserRuleCall_2_0());
 				}
-				lv_x_3_0=ruleDOUBLE
+				lv_vector_2_0=ruleVector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOriginRule());
 					}
 					set(
 						$current,
-						"x",
-						lv_x_3_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"vector",
+						lv_vector_2_0,
+						"ic.ac.uk.xdrone.XDrone.Vector");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=','
-		{
-			newLeafNode(otherlv_4, grammarAccess.getOriginAccess().getCommaKeyword_4());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOriginAccess().getZDOUBLEParserRuleCall_5_0());
-				}
-				lv_z_5_0=ruleDOUBLE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOriginRule());
-					}
-					set(
-						$current,
-						"z",
-						lv_z_5_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_6=','
-		{
-			newLeafNode(otherlv_6, grammarAccess.getOriginAccess().getCommaKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getOriginAccess().getYDOUBLEParserRuleCall_7_0());
-				}
-				lv_y_7_0=ruleDOUBLE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getOriginRule());
-					}
-					set(
-						$current,
-						"y",
-						lv_y_7_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_8=')'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getOriginAccess().getRightParenthesisKeyword_8());
-		}
 	)
 ;
 
@@ -1402,24 +1294,85 @@ ruleSize returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getSizeAccess().getEqualsSignKeyword_1());
 		}
-		otherlv_2='('
-		{
-			newLeafNode(otherlv_2, grammarAccess.getSizeAccess().getLeftParenthesisKeyword_2());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSizeAccess().getXDOUBLEParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getSizeAccess().getVectorVectorParserRuleCall_2_0());
 				}
-				lv_x_3_0=ruleDOUBLE
+				lv_vector_2_0=ruleVector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSizeRule());
 					}
 					set(
 						$current,
+						"vector",
+						lv_vector_2_0,
+						"ic.ac.uk.xdrone.XDrone.Vector");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleVector
+entryRuleVector returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getVectorRule()); }
+	iv_ruleVector=ruleVector
+	{ $current=$iv_ruleVector.current; }
+	EOF;
+
+// Rule Vector
+ruleVector returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='('
+		{
+			newLeafNode(otherlv_0, grammarAccess.getVectorAccess().getLeftParenthesisKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVectorAccess().getXDOUBLEParserRuleCall_1_0());
+				}
+				lv_x_1_0=ruleDOUBLE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVectorRule());
+					}
+					set(
+						$current,
 						"x",
-						lv_x_3_0,
+						lv_x_1_0,
+						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2=','
+		{
+			newLeafNode(otherlv_2, grammarAccess.getVectorAccess().getCommaKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVectorAccess().getZDOUBLEParserRuleCall_3_0());
+				}
+				lv_z_3_0=ruleDOUBLE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVectorRule());
+					}
+					set(
+						$current,
+						"z",
+						lv_z_3_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
@@ -1427,53 +1380,30 @@ ruleSize returns [EObject current=null]
 		)
 		otherlv_4=','
 		{
-			newLeafNode(otherlv_4, grammarAccess.getSizeAccess().getCommaKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getVectorAccess().getCommaKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSizeAccess().getZDOUBLEParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getVectorAccess().getYDOUBLEParserRuleCall_5_0());
 				}
-				lv_z_5_0=ruleDOUBLE
+				lv_y_5_0=ruleDOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSizeRule());
-					}
-					set(
-						$current,
-						"z",
-						lv_z_5_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_6=','
-		{
-			newLeafNode(otherlv_6, grammarAccess.getSizeAccess().getCommaKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getSizeAccess().getYDOUBLEParserRuleCall_7_0());
-				}
-				lv_y_7_0=ruleDOUBLE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSizeRule());
+						$current = createModelElementForParent(grammarAccess.getVectorRule());
 					}
 					set(
 						$current,
 						"y",
-						lv_y_7_0,
+						lv_y_5_0,
 						"ic.ac.uk.xdrone.XDrone.DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_8=')'
+		otherlv_6=')'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getSizeAccess().getRightParenthesisKeyword_8());
+			newLeafNode(otherlv_6, grammarAccess.getVectorAccess().getRightParenthesisKeyword_6());
 		}
 	)
 ;

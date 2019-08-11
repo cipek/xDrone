@@ -61,25 +61,24 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FunctionName/func_name"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Drone">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/z"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/y"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Drone/vector"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Object">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/object_name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Object/origin"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Object/size"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/color"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Object/color"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Origin">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/z"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/y"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Origin/vector"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Size">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/z"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/y"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Size/vector"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Vector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/z"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/y"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Color">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Color/color_value"/>

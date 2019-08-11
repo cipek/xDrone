@@ -213,6 +213,15 @@ public interface XDroneFactory extends EFactory
   Size createSize();
 
   /**
+   * Returns a new object of class '<em>Vector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vector</em>'.
+   * @generated
+   */
+  Vector createVector();
+
+  /**
    * Returns a new object of class '<em>Color</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

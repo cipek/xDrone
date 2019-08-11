@@ -23,6 +23,7 @@ import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.XDroneFactory;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
@@ -108,6 +109,7 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.OBJECT: return createObject();
       case XDronePackage.ORIGIN: return createOrigin();
       case XDronePackage.SIZE: return createSize();
+      case XDronePackage.VECTOR: return createVector();
       case XDronePackage.COLOR: return createColor();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -343,6 +345,17 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     SizeImpl size = new SizeImpl();
     return size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Vector createVector()
+  {
+    VectorImpl vector = new VectorImpl();
+    return vector;
   }
 
   /**

@@ -102,24 +102,29 @@ FunctionName:
 
 
 Drone:
-	'DRONE' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+	'DRONE' vector=Vector
 ;
 
 Object:
 //	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 	object_name = ID '{'
-		origin=Origin & size=Size & color?=Color?
+		origin=Origin & size=Size & color=Color?
 	'}'
 ;
 
 Origin:
-	'origin' '=' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+	'origin' '=' vector=Vector
 ;
 
 Size:
-	'size' '=' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+	'size' '=' vector=Vector
+;
+
+Vector:
+	'(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
 ;
 
 Color:
 	'color' '=' color_value = STRING
+	
 ;

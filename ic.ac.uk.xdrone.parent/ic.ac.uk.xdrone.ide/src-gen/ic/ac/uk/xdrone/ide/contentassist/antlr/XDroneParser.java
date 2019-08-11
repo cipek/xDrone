@@ -59,6 +59,7 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getObjectAccess().getGroup_2(), "rule__Object__Group_2__0");
 			builder.put(grammarAccess.getOriginAccess().getGroup(), "rule__Origin__Group__0");
 			builder.put(grammarAccess.getSizeAccess().getGroup(), "rule__Size__Group__0");
+			builder.put(grammarAccess.getVectorAccess().getGroup(), "rule__Vector__Group__0");
 			builder.put(grammarAccess.getColorAccess().getGroup(), "rule__Color__Group__0");
 			builder.put(grammarAccess.getProgramAccess().getFlyAssignment_0(), "rule__Program__FlyAssignment_0");
 			builder.put(grammarAccess.getProgramAccess().getEnvironmentAssignment_1(), "rule__Program__EnvironmentAssignment_1");
@@ -82,19 +83,16 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMoveAccess().getYAssignment_4(), "rule__Move__YAssignment_4");
 			builder.put(grammarAccess.getMoveAccess().getZAssignment_6(), "rule__Move__ZAssignment_6");
 			builder.put(grammarAccess.getFunctionNameAccess().getFunc_nameAssignment_0(), "rule__FunctionName__Func_nameAssignment_0");
-			builder.put(grammarAccess.getDroneAccess().getXAssignment_2(), "rule__Drone__XAssignment_2");
-			builder.put(grammarAccess.getDroneAccess().getZAssignment_4(), "rule__Drone__ZAssignment_4");
-			builder.put(grammarAccess.getDroneAccess().getYAssignment_6(), "rule__Drone__YAssignment_6");
+			builder.put(grammarAccess.getDroneAccess().getVectorAssignment_1(), "rule__Drone__VectorAssignment_1");
 			builder.put(grammarAccess.getObjectAccess().getObject_nameAssignment_0_0(), "rule__Object__Object_nameAssignment_0_0");
 			builder.put(grammarAccess.getObjectAccess().getOriginAssignment_0_2(), "rule__Object__OriginAssignment_0_2");
 			builder.put(grammarAccess.getObjectAccess().getSizeAssignment_1(), "rule__Object__SizeAssignment_1");
 			builder.put(grammarAccess.getObjectAccess().getColorAssignment_2_0(), "rule__Object__ColorAssignment_2_0");
-			builder.put(grammarAccess.getOriginAccess().getXAssignment_3(), "rule__Origin__XAssignment_3");
-			builder.put(grammarAccess.getOriginAccess().getZAssignment_5(), "rule__Origin__ZAssignment_5");
-			builder.put(grammarAccess.getOriginAccess().getYAssignment_7(), "rule__Origin__YAssignment_7");
-			builder.put(grammarAccess.getSizeAccess().getXAssignment_3(), "rule__Size__XAssignment_3");
-			builder.put(grammarAccess.getSizeAccess().getZAssignment_5(), "rule__Size__ZAssignment_5");
-			builder.put(grammarAccess.getSizeAccess().getYAssignment_7(), "rule__Size__YAssignment_7");
+			builder.put(grammarAccess.getOriginAccess().getVectorAssignment_2(), "rule__Origin__VectorAssignment_2");
+			builder.put(grammarAccess.getSizeAccess().getVectorAssignment_2(), "rule__Size__VectorAssignment_2");
+			builder.put(grammarAccess.getVectorAccess().getXAssignment_1(), "rule__Vector__XAssignment_1");
+			builder.put(grammarAccess.getVectorAccess().getZAssignment_3(), "rule__Vector__ZAssignment_3");
+			builder.put(grammarAccess.getVectorAccess().getYAssignment_5(), "rule__Vector__YAssignment_5");
 			builder.put(grammarAccess.getColorAccess().getColor_valueAssignment_2(), "rule__Color__Color_valueAssignment_2");
 			builder.put(grammarAccess.getObjectAccess().getUnorderedGroup(), "rule__Object__UnorderedGroup");
 		}

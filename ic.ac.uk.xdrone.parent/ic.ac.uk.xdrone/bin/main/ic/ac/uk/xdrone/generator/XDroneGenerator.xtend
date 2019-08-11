@@ -40,12 +40,14 @@ class XDroneGenerator extends AbstractGenerator {
 		drone.position.z = 0;
 		drone.position.y = 0;
 		«FOR d : environment.drone»
-			drone.position.x = «d.x»
-			drone.position.z = «d.z»
-			drone.position.y = «d.y»
+			drone.position.x = «d.vector.x»
+			drone.position.z = «d.vector.z»
+			drone.position.y = «d.vector.y»
 		«ENDFOR»
 		«FOR ob : environment.objects»
-			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
+«««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
+			addCube("«ob.object_name»",«ob.size.vector.x», «ob.size.vector.y», «ob.size.vector.z», 
+				«ob.origin.vector.x», «ob.origin.vector.y», «ob.origin.vector.z», "«ob.color.color_value»")
 		«ENDFOR»
 	}
 	'''

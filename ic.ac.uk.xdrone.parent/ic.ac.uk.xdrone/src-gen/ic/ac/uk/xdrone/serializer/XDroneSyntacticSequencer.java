@@ -55,15 +55,15 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '}'*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) color?=Color
+	 *     (rule start) (ambiguity) color=Color
 	 *     (rule start) (ambiguity) object_name=ID
 	 *     (rule start) (ambiguity) size=Size
 	 *     origin=Origin (ambiguity) (rule end)
-	 *     origin=Origin (ambiguity) color?=Color
+	 *     origin=Origin (ambiguity) color=Color
 	 *     origin=Origin (ambiguity) object_name=ID
 	 *     origin=Origin (ambiguity) size=Size
 	 *     size=Size (ambiguity) (rule end)
-	 *     size=Size (ambiguity) color?=Color
+	 *     size=Size (ambiguity) color=Color
 	 *     size=Size (ambiguity) object_name=ID
 	 *     size=Size (ambiguity) size=Size
 	 */
@@ -77,10 +77,10 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) (rule start)
-	 *     color?=Color (ambiguity) (rule end)
-	 *     color?=Color (ambiguity) color?=Color
-	 *     color?=Color (ambiguity) object_name=ID
-	 *     color?=Color (ambiguity) size=Size
+	 *     color=Color (ambiguity) (rule end)
+	 *     color=Color (ambiguity) color=Color
+	 *     color=Color (ambiguity) object_name=ID
+	 *     color=Color (ambiguity) size=Size
 	 */
 	protected void emit_Object_RightCurlyBracketKeyword_2_1_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

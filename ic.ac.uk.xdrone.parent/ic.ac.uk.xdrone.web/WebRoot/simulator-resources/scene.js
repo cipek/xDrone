@@ -350,9 +350,9 @@ function land(){
   }
 }
 
-function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ){
+function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
   var cubeGeometry = new THREE.BoxGeometry (sizeX, sizeY, sizeZ);
-  var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
+  var cubeMaterial = new THREE.MeshBasicMaterial ({color: color});
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
   cube.position.set (locX, locY, locZ);
 

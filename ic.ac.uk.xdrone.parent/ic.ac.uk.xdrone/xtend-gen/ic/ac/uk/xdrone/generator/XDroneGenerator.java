@@ -7,6 +7,7 @@ import com.google.common.collect.Iterables;
 import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
+import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
@@ -39,13 +40,81 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 @SuppressWarnings("all")
 public class XDroneGenerator extends AbstractGenerator {
   public CharSequence compile(final Environment environment) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field sx is undefined for the type Object"
-      + "\nThe method or field sy is undefined for the type Object"
-      + "\nThe method or field sz is undefined for the type Object"
-      + "\nThe method or field lx is undefined for the type Object"
-      + "\nThe method or field ly is undefined for the type Object"
-      + "\nThe method or field lz is undefined for the type Object");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("function environment()");
+    _builder.newLine();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("//resets drone location");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.x = 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.z = 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("drone.position.y = 0;");
+    _builder.newLine();
+    {
+      EList<Drone> _drone = environment.getDrone();
+      for(final Drone d : _drone) {
+        _builder.append("\t");
+        _builder.append("drone.position.x = ");
+        String _x = d.getVector().getX();
+        _builder.append(_x, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("drone.position.z = ");
+        String _z = d.getVector().getZ();
+        _builder.append(_z, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("drone.position.y = ");
+        String _y = d.getVector().getY();
+        _builder.append(_y, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      EList<ic.ac.uk.xdrone.xDrone.Object> _objects = environment.getObjects();
+      for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
+        _builder.append("\t");
+        _builder.append("addCube(\"");
+        String _object_name = ob.getObject_name();
+        _builder.append(_object_name, "\t");
+        _builder.append("\",");
+        String _x_1 = ob.getSize().getVector().getX();
+        _builder.append(_x_1, "\t");
+        _builder.append(", ");
+        String _y_1 = ob.getSize().getVector().getY();
+        _builder.append(_y_1, "\t");
+        _builder.append(", ");
+        String _z_1 = ob.getSize().getVector().getZ();
+        _builder.append(_z_1, "\t");
+        _builder.append(", ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        String _x_2 = ob.getOrigin().getVector().getX();
+        _builder.append(_x_2, "\t\t");
+        _builder.append(", ");
+        String _y_2 = ob.getOrigin().getVector().getY();
+        _builder.append(_y_2, "\t\t");
+        _builder.append(", ");
+        String _z_2 = ob.getOrigin().getVector().getZ();
+        _builder.append(_z_2, "\t\t");
+        _builder.append(", \"");
+        String _color_value = ob.getColor().getColor_value();
+        _builder.append(_color_value, "\t\t");
+        _builder.append("\")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence compileJS(final Fly fly) {

@@ -23,6 +23,7 @@ import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -200,6 +201,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSize(Size object)
       {
         return createSizeAdapter();
+      }
+      @Override
+      public Adapter caseVector(Vector object)
+      {
+        return createVectorAdapter();
       }
       @Override
       public Adapter caseColor(Color object)
@@ -539,6 +545,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSizeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Vector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Vector
+   * @generated
+   */
+  public Adapter createVectorAdapter()
   {
     return null;
   }

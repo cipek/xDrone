@@ -3,6 +3,7 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
@@ -27,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getObject_name <em>Object name</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSize <em>Size</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#isColor <em>Color</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -75,24 +76,14 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
   protected Size size;
 
   /**
-   * The default value of the '{@link #isColor() <em>Color</em>}' attribute.
+   * The cached value of the '{@link #getColor() <em>Color</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isColor()
+   * @see #getColor()
    * @generated
    * @ordered
    */
-  protected static final boolean COLOR_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isColor() <em>Color</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isColor()
-   * @generated
-   * @ordered
-   */
-  protected boolean color = COLOR_EDEFAULT;
+  protected Color color;
 
   /**
    * <!-- begin-user-doc -->
@@ -239,7 +230,7 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isColor()
+  public Color getColor()
   {
     return color;
   }
@@ -249,12 +240,37 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setColor(boolean newColor)
+  public NotificationChain basicSetColor(Color newColor, NotificationChain msgs)
   {
-    boolean oldColor = color;
+    Color oldColor = color;
     color = newColor;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__COLOR, oldColor, color));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__COLOR, oldColor, newColor);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColor(Color newColor)
+  {
+    if (newColor != color)
+    {
+      NotificationChain msgs = null;
+      if (color != null)
+        msgs = ((InternalEObject)color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__COLOR, null, msgs);
+      if (newColor != null)
+        msgs = ((InternalEObject)newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__COLOR, null, msgs);
+      msgs = basicSetColor(newColor, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__COLOR, newColor, newColor));
   }
 
   /**
@@ -271,6 +287,8 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
         return basicSetOrigin(null, msgs);
       case XDronePackage.OBJECT__SIZE:
         return basicSetSize(null, msgs);
+      case XDronePackage.OBJECT__COLOR:
+        return basicSetColor(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -292,7 +310,7 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__SIZE:
         return getSize();
       case XDronePackage.OBJECT__COLOR:
-        return isColor();
+        return getColor();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -317,7 +335,7 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
         setSize((Size)newValue);
         return;
       case XDronePackage.OBJECT__COLOR:
-        setColor((Boolean)newValue);
+        setColor((Color)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -343,7 +361,7 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
         setSize((Size)null);
         return;
       case XDronePackage.OBJECT__COLOR:
-        setColor(COLOR_EDEFAULT);
+        setColor((Color)null);
         return;
     }
     super.eUnset(featureID);
@@ -366,7 +384,7 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__SIZE:
         return size != null;
       case XDronePackage.OBJECT__COLOR:
-        return color != COLOR_EDEFAULT;
+        return color != null;
     }
     return super.eIsSet(featureID);
   }
@@ -384,8 +402,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (object_name: ");
     result.append(object_name);
-    result.append(", color: ");
-    result.append(color);
     result.append(')');
     return result.toString();
   }

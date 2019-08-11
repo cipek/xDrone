@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getObject_name <em>Object name</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getOrigin <em>Origin</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSize <em>Size</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#isColor <em>Color</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject()
@@ -105,29 +105,29 @@ public interface Object extends EObject
   void setSize(Size value);
 
   /**
-   * Returns the value of the '<em><b>Color</b></em>' attribute.
+   * Returns the value of the '<em><b>Color</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Color</em>' attribute isn't clear,
+   * If the meaning of the '<em>Color</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Color</em>' attribute.
-   * @see #setColor(boolean)
+   * @return the value of the '<em>Color</em>' containment reference.
+   * @see #setColor(Color)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Color()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  boolean isColor();
+  Color getColor();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#isColor <em>Color</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getColor <em>Color</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Color</em>' attribute.
-   * @see #isColor()
+   * @param value the new value of the '<em>Color</em>' containment reference.
+   * @see #getColor()
    * @generated
    */
-  void setColor(boolean value);
+  void setColor(Color value);
 
 } // Object
