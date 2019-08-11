@@ -4,6 +4,7 @@
 package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
@@ -13,10 +14,12 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
@@ -171,6 +174,27 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * @generated
    */
   private EClass objectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass originEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sizeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass colorEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -690,9 +714,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Sx()
+  public EReference getObject_Origin()
   {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(1);
+    return (EReference)objectEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -700,9 +724,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Sz()
+  public EReference getObject_Size()
   {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(2);
+    return (EReference)objectEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -710,7 +734,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Sy()
+  public EAttribute getObject_Color()
   {
     return (EAttribute)objectEClass.getEStructuralFeatures().get(3);
   }
@@ -720,9 +744,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Lx()
+  public EClass getOrigin()
   {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(4);
+    return originEClass;
   }
 
   /**
@@ -730,9 +754,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Lz()
+  public EAttribute getOrigin_X()
   {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)originEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -740,9 +764,79 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Ly()
+  public EAttribute getOrigin_Z()
   {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)originEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOrigin_Y()
+  {
+    return (EAttribute)originEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSize()
+  {
+    return sizeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSize_X()
+  {
+    return (EAttribute)sizeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSize_Z()
+  {
+    return (EAttribute)sizeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSize_Y()
+  {
+    return (EAttribute)sizeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColor()
+  {
+    return colorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColor_Color_value()
+  {
+    return (EAttribute)colorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -838,12 +932,22 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     objectEClass = createEClass(OBJECT);
     createEAttribute(objectEClass, OBJECT__OBJECT_NAME);
-    createEAttribute(objectEClass, OBJECT__SX);
-    createEAttribute(objectEClass, OBJECT__SZ);
-    createEAttribute(objectEClass, OBJECT__SY);
-    createEAttribute(objectEClass, OBJECT__LX);
-    createEAttribute(objectEClass, OBJECT__LZ);
-    createEAttribute(objectEClass, OBJECT__LY);
+    createEReference(objectEClass, OBJECT__ORIGIN);
+    createEReference(objectEClass, OBJECT__SIZE);
+    createEAttribute(objectEClass, OBJECT__COLOR);
+
+    originEClass = createEClass(ORIGIN);
+    createEAttribute(originEClass, ORIGIN__X);
+    createEAttribute(originEClass, ORIGIN__Z);
+    createEAttribute(originEClass, ORIGIN__Y);
+
+    sizeEClass = createEClass(SIZE);
+    createEAttribute(sizeEClass, SIZE__X);
+    createEAttribute(sizeEClass, SIZE__Z);
+    createEAttribute(sizeEClass, SIZE__Y);
+
+    colorEClass = createEClass(COLOR);
+    createEAttribute(colorEClass, COLOR__COLOR_VALUE);
   }
 
   /**
@@ -951,12 +1055,22 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(objectEClass, ic.ac.uk.xdrone.xDrone.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getObject_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Sx(), ecorePackage.getEString(), "sx", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Sz(), ecorePackage.getEString(), "sz", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Sy(), ecorePackage.getEString(), "sy", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Lx(), ecorePackage.getEString(), "lx", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Lz(), ecorePackage.getEString(), "lz", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getObject_Ly(), ecorePackage.getEString(), "ly", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Origin(), this.getOrigin(), null, "origin", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Size(), this.getSize(), null, "size", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getObject_Color(), ecorePackage.getEBoolean(), "color", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(originEClass, Origin.class, "Origin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getOrigin_X(), ecorePackage.getEString(), "x", null, 0, 1, Origin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOrigin_Z(), ecorePackage.getEString(), "z", null, 0, 1, Origin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOrigin_Y(), ecorePackage.getEString(), "y", null, 0, 1, Origin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSize_X(), ecorePackage.getEString(), "x", null, 0, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSize_Z(), ecorePackage.getEString(), "z", null, 0, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSize_Y(), ecorePackage.getEString(), "y", null, 0, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getColor_Color_value(), ecorePackage.getEString(), "color_value", null, 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

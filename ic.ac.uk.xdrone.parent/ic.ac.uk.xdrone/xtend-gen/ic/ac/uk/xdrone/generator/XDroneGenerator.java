@@ -7,7 +7,6 @@ import com.google.common.collect.Iterables;
 import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
-import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
@@ -40,75 +39,13 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 @SuppressWarnings("all")
 public class XDroneGenerator extends AbstractGenerator {
   public CharSequence compile(final Environment environment) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("function environment()");
-    _builder.newLine();
-    _builder.append("{");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//resets drone location");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("drone.position.x = 0;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("drone.position.z = 0;");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("drone.position.y = 0;");
-    _builder.newLine();
-    {
-      EList<Drone> _drone = environment.getDrone();
-      for(final Drone d : _drone) {
-        _builder.append("\t");
-        _builder.append("drone.position.x = ");
-        String _x = d.getX();
-        _builder.append(_x, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("drone.position.z = ");
-        String _z = d.getZ();
-        _builder.append(_z, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("drone.position.y = ");
-        String _y = d.getY();
-        _builder.append(_y, "\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      EList<ic.ac.uk.xdrone.xDrone.Object> _objects = environment.getObjects();
-      for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
-        _builder.append("\t");
-        _builder.append("addCube(\"");
-        String _object_name = ob.getObject_name();
-        _builder.append(_object_name, "\t");
-        _builder.append("\",");
-        String _sx = ob.getSx();
-        _builder.append(_sx, "\t");
-        _builder.append(", ");
-        String _sy = ob.getSy();
-        _builder.append(_sy, "\t");
-        _builder.append(", ");
-        String _sz = ob.getSz();
-        _builder.append(_sz, "\t");
-        _builder.append(", ");
-        String _lx = ob.getLx();
-        _builder.append(_lx, "\t");
-        _builder.append(", ");
-        String _ly = ob.getLy();
-        _builder.append(_ly, "\t");
-        _builder.append(", ");
-        String _lz = ob.getLz();
-        _builder.append(_lz, "\t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field sx is undefined for the type Object"
+      + "\nThe method or field sy is undefined for the type Object"
+      + "\nThe method or field sz is undefined for the type Object"
+      + "\nThe method or field lx is undefined for the type Object"
+      + "\nThe method or field ly is undefined for the type Object"
+      + "\nThe method or field lz is undefined for the type Object");
   }
   
   public CharSequence compileJS(final Fly fly) {

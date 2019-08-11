@@ -3,11 +3,15 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
+import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,12 +25,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getObject_name <em>Object name</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSx <em>Sx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSz <em>Sz</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSy <em>Sy</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLx <em>Lx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLz <em>Lz</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getLy <em>Ly</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getOrigin <em>Origin</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl#isColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,124 +55,44 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
   protected String object_name = OBJECT_NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSx() <em>Sx</em>}' attribute.
+   * The cached value of the '{@link #getOrigin() <em>Origin</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSx()
+   * @see #getOrigin()
    * @generated
    * @ordered
    */
-  protected static final String SX_EDEFAULT = null;
+  protected Origin origin;
 
   /**
-   * The cached value of the '{@link #getSx() <em>Sx</em>}' attribute.
+   * The cached value of the '{@link #getSize() <em>Size</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSx()
+   * @see #getSize()
    * @generated
    * @ordered
    */
-  protected String sx = SX_EDEFAULT;
+  protected Size size;
 
   /**
-   * The default value of the '{@link #getSz() <em>Sz</em>}' attribute.
+   * The default value of the '{@link #isColor() <em>Color</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSz()
+   * @see #isColor()
    * @generated
    * @ordered
    */
-  protected static final String SZ_EDEFAULT = null;
+  protected static final boolean COLOR_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getSz() <em>Sz</em>}' attribute.
+   * The cached value of the '{@link #isColor() <em>Color</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSz()
+   * @see #isColor()
    * @generated
    * @ordered
    */
-  protected String sz = SZ_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getSy() <em>Sy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSy()
-   * @generated
-   * @ordered
-   */
-  protected static final String SY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSy() <em>Sy</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSy()
-   * @generated
-   * @ordered
-   */
-  protected String sy = SY_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getLx() <em>Lx</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLx()
-   * @generated
-   * @ordered
-   */
-  protected static final String LX_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLx() <em>Lx</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLx()
-   * @generated
-   * @ordered
-   */
-  protected String lx = LX_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getLz() <em>Lz</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLz()
-   * @generated
-   * @ordered
-   */
-  protected static final String LZ_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLz() <em>Lz</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLz()
-   * @generated
-   * @ordered
-   */
-  protected String lz = LZ_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getLy() <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLy()
-   * @generated
-   * @ordered
-   */
-  protected static final String LY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getLy() <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLy()
-   * @generated
-   * @ordered
-   */
-  protected String ly = LY_EDEFAULT;
+  protected boolean color = COLOR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -222,9 +143,9 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSx()
+  public Origin getOrigin()
   {
-    return sx;
+    return origin;
   }
 
   /**
@@ -232,12 +153,16 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSx(String newSx)
+  public NotificationChain basicSetOrigin(Origin newOrigin, NotificationChain msgs)
   {
-    String oldSx = sx;
-    sx = newSx;
+    Origin oldOrigin = origin;
+    origin = newOrigin;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SX, oldSx, sx));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__ORIGIN, oldOrigin, newOrigin);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -245,9 +170,20 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSz()
+  public void setOrigin(Origin newOrigin)
   {
-    return sz;
+    if (newOrigin != origin)
+    {
+      NotificationChain msgs = null;
+      if (origin != null)
+        msgs = ((InternalEObject)origin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__ORIGIN, null, msgs);
+      if (newOrigin != null)
+        msgs = ((InternalEObject)newOrigin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__ORIGIN, null, msgs);
+      msgs = basicSetOrigin(newOrigin, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__ORIGIN, newOrigin, newOrigin));
   }
 
   /**
@@ -255,12 +191,26 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSz(String newSz)
+  public Size getSize()
   {
-    String oldSz = sz;
-    sz = newSz;
+    return size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSize(Size newSize, NotificationChain msgs)
+  {
+    Size oldSize = size;
+    size = newSize;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SZ, oldSz, sz));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SIZE, oldSize, newSize);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -268,9 +218,20 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getSy()
+  public void setSize(Size newSize)
   {
-    return sy;
+    if (newSize != size)
+    {
+      NotificationChain msgs = null;
+      if (size != null)
+        msgs = ((InternalEObject)size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__SIZE, null, msgs);
+      if (newSize != null)
+        msgs = ((InternalEObject)newSize).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.OBJECT__SIZE, null, msgs);
+      msgs = basicSetSize(newSize, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SIZE, newSize, newSize));
   }
 
   /**
@@ -278,12 +239,22 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSy(String newSy)
+  public boolean isColor()
   {
-    String oldSy = sy;
-    sy = newSy;
+    return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColor(boolean newColor)
+  {
+    boolean oldColor = color;
+    color = newColor;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__SY, oldSy, sy));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__COLOR, oldColor, color));
   }
 
   /**
@@ -291,68 +262,17 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLx()
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    return lx;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLx(String newLx)
-  {
-    String oldLx = lx;
-    lx = newLx;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__LX, oldLx, lx));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getLz()
-  {
-    return lz;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLz(String newLz)
-  {
-    String oldLz = lz;
-    lz = newLz;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__LZ, oldLz, lz));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getLy()
-  {
-    return ly;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLy(String newLy)
-  {
-    String oldLy = ly;
-    ly = newLy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.OBJECT__LY, oldLy, ly));
+    switch (featureID)
+    {
+      case XDronePackage.OBJECT__ORIGIN:
+        return basicSetOrigin(null, msgs);
+      case XDronePackage.OBJECT__SIZE:
+        return basicSetSize(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -367,18 +287,12 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     {
       case XDronePackage.OBJECT__OBJECT_NAME:
         return getObject_name();
-      case XDronePackage.OBJECT__SX:
-        return getSx();
-      case XDronePackage.OBJECT__SZ:
-        return getSz();
-      case XDronePackage.OBJECT__SY:
-        return getSy();
-      case XDronePackage.OBJECT__LX:
-        return getLx();
-      case XDronePackage.OBJECT__LZ:
-        return getLz();
-      case XDronePackage.OBJECT__LY:
-        return getLy();
+      case XDronePackage.OBJECT__ORIGIN:
+        return getOrigin();
+      case XDronePackage.OBJECT__SIZE:
+        return getSize();
+      case XDronePackage.OBJECT__COLOR:
+        return isColor();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -396,23 +310,14 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__OBJECT_NAME:
         setObject_name((String)newValue);
         return;
-      case XDronePackage.OBJECT__SX:
-        setSx((String)newValue);
+      case XDronePackage.OBJECT__ORIGIN:
+        setOrigin((Origin)newValue);
         return;
-      case XDronePackage.OBJECT__SZ:
-        setSz((String)newValue);
+      case XDronePackage.OBJECT__SIZE:
+        setSize((Size)newValue);
         return;
-      case XDronePackage.OBJECT__SY:
-        setSy((String)newValue);
-        return;
-      case XDronePackage.OBJECT__LX:
-        setLx((String)newValue);
-        return;
-      case XDronePackage.OBJECT__LZ:
-        setLz((String)newValue);
-        return;
-      case XDronePackage.OBJECT__LY:
-        setLy((String)newValue);
+      case XDronePackage.OBJECT__COLOR:
+        setColor((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -431,23 +336,14 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
       case XDronePackage.OBJECT__OBJECT_NAME:
         setObject_name(OBJECT_NAME_EDEFAULT);
         return;
-      case XDronePackage.OBJECT__SX:
-        setSx(SX_EDEFAULT);
+      case XDronePackage.OBJECT__ORIGIN:
+        setOrigin((Origin)null);
         return;
-      case XDronePackage.OBJECT__SZ:
-        setSz(SZ_EDEFAULT);
+      case XDronePackage.OBJECT__SIZE:
+        setSize((Size)null);
         return;
-      case XDronePackage.OBJECT__SY:
-        setSy(SY_EDEFAULT);
-        return;
-      case XDronePackage.OBJECT__LX:
-        setLx(LX_EDEFAULT);
-        return;
-      case XDronePackage.OBJECT__LZ:
-        setLz(LZ_EDEFAULT);
-        return;
-      case XDronePackage.OBJECT__LY:
-        setLy(LY_EDEFAULT);
+      case XDronePackage.OBJECT__COLOR:
+        setColor(COLOR_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -465,18 +361,12 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     {
       case XDronePackage.OBJECT__OBJECT_NAME:
         return OBJECT_NAME_EDEFAULT == null ? object_name != null : !OBJECT_NAME_EDEFAULT.equals(object_name);
-      case XDronePackage.OBJECT__SX:
-        return SX_EDEFAULT == null ? sx != null : !SX_EDEFAULT.equals(sx);
-      case XDronePackage.OBJECT__SZ:
-        return SZ_EDEFAULT == null ? sz != null : !SZ_EDEFAULT.equals(sz);
-      case XDronePackage.OBJECT__SY:
-        return SY_EDEFAULT == null ? sy != null : !SY_EDEFAULT.equals(sy);
-      case XDronePackage.OBJECT__LX:
-        return LX_EDEFAULT == null ? lx != null : !LX_EDEFAULT.equals(lx);
-      case XDronePackage.OBJECT__LZ:
-        return LZ_EDEFAULT == null ? lz != null : !LZ_EDEFAULT.equals(lz);
-      case XDronePackage.OBJECT__LY:
-        return LY_EDEFAULT == null ? ly != null : !LY_EDEFAULT.equals(ly);
+      case XDronePackage.OBJECT__ORIGIN:
+        return origin != null;
+      case XDronePackage.OBJECT__SIZE:
+        return size != null;
+      case XDronePackage.OBJECT__COLOR:
+        return color != COLOR_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -494,18 +384,8 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements ic.ac.uk
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (object_name: ");
     result.append(object_name);
-    result.append(", sx: ");
-    result.append(sx);
-    result.append(", sz: ");
-    result.append(sz);
-    result.append(", sy: ");
-    result.append(sy);
-    result.append(", lx: ");
-    result.append(lx);
-    result.append(", lz: ");
-    result.append(lz);
-    result.append(", ly: ");
-    result.append(ly);
+    result.append(", color: ");
+    result.append(color);
     result.append(')');
     return result.toString();
   }

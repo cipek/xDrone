@@ -195,6 +195,33 @@ public interface XDroneFactory extends EFactory
   Object createObject();
 
   /**
+   * Returns a new object of class '<em>Origin</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Origin</em>'.
+   * @generated
+   */
+  Origin createOrigin();
+
+  /**
+   * Returns a new object of class '<em>Size</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Size</em>'.
+   * @generated
+   */
+  Size createSize();
+
+  /**
+   * Returns a new object of class '<em>Color</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Color</em>'.
+   * @generated
+   */
+  Color createColor();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

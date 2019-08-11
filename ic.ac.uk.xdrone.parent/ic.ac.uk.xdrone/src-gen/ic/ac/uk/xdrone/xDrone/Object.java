@@ -15,12 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getObject_name <em>Object name</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSx <em>Sx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSz <em>Sz</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLx <em>Lx</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLz <em>Lz</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getOrigin <em>Origin</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#getSize <em>Size</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Object#isColor <em>Color</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject()
@@ -56,159 +53,81 @@ public interface Object extends EObject
   void setObject_name(String value);
 
   /**
-   * Returns the value of the '<em><b>Sx</b></em>' attribute.
+   * Returns the value of the '<em><b>Origin</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sx</em>' attribute isn't clear,
+   * If the meaning of the '<em>Origin</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sx</em>' attribute.
-   * @see #setSx(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Sx()
-   * @model
+   * @return the value of the '<em>Origin</em>' containment reference.
+   * @see #setOrigin(Origin)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Origin()
+   * @model containment="true"
    * @generated
    */
-  String getSx();
+  Origin getOrigin();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSx <em>Sx</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getOrigin <em>Origin</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sx</em>' attribute.
-   * @see #getSx()
+   * @param value the new value of the '<em>Origin</em>' containment reference.
+   * @see #getOrigin()
    * @generated
    */
-  void setSx(String value);
+  void setOrigin(Origin value);
 
   /**
-   * Returns the value of the '<em><b>Sz</b></em>' attribute.
+   * Returns the value of the '<em><b>Size</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sz</em>' attribute isn't clear,
+   * If the meaning of the '<em>Size</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sz</em>' attribute.
-   * @see #setSz(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Sz()
-   * @model
+   * @return the value of the '<em>Size</em>' containment reference.
+   * @see #setSize(Size)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Size()
+   * @model containment="true"
    * @generated
    */
-  String getSz();
+  Size getSize();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSz <em>Sz</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSize <em>Size</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sz</em>' attribute.
-   * @see #getSz()
+   * @param value the new value of the '<em>Size</em>' containment reference.
+   * @see #getSize()
    * @generated
    */
-  void setSz(String value);
+  void setSize(Size value);
 
   /**
-   * Returns the value of the '<em><b>Sy</b></em>' attribute.
+   * Returns the value of the '<em><b>Color</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sy</em>' attribute isn't clear,
+   * If the meaning of the '<em>Color</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sy</em>' attribute.
-   * @see #setSy(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Sy()
+   * @return the value of the '<em>Color</em>' attribute.
+   * @see #setColor(boolean)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Color()
    * @model
    * @generated
    */
-  String getSy();
+  boolean isColor();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#isColor <em>Color</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sy</em>' attribute.
-   * @see #getSy()
+   * @param value the new value of the '<em>Color</em>' attribute.
+   * @see #isColor()
    * @generated
    */
-  void setSy(String value);
-
-  /**
-   * Returns the value of the '<em><b>Lx</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Lx</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Lx</em>' attribute.
-   * @see #setLx(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Lx()
-   * @model
-   * @generated
-   */
-  String getLx();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getLx <em>Lx</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lx</em>' attribute.
-   * @see #getLx()
-   * @generated
-   */
-  void setLx(String value);
-
-  /**
-   * Returns the value of the '<em><b>Lz</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Lz</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Lz</em>' attribute.
-   * @see #setLz(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Lz()
-   * @model
-   * @generated
-   */
-  String getLz();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getLz <em>Lz</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lz</em>' attribute.
-   * @see #getLz()
-   * @generated
-   */
-  void setLz(String value);
-
-  /**
-   * Returns the value of the '<em><b>Ly</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ly</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ly</em>' attribute.
-   * @see #setLy(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getObject_Ly()
-   * @model
-   * @generated
-   */
-  String getLy();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ly</em>' attribute.
-   * @see #getLy()
-   * @generated
-   */
-  void setLy(String value);
+  void setColor(boolean value);
 
 } // Object

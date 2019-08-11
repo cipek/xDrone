@@ -4,6 +4,7 @@
 package ic.ac.uk.xdrone.xDrone.util;
 
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
@@ -13,10 +14,12 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
@@ -187,6 +190,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseObject(ic.ac.uk.xdrone.xDrone.Object object)
       {
         return createObjectAdapter();
+      }
+      @Override
+      public Adapter caseOrigin(Origin object)
+      {
+        return createOriginAdapter();
+      }
+      @Override
+      public Adapter caseSize(Size object)
+      {
+        return createSizeAdapter();
+      }
+      @Override
+      public Adapter caseColor(Color object)
+      {
+        return createColorAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -491,6 +509,51 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Origin <em>Origin</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Origin
+   * @generated
+   */
+  public Adapter createOriginAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Size <em>Size</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Size
+   * @generated
+   */
+  public Adapter createSizeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Color <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Color
+   * @generated
+   */
+  public Adapter createColorAdapter()
   {
     return null;
   }

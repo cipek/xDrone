@@ -67,12 +67,22 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Object">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/object_name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sx"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sz"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/sy"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lx"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/lz"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/ly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Object/origin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Object/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/color"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Origin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/z"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Origin/y"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Size">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/z"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Size/y"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Color">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Color/color_value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

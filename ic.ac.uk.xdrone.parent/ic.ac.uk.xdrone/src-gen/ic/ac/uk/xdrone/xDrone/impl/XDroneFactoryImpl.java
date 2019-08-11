@@ -4,6 +4,7 @@
 package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
@@ -13,10 +14,12 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
@@ -103,6 +106,9 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.FUNCTION_NAME: return createFunctionName();
       case XDronePackage.DRONE: return createDrone();
       case XDronePackage.OBJECT: return createObject();
+      case XDronePackage.ORIGIN: return createOrigin();
+      case XDronePackage.SIZE: return createSize();
+      case XDronePackage.COLOR: return createColor();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -315,6 +321,39 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     ObjectImpl object = new ObjectImpl();
     return object;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Origin createOrigin()
+  {
+    OriginImpl origin = new OriginImpl();
+    return origin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Size createSize()
+  {
+    SizeImpl size = new SizeImpl();
+    return size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Color createColor()
+  {
+    ColorImpl color = new ColorImpl();
+    return color;
   }
 
   /**

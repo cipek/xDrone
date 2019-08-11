@@ -11,6 +11,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -18,10 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XDroneGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Object_RightCurlyBracketKeyword_2_1_a;
+	protected AbstractElementAlias match_Object_RightCurlyBracketKeyword_2_1_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XDroneGrammarAccess) access;
+		match_Object_RightCurlyBracketKeyword_2_1_a = new TokenAlias(true, true, grammarAccess.getObjectAccess().getRightCurlyBracketKeyword_2_1());
+		match_Object_RightCurlyBracketKeyword_2_1_p = new TokenAlias(true, false, grammarAccess.getObjectAccess().getRightCurlyBracketKeyword_2_1());
 	}
 	
 	@Override
@@ -36,8 +42,48 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_Object_RightCurlyBracketKeyword_2_1_a.equals(syntax))
+				emit_Object_RightCurlyBracketKeyword_2_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Object_RightCurlyBracketKeyword_2_1_p.equals(syntax))
+				emit_Object_RightCurlyBracketKeyword_2_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '}'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) color?=Color
+	 *     (rule start) (ambiguity) object_name=ID
+	 *     (rule start) (ambiguity) size=Size
+	 *     origin=Origin (ambiguity) (rule end)
+	 *     origin=Origin (ambiguity) color?=Color
+	 *     origin=Origin (ambiguity) object_name=ID
+	 *     origin=Origin (ambiguity) size=Size
+	 *     size=Size (ambiguity) (rule end)
+	 *     size=Size (ambiguity) color?=Color
+	 *     size=Size (ambiguity) object_name=ID
+	 *     size=Size (ambiguity) size=Size
+	 */
+	protected void emit_Object_RightCurlyBracketKeyword_2_1_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '}'+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 *     color?=Color (ambiguity) (rule end)
+	 *     color?=Color (ambiguity) color?=Color
+	 *     color?=Color (ambiguity) object_name=ID
+	 *     color?=Color (ambiguity) size=Size
+	 */
+	protected void emit_Object_RightCurlyBracketKeyword_2_1_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

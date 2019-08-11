@@ -4,6 +4,7 @@
 package ic.ac.uk.xdrone.xDrone.util;
 
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
@@ -13,10 +14,12 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
@@ -241,6 +244,27 @@ public class XDroneSwitch<T> extends Switch<T>
       {
         ic.ac.uk.xdrone.xDrone.Object object = (ic.ac.uk.xdrone.xDrone.Object)theEObject;
         T result = caseObject(object);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.ORIGIN:
+      {
+        Origin origin = (Origin)theEObject;
+        T result = caseOrigin(origin);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.SIZE:
+      {
+        Size size = (Size)theEObject;
+        T result = caseSize(size);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.COLOR:
+      {
+        Color color = (Color)theEObject;
+        T result = caseColor(color);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -548,6 +572,54 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseObject(ic.ac.uk.xdrone.xDrone.Object object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Origin</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Origin</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrigin(Origin object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Size</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Size</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSize(Size object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Color</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Color</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColor(Color object)
   {
     return null;
   }

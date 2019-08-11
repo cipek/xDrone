@@ -20,8 +20,9 @@ Fly :
 Environment :
  
  {Environment} 'environment(){'
- 	(drone+=Drone)?
-  	((objects+=Object))*
+ 	 (drone+=Drone | objects+=Object)*
+// 	(drone+=Drone)?
+//  	((objects+=Object))*
   '}'
    
  ;
@@ -105,5 +106,20 @@ Drone:
 ;
 
 Object:
-	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
+//	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
+	object_name = ID '{'
+		origin=Origin & size=Size & color?=Color?
+	'}'
+;
+
+Origin:
+	'origin' '=' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+;
+
+Size:
+	'size' '=' '(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+;
+
+Color:
+	'color' '=' color_value = STRING
 ;

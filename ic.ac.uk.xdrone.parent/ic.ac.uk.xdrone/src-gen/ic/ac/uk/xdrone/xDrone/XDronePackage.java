@@ -644,58 +644,31 @@ public interface XDronePackage extends EPackage
   int OBJECT__OBJECT_NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Sx</b></em>' attribute.
+   * The feature id for the '<em><b>Origin</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT__SX = 1;
+  int OBJECT__ORIGIN = 1;
 
   /**
-   * The feature id for the '<em><b>Sz</b></em>' attribute.
+   * The feature id for the '<em><b>Size</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT__SZ = 2;
+  int OBJECT__SIZE = 2;
 
   /**
-   * The feature id for the '<em><b>Sy</b></em>' attribute.
+   * The feature id for the '<em><b>Color</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OBJECT__SY = 3;
-
-  /**
-   * The feature id for the '<em><b>Lx</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OBJECT__LX = 4;
-
-  /**
-   * The feature id for the '<em><b>Lz</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OBJECT__LZ = 5;
-
-  /**
-   * The feature id for the '<em><b>Ly</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OBJECT__LY = 6;
+  int OBJECT__COLOR = 3;
 
   /**
    * The number of structural features of the '<em>Object</em>' class.
@@ -704,7 +677,127 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT_FEATURE_COUNT = 7;
+  int OBJECT_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.OriginImpl <em>Origin</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.OriginImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
+   * @generated
+   */
+  int ORIGIN = 19;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Z</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN__Z = 1;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN__Y = 2;
+
+  /**
+   * The number of structural features of the '<em>Origin</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl <em>Size</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.SizeImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
+   * @generated
+   */
+  int SIZE = 20;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Z</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE__Z = 1;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE__Y = 2;
+
+  /**
+   * The number of structural features of the '<em>Size</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.ColorImpl <em>Color</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.ColorImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
+   * @generated
+   */
+  int COLOR = 21;
+
+  /**
+   * The feature id for the '<em><b>Color value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR__COLOR_VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Color</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR_FEATURE_COUNT = 1;
 
 
   /**
@@ -1184,70 +1277,144 @@ public interface XDronePackage extends EPackage
   EAttribute getObject_Object_name();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSx <em>Sx</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Object#getOrigin <em>Origin</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sx</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getSx()
+   * @return the meta object for the containment reference '<em>Origin</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getOrigin()
    * @see #getObject()
    * @generated
    */
-  EAttribute getObject_Sx();
+  EReference getObject_Origin();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSz <em>Sz</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Object#getSize <em>Size</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sz</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getSz()
+   * @return the meta object for the containment reference '<em>Size</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getSize()
    * @see #getObject()
    * @generated
    */
-  EAttribute getObject_Sz();
+  EReference getObject_Size();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getSy <em>Sy</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#isColor <em>Color</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sy</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getSy()
+   * @return the meta object for the attribute '<em>Color</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#isColor()
    * @see #getObject()
    * @generated
    */
-  EAttribute getObject_Sy();
+  EAttribute getObject_Color();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLx <em>Lx</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Origin <em>Origin</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Lx</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getLx()
-   * @see #getObject()
+   * @return the meta object for class '<em>Origin</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin
    * @generated
    */
-  EAttribute getObject_Lx();
+  EClass getOrigin();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLz <em>Lz</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Origin#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Lz</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getLz()
-   * @see #getObject()
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin#getX()
+   * @see #getOrigin()
    * @generated
    */
-  EAttribute getObject_Lz();
+  EAttribute getOrigin_X();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getLy <em>Ly</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Origin#getZ <em>Z</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ly</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Object#getLy()
-   * @see #getObject()
+   * @return the meta object for the attribute '<em>Z</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin#getZ()
+   * @see #getOrigin()
    * @generated
    */
-  EAttribute getObject_Ly();
+  EAttribute getOrigin_Z();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Origin#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin#getY()
+   * @see #getOrigin()
+   * @generated
+   */
+  EAttribute getOrigin_Y();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Size <em>Size</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Size</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size
+   * @generated
+   */
+  EClass getSize();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Size#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size#getX()
+   * @see #getSize()
+   * @generated
+   */
+  EAttribute getSize_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Size#getZ <em>Z</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Z</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size#getZ()
+   * @see #getSize()
+   * @generated
+   */
+  EAttribute getSize_Z();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Size#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size#getY()
+   * @see #getSize()
+   * @generated
+   */
+  EAttribute getSize_Y();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Color <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Color</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Color
+   * @generated
+   */
+  EClass getColor();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Color#getColor_value <em>Color value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Color value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Color#getColor_value()
+   * @see #getColor()
+   * @generated
+   */
+  EAttribute getColor_Color_value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1671,52 +1838,114 @@ public interface XDronePackage extends EPackage
     EAttribute OBJECT__OBJECT_NAME = eINSTANCE.getObject_Object_name();
 
     /**
-     * The meta object literal for the '<em><b>Sx</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Origin</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OBJECT__SX = eINSTANCE.getObject_Sx();
+    EReference OBJECT__ORIGIN = eINSTANCE.getObject_Origin();
 
     /**
-     * The meta object literal for the '<em><b>Sz</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Size</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OBJECT__SZ = eINSTANCE.getObject_Sz();
+    EReference OBJECT__SIZE = eINSTANCE.getObject_Size();
 
     /**
-     * The meta object literal for the '<em><b>Sy</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OBJECT__SY = eINSTANCE.getObject_Sy();
+    EAttribute OBJECT__COLOR = eINSTANCE.getObject_Color();
 
     /**
-     * The meta object literal for the '<em><b>Lx</b></em>' attribute feature.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.OriginImpl <em>Origin</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.OriginImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
      * @generated
      */
-    EAttribute OBJECT__LX = eINSTANCE.getObject_Lx();
+    EClass ORIGIN = eINSTANCE.getOrigin();
 
     /**
-     * The meta object literal for the '<em><b>Lz</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OBJECT__LZ = eINSTANCE.getObject_Lz();
+    EAttribute ORIGIN__X = eINSTANCE.getOrigin_X();
 
     /**
-     * The meta object literal for the '<em><b>Ly</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute OBJECT__LY = eINSTANCE.getObject_Ly();
+    EAttribute ORIGIN__Z = eINSTANCE.getOrigin_Z();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ORIGIN__Y = eINSTANCE.getOrigin_Y();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl <em>Size</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.SizeImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
+     * @generated
+     */
+    EClass SIZE = eINSTANCE.getSize();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIZE__X = eINSTANCE.getSize_X();
+
+    /**
+     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIZE__Z = eINSTANCE.getSize_Z();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIZE__Y = eINSTANCE.getSize_Y();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ColorImpl <em>Color</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.ColorImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
+     * @generated
+     */
+    EClass COLOR = eINSTANCE.getColor();
+
+    /**
+     * The meta object literal for the '<em><b>Color value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLOR__COLOR_VALUE = eINSTANCE.getColor_Color_value();
 
   }
 
