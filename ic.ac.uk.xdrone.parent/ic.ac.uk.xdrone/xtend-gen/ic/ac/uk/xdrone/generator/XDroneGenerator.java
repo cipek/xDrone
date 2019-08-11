@@ -5,6 +5,7 @@ package ic.ac.uk.xdrone.generator;
 
 import com.google.common.collect.Iterables;
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
@@ -105,11 +106,23 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append(", ");
         String _z_2 = ob.getOrigin().getVector().getZ();
         _builder.append(_z_2, "\t\t");
-        _builder.append(", \"");
-        String _color_value = ob.getColor().getColor_value();
-        _builder.append(_color_value, "\t\t");
-        _builder.append("\")");
+        _builder.append(",");
         _builder.newLineIfNotEmpty();
+        {
+          Color _color = ob.getColor();
+          boolean _tripleNotEquals = (_color != null);
+          if (_tripleNotEquals) {
+            _builder.append("\t");
+            _builder.append("\"");
+            String _color_value = ob.getColor().getColor_value();
+            _builder.append(_color_value, "\t");
+            _builder.append("\"");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append(")");
+        _builder.newLine();
       }
     }
     _builder.append("}");

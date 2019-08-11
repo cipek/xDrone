@@ -47,7 +47,11 @@ class XDroneGenerator extends AbstractGenerator {
 		«FOR ob : environment.objects»
 «««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
 			addCube("«ob.object_name»",«ob.size.vector.x», «ob.size.vector.y», «ob.size.vector.z», 
-				«ob.origin.vector.x», «ob.origin.vector.y», «ob.origin.vector.z», "«ob.color.color_value»")
+				«ob.origin.vector.x», «ob.origin.vector.y», «ob.origin.vector.z»,
+			«IF ob.color !== null»
+				"«ob.color.color_value»"
+			«ENDIF»
+			)
 		«ENDFOR»
 	}
 	'''

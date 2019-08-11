@@ -91,8 +91,8 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getOriginAccess().getVectorAssignment_2(), "rule__Origin__VectorAssignment_2");
 			builder.put(grammarAccess.getSizeAccess().getVectorAssignment_2(), "rule__Size__VectorAssignment_2");
 			builder.put(grammarAccess.getVectorAccess().getXAssignment_1(), "rule__Vector__XAssignment_1");
-			builder.put(grammarAccess.getVectorAccess().getZAssignment_3(), "rule__Vector__ZAssignment_3");
-			builder.put(grammarAccess.getVectorAccess().getYAssignment_5(), "rule__Vector__YAssignment_5");
+			builder.put(grammarAccess.getVectorAccess().getYAssignment_3(), "rule__Vector__YAssignment_3");
+			builder.put(grammarAccess.getVectorAccess().getZAssignment_5(), "rule__Vector__ZAssignment_5");
 			builder.put(grammarAccess.getColorAccess().getColor_valueAssignment_2(), "rule__Color__Color_valueAssignment_2");
 			builder.put(grammarAccess.getObjectAccess().getUnorderedGroup(), "rule__Object__UnorderedGroup");
 		}

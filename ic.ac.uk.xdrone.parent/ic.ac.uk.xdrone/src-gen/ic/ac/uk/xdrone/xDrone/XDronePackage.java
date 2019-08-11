@@ -737,22 +737,22 @@ public interface XDronePackage extends EPackage
   int VECTOR__X = 0;
 
   /**
-   * The feature id for the '<em><b>Z</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VECTOR__Z = 1;
-
-  /**
    * The feature id for the '<em><b>Y</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VECTOR__Y = 2;
+  int VECTOR__Y = 1;
+
+  /**
+   * The feature id for the '<em><b>Z</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VECTOR__Z = 2;
 
   /**
    * The number of structural features of the '<em>Vector</em>' class.
@@ -1343,17 +1343,6 @@ public interface XDronePackage extends EPackage
   EAttribute getVector_X();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getZ <em>Z</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Z</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Vector#getZ()
-   * @see #getVector()
-   * @generated
-   */
-  EAttribute getVector_Z();
-
-  /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getY <em>Y</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1363,6 +1352,17 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getVector_Y();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getZ <em>Z</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Z</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Vector#getZ()
+   * @see #getVector()
+   * @generated
+   */
+  EAttribute getVector_Z();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Color <em>Color</em>}'.
@@ -1869,20 +1869,20 @@ public interface XDronePackage extends EPackage
     EAttribute VECTOR__X = eINSTANCE.getVector_X();
 
     /**
-     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VECTOR__Z = eINSTANCE.getVector_Z();
-
-    /**
      * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute VECTOR__Y = eINSTANCE.getVector_Y();
+
+    /**
+     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VECTOR__Z = eINSTANCE.getVector_Z();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ColorImpl <em>Color</em>}' class.

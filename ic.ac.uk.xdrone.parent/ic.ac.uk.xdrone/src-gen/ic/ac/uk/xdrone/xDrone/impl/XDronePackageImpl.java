@@ -792,7 +792,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVector_Z()
+  public EAttribute getVector_Y()
   {
     return (EAttribute)vectorEClass.getEStructuralFeatures().get(1);
   }
@@ -802,7 +802,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVector_Y()
+  public EAttribute getVector_Z()
   {
     return (EAttribute)vectorEClass.getEStructuralFeatures().get(2);
   }
@@ -930,8 +930,8 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     vectorEClass = createEClass(VECTOR);
     createEAttribute(vectorEClass, VECTOR__X);
-    createEAttribute(vectorEClass, VECTOR__Z);
     createEAttribute(vectorEClass, VECTOR__Y);
+    createEAttribute(vectorEClass, VECTOR__Z);
 
     colorEClass = createEClass(COLOR);
     createEAttribute(colorEClass, COLOR__COLOR_VALUE);
@@ -1052,8 +1052,8 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(vectorEClass, Vector.class, "Vector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVector_X(), ecorePackage.getEString(), "x", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVector_Z(), ecorePackage.getEString(), "z", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVector_Y(), ecorePackage.getEString(), "y", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVector_Z(), ecorePackage.getEString(), "z", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getColor_Color_value(), ecorePackage.getEString(), "color_value", null, 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

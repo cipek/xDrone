@@ -861,18 +861,18 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cXAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cXDOUBLEParserRuleCall_1_0 = (RuleCall)cXAssignment_1.eContents().get(0);
 		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cZAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cZDOUBLEParserRuleCall_3_0 = (RuleCall)cZAssignment_3.eContents().get(0);
+		private final Assignment cYAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cYDOUBLEParserRuleCall_3_0 = (RuleCall)cYAssignment_3.eContents().get(0);
 		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cYAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cYDOUBLEParserRuleCall_5_0 = (RuleCall)cYAssignment_5.eContents().get(0);
+		private final Assignment cZAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cZDOUBLEParserRuleCall_5_0 = (RuleCall)cZAssignment_5.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Vector:
-		//	'(' x=DOUBLE ',' z=DOUBLE ',' y=DOUBLE ')';
+		//	'(' x=DOUBLE ',' y=DOUBLE ',' z=DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' x=DOUBLE ',' z=DOUBLE ',' y=DOUBLE ')'
+		//'(' x=DOUBLE ',' y=DOUBLE ',' z=DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'('
@@ -887,20 +887,20 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//','
 		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
 		
-		//z=DOUBLE
-		public Assignment getZAssignment_3() { return cZAssignment_3; }
+		//y=DOUBLE
+		public Assignment getYAssignment_3() { return cYAssignment_3; }
 		
 		//DOUBLE
-		public RuleCall getZDOUBLEParserRuleCall_3_0() { return cZDOUBLEParserRuleCall_3_0; }
+		public RuleCall getYDOUBLEParserRuleCall_3_0() { return cYDOUBLEParserRuleCall_3_0; }
 		
 		//','
 		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 		
-		//y=DOUBLE
-		public Assignment getYAssignment_5() { return cYAssignment_5; }
+		//z=DOUBLE
+		public Assignment getZAssignment_5() { return cZAssignment_5; }
 		
 		//DOUBLE
-		public RuleCall getYDOUBLEParserRuleCall_5_0() { return cYDOUBLEParserRuleCall_5_0; }
+		public RuleCall getZDOUBLEParserRuleCall_5_0() { return cZDOUBLEParserRuleCall_5_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
@@ -1289,7 +1289,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Vector:
-	//	'(' x=DOUBLE ',' z=DOUBLE ',' y=DOUBLE ')';
+	//	'(' x=DOUBLE ',' y=DOUBLE ',' z=DOUBLE ')';
 	public VectorElements getVectorAccess() {
 		return pVector;
 	}

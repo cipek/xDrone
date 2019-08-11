@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl#getZ <em>Z</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl#getY <em>Y</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl#getZ <em>Z</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,26 +51,6 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
   protected String x = X_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected static final String Z_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected String z = Z_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getY() <em>Y</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -89,6 +69,26 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
    * @ordered
    */
   protected String y = Y_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getZ()
+   * @generated
+   * @ordered
+   */
+  protected static final String Z_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getZ()
+   * @generated
+   * @ordered
+   */
+  protected String z = Z_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,29 +139,6 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getZ()
-  {
-    return z;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setZ(String newZ)
-  {
-    String oldZ = z;
-    z = newZ;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.VECTOR__Z, oldZ, z));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getY()
   {
     return y;
@@ -185,6 +162,29 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getZ()
+  {
+    return z;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setZ(String newZ)
+  {
+    String oldZ = z;
+    z = newZ;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.VECTOR__Z, oldZ, z));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -192,10 +192,10 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
     {
       case XDronePackage.VECTOR__X:
         return getX();
-      case XDronePackage.VECTOR__Z:
-        return getZ();
       case XDronePackage.VECTOR__Y:
         return getY();
+      case XDronePackage.VECTOR__Z:
+        return getZ();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,11 +213,11 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
       case XDronePackage.VECTOR__X:
         setX((String)newValue);
         return;
-      case XDronePackage.VECTOR__Z:
-        setZ((String)newValue);
-        return;
       case XDronePackage.VECTOR__Y:
         setY((String)newValue);
+        return;
+      case XDronePackage.VECTOR__Z:
+        setZ((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +236,11 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
       case XDronePackage.VECTOR__X:
         setX(X_EDEFAULT);
         return;
-      case XDronePackage.VECTOR__Z:
-        setZ(Z_EDEFAULT);
-        return;
       case XDronePackage.VECTOR__Y:
         setY(Y_EDEFAULT);
+        return;
+      case XDronePackage.VECTOR__Z:
+        setZ(Z_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -258,10 +258,10 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
     {
       case XDronePackage.VECTOR__X:
         return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case XDronePackage.VECTOR__Z:
-        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
       case XDronePackage.VECTOR__Y:
         return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
+      case XDronePackage.VECTOR__Z:
+        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
     }
     return super.eIsSet(featureID);
   }
@@ -279,10 +279,10 @@ public class VectorImpl extends MinimalEObjectImpl.Container implements Vector
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (x: ");
     result.append(x);
-    result.append(", z: ");
-    result.append(z);
     result.append(", y: ");
     result.append(y);
+    result.append(", z: ");
+    result.append(z);
     result.append(')');
     return result.toString();
   }

@@ -121,7 +121,7 @@ Size:
 ;
 
 Vector:
-	'(' x = DOUBLE ',' z = DOUBLE ',' y = DOUBLE ')'
+	'(' x = DOUBLE ',' y = DOUBLE ',' z = DOUBLE ')'
 ;
 
 Color:

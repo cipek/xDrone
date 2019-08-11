@@ -77,8 +77,8 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Vector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/z"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Vector/z"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Color">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Color/color_value"/>
