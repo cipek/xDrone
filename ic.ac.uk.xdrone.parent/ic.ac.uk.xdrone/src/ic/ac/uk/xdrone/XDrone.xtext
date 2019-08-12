@@ -54,6 +54,8 @@ Command:
 	| RotateL
 	| RotateR
 	| Wait
+	| Move
+	| Rotate
 ;
 
 DOUBLE:
@@ -61,6 +63,14 @@ DOUBLE:
 	| '-' INT '.' INT
 	| INT
 	| '-' INT
+;
+
+Move:
+	'MOVE' vector=Vector
+;
+
+Rotate: 
+	'ROTATE' '('angle = DOUBLE')'
 ;
 
 Up: 
@@ -90,10 +100,6 @@ RotateR:
 ;
 Wait:
 	'WAIT' '(' seconds = DOUBLE ')'
-;
-
-Move: 
-	'MOVE' '('x = DOUBLE ',' y = DOUBLE ',' z = DOUBLE')'
 ;
 
 FunctionName:

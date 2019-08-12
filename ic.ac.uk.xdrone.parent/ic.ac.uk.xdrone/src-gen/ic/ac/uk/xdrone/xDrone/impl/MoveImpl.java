@@ -4,14 +4,16 @@
 package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,74 +23,22 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl#getY <em>Y</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl#getZ <em>Z</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl#getVector <em>Vector</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MoveImpl extends MinimalEObjectImpl.Container implements Move
+public class MoveImpl extends CommandImpl implements Move
 {
   /**
-   * The default value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getVector() <em>Vector</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getVector()
    * @generated
    * @ordered
    */
-  protected static final String X_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getX()
-   * @generated
-   * @ordered
-   */
-  protected String x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final String Y_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected String y = Y_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected static final String Z_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected String z = Z_EDEFAULT;
+  protected Vector vector;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +66,9 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getX()
+  public Vector getVector()
   {
-    return x;
+    return vector;
   }
 
   /**
@@ -126,12 +76,16 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(String newX)
+  public NotificationChain basicSetVector(Vector newVector, NotificationChain msgs)
   {
-    String oldX = x;
-    x = newX;
+    Vector oldVector = vector;
+    vector = newVector;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__X, oldX, x));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__VECTOR, oldVector, newVector);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -139,9 +93,20 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getY()
+  public void setVector(Vector newVector)
   {
-    return y;
+    if (newVector != vector)
+    {
+      NotificationChain msgs = null;
+      if (vector != null)
+        msgs = ((InternalEObject)vector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MOVE__VECTOR, null, msgs);
+      if (newVector != null)
+        msgs = ((InternalEObject)newVector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MOVE__VECTOR, null, msgs);
+      msgs = basicSetVector(newVector, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__VECTOR, newVector, newVector));
   }
 
   /**
@@ -149,35 +114,15 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setY(String newY)
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    String oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__Y, oldY, y));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getZ()
-  {
-    return z;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setZ(String newZ)
-  {
-    String oldZ = z;
-    z = newZ;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MOVE__Z, oldZ, z));
+    switch (featureID)
+    {
+      case XDronePackage.MOVE__VECTOR:
+        return basicSetVector(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -190,12 +135,8 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
   {
     switch (featureID)
     {
-      case XDronePackage.MOVE__X:
-        return getX();
-      case XDronePackage.MOVE__Y:
-        return getY();
-      case XDronePackage.MOVE__Z:
-        return getZ();
+      case XDronePackage.MOVE__VECTOR:
+        return getVector();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -210,14 +151,8 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
   {
     switch (featureID)
     {
-      case XDronePackage.MOVE__X:
-        setX((String)newValue);
-        return;
-      case XDronePackage.MOVE__Y:
-        setY((String)newValue);
-        return;
-      case XDronePackage.MOVE__Z:
-        setZ((String)newValue);
+      case XDronePackage.MOVE__VECTOR:
+        setVector((Vector)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,14 +168,8 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
   {
     switch (featureID)
     {
-      case XDronePackage.MOVE__X:
-        setX(X_EDEFAULT);
-        return;
-      case XDronePackage.MOVE__Y:
-        setY(Y_EDEFAULT);
-        return;
-      case XDronePackage.MOVE__Z:
-        setZ(Z_EDEFAULT);
+      case XDronePackage.MOVE__VECTOR:
+        setVector((Vector)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,35 +185,10 @@ public class MoveImpl extends MinimalEObjectImpl.Container implements Move
   {
     switch (featureID)
     {
-      case XDronePackage.MOVE__X:
-        return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case XDronePackage.MOVE__Y:
-        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
-      case XDronePackage.MOVE__Z:
-        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
+      case XDronePackage.MOVE__VECTOR:
+        return vector != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (x: ");
-    result.append(x);
-    result.append(", y: ");
-    result.append(y);
-    result.append(", z: ");
-    result.append(z);
-    result.append(')');
-    return result.toString();
   }
 
 } //MoveImpl

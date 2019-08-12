@@ -454,6 +454,24 @@ ruleCommand returns [EObject current=null]
 			$current = $this_Wait_8.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getCommandAccess().getMoveParserRuleCall_9());
+		}
+		this_Move_9=ruleMove
+		{
+			$current = $this_Move_9.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getCommandAccess().getRotateParserRuleCall_10());
+		}
+		this_Rotate_10=ruleRotate
+		{
+			$current = $this_Rotate_10.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -544,6 +562,98 @@ ruleDOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 				newLeafNode(this_INT_9, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_3_1());
 			}
 		)
+	)
+;
+
+// Entry rule entryRuleMove
+entryRuleMove returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMoveRule()); }
+	iv_ruleMove=ruleMove
+	{ $current=$iv_ruleMove.current; }
+	EOF;
+
+// Rule Move
+ruleMove returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='MOVE'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getMoveAccess().getMOVEKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getMoveAccess().getVectorVectorParserRuleCall_1_0());
+				}
+				lv_vector_1_0=ruleVector
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getMoveRule());
+					}
+					set(
+						$current,
+						"vector",
+						lv_vector_1_0,
+						"ic.ac.uk.xdrone.XDrone.Vector");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleRotate
+entryRuleRotate returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRotateRule()); }
+	iv_ruleRotate=ruleRotate
+	{ $current=$iv_ruleRotate.current; }
+	EOF;
+
+// Rule Rotate
+ruleRotate returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='ROTATE'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getRotateAccess().getROTATEKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getRotateAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRotateAccess().getAngleDOUBLEParserRuleCall_2_0());
+				}
+				lv_angle_2_0=ruleDOUBLE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRotateRule());
+					}
+					set(
+						$current,
+						"angle",
+						lv_angle_2_0,
+						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3=')'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getRotateAccess().getRightParenthesisKeyword_3());
+		}
 	)
 ;
 

@@ -17,6 +17,7 @@ import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
@@ -90,6 +91,20 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass moveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rotateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass upEClass = null;
 
   /**
@@ -147,13 +162,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * @generated
    */
   private EClass waitEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass moveEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -422,6 +430,46 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getMove()
+  {
+    return moveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMove_Vector()
+  {
+    return (EReference)moveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRotate()
+  {
+    return rotateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRotate_Angle()
+  {
+    return (EAttribute)rotateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getUp()
   {
     return upEClass;
@@ -595,46 +643,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
   public EAttribute getWait_Seconds()
   {
     return (EAttribute)waitEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getMove()
-  {
-    return moveEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMove_X()
-  {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMove_Y()
-  {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMove_Z()
-  {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -878,6 +886,12 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     commandEClass = createEClass(COMMAND);
 
+    moveEClass = createEClass(MOVE);
+    createEReference(moveEClass, MOVE__VECTOR);
+
+    rotateEClass = createEClass(ROTATE);
+    createEAttribute(rotateEClass, ROTATE__ANGLE);
+
     upEClass = createEClass(UP);
     createEAttribute(upEClass, UP__DISTANCE);
 
@@ -904,11 +918,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     waitEClass = createEClass(WAIT);
     createEAttribute(waitEClass, WAIT__SECONDS);
-
-    moveEClass = createEClass(MOVE);
-    createEAttribute(moveEClass, MOVE__X);
-    createEAttribute(moveEClass, MOVE__Y);
-    createEAttribute(moveEClass, MOVE__Z);
 
     functionNameEClass = createEClass(FUNCTION_NAME);
     createEAttribute(functionNameEClass, FUNCTION_NAME__FUNC_NAME);
@@ -967,6 +976,8 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Add supertypes to classes
     commandEClass.getESuperTypes().add(this.getSuperCommand());
+    moveEClass.getESuperTypes().add(this.getCommand());
+    rotateEClass.getESuperTypes().add(this.getCommand());
     upEClass.getESuperTypes().add(this.getCommand());
     downEClass.getESuperTypes().add(this.getCommand());
     leftEClass.getESuperTypes().add(this.getCommand());
@@ -1000,6 +1011,12 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMove_Vector(), this.getVector(), null, "vector", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rotateEClass, Rotate.class, "Rotate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRotate_Angle(), ecorePackage.getEString(), "angle", null, 0, 1, Rotate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(upEClass, Up.class, "Up", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUp_Distance(), ecorePackage.getEString(), "distance", null, 0, 1, Up.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1026,11 +1043,6 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(waitEClass, Wait.class, "Wait", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWait_Seconds(), ecorePackage.getEString(), "seconds", null, 0, 1, Wait.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMove_X(), ecorePackage.getEString(), "x", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMove_Y(), ecorePackage.getEString(), "y", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMove_Z(), ecorePackage.getEString(), "z", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionNameEClass, FunctionName.class, "FunctionName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionName_Func_name(), ecorePackage.getEString(), "func_name", null, 0, 1, FunctionName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

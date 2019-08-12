@@ -24,6 +24,7 @@ import java.io.File
 import ic.ac.uk.xdrone.xDrone.Move
 import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
+import ic.ac.uk.xdrone.xDrone.Rotate
 
 /**
  * Generates code from your model files on save.
@@ -70,34 +71,35 @@ class XDroneGenerator extends AbstractGenerator {
 		lineGeometry.vertices.push(
 			new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)
 		);
-		var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
+		//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
 		«FOR to : fly.takeoff»
-			commands.push({x: 0, y: 0.7, z: 0}); 
+			commands.push({y: 0.7}); 
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
-			lastY += 0.7;
+			//lastY += 0.7;
 		«ENDFOR»
 		
 		//commands.push({w: 2}); 
 		
-		//commands.push({x: 2, y: 0, z: 0}); 
+		//commands.push({x: 2}); 
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		//lastX += 2;
+		
+		«FOR f : fly.commands»
+			«IF f instanceof Command»
+				«f.compileJS»
+			«ENDIF»
+		«ENDFOR»
+		
 		
 		//commands.push({r: 90 / 90 * (Math.PI/2)}); 
 		//commands.push({r: 90}); 
 								
 		
-		//commands.push({x: -2, y: 0, z: 4}); 
-		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
-		//lastX += 2;
-		
-		//IMPORTATNT 
-		// -roation is right
-		
 		«FOR to : fly.land»
-			commands.push({x: 0, y: -0.7, z: 0}); 
+			//commands.push({y: -0.7}); 
+			commands.push("LAND");
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
-			lastY -= 0.7;
+			//lastY -= 0.7;
 		«ENDFOR»
 		nextCommand();
 		
@@ -108,7 +110,10 @@ class XDroneGenerator extends AbstractGenerator {
 		scene.add( line );
 		function flySimulation(){
 			if(!finishSimulation){
-				if((currentFunction == "MOVE" && fly(goalDroneLocation))
+				if((currentFunction == "MOVE_Y" && fly(goalDroneLocation.y, 'y'))
+					|| (currentFunction == "MOVE_X" && fly(goalDroneLocation.x, 'x'))
+					|| (currentFunction == "MOVE_Z" && fly(goalDroneLocation.z, 'z'))
+					|| (currentFunction == "LAND" && land())
 					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
 					nextCommand();
 				}
@@ -127,11 +132,23 @@ class XDroneGenerator extends AbstractGenerator {
 						execute = true;
 					    }, (commands[0].w * 1000));
 				}
-				else{
-					goalDroneLocation.x = commands[0].x; //+
+				else if(commands[0].y){
 					goalDroneLocation.y = commands[0].y;
+					currentFunction = "MOVE_Y";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+				}
+				else if(commands[0].x){
+					goalDroneLocation.x = commands[0].x;
+					currentFunction = "MOVE_X";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+				}
+				else if(commands[0].z){
 					goalDroneLocation.z = commands[0].z;
-					currentFunction = "MOVE";
+					currentFunction = "MOVE_Z";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+				}
+				else if(commands[0] == "LAND"){
+					currentFunction = "LAND";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				commands.shift();
@@ -140,6 +157,17 @@ class XDroneGenerator extends AbstractGenerator {
 				finishSimulation = true;	
 			}
 		}
+	'''
+	
+	def compileJS(Command cmd) '''
+	  	«IF cmd instanceof Move»
+			commands.push({y: «cmd.vector.y»}); 
+			commands.push({z: «cmd.vector.z»}); 
+			commands.push({x: «cmd.vector.x»}); 
+	  	«ENDIF»
+	  	«IF cmd instanceof Rotate»
+			commands.push({r: 90 / «cmd.angle» * (Math.PI/2)}); 
+	  	«ENDIF»
 	'''
 	
 

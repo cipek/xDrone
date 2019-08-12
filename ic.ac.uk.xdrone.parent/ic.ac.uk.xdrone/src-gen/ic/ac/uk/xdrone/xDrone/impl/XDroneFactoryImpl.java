@@ -17,6 +17,7 @@ import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
@@ -94,6 +95,8 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.USER_FUNCTION: return createUserFunction();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
+      case XDronePackage.MOVE: return createMove();
+      case XDronePackage.ROTATE: return createRotate();
       case XDronePackage.UP: return createUp();
       case XDronePackage.DOWN: return createDown();
       case XDronePackage.LEFT: return createLeft();
@@ -103,7 +106,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.ROTATE_L: return createRotateL();
       case XDronePackage.ROTATE_R: return createRotateR();
       case XDronePackage.WAIT: return createWait();
-      case XDronePackage.MOVE: return createMove();
       case XDronePackage.FUNCTION_NAME: return createFunctionName();
       case XDronePackage.DRONE: return createDrone();
       case XDronePackage.OBJECT: return createObject();
@@ -180,6 +182,28 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     CommandImpl command = new CommandImpl();
     return command;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Move createMove()
+  {
+    MoveImpl move = new MoveImpl();
+    return move;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Rotate createRotate()
+  {
+    RotateImpl rotate = new RotateImpl();
+    return rotate;
   }
 
   /**
@@ -279,17 +303,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     WaitImpl wait = new WaitImpl();
     return wait;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Move createMove()
-  {
-    MoveImpl move = new MoveImpl();
-    return move;
   }
 
   /**

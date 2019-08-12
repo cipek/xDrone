@@ -17,6 +17,7 @@ import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
@@ -128,6 +129,16 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createCommandAdapter();
       }
       @Override
+      public Adapter caseMove(Move object)
+      {
+        return createMoveAdapter();
+      }
+      @Override
+      public Adapter caseRotate(Rotate object)
+      {
+        return createRotateAdapter();
+      }
+      @Override
       public Adapter caseUp(Up object)
       {
         return createUpAdapter();
@@ -171,11 +182,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseWait(Wait object)
       {
         return createWaitAdapter();
-      }
-      @Override
-      public Adapter caseMove(Move object)
-      {
-        return createMoveAdapter();
       }
       @Override
       public Adapter caseFunctionName(FunctionName object)
@@ -325,6 +331,36 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Move
+   * @generated
+   */
+  public Adapter createMoveAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Rotate <em>Rotate</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Rotate
+   * @generated
+   */
+  public Adapter createRotateAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -455,21 +491,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWaitAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Move
-   * @generated
-   */
-  public Adapter createMoveAdapter()
   {
     return null;
   }

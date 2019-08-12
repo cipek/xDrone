@@ -18,6 +18,7 @@ import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
@@ -92,6 +93,9 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case XDronePackage.RIGHT:
 				sequence_Right(context, (Right) semanticObject); 
+				return; 
+			case XDronePackage.ROTATE:
+				sequence_Rotate(context, (Rotate) semanticObject); 
 				return; 
 			case XDronePackage.ROTATE_L:
 				sequence_RotateL(context, (RotateL) semanticObject); 
@@ -280,24 +284,20 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
+	 *     SuperCommand returns Move
+	 *     Command returns Move
 	 *     Move returns Move
 	 *
 	 * Constraint:
-	 *     (x=DOUBLE y=DOUBLE z=DOUBLE)
+	 *     vector=Vector
 	 */
 	protected void sequence_Move(ISerializationContext context, Move semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__X) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__X));
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__Y) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__Y));
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__Z) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__Z));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__VECTOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__VECTOR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMoveAccess().getXDOUBLEParserRuleCall_2_0(), semanticObject.getX());
-		feeder.accept(grammarAccess.getMoveAccess().getYDOUBLEParserRuleCall_4_0(), semanticObject.getY());
-		feeder.accept(grammarAccess.getMoveAccess().getZDOUBLEParserRuleCall_6_0(), semanticObject.getZ());
+		feeder.accept(grammarAccess.getMoveAccess().getVectorVectorParserRuleCall_1_0(), semanticObject.getVector());
 		feeder.finish();
 	}
 	
@@ -409,6 +409,26 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRotateRAccess().getAngleINTTerminalRuleCall_2_0(), semanticObject.getAngle());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns Rotate
+	 *     Command returns Rotate
+	 *     Rotate returns Rotate
+	 *
+	 * Constraint:
+	 *     angle=DOUBLE
+	 */
+	protected void sequence_Rotate(ISerializationContext context, Rotate semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.ROTATE__ANGLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.ROTATE__ANGLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRotateAccess().getAngleDOUBLEParserRuleCall_2_0(), semanticObject.getAngle());
 		feeder.finish();
 	}
 	

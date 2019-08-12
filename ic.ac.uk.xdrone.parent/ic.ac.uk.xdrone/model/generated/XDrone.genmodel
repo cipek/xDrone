@@ -25,6 +25,12 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//SuperCommand"/>
     <genClasses ecoreClass="XDrone.ecore#//Command"/>
+    <genClasses ecoreClass="XDrone.ecore#//Move">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Move/vector"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Rotate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Rotate/angle"/>
+    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Up">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Up/distance"/>
     </genClasses>
@@ -51,11 +57,6 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Wait">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Wait/seconds"/>
-    </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Move">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Move/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Move/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Move/z"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//FunctionName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FunctionName/func_name"/>

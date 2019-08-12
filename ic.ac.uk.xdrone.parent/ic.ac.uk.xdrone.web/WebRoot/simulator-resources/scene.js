@@ -6,6 +6,7 @@ var controls;
 var execute = true;
 var globalDroneRotation = 90, currentDroneRotation = 0;
 var coveredXDistance = 0, coveredYDistance = 0, coveredZDistance = 0;
+var coveredDistance = 0;
 var line;
 var raycaster;
 var mouse, INTERSECTED;
@@ -209,38 +210,74 @@ function flySupporter(currentLocation, endPoint){
   }
 }
 
-function fly(goalPostion){
+// function fly(goalPostion){
+//   var stopped = true;
+//   if(Math.abs(coveredXDistance-goalPostion.x) > 0.04){ //0.02 acceptable movement precision error
+//     // flySupporter('x', drone.position.x, goalPostion.x);
+//      // console.log("X1", drone.position.z, goalPostion.x);
+//      var additionalDistance = flySupporter(coveredXDistance, goalPostion.x);
+//      coveredXDistance += additionalDistance;
+//     drone.translateX(additionalDistance);
+//     // coveredXDistance = +0.01;
+//      // console.log("X2", drone.position.z, goalPostion.x);
+//     stopped = false;
+//   }
+//   if(Math.abs(coveredYDistance-goalPostion.y) > 0.04){
+//     // flySupporter('y', drone.position.y, goalPostion.y);
+//     // console.log(coveredYDistance, goalPostion.y);
+//     var additionalDistance = flySupporter(coveredYDistance, goalPostion.y);
+//     coveredYDistance += additionalDistance;
+//     drone.translateY(additionalDistance);
+//     stopped = false;
+//   }
+//   if(Math.abs(coveredZDistance-goalPostion.z) > 0.04){
+//     // flySupporter('z', drone.position.z, goalPostion.z);
+//     var additionalDistance = flySupporter(coveredZDistance, goalPostion.z);
+//     coveredZDistance += additionalDistance;
+//     drone.translateZ(additionalDistance);
+//     stopped = false;
+//   }
+//   drawNewLineSegment();
+//   if(stopped){
+//     coveredXDistance = 0;
+//     coveredYDistance = 0;
+//     coveredZDistance = 0;
+//   }
+//
+//   return stopped;
+// }
+
+function flyManager(goalPostion){
   var stopped = true;
-  if(Math.abs(coveredXDistance-goalPostion.x) > 0.04){ //0.02 acceptable movement precision error
-    // flySupporter('x', drone.position.x, goalPostion.x);
-     // console.log("X1", drone.position.z, goalPostion.x);
-     var additionalDistance = flySupporter(coveredXDistance, goalPostion.x);
-     coveredXDistance += additionalDistance;
-    drone.translateX(additionalDistance);
-    // coveredXDistance = +0.01;
-     // console.log("X2", drone.position.z, goalPostion.x);
+  if(!fly(goalPostion.y, 'y'))
+    stopped = false;
+  else if(!fly(goalPostion.z, 'z'))
+    stopped = false;
+  else if(!fly(goalPostion.x, 'x'))
+    stopped = false;
+
+  return stopped;
+}
+
+function fly(goalPostion, axis){
+  var stopped = true;
+  console.log(coveredDistance, goalPostion);
+  if(Math.abs(coveredDistance-goalPostion) > 0.04){ //0.02 acceptable movement precision error
+    var additionalDistance = flySupporter(coveredDistance, goalPostion);
+    console.log(coveredDistance, goalPostion, additionalDistance);
+    coveredDistance += additionalDistance;
+    if(axis == 'x')
+      drone.translateX(additionalDistance);
+    else if(axis == 'y')
+      drone.translateY(additionalDistance);
+    else if(axis == 'z')
+      drone.translateZ(additionalDistance);
     stopped = false;
   }
-  if(Math.abs(coveredYDistance-goalPostion.y) > 0.04){
-    // flySupporter('y', drone.position.y, goalPostion.y);
-    // console.log(coveredYDistance, goalPostion.y);
-    var additionalDistance = flySupporter(coveredYDistance, goalPostion.y);
-    coveredYDistance += additionalDistance;
-    drone.translateY(additionalDistance);
-    stopped = false;
-  }
-  if(Math.abs(coveredZDistance-goalPostion.z) > 0.04){
-    // flySupporter('z', drone.position.z, goalPostion.z);
-    var additionalDistance = flySupporter(coveredZDistance, goalPostion.z);
-    coveredZDistance += additionalDistance;
-    drone.translateZ(additionalDistance);
-    stopped = false;
-  }
+
   drawNewLineSegment();
   if(stopped){
-    coveredXDistance = 0;
-    coveredYDistance = 0;
-    coveredZDistance = 0;
+    coveredDistance = 0;
   }
 
   return stopped;
@@ -343,6 +380,7 @@ function takeoff(){
 function land(){
   if(drone.position.y > 0){
     drone.position.y -= 0.01;
+    drawNewLineSegment();
     return false;
   }
   else {

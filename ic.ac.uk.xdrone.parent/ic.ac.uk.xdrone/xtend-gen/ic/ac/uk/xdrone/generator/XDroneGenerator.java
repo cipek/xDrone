@@ -15,6 +15,7 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
@@ -158,16 +159,16 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append(");");
     _builder.newLine();
-    _builder.append("var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;");
+    _builder.append("//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;");
     _builder.newLine();
     {
       EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
-        _builder.append("commands.push({x: 0, y: 0.7, z: 0}); ");
+        _builder.append("commands.push({y: 0.7}); ");
         _builder.newLine();
         _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));");
         _builder.newLine();
-        _builder.append("lastY += 0.7;");
+        _builder.append("//lastY += 0.7;");
         _builder.newLine();
       }
     }
@@ -175,11 +176,25 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("//commands.push({w: 2}); ");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("//commands.push({x: 2, y: 0, z: 0}); ");
+    _builder.append("//commands.push({x: 2}); ");
     _builder.newLine();
     _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));");
     _builder.newLine();
     _builder.append("//lastX += 2;");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      EList<SuperCommand> _commands = fly.getCommands();
+      for(final SuperCommand f : _commands) {
+        {
+          if ((f instanceof Command)) {
+            CharSequence _compileJS = this.compileJS(((Command)f));
+            _builder.append(_compileJS);
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
     _builder.newLine();
     _builder.newLine();
     _builder.append("//commands.push({r: 90 / 90 * (Math.PI/2)}); ");
@@ -189,26 +204,16 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t\t\t\t\t");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("//commands.push({x: -2, y: 0, z: 4}); ");
-    _builder.newLine();
-    _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));");
-    _builder.newLine();
-    _builder.append("//lastX += 2;");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("//IMPORTATNT ");
-    _builder.newLine();
-    _builder.append("// -roation is right");
-    _builder.newLine();
-    _builder.newLine();
     {
       EList<String> _land = fly.getLand();
       for(final String to_1 : _land) {
-        _builder.append("commands.push({x: 0, y: -0.7, z: 0}); ");
+        _builder.append("//commands.push({y: -0.7}); ");
+        _builder.newLine();
+        _builder.append("commands.push(\"LAND\");");
         _builder.newLine();
         _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));");
         _builder.newLine();
-        _builder.append("lastY -= 0.7;");
+        _builder.append("//lastY -= 0.7;");
         _builder.newLine();
       }
     }
@@ -231,7 +236,16 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("if(!finishSimulation){");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("if((currentFunction == \"MOVE\" && fly(goalDroneLocation))");
+    _builder.append("if((currentFunction == \"MOVE_Y\" && fly(goalDroneLocation.y, \'y\'))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("|| (currentFunction == \"MOVE_X\" && fly(goalDroneLocation.x, \'x\'))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("|| (currentFunction == \"MOVE_Z\" && fly(goalDroneLocation.z, \'z\'))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("|| (currentFunction == \"LAND\" && land())");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("|| (currentFunction == \"ROTATION\" && rotation(goalDroneRotation))){");
@@ -284,19 +298,55 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("else{");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("goalDroneLocation.x = commands[0].x; //+");
+    _builder.append("else if(commands[0].y){");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("goalDroneLocation.y = commands[0].y;");
     _builder.newLine();
     _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"MOVE_Y\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else if(commands[0].x){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("goalDroneLocation.x = commands[0].x;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"MOVE_X\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else if(commands[0].z){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("goalDroneLocation.z = commands[0].z;");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("currentFunction = \"MOVE\";");
+    _builder.append("currentFunction = \"MOVE_Z\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else if(commands[0] == \"LAND\"){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"LAND\";");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
@@ -321,6 +371,39 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence compileJS(final Command cmd) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((cmd instanceof Move)) {
+        _builder.append("commands.push({y: ");
+        String _y = ((Move)cmd).getVector().getY();
+        _builder.append(_y);
+        _builder.append("}); ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("commands.push({z: ");
+        String _z = ((Move)cmd).getVector().getZ();
+        _builder.append(_z);
+        _builder.append("}); ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("commands.push({x: ");
+        String _x = ((Move)cmd).getVector().getX();
+        _builder.append(_x);
+        _builder.append("}); ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Rotate)) {
+        _builder.append("commands.push({r: 90 / ");
+        String _angle = ((Rotate)cmd).getAngle();
+        _builder.append(_angle);
+        _builder.append(" * (Math.PI/2)}); ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     return _builder;
   }
   

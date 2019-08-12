@@ -78,6 +78,24 @@ public interface XDroneFactory extends EFactory
   Command createCommand();
 
   /**
+   * Returns a new object of class '<em>Move</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Move</em>'.
+   * @generated
+   */
+  Move createMove();
+
+  /**
+   * Returns a new object of class '<em>Rotate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rotate</em>'.
+   * @generated
+   */
+  Rotate createRotate();
+
+  /**
    * Returns a new object of class '<em>Up</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,15 +175,6 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Wait createWait();
-
-  /**
-   * Returns a new object of class '<em>Move</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Move</em>'.
-   * @generated
-   */
-  Move createMove();
 
   /**
    * Returns a new object of class '<em>Function Name</em>'.

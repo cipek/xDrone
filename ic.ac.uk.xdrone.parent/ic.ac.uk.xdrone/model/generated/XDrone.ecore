@@ -27,6 +27,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuperCommand"/>
   <eClassifiers xsi:type="ecore:EClass" name="Command" eSuperTypes="#//SuperCommand"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Move" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vector" eType="#//Vector"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Up" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -53,11 +60,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Wait" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Move">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="z" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionName" eSuperTypes="#//SuperCommand">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="func_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

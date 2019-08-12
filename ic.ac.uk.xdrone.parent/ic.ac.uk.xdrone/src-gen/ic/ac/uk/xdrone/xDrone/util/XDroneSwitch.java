@@ -17,6 +17,7 @@ import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
@@ -138,6 +139,24 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case XDronePackage.MOVE:
+      {
+        Move move = (Move)theEObject;
+        T result = caseMove(move);
+        if (result == null) result = caseCommand(move);
+        if (result == null) result = caseSuperCommand(move);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.ROTATE:
+      {
+        Rotate rotate = (Rotate)theEObject;
+        T result = caseRotate(rotate);
+        if (result == null) result = caseCommand(rotate);
+        if (result == null) result = caseSuperCommand(rotate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case XDronePackage.UP:
       {
         Up up = (Up)theEObject;
@@ -216,13 +235,6 @@ public class XDroneSwitch<T> extends Switch<T>
         T result = caseWait(wait);
         if (result == null) result = caseCommand(wait);
         if (result == null) result = caseSuperCommand(wait);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XDronePackage.MOVE:
-      {
-        Move move = (Move)theEObject;
-        T result = caseMove(move);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -377,6 +389,38 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Move</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Move</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMove(Move object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rotate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rotate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRotate(Rotate object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Up</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -516,22 +560,6 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseWait(Wait object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Move</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Move</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMove(Move object)
   {
     return null;
   }
