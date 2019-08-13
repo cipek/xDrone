@@ -35,14 +35,14 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSuperCommandAccess().getAlternatives(), "rule__SuperCommand__Alternatives");
 			builder.put(grammarAccess.getCommandAccess().getAlternatives(), "rule__Command__Alternatives");
 			builder.put(grammarAccess.getDOUBLEAccess().getAlternatives(), "rule__DOUBLE__Alternatives");
+			builder.put(grammarAccess.getPOSITIVE_DOUBLEAccess().getAlternatives(), "rule__POSITIVE_DOUBLE__Alternatives");
 			builder.put(grammarAccess.getMainAccess().getGroup(), "rule__Main__Group__0");
 			builder.put(grammarAccess.getFlyAccess().getGroup(), "rule__Fly__Group__0");
 			builder.put(grammarAccess.getFlyAccess().getGroup_1(), "rule__Fly__Group_1__0");
 			builder.put(grammarAccess.getEnvironmentAccess().getGroup(), "rule__Environment__Group__0");
 			builder.put(grammarAccess.getUserFunctionAccess().getGroup(), "rule__UserFunction__Group__0");
 			builder.put(grammarAccess.getDOUBLEAccess().getGroup_0(), "rule__DOUBLE__Group_0__0");
-			builder.put(grammarAccess.getDOUBLEAccess().getGroup_1(), "rule__DOUBLE__Group_1__0");
-			builder.put(grammarAccess.getDOUBLEAccess().getGroup_3(), "rule__DOUBLE__Group_3__0");
+			builder.put(grammarAccess.getPOSITIVE_DOUBLEAccess().getGroup_0(), "rule__POSITIVE_DOUBLE__Group_0__0");
 			builder.put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 			builder.put(grammarAccess.getRotateAccess().getGroup(), "rule__Rotate__Group__0");
 			builder.put(grammarAccess.getUpAccess().getGroup(), "rule__Up__Group__0");

@@ -548,76 +548,81 @@ ruleDOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 }:
 	(
 		(
+			kw='-'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getDOUBLEAccess().getHyphenMinusKeyword_0_0());
+			}
+			{
+				newCompositeNode(grammarAccess.getDOUBLEAccess().getPOSITIVE_DOUBLEParserRuleCall_0_1());
+			}
+			this_POSITIVE_DOUBLE_1=rulePOSITIVE_DOUBLE
+			{
+				$current.merge(this_POSITIVE_DOUBLE_1);
+			}
+			{
+				afterParserOrEnumRuleCall();
+			}
+		)
+		    |
+		{
+			newCompositeNode(grammarAccess.getDOUBLEAccess().getPOSITIVE_DOUBLEParserRuleCall_1());
+		}
+		this_POSITIVE_DOUBLE_2=rulePOSITIVE_DOUBLE
+		{
+			$current.merge(this_POSITIVE_DOUBLE_2);
+		}
+		{
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRulePOSITIVE_DOUBLE
+entryRulePOSITIVE_DOUBLE returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getPOSITIVE_DOUBLERule()); }
+	iv_rulePOSITIVE_DOUBLE=rulePOSITIVE_DOUBLE
+	{ $current=$iv_rulePOSITIVE_DOUBLE.current.getText(); }
+	EOF;
+
+// Rule POSITIVE_DOUBLE
+rulePOSITIVE_DOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
 			this_INT_0=RULE_INT
 			{
 				$current.merge(this_INT_0);
 			}
 			{
-				newLeafNode(this_INT_0, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_0_0());
+				newLeafNode(this_INT_0, grammarAccess.getPOSITIVE_DOUBLEAccess().getINTTerminalRuleCall_0_0());
 			}
 			kw='.'
 			{
 				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getDOUBLEAccess().getFullStopKeyword_0_1());
+				newLeafNode(kw, grammarAccess.getPOSITIVE_DOUBLEAccess().getFullStopKeyword_0_1());
 			}
 			this_INT_2=RULE_INT
 			{
 				$current.merge(this_INT_2);
 			}
 			{
-				newLeafNode(this_INT_2, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_0_2());
+				newLeafNode(this_INT_2, grammarAccess.getPOSITIVE_DOUBLEAccess().getINTTerminalRuleCall_0_2());
 			}
 		)
 		    |
-		(
-			kw='-'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getDOUBLEAccess().getHyphenMinusKeyword_1_0());
-			}
-			this_INT_4=RULE_INT
-			{
-				$current.merge(this_INT_4);
-			}
-			{
-				newLeafNode(this_INT_4, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_1_1());
-			}
-			kw='.'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getDOUBLEAccess().getFullStopKeyword_1_2());
-			}
-			this_INT_6=RULE_INT
-			{
-				$current.merge(this_INT_6);
-			}
-			{
-				newLeafNode(this_INT_6, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_1_3());
-			}
-		)
-		    |
-		this_INT_7=RULE_INT
+		this_INT_3=RULE_INT
 		{
-			$current.merge(this_INT_7);
+			$current.merge(this_INT_3);
 		}
 		{
-			newLeafNode(this_INT_7, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_2());
+			newLeafNode(this_INT_3, grammarAccess.getPOSITIVE_DOUBLEAccess().getINTTerminalRuleCall_1());
 		}
-		    |
-		(
-			kw='-'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getDOUBLEAccess().getHyphenMinusKeyword_3_0());
-			}
-			this_INT_9=RULE_INT
-			{
-				$current.merge(this_INT_9);
-			}
-			{
-				newLeafNode(this_INT_9, grammarAccess.getDOUBLEAccess().getINTTerminalRuleCall_3_1());
-			}
-		)
 	)
 ;
 
@@ -1645,19 +1650,20 @@ ruleWalls returns [EObject current=null]
 		}
 		(
 			(
-				lv_front_2_0=RULE_INT
 				{
-					newLeafNode(lv_front_2_0, grammarAccess.getWallsAccess().getFrontINTTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getWallsAccess().getFrontPOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
+				lv_front_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWallsRule());
+						$current = createModelElementForParent(grammarAccess.getWallsRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"front",
 						lv_front_2_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1667,19 +1673,20 @@ ruleWalls returns [EObject current=null]
 		}
 		(
 			(
-				lv_right_4_0=RULE_INT
 				{
-					newLeafNode(lv_right_4_0, grammarAccess.getWallsAccess().getRightINTTerminalRuleCall_4_0());
+					newCompositeNode(grammarAccess.getWallsAccess().getRightPOSITIVE_DOUBLEParserRuleCall_4_0());
 				}
+				lv_right_4_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWallsRule());
+						$current = createModelElementForParent(grammarAccess.getWallsRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"right",
 						lv_right_4_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1689,19 +1696,20 @@ ruleWalls returns [EObject current=null]
 		}
 		(
 			(
-				lv_back_6_0=RULE_INT
 				{
-					newLeafNode(lv_back_6_0, grammarAccess.getWallsAccess().getBackINTTerminalRuleCall_6_0());
+					newCompositeNode(grammarAccess.getWallsAccess().getBackPOSITIVE_DOUBLEParserRuleCall_6_0());
 				}
+				lv_back_6_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWallsRule());
+						$current = createModelElementForParent(grammarAccess.getWallsRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"back",
 						lv_back_6_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1711,19 +1719,20 @@ ruleWalls returns [EObject current=null]
 		}
 		(
 			(
-				lv_left_8_0=RULE_INT
 				{
-					newLeafNode(lv_left_8_0, grammarAccess.getWallsAccess().getLeftINTTerminalRuleCall_8_0());
+					newCompositeNode(grammarAccess.getWallsAccess().getLeftPOSITIVE_DOUBLEParserRuleCall_8_0());
 				}
+				lv_left_8_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWallsRule());
+						$current = createModelElementForParent(grammarAccess.getWallsRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"left",
 						lv_left_8_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)

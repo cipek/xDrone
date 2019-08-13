@@ -327,27 +327,45 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.DOUBLE");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cPOSITIVE_DOUBLEParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final RuleCall cPOSITIVE_DOUBLEParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//DOUBLE:
+		//	'-' POSITIVE_DOUBLE
+		//	| POSITIVE_DOUBLE;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'-' POSITIVE_DOUBLE | POSITIVE_DOUBLE
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'-' POSITIVE_DOUBLE
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
+		
+		//POSITIVE_DOUBLE
+		public RuleCall getPOSITIVE_DOUBLEParserRuleCall_0_1() { return cPOSITIVE_DOUBLEParserRuleCall_0_1; }
+		
+		//POSITIVE_DOUBLE
+		public RuleCall getPOSITIVE_DOUBLEParserRuleCall_1() { return cPOSITIVE_DOUBLEParserRuleCall_1; }
+	}
+	public class POSITIVE_DOUBLEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Keyword cFullStopKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cHyphenMinusKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final RuleCall cINTTerminalRuleCall_1_3 = (RuleCall)cGroup_1.eContents().get(3);
-		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cHyphenMinusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//DOUBLE:
+		//POSITIVE_DOUBLE:
 		//	INT '.' INT
-		//	| '-' INT '.' INT
-		//	| INT
-		//	| '-' INT;
+		//	| INT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//INT '.' INT | '-' INT '.' INT | INT | '-' INT
+		//INT '.' INT | INT
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//INT '.' INT
@@ -362,32 +380,8 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_0_2() { return cINTTerminalRuleCall_0_2; }
 		
-		//'-' INT '.' INT
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//'-'
-		public Keyword getHyphenMinusKeyword_1_0() { return cHyphenMinusKeyword_1_0; }
-		
 		//INT
-		public RuleCall getINTTerminalRuleCall_1_1() { return cINTTerminalRuleCall_1_1; }
-		
-		//'.'
-		public Keyword getFullStopKeyword_1_2() { return cFullStopKeyword_1_2; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_1_3() { return cINTTerminalRuleCall_1_3; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
-		
-		//'-' INT
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'-'
-		public Keyword getHyphenMinusKeyword_3_0() { return cHyphenMinusKeyword_3_0; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_3_1() { return cINTTerminalRuleCall_3_1; }
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
 	}
 	public class MoveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Move");
@@ -970,23 +964,23 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cWALLSKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cFrontAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cFrontINTTerminalRuleCall_2_0 = (RuleCall)cFrontAssignment_2.eContents().get(0);
+		private final RuleCall cFrontPOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cFrontAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRightINTTerminalRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final RuleCall cRightPOSITIVE_DOUBLEParserRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
 		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cBackAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cBackINTTerminalRuleCall_6_0 = (RuleCall)cBackAssignment_6.eContents().get(0);
+		private final RuleCall cBackPOSITIVE_DOUBLEParserRuleCall_6_0 = (RuleCall)cBackAssignment_6.eContents().get(0);
 		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cLeftAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cLeftINTTerminalRuleCall_8_0 = (RuleCall)cLeftAssignment_8.eContents().get(0);
+		private final RuleCall cLeftPOSITIVE_DOUBLEParserRuleCall_8_0 = (RuleCall)cLeftAssignment_8.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//Walls:
-		//	'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')';
+		//	'WALLS' '(' front=POSITIVE_DOUBLE ',' right=POSITIVE_DOUBLE ',' back=POSITIVE_DOUBLE ',' left=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')'
+		//'WALLS' '(' front=POSITIVE_DOUBLE ',' right=POSITIVE_DOUBLE ',' back=POSITIVE_DOUBLE ',' left=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'WALLS'
@@ -995,38 +989,38 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//front=INT
+		//front=POSITIVE_DOUBLE
 		public Assignment getFrontAssignment_2() { return cFrontAssignment_2; }
 		
-		//INT
-		public RuleCall getFrontINTTerminalRuleCall_2_0() { return cFrontINTTerminalRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getFrontPOSITIVE_DOUBLEParserRuleCall_2_0() { return cFrontPOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
-		//right=INT
+		//right=POSITIVE_DOUBLE
 		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
 		
-		//INT
-		public RuleCall getRightINTTerminalRuleCall_4_0() { return cRightINTTerminalRuleCall_4_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getRightPOSITIVE_DOUBLEParserRuleCall_4_0() { return cRightPOSITIVE_DOUBLEParserRuleCall_4_0; }
 		
 		//','
 		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
-		//back=INT
+		//back=POSITIVE_DOUBLE
 		public Assignment getBackAssignment_6() { return cBackAssignment_6; }
 		
-		//INT
-		public RuleCall getBackINTTerminalRuleCall_6_0() { return cBackINTTerminalRuleCall_6_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getBackPOSITIVE_DOUBLEParserRuleCall_6_0() { return cBackPOSITIVE_DOUBLEParserRuleCall_6_0; }
 		
 		//','
 		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
 		
-		//left=INT
+		//left=POSITIVE_DOUBLE
 		public Assignment getLeftAssignment_8() { return cLeftAssignment_8; }
 		
-		//INT
-		public RuleCall getLeftINTTerminalRuleCall_8_0() { return cLeftINTTerminalRuleCall_8_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getLeftPOSITIVE_DOUBLEParserRuleCall_8_0() { return cLeftPOSITIVE_DOUBLEParserRuleCall_8_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
@@ -1043,6 +1037,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	private final SuperCommandElements pSuperCommand;
 	private final CommandElements pCommand;
 	private final DOUBLEElements pDOUBLE;
+	private final POSITIVE_DOUBLEElements pPOSITIVE_DOUBLE;
 	private final MoveElements pMove;
 	private final RotateElements pRotate;
 	private final UpElements pUp;
@@ -1082,6 +1077,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		this.pSuperCommand = new SuperCommandElements();
 		this.pCommand = new CommandElements();
 		this.pDOUBLE = new DOUBLEElements();
+		this.pPOSITIVE_DOUBLE = new POSITIVE_DOUBLEElements();
 		this.pMove = new MoveElements();
 		this.pRotate = new RotateElements();
 		this.pUp = new UpElements();
@@ -1241,16 +1237,25 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DOUBLE:
-	//	INT '.' INT
-	//	| '-' INT '.' INT
-	//	| INT
-	//	| '-' INT;
+	//	'-' POSITIVE_DOUBLE
+	//	| POSITIVE_DOUBLE;
 	public DOUBLEElements getDOUBLEAccess() {
 		return pDOUBLE;
 	}
 	
 	public ParserRule getDOUBLERule() {
 		return getDOUBLEAccess().getRule();
+	}
+	
+	//POSITIVE_DOUBLE:
+	//	INT '.' INT
+	//	| INT;
+	public POSITIVE_DOUBLEElements getPOSITIVE_DOUBLEAccess() {
+		return pPOSITIVE_DOUBLE;
+	}
+	
+	public ParserRule getPOSITIVE_DOUBLERule() {
+		return getPOSITIVE_DOUBLEAccess().getRule();
 	}
 	
 	//Move:
@@ -1436,7 +1441,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Walls:
-	//	'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')';
+	//	'WALLS' '(' front=POSITIVE_DOUBLE ',' right=POSITIVE_DOUBLE ',' back=POSITIVE_DOUBLE ',' left=POSITIVE_DOUBLE ')';
 	public WallsElements getWallsAccess() {
 		return pWalls;
 	}

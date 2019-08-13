@@ -35,12 +35,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Front</em>' attribute.
-   * @see #setFront(int)
+   * @see #setFront(String)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Front()
    * @model
    * @generated
    */
-  int getFront();
+  String getFront();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getFront <em>Front</em>}' attribute.
@@ -50,7 +50,7 @@ public interface Walls extends EObject
    * @see #getFront()
    * @generated
    */
-  void setFront(int value);
+  void setFront(String value);
 
   /**
    * Returns the value of the '<em><b>Right</b></em>' attribute.
@@ -61,12 +61,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' attribute.
-   * @see #setRight(int)
+   * @see #setRight(String)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Right()
    * @model
    * @generated
    */
-  int getRight();
+  String getRight();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}' attribute.
@@ -76,7 +76,7 @@ public interface Walls extends EObject
    * @see #getRight()
    * @generated
    */
-  void setRight(int value);
+  void setRight(String value);
 
   /**
    * Returns the value of the '<em><b>Back</b></em>' attribute.
@@ -87,12 +87,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Back</em>' attribute.
-   * @see #setBack(int)
+   * @see #setBack(String)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Back()
    * @model
    * @generated
    */
-  int getBack();
+  String getBack();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}' attribute.
@@ -102,7 +102,7 @@ public interface Walls extends EObject
    * @see #getBack()
    * @generated
    */
-  void setBack(int value);
+  void setBack(String value);
 
   /**
    * Returns the value of the '<em><b>Left</b></em>' attribute.
@@ -113,12 +113,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' attribute.
-   * @see #setLeft(int)
+   * @see #setLeft(String)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Left()
    * @model
    * @generated
    */
-  int getLeft();
+  String getLeft();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}' attribute.
@@ -128,6 +128,6 @@ public interface Walls extends EObject
    * @see #getLeft()
    * @generated
    */
-  void setLeft(int value);
+  void setLeft(String value);
 
 } // Walls

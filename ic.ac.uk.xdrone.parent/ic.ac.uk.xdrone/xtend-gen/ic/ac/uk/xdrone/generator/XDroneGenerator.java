@@ -85,16 +85,16 @@ public class XDroneGenerator extends AbstractGenerator {
       for(final Walls d_1 : _walls) {
         _builder.append("\t");
         _builder.append("drawWalls(");
-        int _front = d_1.getFront();
+        String _front = d_1.getFront();
         _builder.append(_front, "\t");
         _builder.append(", ");
-        int _right = d_1.getRight();
+        String _right = d_1.getRight();
         _builder.append(_right, "\t");
         _builder.append(", ");
-        int _back = d_1.getBack();
+        String _back = d_1.getBack();
         _builder.append(_back, "\t");
         _builder.append(", ");
-        int _left = d_1.getLeft();
+        String _left = d_1.getLeft();
         _builder.append(_left, "\t");
         _builder.append(")");
         _builder.newLineIfNotEmpty();

@@ -39,7 +39,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected static final int FRONT_EDEFAULT = 0;
+  protected static final String FRONT_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getFront() <em>Front</em>}' attribute.
@@ -49,7 +49,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected int front = FRONT_EDEFAULT;
+  protected String front = FRONT_EDEFAULT;
 
   /**
    * The default value of the '{@link #getRight() <em>Right</em>}' attribute.
@@ -59,7 +59,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected static final int RIGHT_EDEFAULT = 0;
+  protected static final String RIGHT_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' attribute.
@@ -69,7 +69,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected int right = RIGHT_EDEFAULT;
+  protected String right = RIGHT_EDEFAULT;
 
   /**
    * The default value of the '{@link #getBack() <em>Back</em>}' attribute.
@@ -79,7 +79,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected static final int BACK_EDEFAULT = 0;
+  protected static final String BACK_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getBack() <em>Back</em>}' attribute.
@@ -89,7 +89,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected int back = BACK_EDEFAULT;
+  protected String back = BACK_EDEFAULT;
 
   /**
    * The default value of the '{@link #getLeft() <em>Left</em>}' attribute.
@@ -99,7 +99,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected static final int LEFT_EDEFAULT = 0;
+  protected static final String LEFT_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' attribute.
@@ -109,7 +109,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected int left = LEFT_EDEFAULT;
+  protected String left = LEFT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,7 +137,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getFront()
+  public String getFront()
   {
     return front;
   }
@@ -147,9 +147,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFront(int newFront)
+  public void setFront(String newFront)
   {
-    int oldFront = front;
+    String oldFront = front;
     front = newFront;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__FRONT, oldFront, front));
@@ -160,7 +160,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getRight()
+  public String getRight()
   {
     return right;
   }
@@ -170,9 +170,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRight(int newRight)
+  public void setRight(String newRight)
   {
-    int oldRight = right;
+    String oldRight = right;
     right = newRight;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__RIGHT, oldRight, right));
@@ -183,7 +183,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getBack()
+  public String getBack()
   {
     return back;
   }
@@ -193,9 +193,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBack(int newBack)
+  public void setBack(String newBack)
   {
-    int oldBack = back;
+    String oldBack = back;
     back = newBack;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__BACK, oldBack, back));
@@ -206,7 +206,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getLeft()
+  public String getLeft()
   {
     return left;
   }
@@ -216,9 +216,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(int newLeft)
+  public void setLeft(String newLeft)
   {
-    int oldLeft = left;
+    String oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__LEFT, oldLeft, left));
@@ -257,16 +257,16 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        setFront((Integer)newValue);
+        setFront((String)newValue);
         return;
       case XDronePackage.WALLS__RIGHT:
-        setRight((Integer)newValue);
+        setRight((String)newValue);
         return;
       case XDronePackage.WALLS__BACK:
-        setBack((Integer)newValue);
+        setBack((String)newValue);
         return;
       case XDronePackage.WALLS__LEFT:
-        setLeft((Integer)newValue);
+        setLeft((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -309,13 +309,13 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        return front != FRONT_EDEFAULT;
+        return FRONT_EDEFAULT == null ? front != null : !FRONT_EDEFAULT.equals(front);
       case XDronePackage.WALLS__RIGHT:
-        return right != RIGHT_EDEFAULT;
+        return RIGHT_EDEFAULT == null ? right != null : !RIGHT_EDEFAULT.equals(right);
       case XDronePackage.WALLS__BACK:
-        return back != BACK_EDEFAULT;
+        return BACK_EDEFAULT == null ? back != null : !BACK_EDEFAULT.equals(back);
       case XDronePackage.WALLS__LEFT:
-        return left != LEFT_EDEFAULT;
+        return LEFT_EDEFAULT == null ? left != null : !LEFT_EDEFAULT.equals(left);
     }
     return super.eIsSet(featureID);
   }

@@ -549,7 +549,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Walls returns Walls
 	 *
 	 * Constraint:
-	 *     (front=INT right=INT back=INT left=INT)
+	 *     (front=POSITIVE_DOUBLE right=POSITIVE_DOUBLE back=POSITIVE_DOUBLE left=POSITIVE_DOUBLE)
 	 */
 	protected void sequence_Walls(ISerializationContext context, Walls semanticObject) {
 		if (errorAcceptor != null) {
@@ -563,10 +563,10 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.WALLS__LEFT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWallsAccess().getFrontINTTerminalRuleCall_2_0(), semanticObject.getFront());
-		feeder.accept(grammarAccess.getWallsAccess().getRightINTTerminalRuleCall_4_0(), semanticObject.getRight());
-		feeder.accept(grammarAccess.getWallsAccess().getBackINTTerminalRuleCall_6_0(), semanticObject.getBack());
-		feeder.accept(grammarAccess.getWallsAccess().getLeftINTTerminalRuleCall_8_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getWallsAccess().getFrontPOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getFront());
+		feeder.accept(grammarAccess.getWallsAccess().getRightPOSITIVE_DOUBLEParserRuleCall_4_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getWallsAccess().getBackPOSITIVE_DOUBLEParserRuleCall_6_0(), semanticObject.getBack());
+		feeder.accept(grammarAccess.getWallsAccess().getLeftPOSITIVE_DOUBLEParserRuleCall_8_0(), semanticObject.getLeft());
 		feeder.finish();
 	}
 	

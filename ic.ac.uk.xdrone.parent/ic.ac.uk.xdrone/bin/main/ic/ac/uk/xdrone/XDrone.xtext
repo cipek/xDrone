@@ -64,10 +64,13 @@ Command:
 ;
 
 DOUBLE:
+	'-' POSITIVE_DOUBLE
+	| POSITIVE_DOUBLE
+;
+
+POSITIVE_DOUBLE:
 	INT '.' INT
-	| '-' INT '.' INT
 	| INT
-	| '-' INT
 ;
 
 Move:
@@ -141,5 +144,5 @@ Color:
 ;
 
 Walls:
-	'WALLS' '(' front = INT ',' right = INT ','  back = INT ',' left = INT ')'
+	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 ;

@@ -1,7 +1,17 @@
-#SIMULATOR{
+#SIMULATOR_CONTAINER{
   height: 600px;
   width: 600px;
   position: fixed;
   bottom: 50px;
   right: 50px;
+}
+
+#SIMULATOR{
+  position: fixed;
+}
+
+#AXES_SYSTEM{
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }

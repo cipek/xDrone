@@ -12,21 +12,24 @@ var raycaster;
 var mouse, INTERSECTED;
 var radius = 500, theta = 0;
 var frustumSize = 1000;
-var labelPoistion, centerLabel, labelObjects = [];
+var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
+var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
+var container2, camera2, scene2, renderer2, axes2;
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
 function init()
 {
+    var simulatorContainer = document.getElementById('SIMULATOR_CONTAINER');
     simulator = document.getElementById('SIMULATOR');
     //Removing old canvases
     while (simulator.firstChild) {
       simulator.removeChild(simulator.firstChild);
     }
     renderer = new THREE.WebGLRenderer( {antialias:true} );
-    var width = simulator.offsetWidth;
-    var height = simulator.offsetHeight;
+    var width = simulatorContainer.offsetWidth;
+    var height = simulatorContainer.offsetHeight;
     renderer.setSize (width, height);
     renderer.setPixelRatio( window.devicePixelRatio );
 
@@ -95,8 +98,41 @@ function init()
     centerLabel = addText(0, 0.7, 0, "(0,0,0)");
     scene.add( centerLabel );
 
-    // drawWalls();
     // drawSphere();
+    axesSystem();
+}
+
+function axesSystem(){
+  // dom
+  container2 = document.getElementById('AXES_SYSTEM');
+
+  // renderer
+  renderer2 = new THREE.WebGLRenderer();
+  renderer2.setClearColor( 0xf0f0f0, 1 );
+  renderer2.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
+  container2.appendChild( renderer2.domElement );
+
+  // scene
+  scene2 = new THREE.Scene();
+
+  camera2 = new THREE.PerspectiveCamera( 45, CANVAS_WIDTH / CANVAS_HEIGHT, 0.1, 600 );
+  camera2.up = camera.up; // important!
+
+  // axes
+  axes2 = new THREE.AxisHelper( 5 );
+  scene2.add( axes2 );
+
+  labelAxis(4, 0.5, 0, "X");
+  labelAxis(0.5, 4, 0, "Y");
+  labelAxis(0, 0.5, 4, "Z");
+
+  renderer2.render( scene2, camera2 );
+}
+
+function labelAxis(x, y, z, label){
+  var text = addText(x, y, z, label, "black")
+  labelAxes.push(text);
+  scene2.add(text);
 }
 
 function drawWalls(front, right, back, left){
@@ -108,15 +144,6 @@ function drawWalls(front, right, back, left){
   scene.add( wireframe );
 }
 
-// function drawWalls(){
-//   var cubeGeometry = new THREE.BoxGeometry (6, 6, 6);
-//   var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
-//   var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
-//   var wireframe = new THREE.LineSegments( geo, mat );
-//   wireframe.position.set(0,0,0);
-//   scene.add( wireframe );
-// }
-
 function onDocumentMouseMove(event) {
   // the following line would stop any other event handler from firing
   // (such as the mouse's TrackballControls)
@@ -127,8 +154,8 @@ function onDocumentMouseMove(event) {
   mouse.y = - ( ( event.clientY - rect.top ) / rect.height ) * 2 + 1;
 }
 
-function addText(x, y, z, text){
-  const canvas = makeLabelCanvas(10, text);
+function addText(x, y, z, text, color){
+  const canvas = makeLabelCanvas(20, text, color);
   const labelGeometry = new THREE.PlaneBufferGeometry(1, 1);
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -154,7 +181,7 @@ function addText(x, y, z, text){
 }
 
 
-function makeLabelCanvas(size, name) {
+function makeLabelCanvas(size, name, color) {
   const borderSize = 2;
   const ctx = document.createElement('canvas').getContext('2d');
   const font =  `${size}px bold sans-serif`;
@@ -172,7 +199,7 @@ function makeLabelCanvas(size, name) {
 
   ctx.fillStyle = "rgba(255, 255, 255, 0.0)";
   ctx.fillRect(0, 0, width, height);
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = color ? color : 'white';
   ctx.fillText(name, borderSize, borderSize);
 
   return ctx.canvas;
@@ -189,8 +216,11 @@ function toXYCoords (pos) {
 
 function animate()
 {
-    controls.update();
     requestAnimationFrame ( animate );
+
+    controls.update();
+    updateAxesSystem();
+
     //If simulator.js has been generated, execute 'flySimulation()'
     if(typeof flySimulation !== 'undefined' && flySimulation)
       if(execute)
@@ -199,12 +229,22 @@ function animate()
     raycating();
     rotateLabels();
     renderer.render (scene, camera);
+    renderer2.render( scene2, camera2 );
+}
+
+function updateAxesSystem(){
+  camera2.position.copy( camera.position );
+  camera2.position.sub( controls.target ); // added by @libe
+  camera2.position.setLength( CAM_DISTANCE );
+
+  camera2.lookAt( new THREE.Vector3(0,0,0));
 }
 
 function rotateLabels(){
   centerLabel.lookAt(camera.position);
   labelPoistion.lookAt(camera.position);
   labelObjects.forEach(ob => ob.lookAt(camera.position));
+  labelAxes.forEach(ob => ob.lookAt(camera2.position));
 }
 
 function flySupporter(currentLocation, endPoint){
