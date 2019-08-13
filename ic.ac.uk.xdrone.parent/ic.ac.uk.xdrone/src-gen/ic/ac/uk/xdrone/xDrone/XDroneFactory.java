@@ -33,6 +33,15 @@ public interface XDroneFactory extends EFactory
   Program createProgram();
 
   /**
+   * Returns a new object of class '<em>Main</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Main</em>'.
+   * @generated
+   */
+  Main createMain();
+
+  /**
    * Returns a new object of class '<em>Fly</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -238,6 +247,15 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Color createColor();
+
+  /**
+   * Returns a new object of class '<em>Walls</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Walls</em>'.
+   * @generated
+   */
+  Walls createWalls();
 
   /**
    * Returns the package supported by this factory.

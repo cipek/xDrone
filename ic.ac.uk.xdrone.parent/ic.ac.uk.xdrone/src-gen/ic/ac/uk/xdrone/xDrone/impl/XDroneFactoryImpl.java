@@ -13,6 +13,7 @@ import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
@@ -26,6 +27,7 @@ import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDroneFactory;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -90,6 +92,7 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
     switch (eClass.getClassifierID())
     {
       case XDronePackage.PROGRAM: return createProgram();
+      case XDronePackage.MAIN: return createMain();
       case XDronePackage.FLY: return createFly();
       case XDronePackage.ENVIRONMENT: return createEnvironment();
       case XDronePackage.USER_FUNCTION: return createUserFunction();
@@ -113,6 +116,7 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.SIZE: return createSize();
       case XDronePackage.VECTOR: return createVector();
       case XDronePackage.COLOR: return createColor();
+      case XDronePackage.WALLS: return createWalls();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -127,6 +131,17 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     ProgramImpl program = new ProgramImpl();
     return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Main createMain()
+  {
+    MainImpl main = new MainImpl();
+    return main;
   }
 
   /**
@@ -380,6 +395,17 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     ColorImpl color = new ColorImpl();
     return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Walls createWalls()
+  {
+    WallsImpl walls = new WallsImpl();
+    return walls;
   }
 
   /**

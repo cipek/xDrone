@@ -3,10 +3,15 @@ grammar ic.ac.uk.xdrone.XDrone with org.eclipse.xtext.common.Terminals
 generate xDrone "http://www.ac.ic/uk/xdrone/XDrone"
 
 Program :
-  fly = Fly
-  environment = Environment
+  main = Main
 ;
   
+  
+Main:
+	fly = Fly
+	environment = Environment?
+;
+
 Fly :
 	
   'fly(){'
@@ -20,7 +25,7 @@ Fly :
 Environment :
  
  {Environment} 'environment(){'
- 	 (drone+=Drone | objects+=Object)*
+ 	 (drone+=Drone | walls+=Walls | objects+=Object)*
 // 	(drone+=Drone)?
 //  	((objects+=Object))*
   '}'
@@ -133,4 +138,8 @@ Vector:
 Color:
 	'color' '=' color_value = STRING
 	
+;
+
+Walls:
+	'WALLS' '(' front = INT ',' right = INT ','  back = INT ',' left = INT ')'
 ;

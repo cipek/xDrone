@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Program#getFly <em>Fly</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Program#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Program#getMain <em>Main</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getProgram()
@@ -25,55 +24,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface Program extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Fly</b></em>' containment reference.
+   * Returns the value of the '<em><b>Main</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Fly</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Main</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Fly</em>' containment reference.
-   * @see #setFly(Fly)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getProgram_Fly()
+   * @return the value of the '<em>Main</em>' containment reference.
+   * @see #setMain(Main)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getProgram_Main()
    * @model containment="true"
    * @generated
    */
-  Fly getFly();
+  Main getMain();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Program#getFly <em>Fly</em>}' containment reference.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Program#getMain <em>Main</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Fly</em>' containment reference.
-   * @see #getFly()
+   * @param value the new value of the '<em>Main</em>' containment reference.
+   * @see #getMain()
    * @generated
    */
-  void setFly(Fly value);
-
-  /**
-   * Returns the value of the '<em><b>Environment</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Environment</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Environment</em>' containment reference.
-   * @see #setEnvironment(Environment)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getProgram_Environment()
-   * @model containment="true"
-   * @generated
-   */
-  Environment getEnvironment();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Program#getEnvironment <em>Environment</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Environment</em>' containment reference.
-   * @see #getEnvironment()
-   * @generated
-   */
-  void setEnvironment(Environment value);
+  void setMain(Main value);
 
 } // Program

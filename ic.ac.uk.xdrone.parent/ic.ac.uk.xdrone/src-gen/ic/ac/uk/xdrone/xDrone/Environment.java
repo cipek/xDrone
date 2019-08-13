@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Environment#getDrone <em>Drone</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Environment#getWalls <em>Walls</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Environment#getObjects <em>Objects</em>}</li>
  * </ul>
  *
@@ -41,6 +42,22 @@ public interface Environment extends EObject
    * @generated
    */
   EList<Drone> getDrone();
+
+  /**
+   * Returns the value of the '<em><b>Walls</b></em>' containment reference list.
+   * The list contents are of type {@link ic.ac.uk.xdrone.xDrone.Walls}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Walls</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Walls</em>' containment reference list.
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getEnvironment_Walls()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Walls> getWalls();
 
   /**
    * Returns the value of the '<em><b>Objects</b></em>' containment reference list.

@@ -5,6 +5,7 @@ package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import java.util.Collection;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl#getDrone <em>Drone</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl#getWalls <em>Walls</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl#getObjects <em>Objects</em>}</li>
  * </ul>
  *
@@ -46,6 +48,16 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
    * @ordered
    */
   protected EList<Drone> drone;
+
+  /**
+   * The cached value of the '{@link #getWalls() <em>Walls</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getWalls()
+   * @generated
+   * @ordered
+   */
+  protected EList<Walls> walls;
 
   /**
    * The cached value of the '{@link #getObjects() <em>Objects</em>}' containment reference list.
@@ -97,6 +109,20 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Walls> getWalls()
+  {
+    if (walls == null)
+    {
+      walls = new EObjectContainmentEList<Walls>(Walls.class, this, XDronePackage.ENVIRONMENT__WALLS);
+    }
+    return walls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<ic.ac.uk.xdrone.xDrone.Object> getObjects()
   {
     if (objects == null)
@@ -118,6 +144,8 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
     {
       case XDronePackage.ENVIRONMENT__DRONE:
         return ((InternalEList<?>)getDrone()).basicRemove(otherEnd, msgs);
+      case XDronePackage.ENVIRONMENT__WALLS:
+        return ((InternalEList<?>)getWalls()).basicRemove(otherEnd, msgs);
       case XDronePackage.ENVIRONMENT__OBJECTS:
         return ((InternalEList<?>)getObjects()).basicRemove(otherEnd, msgs);
     }
@@ -136,6 +164,8 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
     {
       case XDronePackage.ENVIRONMENT__DRONE:
         return getDrone();
+      case XDronePackage.ENVIRONMENT__WALLS:
+        return getWalls();
       case XDronePackage.ENVIRONMENT__OBJECTS:
         return getObjects();
     }
@@ -156,6 +186,10 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
       case XDronePackage.ENVIRONMENT__DRONE:
         getDrone().clear();
         getDrone().addAll((Collection<? extends Drone>)newValue);
+        return;
+      case XDronePackage.ENVIRONMENT__WALLS:
+        getWalls().clear();
+        getWalls().addAll((Collection<? extends Walls>)newValue);
         return;
       case XDronePackage.ENVIRONMENT__OBJECTS:
         getObjects().clear();
@@ -178,6 +212,9 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
       case XDronePackage.ENVIRONMENT__DRONE:
         getDrone().clear();
         return;
+      case XDronePackage.ENVIRONMENT__WALLS:
+        getWalls().clear();
+        return;
       case XDronePackage.ENVIRONMENT__OBJECTS:
         getObjects().clear();
         return;
@@ -197,6 +234,8 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
     {
       case XDronePackage.ENVIRONMENT__DRONE:
         return drone != null && !drone.isEmpty();
+      case XDronePackage.ENVIRONMENT__WALLS:
+        return walls != null && !walls.isEmpty();
       case XDronePackage.ENVIRONMENT__OBJECTS:
         return objects != null && !objects.isEmpty();
     }

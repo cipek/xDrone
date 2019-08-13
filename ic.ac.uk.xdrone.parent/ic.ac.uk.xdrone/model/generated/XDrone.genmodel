@@ -7,8 +7,11 @@
   <genPackages prefix="XDrone" basePackage="ic.ac.uk.xdrone" disposableProviderFactory="true"
       fileExtensions="xdrone" ecorePackage="XDrone.ecore#/">
     <genClasses ecoreClass="XDrone.ecore#//Program">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/fly"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/environment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Program/main"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Main">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Main/fly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Main/environment"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Fly">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Fly/takeoff"/>
@@ -17,6 +20,7 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Environment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/drone"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/walls"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/objects"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//UserFunction">
@@ -83,6 +87,12 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Color">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Color/color_value"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Walls">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Walls/front"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Walls/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Walls/back"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Walls/left"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

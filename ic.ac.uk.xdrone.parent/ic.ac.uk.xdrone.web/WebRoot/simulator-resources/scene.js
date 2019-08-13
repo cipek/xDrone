@@ -57,7 +57,7 @@ function init()
     scene.add(drone);
     loader = new THREE.LegacyJSONLoader();
     loader.load(baseUrl+'simulator-resources/drone.js', function (geometry, materials) {
-      var matt = new THREE.MeshPhongMaterial( { color: new THREE.Color('red'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
+      var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('black'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
       obj.scale.set(dronesize,dronesize,dronesize);
@@ -95,17 +95,27 @@ function init()
     centerLabel = addText(0, 0.7, 0, "(0,0,0)");
     scene.add( centerLabel );
 
-    drawWalls();
+    // drawWalls();
+    // drawSphere();
 }
 
-function drawWalls(){
-  var cubeGeometry = new THREE.BoxGeometry (6, 6, 6);
+function drawWalls(front, right, back, left){
+  var cubeGeometry = new THREE.BoxGeometry (right+left, 3, front+back);
   var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
   var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
   var wireframe = new THREE.LineSegments( geo, mat );
-  wireframe.position.set(0,0,0);
+  wireframe.position.set((left-right)/2, 1.5, (front-back)/2);
   scene.add( wireframe );
 }
+
+// function drawWalls(){
+//   var cubeGeometry = new THREE.BoxGeometry (6, 6, 6);
+//   var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
+//   var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
+//   var wireframe = new THREE.LineSegments( geo, mat );
+//   wireframe.position.set(0,0,0);
+//   scene.add( wireframe );
+// }
 
 function onDocumentMouseMove(event) {
   // the following line would stop any other event handler from firing
@@ -261,10 +271,8 @@ function flyManager(goalPostion){
 
 function fly(goalPostion, axis){
   var stopped = true;
-  console.log(coveredDistance, goalPostion);
   if(Math.abs(coveredDistance-goalPostion) > 0.04){ //0.02 acceptable movement precision error
     var additionalDistance = flySupporter(coveredDistance, goalPostion);
-    console.log(coveredDistance, goalPostion, additionalDistance);
     coveredDistance += additionalDistance;
     if(axis == 'x')
       drone.translateX(additionalDistance);
@@ -443,6 +451,7 @@ function createPointsOnGrid(){
   var material = new THREE.MeshPhongMaterial({
     color: 'white',
     opacity: 0.0,
+    alphaTest: 0.5,
     transparent: true,
   });
   // var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
@@ -465,4 +474,15 @@ function removeEntity(object) {
     var selectedObject = scene.getObjectByName(object.name);
     scene.remove( selectedObject );
   }
+}
+
+function drawSphere(){
+  var geometry = new THREE.SphereGeometry(1.0, 32, 32 );
+  var material = new THREE.MeshBasicMaterial( {
+    color: 0xffffff, transparent: true,
+    opacity: 0.5 } );
+
+
+  var sphere = new THREE.Mesh (geometry, material);
+  scene.add( sphere );
 }

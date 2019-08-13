@@ -25,6 +25,7 @@ import ic.ac.uk.xdrone.xDrone.Move
 import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
 import ic.ac.uk.xdrone.xDrone.Rotate
+import ic.ac.uk.xdrone.xDrone.Main
 
 /**
  * Generates code from your model files on save.
@@ -45,6 +46,9 @@ class XDroneGenerator extends AbstractGenerator {
 			drone.position.z = «d.vector.z»
 			drone.position.y = «d.vector.y»
 		«ENDFOR»
+		«FOR d : environment.walls»
+			drawWalls(«d.front», «d.right», «d.back», «d.left»)
+		«ENDFOR»
 		«FOR ob : environment.objects»
 «««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
 			addCube("«ob.object_name»",«ob.size.vector.x», «ob.size.vector.y», «ob.size.vector.z», 
@@ -57,7 +61,7 @@ class XDroneGenerator extends AbstractGenerator {
 	}
 	'''
 	
-	def compileJS(Fly fly)'''
+	def compileJS(Main main)'''
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
 		var goalDroneLocation = currentDroneLocation;
@@ -72,7 +76,7 @@ class XDroneGenerator extends AbstractGenerator {
 			new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)
 		);
 		//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
-		«FOR to : fly.takeoff»
+		«FOR to : main.fly.takeoff»
 			commands.push({y: 0.7}); 
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			//lastY += 0.7;
@@ -84,7 +88,7 @@ class XDroneGenerator extends AbstractGenerator {
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		//lastX += 2;
 		
-		«FOR f : fly.commands»
+		«FOR f : main.fly.commands»
 			«IF f instanceof Command»
 				«f.compileJS»
 			«ENDIF»
@@ -95,7 +99,7 @@ class XDroneGenerator extends AbstractGenerator {
 		//commands.push({r: 90}); 
 								
 		
-		«FOR to : fly.land»
+		«FOR to : main.fly.land»
 			//commands.push({y: -0.7}); 
 			commands.push("LAND");
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
@@ -171,7 +175,7 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 
-	def compilePython(Fly fly)'''
+	def compilePython(Main main)'''
 		#! /usr/bin/env python
 		import sys
 		sys.path.append('/opt/ros/indigo/lib/python2.7/dist-packages')
@@ -283,7 +287,7 @@ class XDroneGenerator extends AbstractGenerator {
 		while state == 0:
 			rospy.sleep(0.1)
 		
-		«FOR to : fly.takeoff»  
+		«FOR to : main.fly.takeoff»  
 			takeoff = rospy.Publisher('/ardrone/takeoff', Empty, queue_size=1)
 			
 			while takeoff.get_num_connections() < 1:
@@ -293,13 +297,13 @@ class XDroneGenerator extends AbstractGenerator {
 			rospy.sleep(5)
 		«ENDFOR»
 		
-		«FOR f : fly.commands»
+		«FOR f : main.fly.commands»
 			«IF f instanceof Command»
 				«f.compile»
 			«ENDIF»
 		«ENDFOR»
 		
-		«FOR to : fly.land»  
+		«FOR to : main.fly.land»  
 			land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
 						
 			while land.get_num_connections() < 1:
@@ -345,8 +349,8 @@ class XDroneGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
 		var time = System.currentTimeMillis();
-		for(fly : resource.allContents.toIterable.filter(Fly)) {
-			result = fly.compilePython.toString; 
+		for(main : resource.allContents.toIterable.filter(Main)) {
+			result = main.compilePython.toString; 
 			fsa.generateFile('/xdrone/result.py', result); //Locally change path to 'result.py'
 		}
 		
@@ -364,8 +368,8 @@ class XDroneGenerator extends AbstractGenerator {
 
 		
 		result = "";
-		for(fly : resource.allContents.toIterable.filter(Fly)) {
-			result = fly.compileJS.toString; 
+		for(main : resource.allContents.toIterable.filter(Main)) {
+			result = main.compileJS.toString; 
 			fsa.generateFile('Webroot/simulator' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
 		}
 		

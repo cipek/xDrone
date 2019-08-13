@@ -13,6 +13,7 @@ import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
@@ -26,6 +27,7 @@ import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDroneFactory;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -50,6 +52,13 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * @generated
    */
   private EClass programEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mainEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -213,6 +222,13 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
   private EClass colorEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wallsEClass = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -290,7 +306,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_Fly()
+  public EReference getProgram_Main()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(0);
   }
@@ -300,9 +316,29 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_Environment()
+  public EClass getMain()
   {
-    return (EReference)programEClass.getEStructuralFeatures().get(1);
+    return mainEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMain_Fly()
+  {
+    return (EReference)mainEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMain_Environment()
+  {
+    return (EReference)mainEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -370,9 +406,19 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEnvironment_Objects()
+  public EReference getEnvironment_Walls()
   {
     return (EReference)environmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnvironment_Objects()
+  {
+    return (EReference)environmentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -840,6 +886,56 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getWalls()
+  {
+    return wallsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWalls_Front()
+  {
+    return (EAttribute)wallsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWalls_Right()
+  {
+    return (EAttribute)wallsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWalls_Back()
+  {
+    return (EAttribute)wallsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWalls_Left()
+  {
+    return (EAttribute)wallsEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public XDroneFactory getXDroneFactory()
   {
     return (XDroneFactory)getEFactoryInstance();
@@ -866,8 +962,11 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
-    createEReference(programEClass, PROGRAM__FLY);
-    createEReference(programEClass, PROGRAM__ENVIRONMENT);
+    createEReference(programEClass, PROGRAM__MAIN);
+
+    mainEClass = createEClass(MAIN);
+    createEReference(mainEClass, MAIN__FLY);
+    createEReference(mainEClass, MAIN__ENVIRONMENT);
 
     flyEClass = createEClass(FLY);
     createEAttribute(flyEClass, FLY__TAKEOFF);
@@ -876,6 +975,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     environmentEClass = createEClass(ENVIRONMENT);
     createEReference(environmentEClass, ENVIRONMENT__DRONE);
+    createEReference(environmentEClass, ENVIRONMENT__WALLS);
     createEReference(environmentEClass, ENVIRONMENT__OBJECTS);
 
     userFunctionEClass = createEClass(USER_FUNCTION);
@@ -944,6 +1044,12 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     colorEClass = createEClass(COLOR);
     createEAttribute(colorEClass, COLOR__COLOR_VALUE);
+
+    wallsEClass = createEClass(WALLS);
+    createEAttribute(wallsEClass, WALLS__FRONT);
+    createEAttribute(wallsEClass, WALLS__RIGHT);
+    createEAttribute(wallsEClass, WALLS__BACK);
+    createEAttribute(wallsEClass, WALLS__LEFT);
   }
 
   /**
@@ -991,8 +1097,11 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProgram_Fly(), this.getFly(), null, "fly", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProgram_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Main(), this.getMain(), null, "main", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mainEClass, Main.class, "Main", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMain_Fly(), this.getFly(), null, "fly", null, 0, 1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMain_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(flyEClass, Fly.class, "Fly", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFly_Takeoff(), ecorePackage.getEString(), "takeoff", null, 0, -1, Fly.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1001,6 +1110,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEnvironment_Drone(), this.getDrone(), null, "drone", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironment_Walls(), this.getWalls(), null, "walls", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnvironment_Objects(), this.getObject(), null, "objects", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(userFunctionEClass, UserFunction.class, "UserFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1069,6 +1179,12 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getColor_Color_value(), ecorePackage.getEString(), "color_value", null, 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wallsEClass, Walls.class, "Walls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWalls_Front(), ecorePackage.getEInt(), "front", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWalls_Right(), ecorePackage.getEInt(), "right", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWalls_Back(), ecorePackage.getEInt(), "back", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWalls_Left(), ecorePackage.getEInt(), "left", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

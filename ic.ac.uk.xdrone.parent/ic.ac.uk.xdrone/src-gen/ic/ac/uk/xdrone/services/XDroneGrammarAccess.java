@@ -26,18 +26,33 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Program");
+		private final Assignment cMainAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cMainMainParserRuleCall_0 = (RuleCall)cMainAssignment.eContents().get(0);
+		
+		//Program:
+		//	main=Main;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//main=Main
+		public Assignment getMainAssignment() { return cMainAssignment; }
+		
+		//Main
+		public RuleCall getMainMainParserRuleCall_0() { return cMainMainParserRuleCall_0; }
+	}
+	public class MainElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Main");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cFlyAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cFlyFlyParserRuleCall_0_0 = (RuleCall)cFlyAssignment_0.eContents().get(0);
 		private final Assignment cEnvironmentAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cEnvironmentEnvironmentParserRuleCall_1_0 = (RuleCall)cEnvironmentAssignment_1.eContents().get(0);
 		
-		//Program:
+		//Main:
 		//	fly=Fly
-		//	environment=Environment;
+		//	environment=Environment?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//fly=Fly environment=Environment
+		//fly=Fly environment=Environment?
 		public Group getGroup() { return cGroup; }
 		
 		//fly=Fly
@@ -46,7 +61,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//Fly
 		public RuleCall getFlyFlyParserRuleCall_0_0() { return cFlyFlyParserRuleCall_0_0; }
 		
-		//environment=Environment
+		//environment=Environment?
 		public Assignment getEnvironmentAssignment_1() { return cEnvironmentAssignment_1; }
 		
 		//Environment
@@ -109,18 +124,20 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Assignment cDroneAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
 		private final RuleCall cDroneDroneParserRuleCall_2_0_0 = (RuleCall)cDroneAssignment_2_0.eContents().get(0);
-		private final Assignment cObjectsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cObjectsObjectParserRuleCall_2_1_0 = (RuleCall)cObjectsAssignment_2_1.eContents().get(0);
+		private final Assignment cWallsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cWallsWallsParserRuleCall_2_1_0 = (RuleCall)cWallsAssignment_2_1.eContents().get(0);
+		private final Assignment cObjectsAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
+		private final RuleCall cObjectsObjectParserRuleCall_2_2_0 = (RuleCall)cObjectsAssignment_2_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Environment:
-		//	{Environment} 'environment(){' (drone+=Drone | objects+=Object)*
+		//	{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)*
 		//	// 	(drone+=Drone)?
 		//	//  	((objects+=Object))*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Environment} 'environment(){' (drone+=Drone | objects+=Object)* // 	(drone+=Drone)?
+		//{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)* // 	(drone+=Drone)?
 		////  	((objects+=Object))*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -131,7 +148,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'environment(){'
 		public Keyword getEnvironmentKeyword_1() { return cEnvironmentKeyword_1; }
 		
-		//(drone+=Drone | objects+=Object)*
+		//(drone+=Drone | walls+=Walls | objects+=Object)*
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//drone+=Drone
@@ -140,11 +157,17 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//Drone
 		public RuleCall getDroneDroneParserRuleCall_2_0_0() { return cDroneDroneParserRuleCall_2_0_0; }
 		
+		//walls+=Walls
+		public Assignment getWallsAssignment_2_1() { return cWallsAssignment_2_1; }
+		
+		//Walls
+		public RuleCall getWallsWallsParserRuleCall_2_1_0() { return cWallsWallsParserRuleCall_2_1_0; }
+		
 		//objects+=Object
-		public Assignment getObjectsAssignment_2_1() { return cObjectsAssignment_2_1; }
+		public Assignment getObjectsAssignment_2_2() { return cObjectsAssignment_2_2; }
 		
 		//Object
-		public RuleCall getObjectsObjectParserRuleCall_2_1_0() { return cObjectsObjectParserRuleCall_2_1_0; }
+		public RuleCall getObjectsObjectParserRuleCall_2_2_0() { return cObjectsObjectParserRuleCall_2_2_0; }
 		
 		//// 	(drone+=Drone)?
 		////  	((objects+=Object))*
@@ -941,9 +964,77 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getColor_valueSTRINGTerminalRuleCall_2_0() { return cColor_valueSTRINGTerminalRuleCall_2_0; }
 	}
+	public class WallsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Walls");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWALLSKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cFrontAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFrontINTTerminalRuleCall_2_0 = (RuleCall)cFrontAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRightINTTerminalRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cBackAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cBackINTTerminalRuleCall_6_0 = (RuleCall)cBackAssignment_6.eContents().get(0);
+		private final Keyword cCommaKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cLeftAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cLeftINTTerminalRuleCall_8_0 = (RuleCall)cLeftAssignment_8.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//Walls:
+		//	'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'WALLS'
+		public Keyword getWALLSKeyword_0() { return cWALLSKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//front=INT
+		public Assignment getFrontAssignment_2() { return cFrontAssignment_2; }
+		
+		//INT
+		public RuleCall getFrontINTTerminalRuleCall_2_0() { return cFrontINTTerminalRuleCall_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//right=INT
+		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
+		
+		//INT
+		public RuleCall getRightINTTerminalRuleCall_4_0() { return cRightINTTerminalRuleCall_4_0; }
+		
+		//','
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
+		
+		//back=INT
+		public Assignment getBackAssignment_6() { return cBackAssignment_6; }
+		
+		//INT
+		public RuleCall getBackINTTerminalRuleCall_6_0() { return cBackINTTerminalRuleCall_6_0; }
+		
+		//','
+		public Keyword getCommaKeyword_7() { return cCommaKeyword_7; }
+		
+		//left=INT
+		public Assignment getLeftAssignment_8() { return cLeftAssignment_8; }
+		
+		//INT
+		public RuleCall getLeftINTTerminalRuleCall_8_0() { return cLeftINTTerminalRuleCall_8_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
+	}
 	
 	
 	private final ProgramElements pProgram;
+	private final MainElements pMain;
 	private final FlyElements pFly;
 	private final EnvironmentElements pEnvironment;
 	private final UserFunctionElements pUserFunction;
@@ -970,6 +1061,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	private final SizeElements pSize;
 	private final VectorElements pVector;
 	private final ColorElements pColor;
+	private final WallsElements pWalls;
 	
 	private final Grammar grammar;
 	
@@ -981,6 +1073,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pProgram = new ProgramElements();
+		this.pMain = new MainElements();
 		this.pFly = new FlyElements();
 		this.pEnvironment = new EnvironmentElements();
 		this.pUserFunction = new UserFunctionElements();
@@ -1007,6 +1100,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		this.pSize = new SizeElements();
 		this.pVector = new VectorElements();
 		this.pColor = new ColorElements();
+		this.pWalls = new WallsElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1037,14 +1131,24 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Program:
-	//	fly=Fly
-	//	environment=Environment;
+	//	main=Main;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
 	
 	public ParserRule getProgramRule() {
 		return getProgramAccess().getRule();
+	}
+	
+	//Main:
+	//	fly=Fly
+	//	environment=Environment?;
+	public MainElements getMainAccess() {
+		return pMain;
+	}
+	
+	public ParserRule getMainRule() {
+		return getMainAccess().getRule();
 	}
 	
 	//Fly:
@@ -1060,7 +1164,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Environment:
-	//	{Environment} 'environment(){' (drone+=Drone | objects+=Object)*
+	//	{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)*
 	//	// 	(drone+=Drone)?
 	//	//  	((objects+=Object))*
 	//	'}';
@@ -1329,6 +1433,16 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getColorRule() {
 		return getColorAccess().getRule();
+	}
+	
+	//Walls:
+	//	'WALLS' '(' front=INT ',' right=INT ',' back=INT ',' left=INT ')';
+	public WallsElements getWallsAccess() {
+		return pWalls;
+	}
+	
+	public ParserRule getWallsRule() {
+		return getWallsAccess().getRule();
 	}
 	
 	//terminal ID:

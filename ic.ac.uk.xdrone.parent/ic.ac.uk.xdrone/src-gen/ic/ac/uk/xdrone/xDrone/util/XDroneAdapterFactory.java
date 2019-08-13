@@ -13,6 +13,7 @@ import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
@@ -26,6 +27,7 @@ import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.UserFunction;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -102,6 +104,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseProgram(Program object)
       {
         return createProgramAdapter();
+      }
+      @Override
+      public Adapter caseMain(Main object)
+      {
+        return createMainAdapter();
       }
       @Override
       public Adapter caseFly(Fly object)
@@ -219,6 +226,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createColorAdapter();
       }
       @Override
+      public Adapter caseWalls(Walls object)
+      {
+        return createWallsAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -251,6 +263,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProgramAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Main <em>Main</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Main
+   * @generated
+   */
+  public Adapter createMainAdapter()
   {
     return null;
   }
@@ -596,6 +623,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createColorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Walls <em>Walls</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Walls
+   * @generated
+   */
+  public Adapter createWallsAdapter()
   {
     return null;
   }

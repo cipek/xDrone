@@ -10,9 +10,9 @@ import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
-import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
@@ -21,6 +21,7 @@ import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,6 +81,26 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     {
+      EList<Walls> _walls = environment.getWalls();
+      for(final Walls d_1 : _walls) {
+        _builder.append("\t");
+        _builder.append("drawWalls(");
+        int _front = d_1.getFront();
+        _builder.append(_front, "\t");
+        _builder.append(", ");
+        int _right = d_1.getRight();
+        _builder.append(_right, "\t");
+        _builder.append(", ");
+        int _back = d_1.getBack();
+        _builder.append(_back, "\t");
+        _builder.append(", ");
+        int _left = d_1.getLeft();
+        _builder.append(_left, "\t");
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
       EList<ic.ac.uk.xdrone.xDrone.Object> _objects = environment.getObjects();
       for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
         _builder.append("\t");
@@ -131,7 +152,7 @@ public class XDroneGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compileJS(final Fly fly) {
+  public CharSequence compileJS(final Main main) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("var commands = [];");
     _builder.newLine();
@@ -162,7 +183,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;");
     _builder.newLine();
     {
-      EList<String> _takeoff = fly.getTakeoff();
+      EList<String> _takeoff = main.getFly().getTakeoff();
       for(final String to : _takeoff) {
         _builder.append("commands.push({y: 0.7}); ");
         _builder.newLine();
@@ -184,7 +205,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<SuperCommand> _commands = fly.getCommands();
+      EList<SuperCommand> _commands = main.getFly().getCommands();
       for(final SuperCommand f : _commands) {
         {
           if ((f instanceof Command)) {
@@ -205,7 +226,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<String> _land = fly.getLand();
+      EList<String> _land = main.getFly().getLand();
       for(final String to_1 : _land) {
         _builder.append("//commands.push({y: -0.7}); ");
         _builder.newLine();
@@ -407,7 +428,7 @@ public class XDroneGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compilePython(final Fly fly) {
+  public CharSequence compilePython(final Main main) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("#! /usr/bin/env python");
     _builder.newLine();
@@ -693,7 +714,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<String> _takeoff = fly.getTakeoff();
+      EList<String> _takeoff = main.getFly().getTakeoff();
       for(final String to : _takeoff) {
         _builder.append("takeoff = rospy.Publisher(\'/ardrone/takeoff\', Empty, queue_size=1)");
         _builder.newLine();
@@ -712,7 +733,7 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     {
-      EList<SuperCommand> _commands = fly.getCommands();
+      EList<SuperCommand> _commands = main.getFly().getCommands();
       for(final SuperCommand f : _commands) {
         {
           if ((f instanceof Command)) {
@@ -725,7 +746,7 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     {
-      EList<String> _land = fly.getLand();
+      EList<String> _land = main.getFly().getLand();
       for(final String to_1 : _land) {
         _builder.append("land = rospy.Publisher(\'/ardrone/land\', Empty, queue_size=1)");
         _builder.newLine();
@@ -845,10 +866,10 @@ public class XDroneGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
     long time = System.currentTimeMillis();
-    Iterable<Fly> _filter = Iterables.<Fly>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Fly.class);
-    for (final Fly fly : _filter) {
+    Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
+    for (final Main main : _filter) {
       {
-        result = this.compilePython(fly).toString();
+        result = this.compilePython(main).toString();
         fsa.generateFile("/xdrone/result.py", result);
       }
     }
@@ -865,10 +886,10 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     result = "";
-    Iterable<Fly> _filter_1 = Iterables.<Fly>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Fly.class);
-    for (final Fly fly_1 : _filter_1) {
+    Iterable<Main> _filter_1 = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
+    for (final Main main_1 : _filter_1) {
       {
-        result = this.compileJS(fly_1).toString();
+        result = this.compileJS(main_1).toString();
         fsa.generateFile((("Webroot/simulator" + Long.valueOf(time)) + ".js"), result);
       }
     }
