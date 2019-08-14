@@ -55,15 +55,17 @@
 									if(a.name.includes('environment'))
 										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
 								})
-								require(['./' + pathEnvironment], function(module){ //'./simulator.js'
-									init();
-									environment();
-									require(['./' + pathSimulator], function(module){ //'./simulator.js'
-										// init();
-										// environment();
-										// animate();
+
+								if(pathEnvironment && pathEnvironment != '')
+									require(['./' + pathEnvironment], function(module){
+										init();
+										environment();
+										require(['./' + pathSimulator], function(module){
+										})
 									})
-								})
+								else
+									require(['./' + pathSimulator], function(module){
+									})
 
 							});
 

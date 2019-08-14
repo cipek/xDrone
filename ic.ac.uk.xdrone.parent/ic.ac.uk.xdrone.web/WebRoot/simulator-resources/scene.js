@@ -14,7 +14,7 @@ var radius = 500, theta = 0;
 var frustumSize = 1000;
 var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
-var container2, camera2, scene2, renderer2, axes2;
+var axesContainer, camera2, scene2, renderer2, axes2;
 
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -104,13 +104,15 @@ function init()
 
 function axesSystem(){
   // dom
-  container2 = document.getElementById('AXES_SYSTEM');
-
+  axesContainer = document.getElementById('AXES_SYSTEM');
+  while (axesContainer.firstChild) {
+    axesContainer.removeChild(axesContainer.firstChild);
+  }
   // renderer
   renderer2 = new THREE.WebGLRenderer();
   renderer2.setClearColor( 0xf0f0f0, 1 );
   renderer2.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
-  container2.appendChild( renderer2.domElement );
+  axesContainer.appendChild( renderer2.domElement );
 
   // scene
   scene2 = new THREE.Scene();
