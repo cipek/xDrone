@@ -15,7 +15,8 @@ var frustumSize = 1000;
 var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
 var axesContainer, camera2, scene2, renderer2, axes2;
-
+var collisionBox;
+var collisions;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
@@ -59,6 +60,7 @@ function init()
     var dronesize = 0.5;
     scene.add(drone);
     loader = new THREE.LegacyJSONLoader();
+    //Model taken from https://sketchfab.com/3d-models/tron-ish-low-poly-drone-cad1fc9ada864e06ab69a37705656392
     loader.load(baseUrl+'simulator-resources/drone.js', function (geometry, materials) {
       var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('black'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
@@ -86,6 +88,9 @@ function init()
       drone.add(obj);
     });
 
+    addCollisionBoxToDrone(1,1,1);
+    collisions = [];
+
     var axesDrone = new THREE.AxisHelper(1);
     drone.add(axesDrone);
 
@@ -100,6 +105,7 @@ function init()
 
     // drawSphere();
     axesSystem();
+
 }
 
 function axesSystem(){
@@ -224,9 +230,11 @@ function animate()
     updateAxesSystem();
 
     //If simulator.js has been generated, execute 'flySimulation()'
-    if(typeof flySimulation !== 'undefined' && flySimulation)
+    if(typeof flySimulation !== 'undefined' && flySimulation){
       if(execute)
         flySimulation();
+      detectCollisions();
+    }
 
     raycating();
     rotateLabels();
@@ -243,8 +251,10 @@ function updateAxesSystem(){
 }
 
 function rotateLabels(){
-  centerLabel.lookAt(camera.position);
-  labelPoistion.lookAt(camera.position);
+  if(centerLabel)
+    centerLabel.lookAt(camera.position);
+  if(labelPoistion)
+    labelPoistion.lookAt(camera.position);
   labelObjects.forEach(ob => ob.lookAt(camera.position));
   labelAxes.forEach(ob => ob.lookAt(camera2.position));
 }
@@ -261,43 +271,6 @@ function flySupporter(currentLocation, endPoint){
     return -0.01;
   }
 }
-
-// function fly(goalPostion){
-//   var stopped = true;
-//   if(Math.abs(coveredXDistance-goalPostion.x) > 0.04){ //0.02 acceptable movement precision error
-//     // flySupporter('x', drone.position.x, goalPostion.x);
-//      // console.log("X1", drone.position.z, goalPostion.x);
-//      var additionalDistance = flySupporter(coveredXDistance, goalPostion.x);
-//      coveredXDistance += additionalDistance;
-//     drone.translateX(additionalDistance);
-//     // coveredXDistance = +0.01;
-//      // console.log("X2", drone.position.z, goalPostion.x);
-//     stopped = false;
-//   }
-//   if(Math.abs(coveredYDistance-goalPostion.y) > 0.04){
-//     // flySupporter('y', drone.position.y, goalPostion.y);
-//     // console.log(coveredYDistance, goalPostion.y);
-//     var additionalDistance = flySupporter(coveredYDistance, goalPostion.y);
-//     coveredYDistance += additionalDistance;
-//     drone.translateY(additionalDistance);
-//     stopped = false;
-//   }
-//   if(Math.abs(coveredZDistance-goalPostion.z) > 0.04){
-//     // flySupporter('z', drone.position.z, goalPostion.z);
-//     var additionalDistance = flySupporter(coveredZDistance, goalPostion.z);
-//     coveredZDistance += additionalDistance;
-//     drone.translateZ(additionalDistance);
-//     stopped = false;
-//   }
-//   drawNewLineSegment();
-//   if(stopped){
-//     coveredXDistance = 0;
-//     coveredYDistance = 0;
-//     coveredZDistance = 0;
-//   }
-//
-//   return stopped;
-// }
 
 function flyManager(goalPostion){
   var stopped = true;
@@ -449,8 +422,27 @@ function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
   labelObjects.push(text);
   scene.add(text);
 
+  calculateCollisionPoints(cube);
   scene.add(cube);
 }
+
+function calculateCollisionPoints( mesh, type = 'collision' ) {
+  // Compute the bounding box after scale, translation, etc.
+  var bbox = new THREE.Box3().setFromObject(mesh);
+
+  var bounds = {
+    type: type,
+    xMin: bbox.min.x,
+    xMax: bbox.max.x,
+    yMin: bbox.min.y,
+    yMax: bbox.max.y,
+    zMin: bbox.min.z,
+    zMax: bbox.max.z,
+  };
+
+  collisions.push( bounds );
+}
+
 
 function raycating() {
 	// find intersections
@@ -527,4 +519,45 @@ function drawSphere(){
 
   var sphere = new THREE.Mesh (geometry, material);
   scene.add( sphere );
+}
+
+
+/**
+ * Collision detection for every solid object.
+ */
+function detectCollisions() {
+  // Get the user's current collision area.
+  var bounds = {
+    xMin: drone.position.x - collisionBox.geometry.parameters.width / 2,
+    xMax: drone.position.x + collisionBox.geometry.parameters.width / 2,
+    yMin: drone.position.y - collisionBox.geometry.parameters.height / 2,
+    yMax: drone.position.y + collisionBox.geometry.parameters.height / 2,
+    zMin: drone.position.z - collisionBox.geometry.parameters.width / 2,
+    zMax: drone.position.z + collisionBox.geometry.parameters.width / 2,
+  };
+
+  // Run through each object and detect if there is a collision.
+  for ( var index = 0; index < collisions.length; index ++ ) {
+    if (collisions[ index ].type == 'collision' ) {
+      if ( ( bounds.xMin <= collisions[ index ].xMax && bounds.xMax >= collisions[ index ].xMin ) &&
+         ( bounds.yMin <= collisions[ index ].yMax && bounds.yMax >= collisions[ index ].yMin) &&
+         ( bounds.zMin <= collisions[ index ].zMax && bounds.zMax >= collisions[ index ].zMin) ) {
+        // We hit a solid object! Stop all movements.
+        // stopMovement();
+        console.log("IN HIT");
+      }
+    }
+  }
+}
+
+function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
+  var cubeGeometry = new THREE.BoxBufferGeometry (sizeX, sizeY, sizeZ);
+  var cubeMaterial = new THREE.MeshBasicMaterial( {
+    color: 0xffffff, transparent: true, alphaTest: 0.5,
+    opacity: 0.0 } );
+  var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0xff0000});
+  collisionBox = new THREE.Mesh (cubeGeometry, cubeMaterial);
+  collisionBox.position.copy(drone.position);
+
+  drone.add(collisionBox);
 }
