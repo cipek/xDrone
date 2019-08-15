@@ -297,7 +297,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("if(commands[0].r !== undefined){");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("goalDroneRotation += commands[0].r;");
+    _builder.append("goalDroneRotation = commands[0].r;");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("currentFunction = \"ROTATION\";");

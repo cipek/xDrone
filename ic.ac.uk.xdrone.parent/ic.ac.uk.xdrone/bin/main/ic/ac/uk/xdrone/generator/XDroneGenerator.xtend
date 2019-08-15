@@ -129,7 +129,7 @@ class XDroneGenerator extends AbstractGenerator {
 		function nextCommand(){
 			if(commands && commands[0]){
 				if(commands[0].r !== undefined){
-					goalDroneRotation += commands[0].r;
+					goalDroneRotation = commands[0].r;
 					currentFunction = "ROTATION";
 				}
 				else if(commands[0].w !== undefined){

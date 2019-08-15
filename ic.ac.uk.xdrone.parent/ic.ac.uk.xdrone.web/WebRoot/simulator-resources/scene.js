@@ -7,7 +7,7 @@ var controls;
 var execute = true;
 var globalDroneRotation = 90, currentDroneRotation = 0;
 var coveredXDistance = 0, coveredYDistance = 0, coveredZDistance = 0;
-var coveredDistance = 0;
+var coveredDistance = 0, coveredAngle = 0;
 var line;
 var raycaster;
 var mouse, INTERSECTED;
@@ -120,7 +120,7 @@ function init()
     axesSystem();
 
     //Resets distance
-    coveredDistance = 0;
+    coveredDistance = 0, coveredAngle = 0;
 }
 
 function axesSystem(){
@@ -278,16 +278,16 @@ function rotateLabels(){
   labelAxes.forEach(ob => ob.lookAt(camera2.position));
 }
 
-function flySupporter(currentLocation, endPoint){
+function flySupporter(currentLocation, endPoint, speed){
   if(endPoint > currentLocation){
     // if(drone.position[axis] < endPoint)
       // drone.position[axis] += 0.01;
-    return 0.01;
+    return speed;
   }
   else{
     // if(drone.position[axis] > endPoint)
       // drone.position[axis] -= 0.01;
-    return -0.01;
+    return -speed;
   }
 }
 
@@ -296,7 +296,7 @@ function fly(destination, axis){
   var stopped = true;
 
   if(destination !== 0 && Math.abs(coveredDistance-destination) > 0.04){ //0.02 acceptable movement precision error
-    var additionalDistance = flySupporter(coveredDistance, destination);
+    var additionalDistance = flySupporter(coveredDistance, destination, 0.015);
     coveredDistance += additionalDistance;
     if(axis == 'x')
       drone.translateX(additionalDistance);
@@ -330,17 +330,15 @@ function drawNewLineSegment(){
 
 function rotation(goalRotation){
   var stopped = true;
-  if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
-    if(drone.rotation.y > goalRotation){
-        drone.rotateY(-0.02);
-    }
-    else{
-        drone.rotateY(0.02);
-    }
+  // if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
+  if(Math.abs(coveredAngle-goalRotation) > 0.04){
+    var additionalAngle = flySupporter(coveredAngle, goalRotation, 0.02)
+    coveredAngle += additionalAngle;
+    drone.rotateY(additionalAngle);
     stopped = false;
   }
   if(stopped){
-
+    coveredAngle = 0;
   }
 
 
