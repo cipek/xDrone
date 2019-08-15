@@ -56,6 +56,7 @@
 										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
 								})
 
+								flySimulation = undefined;
 								if(pathEnvironment && pathEnvironment != '')
 									require(['./' + pathEnvironment], function(module){
 										init();

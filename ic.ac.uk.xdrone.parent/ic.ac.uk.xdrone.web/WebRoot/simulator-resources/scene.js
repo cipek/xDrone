@@ -113,6 +113,8 @@ function init()
     // drawSphere();
     axesSystem();
 
+
+    coveredDistance = 0;
 }
 
 function axesSystem(){
@@ -277,18 +279,6 @@ function flySupporter(currentLocation, endPoint){
       // drone.position[axis] -= 0.01;
     return -0.01;
   }
-}
-
-function flyManager(destination){
-  var stopped = true;
-  if(!fly(destination.y, 'y'))
-    stopped = false;
-  else if(!fly(destination.z, 'z'))
-    stopped = false;
-  else if(!fly(destination.x, 'x'))
-    stopped = false;
-
-  return stopped;
 }
 
 function fly(destination, axis){
