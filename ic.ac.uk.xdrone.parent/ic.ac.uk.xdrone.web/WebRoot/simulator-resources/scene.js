@@ -1,6 +1,7 @@
 //IMPORTANT!
 //y and z axis are swapped in respect to ROS. Y is down and up axis
 var scene, renderer, camera, drone, simulator;
+var modelHeight = 0.1;
 var cube;
 var controls;
 var execute = true;
@@ -19,12 +20,13 @@ var axesContainer, camera2, scene2, renderer2, axes2;
 var collisionBox;
 var collisions, collidedWith, wallsColision, walls;
 var lastCameraPosition;
+var landHeight;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
 function init()
 {
-    objects = [], labelObjects = [], labelAxes = [];
+    objects = [], labelObjects = [], labelAxes = [], landHeight = undefined;
 
     var simulatorContainer = document.getElementById('SIMULATOR_CONTAINER');
     simulator = document.getElementById('SIMULATOR');
@@ -89,14 +91,15 @@ function init()
     var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
       obj.scale.set(dronesize,dronesize,dronesize);
-      obj.position.y = 0;
-      obj.position.x = 0;
-      obj.position.z = 0;
       obj.rotateY(Math.PI);
       obj.receiveShadow = true;
       obj.castShadow = true;
       drone.add(obj);
     });
+
+    drone.position.y = 0 + modelHeight;
+    drone.position.x = 0;
+    drone.position.z = 0;
 
     addCollisionBoxToDrone(1,1,1);
     collisions = [], collidedWith = [], wallsColision = false, walls = {};
@@ -289,6 +292,7 @@ function flySupporter(currentLocation, endPoint){
 }
 
 function fly(destination, axis){
+  landHeight = undefined;
   var stopped = true;
 
   if(destination !== 0 && Math.abs(coveredDistance-destination) > 0.04){ //0.02 acceptable movement precision error
@@ -405,7 +409,10 @@ function takeoff(){
 }
 
 function land(){
-  if(drone.position.y > 0){
+  if(landHeight == undefined)
+    landHeight = findSurface();
+
+  if(drone.position.y > landHeight){
     drone.position.y -= 0.01;
     drawNewLineSegment();
     return false;
@@ -413,6 +420,20 @@ function land(){
   else {
     return true;
   }
+}
+
+function findSurface(){
+  var highestSurface = modelHeight;
+
+  for (var i = 0; i < collisions.length; i++) {
+    if ( ( drone.position.x <= collisions[i].xMax && drone.position.x >= collisions[i].xMin ) &&
+       ( drone.position.z <= collisions[i].zMax && drone.position.z >= collisions[i].zMin) &&
+        drone.position.y >= collisions[i].yMax && collisions[i].yMax > 0) {
+        highestSurface = collisions[i].yMax + modelHeight;
+    }
+  }
+
+  return highestSurface;
 }
 
 function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
@@ -566,7 +587,7 @@ function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
   var cubeMaterial = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true, alphaTest: 0.5,
     opacity: 0.0 } );
-  var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0xff0000});
+  // var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0xff0000});
   collisionBox = new THREE.Mesh (cubeGeometry, cubeMaterial);
   collisionBox.position.copy(drone.position);
 

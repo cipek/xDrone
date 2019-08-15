@@ -41,11 +41,11 @@ class XDroneGenerator extends AbstractGenerator {
 		//resets drone location
 		drone.position.x = 0;
 		drone.position.z = 0;
-		drone.position.y = 0;
+		drone.position.y = 0 + modelHeight;
 		«FOR d : environment.drone»
 			drone.position.x = «d.vector.x»
 			drone.position.z = «d.vector.z»
-			drone.position.y = «d.vector.y»
+			drone.position.y = «d.vector.y» + modelHeight
 		«ENDFOR»
 		«FOR d : environment.walls»
 			drawWalls(«d.front», «d.right», «d.back», «d.left»)
@@ -168,7 +168,6 @@ class XDroneGenerator extends AbstractGenerator {
 					commands.unshift({x: vector.x}); 
 					commands.unshift({z: vector.z}); 
 					commands.unshift({y: vector.y}); 
-					console.log(commands[0],commands[1],commands[2]) ;
 				}
 				commands.shift();
 			}

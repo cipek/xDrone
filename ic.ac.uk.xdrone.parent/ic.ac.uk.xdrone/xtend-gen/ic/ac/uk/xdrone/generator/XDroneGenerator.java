@@ -60,7 +60,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("drone.position.z = 0;");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("drone.position.y = 0;");
+    _builder.append("drone.position.y = 0 + modelHeight;");
     _builder.newLine();
     {
       EList<Drone> _drone = environment.getDrone();
@@ -79,6 +79,7 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("drone.position.y = ");
         String _y = d.getVector().getY();
         _builder.append(_y, "\t");
+        _builder.append(" + modelHeight");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -409,9 +410,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("commands.unshift({y: vector.y}); ");
-    _builder.newLine();
-    _builder.append("\t\t\t");
-    _builder.append("console.log(commands[0],commands[1],commands[2]) ;");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
