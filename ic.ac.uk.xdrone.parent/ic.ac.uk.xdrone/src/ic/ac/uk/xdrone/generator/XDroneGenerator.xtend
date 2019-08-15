@@ -120,7 +120,6 @@ class XDroneGenerator extends AbstractGenerator {
 					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
 					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
-					console.log("NEXT COMMAND");
 					nextCommand();
 				}
 			}

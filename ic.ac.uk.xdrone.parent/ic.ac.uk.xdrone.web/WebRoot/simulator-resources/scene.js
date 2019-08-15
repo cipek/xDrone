@@ -16,7 +16,8 @@ var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
 var axesContainer, camera2, scene2, renderer2, axes2;
 var collisionBox;
-var collisions;
+var collisions, collidedWith;
+var lastCameraPosition;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
@@ -38,10 +39,16 @@ function init()
 
     scene = new THREE.Scene();
 
+    if(camera)
+      lastCameraPosition = camera.position;
     camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 600);
-    camera.position.y = 3;
-    camera.position.z = 10;
-    camera.position.x = 5;
+    if(lastCameraPosition)
+      camera.position.copy(lastCameraPosition);
+    else{
+      camera.position.y = 3;
+      camera.position.z = 10;
+      camera.position.x = 5;
+    }
     camera.lookAt (new THREE.Vector3(0,0,0));
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -89,7 +96,7 @@ function init()
     });
 
     addCollisionBoxToDrone(1,1,1);
-    collisions = [];
+    collisions = [], collidedWith = [];
 
     var axesDrone = new THREE.AxisHelper(1);
     drone.add(axesDrone);
@@ -298,7 +305,7 @@ function fly(destination, axis){
       drone.translateZ(additionalDistance);
     stopped = false;
   }
-  
+
   drawNewLineSegment();
   if(stopped){
     coveredDistance = 0;
@@ -543,6 +550,8 @@ function detectCollisions() {
        ( bounds.zMin <= collisions[ index ].zMax && bounds.zMax >= collisions[ index ].zMin) ) {
       // Hit detected
       // console.log("IN HIT", collisions[ index ].objectName);
+      if(!collidedWith.includes(collisions[ index ].objectName))
+        collidedWith.push(collisions[ index ].objectName);
     }
   }
 }
