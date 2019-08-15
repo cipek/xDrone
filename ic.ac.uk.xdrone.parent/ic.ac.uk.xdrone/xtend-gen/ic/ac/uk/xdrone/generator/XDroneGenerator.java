@@ -10,6 +10,7 @@ import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
@@ -152,7 +153,7 @@ public class XDroneGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence compileJS(final Main main) {
+  public CharSequence compileJS(final Fly fly) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("var commands = [];");
     _builder.newLine();
@@ -185,7 +186,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;");
     _builder.newLine();
     {
-      EList<String> _takeoff = main.getFly().getTakeoff();
+      EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
         _builder.append("commands.push({y: 0.7}); ");
         _builder.newLine();
@@ -207,7 +208,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<SuperCommand> _commands = main.getFly().getCommands();
+      EList<SuperCommand> _commands = fly.getCommands();
       for(final SuperCommand f : _commands) {
         {
           if ((f instanceof Command)) {
@@ -228,7 +229,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     {
-      EList<String> _land = main.getFly().getLand();
+      EList<String> _land = fly.getLand();
       for(final String to_1 : _land) {
         _builder.append("//commands.push({y: -0.7}); ");
         _builder.newLine();
@@ -888,10 +889,10 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     result = "";
-    Iterable<Main> _filter_1 = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
-    for (final Main main_1 : _filter_1) {
+    Iterable<Fly> _filter_1 = Iterables.<Fly>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Fly.class);
+    for (final Fly fly : _filter_1) {
       {
-        result = this.compileJS(main_1).toString();
+        result = this.compileJS(fly).toString();
         fsa.generateFile((("Webroot/simulator" + Long.valueOf(time)) + ".js"), result);
       }
     }

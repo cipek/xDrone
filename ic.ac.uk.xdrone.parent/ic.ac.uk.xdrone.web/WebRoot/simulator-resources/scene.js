@@ -16,7 +16,7 @@ var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
 var axesContainer, camera2, scene2, renderer2, axes2;
 var collisionBox;
-var collisions, collidedWith;
+var collisions, collidedWith, wallsColision, walls;
 var lastCameraPosition;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
@@ -96,7 +96,7 @@ function init()
     });
 
     addCollisionBoxToDrone(1,1,1);
-    collisions = [], collidedWith = [];
+    collisions = [], collidedWith = [], wallsColision = false, walls = {};
 
     var axesDrone = new THREE.AxisHelper(1);
     drone.add(axesDrone);
@@ -113,7 +113,7 @@ function init()
     // drawSphere();
     axesSystem();
 
-
+    //Resets distance
     coveredDistance = 0;
 }
 
@@ -153,6 +153,10 @@ function labelAxis(x, y, z, label){
 }
 
 function drawWalls(front, right, back, left){
+  walls = {xMin: -right, xMax: left,
+    yMin: 0, yMax: 3,
+    zMin: -back, zMax: front
+  };
   var cubeGeometry = new THREE.BoxGeometry (right+left, 3, front+back);
   var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
   var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
@@ -543,6 +547,12 @@ function detectCollisions() {
       if(!collidedWith.includes(collisions[ index ].objectName))
         collidedWith.push(collisions[ index ].objectName);
     }
+  }
+
+  if(walls.xMin >= bounds.xMin || walls.xMax <= bounds.xMax ||
+    walls.zMin >= bounds.zMin || walls.zMax <= bounds.zMax ||
+    walls.yMax <= bounds.yMax){
+    wallsColision = true;
   }
 }
 

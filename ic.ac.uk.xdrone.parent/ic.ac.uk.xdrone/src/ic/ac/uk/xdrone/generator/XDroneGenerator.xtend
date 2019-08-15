@@ -61,7 +61,7 @@ class XDroneGenerator extends AbstractGenerator {
 	}
 	'''
 	
-	def compileJS(Main main)'''
+	def compileJS(Fly fly)'''
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
 		//var goalDroneLocation = currentDroneLocation;
@@ -77,7 +77,7 @@ class XDroneGenerator extends AbstractGenerator {
 			new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)
 		);
 		//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
-		«FOR to : main.fly.takeoff»
+		«FOR to : fly.takeoff»
 			commands.push({y: 0.7}); 
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			//lastY += 0.7;
@@ -89,7 +89,7 @@ class XDroneGenerator extends AbstractGenerator {
 		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
 		//lastX += 2;
 		
-		«FOR f : main.fly.commands»
+		«FOR f : fly.commands»
 			«IF f instanceof Command»
 				«f.compileJS»
 			«ENDIF»
@@ -100,7 +100,7 @@ class XDroneGenerator extends AbstractGenerator {
 		//commands.push({r: 90}); 
 								
 		
-		«FOR to : main.fly.land»
+		«FOR to : fly.land»
 			//commands.push({y: -0.7}); 
 			commands.push("LAND");
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
@@ -369,8 +369,8 @@ class XDroneGenerator extends AbstractGenerator {
 
 		
 		result = "";
-		for(main : resource.allContents.toIterable.filter(Main)) {
-			result = main.compileJS.toString; 
+		for(fly : resource.allContents.toIterable.filter(Fly)) {
+			result = fly.compileJS.toString; 
 			fsa.generateFile('Webroot/simulator' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
 		}
 		
