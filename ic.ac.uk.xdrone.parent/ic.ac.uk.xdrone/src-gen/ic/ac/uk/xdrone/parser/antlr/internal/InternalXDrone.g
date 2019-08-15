@@ -528,6 +528,15 @@ ruleCommand returns [EObject current=null]
 			$current = $this_Rotate_10.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getCommandAccess().getFlyToParserRuleCall_11());
+		}
+		this_FlyTo_11=ruleFlyTo
+		{
+			$current = $this_FlyTo_11.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -622,6 +631,55 @@ rulePOSITIVE_DOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRul
 		}
 		{
 			newLeafNode(this_INT_3, grammarAccess.getPOSITIVE_DOUBLEAccess().getINTTerminalRuleCall_1());
+		}
+	)
+;
+
+// Entry rule entryRuleFlyTo
+entryRuleFlyTo returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFlyToRule()); }
+	iv_ruleFlyTo=ruleFlyTo
+	{ $current=$iv_ruleFlyTo.current; }
+	EOF;
+
+// Rule FlyTo
+ruleFlyTo returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='FLYTO'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFlyToAccess().getFLYTOKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFlyToAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				lv_object_name_2_0=RULE_STRING
+				{
+					newLeafNode(lv_object_name_2_0, grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFlyToRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"object_name",
+						lv_object_name_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_3=')'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getFlyToAccess().getRightParenthesisKeyword_3());
 		}
 	)
 ;

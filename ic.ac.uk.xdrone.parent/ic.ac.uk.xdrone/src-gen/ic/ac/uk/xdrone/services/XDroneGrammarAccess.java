@@ -272,6 +272,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWaitParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
 		private final RuleCall cMoveParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		private final RuleCall cRotateParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final RuleCall cFlyToParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
 		//Command:
 		//	Up
@@ -284,10 +285,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//	| RotateR
 		//	| Wait
 		//	| Move
-		//	| Rotate;
+		//	| Rotate
+		//	| FlyTo;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Up | Down | Left | Right | Forward | Backward | RotateL | RotateR | Wait | Move | Rotate
+		//Up | Down | Left | Right | Forward | Backward | RotateL | RotateR | Wait | Move | Rotate | FlyTo
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Up
@@ -322,6 +324,9 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Rotate
 		public RuleCall getRotateParserRuleCall_10() { return cRotateParserRuleCall_10; }
+		
+		//FlyTo
+		public RuleCall getFlyToParserRuleCall_11() { return cFlyToParserRuleCall_11; }
 	}
 	public class DOUBLEElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.DOUBLE");
@@ -382,6 +387,37 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//INT
 		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+	}
+	public class FlyToElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.FlyTo");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFLYTOKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cObject_nameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cObject_nameSTRINGTerminalRuleCall_2_0 = (RuleCall)cObject_nameAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//FlyTo:
+		//	'FLYTO' '(' object_name=STRING ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'FLYTO' '(' object_name=STRING ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'FLYTO'
+		public Keyword getFLYTOKeyword_0() { return cFLYTOKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//object_name=STRING
+		public Assignment getObject_nameAssignment_2() { return cObject_nameAssignment_2; }
+		
+		//STRING
+		public RuleCall getObject_nameSTRINGTerminalRuleCall_2_0() { return cObject_nameSTRINGTerminalRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 	public class MoveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Move");
@@ -1038,6 +1074,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	private final CommandElements pCommand;
 	private final DOUBLEElements pDOUBLE;
 	private final POSITIVE_DOUBLEElements pPOSITIVE_DOUBLE;
+	private final FlyToElements pFlyTo;
 	private final MoveElements pMove;
 	private final RotateElements pRotate;
 	private final UpElements pUp;
@@ -1078,6 +1115,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCommand = new CommandElements();
 		this.pDOUBLE = new DOUBLEElements();
 		this.pPOSITIVE_DOUBLE = new POSITIVE_DOUBLEElements();
+		this.pFlyTo = new FlyToElements();
 		this.pMove = new MoveElements();
 		this.pRotate = new RotateElements();
 		this.pUp = new UpElements();
@@ -1227,7 +1265,8 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	//	| RotateR
 	//	| Wait
 	//	| Move
-	//	| Rotate;
+	//	| Rotate
+	//	| FlyTo;
 	public CommandElements getCommandAccess() {
 		return pCommand;
 	}
@@ -1256,6 +1295,16 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getPOSITIVE_DOUBLERule() {
 		return getPOSITIVE_DOUBLEAccess().getRule();
+	}
+	
+	//FlyTo:
+	//	'FLYTO' '(' object_name=STRING ')';
+	public FlyToElements getFlyToAccess() {
+		return pFlyTo;
+	}
+	
+	public ParserRule getFlyToRule() {
+		return getFlyToAccess().getRule();
 	}
 	
 	//Move:

@@ -26,6 +26,7 @@ import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
 import ic.ac.uk.xdrone.xDrone.Rotate
 import ic.ac.uk.xdrone.xDrone.Main
+import ic.ac.uk.xdrone.xDrone.FlyTo
 
 /**
  * Generates code from your model files on save.
@@ -156,6 +157,19 @@ class XDroneGenerator extends AbstractGenerator {
 					currentFunction = "LAND";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
+				else if(commands[0].flyTo !== undefined){
+					currentFunction = "MOVE_Y";
+					var vector = getDistanceToObject(commands[0].flyTo);
+					
+					commands.shift();
+					destination = vector.y;
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+					
+					commands.unshift({x: vector.x}); 
+					commands.unshift({z: vector.z}); 
+					commands.unshift({y: vector.y}); 
+					console.log(commands[0],commands[1],commands[2]) ;
+				}
 				commands.shift();
 			}
 			else{
@@ -172,6 +186,12 @@ class XDroneGenerator extends AbstractGenerator {
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
 			commands.push({r: 90 / «cmd.angle» * (Math.PI/2)}); 
+	  	«ENDIF»
+	  	«IF cmd instanceof Wait»
+			commands.push({w: «cmd.seconds»});
+	  	«ENDIF»
+	  	«IF cmd instanceof FlyTo»
+			commands.push({flyTo: "«cmd.object_name»"});
 	  	«ENDIF»
 	'''
 	

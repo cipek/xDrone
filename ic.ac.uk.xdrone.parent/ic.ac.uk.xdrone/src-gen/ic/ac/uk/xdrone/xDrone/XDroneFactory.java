@@ -87,6 +87,15 @@ public interface XDroneFactory extends EFactory
   Command createCommand();
 
   /**
+   * Returns a new object of class '<em>Fly To</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fly To</em>'.
+   * @generated
+   */
+  FlyTo createFlyTo();
+
+  /**
    * Returns a new object of class '<em>Move</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

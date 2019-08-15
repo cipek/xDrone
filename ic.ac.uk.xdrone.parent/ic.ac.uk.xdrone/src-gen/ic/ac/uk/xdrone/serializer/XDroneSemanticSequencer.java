@@ -11,6 +11,7 @@ import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
@@ -71,6 +72,9 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case XDronePackage.FLY:
 				sequence_Fly(context, (Fly) semanticObject); 
+				return; 
+			case XDronePackage.FLY_TO:
+				sequence_FlyTo(context, (FlyTo) semanticObject); 
 				return; 
 			case XDronePackage.FORWARD:
 				sequence_Forward(context, (Forward) semanticObject); 
@@ -216,6 +220,26 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_Environment(ISerializationContext context, Environment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns FlyTo
+	 *     Command returns FlyTo
+	 *     FlyTo returns FlyTo
+	 *
+	 * Constraint:
+	 *     object_name=STRING
+	 */
+	protected void sequence_FlyTo(ISerializationContext context, FlyTo semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FLY_TO__OBJECT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FLY_TO__OBJECT_NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0(), semanticObject.getObject_name());
+		feeder.finish();
 	}
 	
 	

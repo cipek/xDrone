@@ -61,6 +61,7 @@ Command:
 	| Wait
 	| Move
 	| Rotate
+	| FlyTo
 ;
 
 DOUBLE:
@@ -71,6 +72,10 @@ DOUBLE:
 POSITIVE_DOUBLE:
 	INT '.' INT
 	| INT
+;
+
+FlyTo:
+	'FLYTO' '(' object_name = STRING ')'
 ;
 
 Move:
@@ -107,7 +112,7 @@ RotateR:
 	'ROTATERIGHT' '('angle = INT')'
 ;
 Wait:
-	'WAIT' '(' seconds = DOUBLE ')'
+	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'
 ;
 
 FunctionName:

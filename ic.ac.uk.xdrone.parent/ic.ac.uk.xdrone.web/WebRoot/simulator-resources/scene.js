@@ -12,7 +12,8 @@ var raycaster;
 var mouse, INTERSECTED;
 var radius = 500, theta = 0;
 var frustumSize = 1000;
-var labelPoistion, centerLabel, labelObjects = [], labelAxes = [];
+var objects;
+var labelPoistion, centerLabel, labelObjects, labelAxes;
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
 var axesContainer, camera2, scene2, renderer2, axes2;
 var collisionBox;
@@ -23,6 +24,8 @@ var lastCameraPosition;
 
 function init()
 {
+    objects = [], labelObjects = [], labelAxes = [];
+
     var simulatorContainer = document.getElementById('SIMULATOR_CONTAINER');
     simulator = document.getElementById('SIMULATOR');
     //Removing old canvases
@@ -417,6 +420,8 @@ function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
   var cubeMaterial = new THREE.MeshBasicMaterial ({color: color});
   cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
   cube.position.set (locX, locY, locZ);
+  cube.name= objectName;
+  objects.push(cube);
 
   var text = addText(locX, locY + sizeY/2 + 1, locZ,
     objectName)
@@ -566,4 +571,32 @@ function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
   collisionBox.position.copy(drone.position);
 
   drone.add(collisionBox);
+}
+
+function getDistanceToObject(objectName){
+  let object;
+
+  for (var i = 0; i < objects.length; i++) {
+    if(objects[i].name == objectName){
+      object = objects[i];
+      break;
+    }
+  }
+
+  if(object !== undefined){
+    return {
+      x: getDistance(drone.position.x, object.position.x),
+      y: getDistance(drone.position.y, object.position.y) + object.geometry.parameters.height/2 + 0.5,
+      z: getDistance(drone.position.z, object.position.z)
+    }
+  }
+  else
+    return {x: 0, y: 0, z: 0}
+}
+
+function getDistance(dronePos, obPos){
+  if(dronePos > obPos)
+    return - Math.abs(dronePos - obPos);
+  else
+    return Math.abs(dronePos - obPos);
 }

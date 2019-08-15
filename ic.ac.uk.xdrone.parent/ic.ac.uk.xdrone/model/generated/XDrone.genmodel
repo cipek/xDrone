@@ -29,6 +29,9 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//SuperCommand"/>
     <genClasses ecoreClass="XDrone.ecore#//Command"/>
+    <genClasses ecoreClass="XDrone.ecore#//FlyTo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FlyTo/object_name"/>
+    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Move">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Move/vector"/>
     </genClasses>

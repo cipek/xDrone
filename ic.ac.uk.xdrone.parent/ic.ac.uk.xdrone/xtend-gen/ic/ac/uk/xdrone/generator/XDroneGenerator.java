@@ -11,6 +11,7 @@ import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
@@ -379,6 +380,43 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("else if(commands[0].flyTo !== undefined){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"MOVE_Y\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("var vector = getDistanceToObject(commands[0].flyTo);");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("commands.shift();");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("destination = vector.y;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("commands.unshift({x: vector.x}); ");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("commands.unshift({z: vector.z}); ");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("commands.unshift({y: vector.y}); ");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("console.log(commands[0],commands[1],commands[2]) ;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("commands.shift();");
     _builder.newLine();
     _builder.append("\t");
@@ -425,6 +463,24 @@ public class XDroneGenerator extends AbstractGenerator {
         String _angle = ((Rotate)cmd).getAngle();
         _builder.append(_angle);
         _builder.append(" * (Math.PI/2)}); ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Wait)) {
+        _builder.append("commands.push({w: ");
+        String _seconds = ((Wait)cmd).getSeconds();
+        _builder.append(_seconds);
+        _builder.append("});");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof FlyTo)) {
+        _builder.append("commands.push({flyTo: \"");
+        String _object_name = ((FlyTo)cmd).getObject_name();
+        _builder.append(_object_name);
+        _builder.append("\"});");
         _builder.newLineIfNotEmpty();
       }
     }

@@ -10,6 +10,7 @@ import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
@@ -145,6 +146,15 @@ public class XDroneSwitch<T> extends Switch<T>
         Command command = (Command)theEObject;
         T result = caseCommand(command);
         if (result == null) result = caseSuperCommand(command);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.FLY_TO:
+      {
+        FlyTo flyTo = (FlyTo)theEObject;
+        T result = caseFlyTo(flyTo);
+        if (result == null) result = caseCommand(flyTo);
+        if (result == null) result = caseSuperCommand(flyTo);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -416,6 +426,22 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCommand(Command object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fly To</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fly To</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFlyTo(FlyTo object)
   {
     return null;
   }

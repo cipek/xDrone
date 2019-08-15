@@ -43,6 +43,7 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getUserFunctionAccess().getGroup(), "rule__UserFunction__Group__0");
 			builder.put(grammarAccess.getDOUBLEAccess().getGroup_0(), "rule__DOUBLE__Group_0__0");
 			builder.put(grammarAccess.getPOSITIVE_DOUBLEAccess().getGroup_0(), "rule__POSITIVE_DOUBLE__Group_0__0");
+			builder.put(grammarAccess.getFlyToAccess().getGroup(), "rule__FlyTo__Group__0");
 			builder.put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 			builder.put(grammarAccess.getRotateAccess().getGroup(), "rule__Rotate__Group__0");
 			builder.put(grammarAccess.getUpAccess().getGroup(), "rule__Up__Group__0");
@@ -74,6 +75,7 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEnvironmentAccess().getObjectsAssignment_2_2(), "rule__Environment__ObjectsAssignment_2_2");
 			builder.put(grammarAccess.getUserFunctionAccess().getNameAssignment_0(), "rule__UserFunction__NameAssignment_0");
 			builder.put(grammarAccess.getUserFunctionAccess().getFuncAssignment_3(), "rule__UserFunction__FuncAssignment_3");
+			builder.put(grammarAccess.getFlyToAccess().getObject_nameAssignment_2(), "rule__FlyTo__Object_nameAssignment_2");
 			builder.put(grammarAccess.getMoveAccess().getVectorAssignment_1(), "rule__Move__VectorAssignment_1");
 			builder.put(grammarAccess.getRotateAccess().getAngleAssignment_2(), "rule__Rotate__AngleAssignment_2");
 			builder.put(grammarAccess.getUpAccess().getDistanceAssignment_2(), "rule__Up__DistanceAssignment_2");

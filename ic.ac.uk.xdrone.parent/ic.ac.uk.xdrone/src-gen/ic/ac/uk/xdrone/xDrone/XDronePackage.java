@@ -290,6 +290,34 @@ public interface XDronePackage extends EPackage
   int COMMAND_FEATURE_COUNT = SUPER_COMMAND_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyToImpl <em>Fly To</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.FlyToImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFlyTo()
+   * @generated
+   */
+  int FLY_TO = 7;
+
+  /**
+   * The feature id for the '<em><b>Object name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLY_TO__OBJECT_NAME = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Fly To</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLY_TO_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -297,7 +325,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
    * @generated
    */
-  int MOVE = 7;
+  int MOVE = 8;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -325,7 +353,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotate()
    * @generated
    */
-  int ROTATE = 8;
+  int ROTATE = 9;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -353,7 +381,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUp()
    * @generated
    */
-  int UP = 9;
+  int UP = 10;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -381,7 +409,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDown()
    * @generated
    */
-  int DOWN = 10;
+  int DOWN = 11;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -409,7 +437,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeft()
    * @generated
    */
-  int LEFT = 11;
+  int LEFT = 12;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -437,7 +465,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRight()
    * @generated
    */
-  int RIGHT = 12;
+  int RIGHT = 13;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -465,7 +493,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getForward()
    * @generated
    */
-  int FORWARD = 13;
+  int FORWARD = 14;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -493,7 +521,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackward()
    * @generated
    */
-  int BACKWARD = 14;
+  int BACKWARD = 15;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -521,7 +549,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateL()
    * @generated
    */
-  int ROTATE_L = 15;
+  int ROTATE_L = 16;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -549,7 +577,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateR()
    * @generated
    */
-  int ROTATE_R = 16;
+  int ROTATE_R = 17;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -577,7 +605,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWait()
    * @generated
    */
-  int WAIT = 17;
+  int WAIT = 18;
 
   /**
    * The feature id for the '<em><b>Seconds</b></em>' attribute.
@@ -605,7 +633,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFunctionName()
    * @generated
    */
-  int FUNCTION_NAME = 18;
+  int FUNCTION_NAME = 19;
 
   /**
    * The feature id for the '<em><b>Func name</b></em>' attribute.
@@ -633,7 +661,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDrone()
    * @generated
    */
-  int DRONE = 19;
+  int DRONE = 20;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -661,7 +689,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 20;
+  int OBJECT = 21;
 
   /**
    * The feature id for the '<em><b>Object name</b></em>' attribute.
@@ -716,7 +744,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
    * @generated
    */
-  int ORIGIN = 21;
+  int ORIGIN = 22;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -744,7 +772,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
    * @generated
    */
-  int SIZE = 22;
+  int SIZE = 23;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -772,7 +800,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getVector()
    * @generated
    */
-  int VECTOR = 23;
+  int VECTOR = 24;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -818,7 +846,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
    * @generated
    */
-  int COLOR = 24;
+  int COLOR = 25;
 
   /**
    * The feature id for the '<em><b>Color value</b></em>' attribute.
@@ -846,7 +874,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWalls()
    * @generated
    */
-  int WALLS = 25;
+  int WALLS = 26;
 
   /**
    * The feature id for the '<em><b>Front</b></em>' attribute.
@@ -1084,6 +1112,27 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EClass getCommand();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FlyTo <em>Fly To</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fly To</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.FlyTo
+   * @generated
+   */
+  EClass getFlyTo();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name <em>Object name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Object name</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name()
+   * @see #getFlyTo()
+   * @generated
+   */
+  EAttribute getFlyTo_Object_name();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
@@ -1752,6 +1801,24 @@ public interface XDronePackage extends EPackage
      * @generated
      */
     EClass COMMAND = eINSTANCE.getCommand();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyToImpl <em>Fly To</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.FlyToImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFlyTo()
+     * @generated
+     */
+    EClass FLY_TO = eINSTANCE.getFlyTo();
+
+    /**
+     * The meta object literal for the '<em><b>Object name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FLY_TO__OBJECT_NAME = eINSTANCE.getFlyTo_Object_name();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.

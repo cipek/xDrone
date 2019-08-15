@@ -10,6 +10,7 @@ import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
@@ -134,6 +135,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCommand(Command object)
       {
         return createCommandAdapter();
+      }
+      @Override
+      public Adapter caseFlyTo(FlyTo object)
+      {
+        return createFlyToAdapter();
       }
       @Override
       public Adapter caseMove(Move object)
@@ -353,6 +359,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.FlyTo <em>Fly To</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.FlyTo
+   * @generated
+   */
+  public Adapter createFlyToAdapter()
   {
     return null;
   }
