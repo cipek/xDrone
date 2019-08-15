@@ -64,10 +64,11 @@ class XDroneGenerator extends AbstractGenerator {
 	def compileJS(Main main)'''
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
-		var goalDroneLocation = currentDroneLocation;
+		//var goalDroneLocation = currentDroneLocation;
 		var goalDroneRotation = drone.rotation.y;
 		var currentFunction = "";
 		var finishSimulation = false;
+		var destination = 0;
 
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
@@ -114,11 +115,12 @@ class XDroneGenerator extends AbstractGenerator {
 		scene.add( line );
 		function flySimulation(){
 			if(!finishSimulation){
-				if((currentFunction == "MOVE_Y" && fly(goalDroneLocation.y, 'y'))
-					|| (currentFunction == "MOVE_X" && fly(goalDroneLocation.x, 'x'))
-					|| (currentFunction == "MOVE_Z" && fly(goalDroneLocation.z, 'z'))
+				if((currentFunction == "MOVE_Y" && fly(destination, 'y'))
+					|| (currentFunction == "MOVE_X" && fly(destination, 'x'))
+					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
 					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
+					console.log("NEXT COMMAND");
 					nextCommand();
 				}
 			}
@@ -126,28 +128,28 @@ class XDroneGenerator extends AbstractGenerator {
 		
 		function nextCommand(){
 			if(commands && commands[0]){
-				if(commands[0].r){
+				if(commands[0].r !== undefined){
 					goalDroneRotation += commands[0].r;
 					currentFunction = "ROTATION";
 				}
-				else if(commands[0].w){
+				else if(commands[0].w !== undefined){
 					execute = false;
 					setTimeout(function () {
 						execute = true;
 					    }, (commands[0].w * 1000));
 				}
-				else if(commands[0].y){
-					goalDroneLocation.y = commands[0].y;
+				else if(commands[0].y !== undefined){
+					destination = commands[0].y;
 					currentFunction = "MOVE_Y";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
-				else if(commands[0].x){
-					goalDroneLocation.x = commands[0].x;
+				else if(commands[0].x !== undefined){
+					destination = commands[0].x;
 					currentFunction = "MOVE_X";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
-				else if(commands[0].z){
-					goalDroneLocation.z = commands[0].z;
+				else if(commands[0].z !== undefined){
+					destination = commands[0].z;
 					currentFunction = "MOVE_Z";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}

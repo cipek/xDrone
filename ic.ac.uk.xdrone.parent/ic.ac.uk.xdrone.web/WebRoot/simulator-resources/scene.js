@@ -272,22 +272,23 @@ function flySupporter(currentLocation, endPoint){
   }
 }
 
-function flyManager(goalPostion){
+function flyManager(destination){
   var stopped = true;
-  if(!fly(goalPostion.y, 'y'))
+  if(!fly(destination.y, 'y'))
     stopped = false;
-  else if(!fly(goalPostion.z, 'z'))
+  else if(!fly(destination.z, 'z'))
     stopped = false;
-  else if(!fly(goalPostion.x, 'x'))
+  else if(!fly(destination.x, 'x'))
     stopped = false;
 
   return stopped;
 }
 
-function fly(goalPostion, axis){
+function fly(destination, axis){
   var stopped = true;
-  if(Math.abs(coveredDistance-goalPostion) > 0.04){ //0.02 acceptable movement precision error
-    var additionalDistance = flySupporter(coveredDistance, goalPostion);
+
+  if(destination !== 0 && Math.abs(coveredDistance-destination) > 0.04){ //0.02 acceptable movement precision error
+    var additionalDistance = flySupporter(coveredDistance, destination);
     coveredDistance += additionalDistance;
     if(axis == 'x')
       drone.translateX(additionalDistance);
@@ -297,7 +298,7 @@ function fly(goalPostion, axis){
       drone.translateZ(additionalDistance);
     stopped = false;
   }
-
+  
   drawNewLineSegment();
   if(stopped){
     coveredDistance = 0;
@@ -351,7 +352,6 @@ function rotation(goalRotation){
 
 
   // if(Math.abs(currentDroneRotation - goalRotation) > 1){
-  //   console.log(currentDroneRotation, goalRotation)
   //   if(currentDroneRotation < goalRotation){
   //       currentDroneRotation += 1;
   //       globalDroneRotation += 1;
@@ -422,16 +422,16 @@ function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
   labelObjects.push(text);
   scene.add(text);
 
-  calculateCollisionPoints(cube);
+  calculateCollisionPoints(cube, objectName);
   scene.add(cube);
 }
 
-function calculateCollisionPoints( mesh, type = 'collision' ) {
+function calculateCollisionPoints( mesh, objectName) {
   // Compute the bounding box after scale, translation, etc.
   var bbox = new THREE.Box3().setFromObject(mesh);
 
   var bounds = {
-    type: type,
+    objectName: objectName,
     xMin: bbox.min.x,
     xMax: bbox.max.x,
     yMin: bbox.min.y,
@@ -526,7 +526,7 @@ function drawSphere(){
  * Collision detection for every solid object.
  */
 function detectCollisions() {
-  // Get the user's current collision area.
+  // Get the drone's current collision area.
   var bounds = {
     xMin: drone.position.x - collisionBox.geometry.parameters.width / 2,
     xMax: drone.position.x + collisionBox.geometry.parameters.width / 2,
@@ -538,14 +538,11 @@ function detectCollisions() {
 
   // Run through each object and detect if there is a collision.
   for ( var index = 0; index < collisions.length; index ++ ) {
-    if (collisions[ index ].type == 'collision' ) {
-      if ( ( bounds.xMin <= collisions[ index ].xMax && bounds.xMax >= collisions[ index ].xMin ) &&
-         ( bounds.yMin <= collisions[ index ].yMax && bounds.yMax >= collisions[ index ].yMin) &&
-         ( bounds.zMin <= collisions[ index ].zMax && bounds.zMax >= collisions[ index ].zMin) ) {
-        // We hit a solid object! Stop all movements.
-        // stopMovement();
-        console.log("IN HIT");
-      }
+    if ( ( bounds.xMin <= collisions[ index ].xMax && bounds.xMax >= collisions[ index ].xMin ) &&
+       ( bounds.yMin <= collisions[ index ].yMax && bounds.yMax >= collisions[ index ].yMin) &&
+       ( bounds.zMin <= collisions[ index ].zMax && bounds.zMax >= collisions[ index ].zMin) ) {
+      // Hit detected
+      // console.log("IN HIT", collisions[ index ].objectName);
     }
   }
 }
