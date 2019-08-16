@@ -164,16 +164,10 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Drone returns Drone
 	 *
 	 * Constraint:
-	 *     vector=Vector
+	 *     (x=DOUBLE | y=DOUBLE | z=DOUBLE | rotation=DOUBLE)*
 	 */
 	protected void sequence_Drone(ISerializationContext context, Drone semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.DRONE__VECTOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.DRONE__VECTOR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDroneAccess().getVectorVectorParserRuleCall_1_0(), semanticObject.getVector());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

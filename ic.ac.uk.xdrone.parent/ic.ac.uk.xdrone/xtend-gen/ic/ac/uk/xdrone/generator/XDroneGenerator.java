@@ -59,20 +59,38 @@ public class XDroneGenerator extends AbstractGenerator {
       for(final Drone d : _drone) {
         _builder.append("\t");
         _builder.append("drone.position.x = ");
-        String _x = d.getVector().getX();
+        String _x = d.getX();
         _builder.append(_x, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("drone.position.z = ");
-        String _z = d.getVector().getZ();
+        String _z = d.getZ();
         _builder.append(_z, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("drone.position.y = ");
-        String _y = d.getVector().getY();
+        String _y = d.getY();
         _builder.append(_y, "\t");
         _builder.append(" + modelHeight");
         _builder.newLineIfNotEmpty();
+        {
+          String _rotation = d.getRotation();
+          boolean _tripleNotEquals = (_rotation != null);
+          if (_tripleNotEquals) {
+            _builder.append("\t");
+            _builder.append("window.currentDroneAngle += ");
+            String _rotation_1 = d.getRotation();
+            _builder.append(_rotation_1, "\t");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("drone.rotateY(");
+            String _rotation_2 = d.getRotation();
+            _builder.append(_rotation_2, "\t");
+            _builder.append("  * (Math.PI/180));");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     {
@@ -130,8 +148,8 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         {
           Color _color = ob.getColor();
-          boolean _tripleNotEquals = (_color != null);
-          if (_tripleNotEquals) {
+          boolean _tripleNotEquals_1 = (_color != null);
+          if (_tripleNotEquals_1) {
             _builder.append("\t");
             _builder.append("\"");
             String _color_value = ob.getColor().getColor_value();
@@ -165,8 +183,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("var finishSimulation = false;");
     _builder.newLine();
     _builder.append("var destination = 0;");
-    _builder.newLine();
-    _builder.append("var currentDroneAngle = 90;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("//Drone\'s path");
@@ -220,7 +236,7 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     _builder.newLine();
     _builder.newLine();
-    _builder.append("//commands.push({r: 90 / 90 * (Math.PI/2)}); ");
+    _builder.append("//commands.push({r: 90 * (Math.PI/2)}); ");
     _builder.newLine();
     _builder.append("//commands.push({r: 90}); ");
     _builder.newLine();

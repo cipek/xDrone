@@ -570,9 +570,39 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDrone_Vector()
+  public EAttribute getDrone_X()
   {
-    return (EReference)droneEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDrone_Y()
+  {
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDrone_Z()
+  {
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDrone_Rotation()
+  {
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -956,7 +986,10 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     createEAttribute(functionNameEClass, FUNCTION_NAME__FUNC_NAME);
 
     droneEClass = createEClass(DRONE);
-    createEReference(droneEClass, DRONE__VECTOR);
+    createEAttribute(droneEClass, DRONE__X);
+    createEAttribute(droneEClass, DRONE__Y);
+    createEAttribute(droneEClass, DRONE__Z);
+    createEAttribute(droneEClass, DRONE__ROTATION);
 
     objectEClass = createEClass(OBJECT);
     createEAttribute(objectEClass, OBJECT__OBJECT_NAME);
@@ -1079,7 +1112,10 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     initEAttribute(getFunctionName_Func_name(), ecorePackage.getEString(), "func_name", null, 0, 1, FunctionName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(droneEClass, Drone.class, "Drone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDrone_Vector(), this.getVector(), null, "vector", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDrone_X(), ecorePackage.getEString(), "x", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDrone_Y(), ecorePackage.getEString(), "y", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDrone_Z(), ecorePackage.getEString(), "z", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDrone_Rotation(), ecorePackage.getEString(), "rotation", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectEClass, ic.ac.uk.xdrone.xDrone.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getObject_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

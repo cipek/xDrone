@@ -45,7 +45,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FunctionName/func_name"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Drone">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Drone/vector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/z"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Drone/rotation"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Object">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Object/object_name"/>

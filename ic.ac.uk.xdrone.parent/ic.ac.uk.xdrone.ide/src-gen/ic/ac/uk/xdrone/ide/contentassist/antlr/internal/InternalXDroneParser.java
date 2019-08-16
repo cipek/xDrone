@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_STRING", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'TAKEOFF()'", "'LAND()'", "'fly(){'", "'}'", "'environment(){'", "'-'", "'.'", "'FLYTO'", "'('", "')'", "'MOVE'", "'ROTATE'", "'WAIT'", "'()'", "'DRONE'", "'{'", "'origin'", "'='", "'size'", "','", "'color'", "'WALLS'", "'front'", "'right'", "'left'", "'back'", "'up'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_STRING", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'TAKEOFF()'", "'LAND()'", "'fly(){'", "'}'", "'environment(){'", "'-'", "'.'", "'FLYTO'", "'('", "')'", "'MOVE'", "'ROTATE'", "'WAIT'", "'()'", "'DRONE'", "'{'", "'x'", "'='", "'y'", "'z'", "'rotation'", "'origin'", "'size'", "','", "'color'", "'WALLS'", "'front'", "'right'", "'left'", "'back'", "'up'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -30,7 +30,9 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     public static final int T__15=15;
     public static final int T__37=37;
     public static final int T__16=16;
+    public static final int T__38=38;
     public static final int T__17=17;
+    public static final int T__39=39;
     public static final int T__18=18;
     public static final int T__11=11;
     public static final int T__33=33;
@@ -57,6 +59,8 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__40=40;
+    public static final int T__41=41;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -1261,31 +1265,31 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleDrone"
-    // InternalXDrone.g:437:1: ruleDrone : ( ( rule__Drone__Group__0 ) ) ;
+    // InternalXDrone.g:437:1: ruleDrone : ( ( rule__Drone__UnorderedGroup ) ) ;
     public final void ruleDrone() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:441:2: ( ( ( rule__Drone__Group__0 ) ) )
-            // InternalXDrone.g:442:2: ( ( rule__Drone__Group__0 ) )
+            // InternalXDrone.g:441:2: ( ( ( rule__Drone__UnorderedGroup ) ) )
+            // InternalXDrone.g:442:2: ( ( rule__Drone__UnorderedGroup ) )
             {
-            // InternalXDrone.g:442:2: ( ( rule__Drone__Group__0 ) )
-            // InternalXDrone.g:443:3: ( rule__Drone__Group__0 )
+            // InternalXDrone.g:442:2: ( ( rule__Drone__UnorderedGroup ) )
+            // InternalXDrone.g:443:3: ( rule__Drone__UnorderedGroup )
             {
-             before(grammarAccess.getDroneAccess().getGroup()); 
-            // InternalXDrone.g:444:3: ( rule__Drone__Group__0 )
-            // InternalXDrone.g:444:4: rule__Drone__Group__0
+             before(grammarAccess.getDroneAccess().getUnorderedGroup()); 
+            // InternalXDrone.g:444:3: ( rule__Drone__UnorderedGroup )
+            // InternalXDrone.g:444:4: rule__Drone__UnorderedGroup
             {
             pushFollow(FOLLOW_2);
-            rule__Drone__Group__0();
+            rule__Drone__UnorderedGroup();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getDroneAccess().getGroup()); 
+             after(grammarAccess.getDroneAccess().getUnorderedGroup()); 
 
             }
 
@@ -2165,23 +2169,30 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             int alt1=3;
             switch ( input.LA(1) ) {
             case 25:
+            case 29:
+            case 30:
+            case 31:
                 {
                 alt1=1;
                 }
                 break;
-            case 32:
-            case 34:
-            case 35:
+            case 14:
+                {
+                alt1=1;
+                }
+                break;
             case 36:
-            case 37:
+            case 38:
+            case 39:
+            case 40:
+            case 41:
                 {
                 alt1=2;
                 }
                 break;
             case RULE_ID:
-            case 14:
-            case 29:
-            case 31:
+            case 33:
+            case 35:
                 {
                 alt1=3;
                 }
@@ -2595,11 +2606,11 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             if ( (LA5_0==RULE_INT) ) {
                 int LA5_1 = input.LA(2);
 
-                if ( (LA5_1==17) ) {
-                    alt5=1;
-                }
-                else if ( (LA5_1==EOF||LA5_1==RULE_ID||LA5_1==14||LA5_1==20||LA5_1==25||(LA5_1>=29 && LA5_1<=32)||(LA5_1>=34 && LA5_1<=37)) ) {
+                if ( (LA5_1==EOF||LA5_1==RULE_ID||LA5_1==14||LA5_1==20||LA5_1==25||(LA5_1>=29 && LA5_1<=31)||(LA5_1>=33 && LA5_1<=36)||(LA5_1>=38 && LA5_1<=41)) ) {
                     alt5=2;
+                }
+                else if ( (LA5_1==17) ) {
+                    alt5=1;
                 }
                 else {
                     NoViableAltException nvae =
@@ -3557,13 +3568,13 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                 if ( (LA8_0==14) ) {
                     int LA8_1 = input.LA(2);
 
-                    if ( (LA8_1==RULE_ID||LA8_1==14||LA8_1==25||LA8_1==29||(LA8_1>=31 && LA8_1<=32)||(LA8_1>=34 && LA8_1<=37)) ) {
+                    if ( (LA8_1==RULE_ID||LA8_1==14||LA8_1==25||(LA8_1>=29 && LA8_1<=31)||LA8_1==33||(LA8_1>=35 && LA8_1<=36)||(LA8_1>=38 && LA8_1<=41)) ) {
                         alt8=1;
                     }
 
 
                 }
-                else if ( (LA8_0==RULE_ID||LA8_0==25||LA8_0==29||(LA8_0>=31 && LA8_0<=32)||(LA8_0>=34 && LA8_0<=37)) ) {
+                else if ( (LA8_0==RULE_ID||LA8_0==25||(LA8_0>=29 && LA8_0<=31)||LA8_0==33||(LA8_0>=35 && LA8_0<=36)||(LA8_0>=38 && LA8_0<=41)) ) {
                     alt8=1;
                 }
 
@@ -5272,23 +5283,23 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__FunctionName__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Drone__Group__0"
-    // InternalXDrone.g:1741:1: rule__Drone__Group__0 : rule__Drone__Group__0__Impl rule__Drone__Group__1 ;
-    public final void rule__Drone__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__Drone__Group_0__0"
+    // InternalXDrone.g:1741:1: rule__Drone__Group_0__0 : rule__Drone__Group_0__0__Impl rule__Drone__Group_0__1 ;
+    public final void rule__Drone__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1745:1: ( rule__Drone__Group__0__Impl rule__Drone__Group__1 )
-            // InternalXDrone.g:1746:2: rule__Drone__Group__0__Impl rule__Drone__Group__1
+            // InternalXDrone.g:1745:1: ( rule__Drone__Group_0__0__Impl rule__Drone__Group_0__1 )
+            // InternalXDrone.g:1746:2: rule__Drone__Group_0__0__Impl rule__Drone__Group_0__1
             {
-            pushFollow(FOLLOW_12);
-            rule__Drone__Group__0__Impl();
+            pushFollow(FOLLOW_17);
+            rule__Drone__Group_0__0__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__Drone__Group__1();
+            rule__Drone__Group_0__1();
 
             state._fsp--;
 
@@ -5307,12 +5318,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Drone__Group__0"
+    // $ANTLR end "rule__Drone__Group_0__0"
 
 
-    // $ANTLR start "rule__Drone__Group__0__Impl"
-    // InternalXDrone.g:1753:1: rule__Drone__Group__0__Impl : ( 'DRONE' ) ;
-    public final void rule__Drone__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Drone__Group_0__0__Impl"
+    // InternalXDrone.g:1753:1: rule__Drone__Group_0__0__Impl : ( 'DRONE' ) ;
+    public final void rule__Drone__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -5323,9 +5334,9 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             // InternalXDrone.g:1758:1: ( 'DRONE' )
             // InternalXDrone.g:1759:2: 'DRONE'
             {
-             before(grammarAccess.getDroneAccess().getDRONEKeyword_0()); 
+             before(grammarAccess.getDroneAccess().getDRONEKeyword_0_0()); 
             match(input,25,FOLLOW_2); 
-             after(grammarAccess.getDroneAccess().getDRONEKeyword_0()); 
+             after(grammarAccess.getDroneAccess().getDRONEKeyword_0_0()); 
 
             }
 
@@ -5344,21 +5355,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Drone__Group__0__Impl"
+    // $ANTLR end "rule__Drone__Group_0__0__Impl"
 
 
-    // $ANTLR start "rule__Drone__Group__1"
-    // InternalXDrone.g:1768:1: rule__Drone__Group__1 : rule__Drone__Group__1__Impl ;
-    public final void rule__Drone__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__Drone__Group_0__1"
+    // InternalXDrone.g:1768:1: rule__Drone__Group_0__1 : rule__Drone__Group_0__1__Impl rule__Drone__Group_0__2 ;
+    public final void rule__Drone__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1772:1: ( rule__Drone__Group__1__Impl )
-            // InternalXDrone.g:1773:2: rule__Drone__Group__1__Impl
+            // InternalXDrone.g:1772:1: ( rule__Drone__Group_0__1__Impl rule__Drone__Group_0__2 )
+            // InternalXDrone.g:1773:2: rule__Drone__Group_0__1__Impl rule__Drone__Group_0__2
             {
+            pushFollow(FOLLOW_18);
+            rule__Drone__Group_0__1__Impl();
+
+            state._fsp--;
+
             pushFollow(FOLLOW_2);
-            rule__Drone__Group__1__Impl();
+            rule__Drone__Group_0__2();
 
             state._fsp--;
 
@@ -5377,35 +5393,25 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Drone__Group__1"
+    // $ANTLR end "rule__Drone__Group_0__1"
 
 
-    // $ANTLR start "rule__Drone__Group__1__Impl"
-    // InternalXDrone.g:1779:1: rule__Drone__Group__1__Impl : ( ( rule__Drone__VectorAssignment_1 ) ) ;
-    public final void rule__Drone__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Drone__Group_0__1__Impl"
+    // InternalXDrone.g:1780:1: rule__Drone__Group_0__1__Impl : ( '{' ) ;
+    public final void rule__Drone__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1783:1: ( ( ( rule__Drone__VectorAssignment_1 ) ) )
-            // InternalXDrone.g:1784:1: ( ( rule__Drone__VectorAssignment_1 ) )
+            // InternalXDrone.g:1784:1: ( ( '{' ) )
+            // InternalXDrone.g:1785:1: ( '{' )
             {
-            // InternalXDrone.g:1784:1: ( ( rule__Drone__VectorAssignment_1 ) )
-            // InternalXDrone.g:1785:2: ( rule__Drone__VectorAssignment_1 )
+            // InternalXDrone.g:1785:1: ( '{' )
+            // InternalXDrone.g:1786:2: '{'
             {
-             before(grammarAccess.getDroneAccess().getVectorAssignment_1()); 
-            // InternalXDrone.g:1786:2: ( rule__Drone__VectorAssignment_1 )
-            // InternalXDrone.g:1786:3: rule__Drone__VectorAssignment_1
-            {
-            pushFollow(FOLLOW_2);
-            rule__Drone__VectorAssignment_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getDroneAccess().getVectorAssignment_1()); 
+             before(grammarAccess.getDroneAccess().getLeftCurlyBracketKeyword_0_1()); 
+            match(input,26,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getLeftCurlyBracketKeyword_0_1()); 
 
             }
 
@@ -5424,18 +5430,1184 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Drone__Group__1__Impl"
+    // $ANTLR end "rule__Drone__Group_0__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_0__2"
+    // InternalXDrone.g:1795:1: rule__Drone__Group_0__2 : rule__Drone__Group_0__2__Impl ;
+    public final void rule__Drone__Group_0__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1799:1: ( rule__Drone__Group_0__2__Impl )
+            // InternalXDrone.g:1800:2: rule__Drone__Group_0__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_0__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0__2"
+
+
+    // $ANTLR start "rule__Drone__Group_0__2__Impl"
+    // InternalXDrone.g:1806:1: rule__Drone__Group_0__2__Impl : ( ( rule__Drone__Group_0_2__0 ) ) ;
+    public final void rule__Drone__Group_0__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1810:1: ( ( ( rule__Drone__Group_0_2__0 ) ) )
+            // InternalXDrone.g:1811:1: ( ( rule__Drone__Group_0_2__0 ) )
+            {
+            // InternalXDrone.g:1811:1: ( ( rule__Drone__Group_0_2__0 ) )
+            // InternalXDrone.g:1812:2: ( rule__Drone__Group_0_2__0 )
+            {
+             before(grammarAccess.getDroneAccess().getGroup_0_2()); 
+            // InternalXDrone.g:1813:2: ( rule__Drone__Group_0_2__0 )
+            // InternalXDrone.g:1813:3: rule__Drone__Group_0_2__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_0_2__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getDroneAccess().getGroup_0_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0__2__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__0"
+    // InternalXDrone.g:1822:1: rule__Drone__Group_0_2__0 : rule__Drone__Group_0_2__0__Impl rule__Drone__Group_0_2__1 ;
+    public final void rule__Drone__Group_0_2__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1826:1: ( rule__Drone__Group_0_2__0__Impl rule__Drone__Group_0_2__1 )
+            // InternalXDrone.g:1827:2: rule__Drone__Group_0_2__0__Impl rule__Drone__Group_0_2__1
+            {
+            pushFollow(FOLLOW_19);
+            rule__Drone__Group_0_2__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_0_2__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__0"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__0__Impl"
+    // InternalXDrone.g:1834:1: rule__Drone__Group_0_2__0__Impl : ( 'x' ) ;
+    public final void rule__Drone__Group_0_2__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1838:1: ( ( 'x' ) )
+            // InternalXDrone.g:1839:1: ( 'x' )
+            {
+            // InternalXDrone.g:1839:1: ( 'x' )
+            // InternalXDrone.g:1840:2: 'x'
+            {
+             before(grammarAccess.getDroneAccess().getXKeyword_0_2_0()); 
+            match(input,27,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getXKeyword_0_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__0__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__1"
+    // InternalXDrone.g:1849:1: rule__Drone__Group_0_2__1 : rule__Drone__Group_0_2__1__Impl rule__Drone__Group_0_2__2 ;
+    public final void rule__Drone__Group_0_2__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1853:1: ( rule__Drone__Group_0_2__1__Impl rule__Drone__Group_0_2__2 )
+            // InternalXDrone.g:1854:2: rule__Drone__Group_0_2__1__Impl rule__Drone__Group_0_2__2
+            {
+            pushFollow(FOLLOW_15);
+            rule__Drone__Group_0_2__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_0_2__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__1"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__1__Impl"
+    // InternalXDrone.g:1861:1: rule__Drone__Group_0_2__1__Impl : ( '=' ) ;
+    public final void rule__Drone__Group_0_2__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1865:1: ( ( '=' ) )
+            // InternalXDrone.g:1866:1: ( '=' )
+            {
+            // InternalXDrone.g:1866:1: ( '=' )
+            // InternalXDrone.g:1867:2: '='
+            {
+             before(grammarAccess.getDroneAccess().getEqualsSignKeyword_0_2_1()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getEqualsSignKeyword_0_2_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__2"
+    // InternalXDrone.g:1876:1: rule__Drone__Group_0_2__2 : rule__Drone__Group_0_2__2__Impl ;
+    public final void rule__Drone__Group_0_2__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1880:1: ( rule__Drone__Group_0_2__2__Impl )
+            // InternalXDrone.g:1881:2: rule__Drone__Group_0_2__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_0_2__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__2"
+
+
+    // $ANTLR start "rule__Drone__Group_0_2__2__Impl"
+    // InternalXDrone.g:1887:1: rule__Drone__Group_0_2__2__Impl : ( ( rule__Drone__XAssignment_0_2_2 ) ) ;
+    public final void rule__Drone__Group_0_2__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1891:1: ( ( ( rule__Drone__XAssignment_0_2_2 ) ) )
+            // InternalXDrone.g:1892:1: ( ( rule__Drone__XAssignment_0_2_2 ) )
+            {
+            // InternalXDrone.g:1892:1: ( ( rule__Drone__XAssignment_0_2_2 ) )
+            // InternalXDrone.g:1893:2: ( rule__Drone__XAssignment_0_2_2 )
+            {
+             before(grammarAccess.getDroneAccess().getXAssignment_0_2_2()); 
+            // InternalXDrone.g:1894:2: ( rule__Drone__XAssignment_0_2_2 )
+            // InternalXDrone.g:1894:3: rule__Drone__XAssignment_0_2_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__XAssignment_0_2_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getDroneAccess().getXAssignment_0_2_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_0_2__2__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_1__0"
+    // InternalXDrone.g:1903:1: rule__Drone__Group_1__0 : rule__Drone__Group_1__0__Impl rule__Drone__Group_1__1 ;
+    public final void rule__Drone__Group_1__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1907:1: ( rule__Drone__Group_1__0__Impl rule__Drone__Group_1__1 )
+            // InternalXDrone.g:1908:2: rule__Drone__Group_1__0__Impl rule__Drone__Group_1__1
+            {
+            pushFollow(FOLLOW_19);
+            rule__Drone__Group_1__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_1__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__0"
+
+
+    // $ANTLR start "rule__Drone__Group_1__0__Impl"
+    // InternalXDrone.g:1915:1: rule__Drone__Group_1__0__Impl : ( 'y' ) ;
+    public final void rule__Drone__Group_1__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1919:1: ( ( 'y' ) )
+            // InternalXDrone.g:1920:1: ( 'y' )
+            {
+            // InternalXDrone.g:1920:1: ( 'y' )
+            // InternalXDrone.g:1921:2: 'y'
+            {
+             before(grammarAccess.getDroneAccess().getYKeyword_1_0()); 
+            match(input,29,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getYKeyword_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__0__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_1__1"
+    // InternalXDrone.g:1930:1: rule__Drone__Group_1__1 : rule__Drone__Group_1__1__Impl rule__Drone__Group_1__2 ;
+    public final void rule__Drone__Group_1__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1934:1: ( rule__Drone__Group_1__1__Impl rule__Drone__Group_1__2 )
+            // InternalXDrone.g:1935:2: rule__Drone__Group_1__1__Impl rule__Drone__Group_1__2
+            {
+            pushFollow(FOLLOW_15);
+            rule__Drone__Group_1__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_1__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__1"
+
+
+    // $ANTLR start "rule__Drone__Group_1__1__Impl"
+    // InternalXDrone.g:1942:1: rule__Drone__Group_1__1__Impl : ( '=' ) ;
+    public final void rule__Drone__Group_1__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1946:1: ( ( '=' ) )
+            // InternalXDrone.g:1947:1: ( '=' )
+            {
+            // InternalXDrone.g:1947:1: ( '=' )
+            // InternalXDrone.g:1948:2: '='
+            {
+             before(grammarAccess.getDroneAccess().getEqualsSignKeyword_1_1()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getEqualsSignKeyword_1_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_1__2"
+    // InternalXDrone.g:1957:1: rule__Drone__Group_1__2 : rule__Drone__Group_1__2__Impl ;
+    public final void rule__Drone__Group_1__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1961:1: ( rule__Drone__Group_1__2__Impl )
+            // InternalXDrone.g:1962:2: rule__Drone__Group_1__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_1__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__2"
+
+
+    // $ANTLR start "rule__Drone__Group_1__2__Impl"
+    // InternalXDrone.g:1968:1: rule__Drone__Group_1__2__Impl : ( ( rule__Drone__YAssignment_1_2 ) ) ;
+    public final void rule__Drone__Group_1__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1972:1: ( ( ( rule__Drone__YAssignment_1_2 ) ) )
+            // InternalXDrone.g:1973:1: ( ( rule__Drone__YAssignment_1_2 ) )
+            {
+            // InternalXDrone.g:1973:1: ( ( rule__Drone__YAssignment_1_2 ) )
+            // InternalXDrone.g:1974:2: ( rule__Drone__YAssignment_1_2 )
+            {
+             before(grammarAccess.getDroneAccess().getYAssignment_1_2()); 
+            // InternalXDrone.g:1975:2: ( rule__Drone__YAssignment_1_2 )
+            // InternalXDrone.g:1975:3: rule__Drone__YAssignment_1_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__YAssignment_1_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getDroneAccess().getYAssignment_1_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_1__2__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_2__0"
+    // InternalXDrone.g:1984:1: rule__Drone__Group_2__0 : rule__Drone__Group_2__0__Impl rule__Drone__Group_2__1 ;
+    public final void rule__Drone__Group_2__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:1988:1: ( rule__Drone__Group_2__0__Impl rule__Drone__Group_2__1 )
+            // InternalXDrone.g:1989:2: rule__Drone__Group_2__0__Impl rule__Drone__Group_2__1
+            {
+            pushFollow(FOLLOW_19);
+            rule__Drone__Group_2__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_2__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__0"
+
+
+    // $ANTLR start "rule__Drone__Group_2__0__Impl"
+    // InternalXDrone.g:1996:1: rule__Drone__Group_2__0__Impl : ( 'z' ) ;
+    public final void rule__Drone__Group_2__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2000:1: ( ( 'z' ) )
+            // InternalXDrone.g:2001:1: ( 'z' )
+            {
+            // InternalXDrone.g:2001:1: ( 'z' )
+            // InternalXDrone.g:2002:2: 'z'
+            {
+             before(grammarAccess.getDroneAccess().getZKeyword_2_0()); 
+            match(input,30,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getZKeyword_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__0__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_2__1"
+    // InternalXDrone.g:2011:1: rule__Drone__Group_2__1 : rule__Drone__Group_2__1__Impl rule__Drone__Group_2__2 ;
+    public final void rule__Drone__Group_2__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2015:1: ( rule__Drone__Group_2__1__Impl rule__Drone__Group_2__2 )
+            // InternalXDrone.g:2016:2: rule__Drone__Group_2__1__Impl rule__Drone__Group_2__2
+            {
+            pushFollow(FOLLOW_15);
+            rule__Drone__Group_2__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_2__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__1"
+
+
+    // $ANTLR start "rule__Drone__Group_2__1__Impl"
+    // InternalXDrone.g:2023:1: rule__Drone__Group_2__1__Impl : ( '=' ) ;
+    public final void rule__Drone__Group_2__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2027:1: ( ( '=' ) )
+            // InternalXDrone.g:2028:1: ( '=' )
+            {
+            // InternalXDrone.g:2028:1: ( '=' )
+            // InternalXDrone.g:2029:2: '='
+            {
+             before(grammarAccess.getDroneAccess().getEqualsSignKeyword_2_1()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getEqualsSignKeyword_2_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_2__2"
+    // InternalXDrone.g:2038:1: rule__Drone__Group_2__2 : rule__Drone__Group_2__2__Impl ;
+    public final void rule__Drone__Group_2__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2042:1: ( rule__Drone__Group_2__2__Impl )
+            // InternalXDrone.g:2043:2: rule__Drone__Group_2__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_2__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__2"
+
+
+    // $ANTLR start "rule__Drone__Group_2__2__Impl"
+    // InternalXDrone.g:2049:1: rule__Drone__Group_2__2__Impl : ( ( rule__Drone__ZAssignment_2_2 ) ) ;
+    public final void rule__Drone__Group_2__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2053:1: ( ( ( rule__Drone__ZAssignment_2_2 ) ) )
+            // InternalXDrone.g:2054:1: ( ( rule__Drone__ZAssignment_2_2 ) )
+            {
+            // InternalXDrone.g:2054:1: ( ( rule__Drone__ZAssignment_2_2 ) )
+            // InternalXDrone.g:2055:2: ( rule__Drone__ZAssignment_2_2 )
+            {
+             before(grammarAccess.getDroneAccess().getZAssignment_2_2()); 
+            // InternalXDrone.g:2056:2: ( rule__Drone__ZAssignment_2_2 )
+            // InternalXDrone.g:2056:3: rule__Drone__ZAssignment_2_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__ZAssignment_2_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getDroneAccess().getZAssignment_2_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_2__2__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_3__0"
+    // InternalXDrone.g:2065:1: rule__Drone__Group_3__0 : rule__Drone__Group_3__0__Impl rule__Drone__Group_3__1 ;
+    public final void rule__Drone__Group_3__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2069:1: ( rule__Drone__Group_3__0__Impl rule__Drone__Group_3__1 )
+            // InternalXDrone.g:2070:2: rule__Drone__Group_3__0__Impl rule__Drone__Group_3__1
+            {
+            pushFollow(FOLLOW_20);
+            rule__Drone__Group_3__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_3__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3__0"
+
+
+    // $ANTLR start "rule__Drone__Group_3__0__Impl"
+    // InternalXDrone.g:2077:1: rule__Drone__Group_3__0__Impl : ( ( rule__Drone__Group_3_0__0 )? ) ;
+    public final void rule__Drone__Group_3__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2081:1: ( ( ( rule__Drone__Group_3_0__0 )? ) )
+            // InternalXDrone.g:2082:1: ( ( rule__Drone__Group_3_0__0 )? )
+            {
+            // InternalXDrone.g:2082:1: ( ( rule__Drone__Group_3_0__0 )? )
+            // InternalXDrone.g:2083:2: ( rule__Drone__Group_3_0__0 )?
+            {
+             before(grammarAccess.getDroneAccess().getGroup_3_0()); 
+            // InternalXDrone.g:2084:2: ( rule__Drone__Group_3_0__0 )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
+
+            if ( (LA9_0==31) ) {
+                alt9=1;
+            }
+            switch (alt9) {
+                case 1 :
+                    // InternalXDrone.g:2084:3: rule__Drone__Group_3_0__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__Group_3_0__0();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getDroneAccess().getGroup_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3__0__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_3__1"
+    // InternalXDrone.g:2092:1: rule__Drone__Group_3__1 : rule__Drone__Group_3__1__Impl ;
+    public final void rule__Drone__Group_3__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2096:1: ( rule__Drone__Group_3__1__Impl )
+            // InternalXDrone.g:2097:2: rule__Drone__Group_3__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_3__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3__1"
+
+
+    // $ANTLR start "rule__Drone__Group_3__1__Impl"
+    // InternalXDrone.g:2103:1: rule__Drone__Group_3__1__Impl : ( '}' ) ;
+    public final void rule__Drone__Group_3__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2107:1: ( ( '}' ) )
+            // InternalXDrone.g:2108:1: ( '}' )
+            {
+            // InternalXDrone.g:2108:1: ( '}' )
+            // InternalXDrone.g:2109:2: '}'
+            {
+             before(grammarAccess.getDroneAccess().getRightCurlyBracketKeyword_3_1()); 
+            match(input,14,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getRightCurlyBracketKeyword_3_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__0"
+    // InternalXDrone.g:2119:1: rule__Drone__Group_3_0__0 : rule__Drone__Group_3_0__0__Impl rule__Drone__Group_3_0__1 ;
+    public final void rule__Drone__Group_3_0__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2123:1: ( rule__Drone__Group_3_0__0__Impl rule__Drone__Group_3_0__1 )
+            // InternalXDrone.g:2124:2: rule__Drone__Group_3_0__0__Impl rule__Drone__Group_3_0__1
+            {
+            pushFollow(FOLLOW_19);
+            rule__Drone__Group_3_0__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_3_0__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__0"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__0__Impl"
+    // InternalXDrone.g:2131:1: rule__Drone__Group_3_0__0__Impl : ( 'rotation' ) ;
+    public final void rule__Drone__Group_3_0__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2135:1: ( ( 'rotation' ) )
+            // InternalXDrone.g:2136:1: ( 'rotation' )
+            {
+            // InternalXDrone.g:2136:1: ( 'rotation' )
+            // InternalXDrone.g:2137:2: 'rotation'
+            {
+             before(grammarAccess.getDroneAccess().getRotationKeyword_3_0_0()); 
+            match(input,31,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getRotationKeyword_3_0_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__0__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__1"
+    // InternalXDrone.g:2146:1: rule__Drone__Group_3_0__1 : rule__Drone__Group_3_0__1__Impl rule__Drone__Group_3_0__2 ;
+    public final void rule__Drone__Group_3_0__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2150:1: ( rule__Drone__Group_3_0__1__Impl rule__Drone__Group_3_0__2 )
+            // InternalXDrone.g:2151:2: rule__Drone__Group_3_0__1__Impl rule__Drone__Group_3_0__2
+            {
+            pushFollow(FOLLOW_15);
+            rule__Drone__Group_3_0__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_3_0__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__1"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__1__Impl"
+    // InternalXDrone.g:2158:1: rule__Drone__Group_3_0__1__Impl : ( '=' ) ;
+    public final void rule__Drone__Group_3_0__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2162:1: ( ( '=' ) )
+            // InternalXDrone.g:2163:1: ( '=' )
+            {
+            // InternalXDrone.g:2163:1: ( '=' )
+            // InternalXDrone.g:2164:2: '='
+            {
+             before(grammarAccess.getDroneAccess().getEqualsSignKeyword_3_0_1()); 
+            match(input,28,FOLLOW_2); 
+             after(grammarAccess.getDroneAccess().getEqualsSignKeyword_3_0_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__1__Impl"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__2"
+    // InternalXDrone.g:2173:1: rule__Drone__Group_3_0__2 : rule__Drone__Group_3_0__2__Impl ;
+    public final void rule__Drone__Group_3_0__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2177:1: ( rule__Drone__Group_3_0__2__Impl )
+            // InternalXDrone.g:2178:2: rule__Drone__Group_3_0__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__Group_3_0__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__2"
+
+
+    // $ANTLR start "rule__Drone__Group_3_0__2__Impl"
+    // InternalXDrone.g:2184:1: rule__Drone__Group_3_0__2__Impl : ( ( rule__Drone__RotationAssignment_3_0_2 ) ) ;
+    public final void rule__Drone__Group_3_0__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:2188:1: ( ( ( rule__Drone__RotationAssignment_3_0_2 ) ) )
+            // InternalXDrone.g:2189:1: ( ( rule__Drone__RotationAssignment_3_0_2 ) )
+            {
+            // InternalXDrone.g:2189:1: ( ( rule__Drone__RotationAssignment_3_0_2 ) )
+            // InternalXDrone.g:2190:2: ( rule__Drone__RotationAssignment_3_0_2 )
+            {
+             before(grammarAccess.getDroneAccess().getRotationAssignment_3_0_2()); 
+            // InternalXDrone.g:2191:2: ( rule__Drone__RotationAssignment_3_0_2 )
+            // InternalXDrone.g:2191:3: rule__Drone__RotationAssignment_3_0_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__RotationAssignment_3_0_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getDroneAccess().getRotationAssignment_3_0_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__Group_3_0__2__Impl"
 
 
     // $ANTLR start "rule__Object__Group_0__0"
-    // InternalXDrone.g:1795:1: rule__Object__Group_0__0 : rule__Object__Group_0__0__Impl rule__Object__Group_0__1 ;
+    // InternalXDrone.g:2200:1: rule__Object__Group_0__0 : rule__Object__Group_0__0__Impl rule__Object__Group_0__1 ;
     public final void rule__Object__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1799:1: ( rule__Object__Group_0__0__Impl rule__Object__Group_0__1 )
-            // InternalXDrone.g:1800:2: rule__Object__Group_0__0__Impl rule__Object__Group_0__1
+            // InternalXDrone.g:2204:1: ( rule__Object__Group_0__0__Impl rule__Object__Group_0__1 )
+            // InternalXDrone.g:2205:2: rule__Object__Group_0__0__Impl rule__Object__Group_0__1
             {
             pushFollow(FOLLOW_17);
             rule__Object__Group_0__0__Impl();
@@ -5466,21 +6638,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_0__0__Impl"
-    // InternalXDrone.g:1807:1: rule__Object__Group_0__0__Impl : ( ( rule__Object__Object_nameAssignment_0_0 ) ) ;
+    // InternalXDrone.g:2212:1: rule__Object__Group_0__0__Impl : ( ( rule__Object__Object_nameAssignment_0_0 ) ) ;
     public final void rule__Object__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1811:1: ( ( ( rule__Object__Object_nameAssignment_0_0 ) ) )
-            // InternalXDrone.g:1812:1: ( ( rule__Object__Object_nameAssignment_0_0 ) )
+            // InternalXDrone.g:2216:1: ( ( ( rule__Object__Object_nameAssignment_0_0 ) ) )
+            // InternalXDrone.g:2217:1: ( ( rule__Object__Object_nameAssignment_0_0 ) )
             {
-            // InternalXDrone.g:1812:1: ( ( rule__Object__Object_nameAssignment_0_0 ) )
-            // InternalXDrone.g:1813:2: ( rule__Object__Object_nameAssignment_0_0 )
+            // InternalXDrone.g:2217:1: ( ( rule__Object__Object_nameAssignment_0_0 ) )
+            // InternalXDrone.g:2218:2: ( rule__Object__Object_nameAssignment_0_0 )
             {
              before(grammarAccess.getObjectAccess().getObject_nameAssignment_0_0()); 
-            // InternalXDrone.g:1814:2: ( rule__Object__Object_nameAssignment_0_0 )
-            // InternalXDrone.g:1814:3: rule__Object__Object_nameAssignment_0_0
+            // InternalXDrone.g:2219:2: ( rule__Object__Object_nameAssignment_0_0 )
+            // InternalXDrone.g:2219:3: rule__Object__Object_nameAssignment_0_0
             {
             pushFollow(FOLLOW_2);
             rule__Object__Object_nameAssignment_0_0();
@@ -5513,16 +6685,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_0__1"
-    // InternalXDrone.g:1822:1: rule__Object__Group_0__1 : rule__Object__Group_0__1__Impl rule__Object__Group_0__2 ;
+    // InternalXDrone.g:2227:1: rule__Object__Group_0__1 : rule__Object__Group_0__1__Impl rule__Object__Group_0__2 ;
     public final void rule__Object__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1826:1: ( rule__Object__Group_0__1__Impl rule__Object__Group_0__2 )
-            // InternalXDrone.g:1827:2: rule__Object__Group_0__1__Impl rule__Object__Group_0__2
+            // InternalXDrone.g:2231:1: ( rule__Object__Group_0__1__Impl rule__Object__Group_0__2 )
+            // InternalXDrone.g:2232:2: rule__Object__Group_0__1__Impl rule__Object__Group_0__2
             {
-            pushFollow(FOLLOW_18);
+            pushFollow(FOLLOW_21);
             rule__Object__Group_0__1__Impl();
 
             state._fsp--;
@@ -5551,17 +6723,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_0__1__Impl"
-    // InternalXDrone.g:1834:1: rule__Object__Group_0__1__Impl : ( '{' ) ;
+    // InternalXDrone.g:2239:1: rule__Object__Group_0__1__Impl : ( '{' ) ;
     public final void rule__Object__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1838:1: ( ( '{' ) )
-            // InternalXDrone.g:1839:1: ( '{' )
+            // InternalXDrone.g:2243:1: ( ( '{' ) )
+            // InternalXDrone.g:2244:1: ( '{' )
             {
-            // InternalXDrone.g:1839:1: ( '{' )
-            // InternalXDrone.g:1840:2: '{'
+            // InternalXDrone.g:2244:1: ( '{' )
+            // InternalXDrone.g:2245:2: '{'
             {
              before(grammarAccess.getObjectAccess().getLeftCurlyBracketKeyword_0_1()); 
             match(input,26,FOLLOW_2); 
@@ -5588,14 +6760,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_0__2"
-    // InternalXDrone.g:1849:1: rule__Object__Group_0__2 : rule__Object__Group_0__2__Impl ;
+    // InternalXDrone.g:2254:1: rule__Object__Group_0__2 : rule__Object__Group_0__2__Impl ;
     public final void rule__Object__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1853:1: ( rule__Object__Group_0__2__Impl )
-            // InternalXDrone.g:1854:2: rule__Object__Group_0__2__Impl
+            // InternalXDrone.g:2258:1: ( rule__Object__Group_0__2__Impl )
+            // InternalXDrone.g:2259:2: rule__Object__Group_0__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Object__Group_0__2__Impl();
@@ -5621,21 +6793,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_0__2__Impl"
-    // InternalXDrone.g:1860:1: rule__Object__Group_0__2__Impl : ( ( rule__Object__OriginAssignment_0_2 ) ) ;
+    // InternalXDrone.g:2265:1: rule__Object__Group_0__2__Impl : ( ( rule__Object__OriginAssignment_0_2 ) ) ;
     public final void rule__Object__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1864:1: ( ( ( rule__Object__OriginAssignment_0_2 ) ) )
-            // InternalXDrone.g:1865:1: ( ( rule__Object__OriginAssignment_0_2 ) )
+            // InternalXDrone.g:2269:1: ( ( ( rule__Object__OriginAssignment_0_2 ) ) )
+            // InternalXDrone.g:2270:1: ( ( rule__Object__OriginAssignment_0_2 ) )
             {
-            // InternalXDrone.g:1865:1: ( ( rule__Object__OriginAssignment_0_2 ) )
-            // InternalXDrone.g:1866:2: ( rule__Object__OriginAssignment_0_2 )
+            // InternalXDrone.g:2270:1: ( ( rule__Object__OriginAssignment_0_2 ) )
+            // InternalXDrone.g:2271:2: ( rule__Object__OriginAssignment_0_2 )
             {
              before(grammarAccess.getObjectAccess().getOriginAssignment_0_2()); 
-            // InternalXDrone.g:1867:2: ( rule__Object__OriginAssignment_0_2 )
-            // InternalXDrone.g:1867:3: rule__Object__OriginAssignment_0_2
+            // InternalXDrone.g:2272:2: ( rule__Object__OriginAssignment_0_2 )
+            // InternalXDrone.g:2272:3: rule__Object__OriginAssignment_0_2
             {
             pushFollow(FOLLOW_2);
             rule__Object__OriginAssignment_0_2();
@@ -5668,14 +6840,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_2__0"
-    // InternalXDrone.g:1876:1: rule__Object__Group_2__0 : rule__Object__Group_2__0__Impl rule__Object__Group_2__1 ;
+    // InternalXDrone.g:2281:1: rule__Object__Group_2__0 : rule__Object__Group_2__0__Impl rule__Object__Group_2__1 ;
     public final void rule__Object__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1880:1: ( rule__Object__Group_2__0__Impl rule__Object__Group_2__1 )
-            // InternalXDrone.g:1881:2: rule__Object__Group_2__0__Impl rule__Object__Group_2__1
+            // InternalXDrone.g:2285:1: ( rule__Object__Group_2__0__Impl rule__Object__Group_2__1 )
+            // InternalXDrone.g:2286:2: rule__Object__Group_2__0__Impl rule__Object__Group_2__1
             {
             pushFollow(FOLLOW_8);
             rule__Object__Group_2__0__Impl();
@@ -5706,29 +6878,29 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_2__0__Impl"
-    // InternalXDrone.g:1888:1: rule__Object__Group_2__0__Impl : ( ( rule__Object__ColorAssignment_2_0 )? ) ;
+    // InternalXDrone.g:2293:1: rule__Object__Group_2__0__Impl : ( ( rule__Object__ColorAssignment_2_0 )? ) ;
     public final void rule__Object__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1892:1: ( ( ( rule__Object__ColorAssignment_2_0 )? ) )
-            // InternalXDrone.g:1893:1: ( ( rule__Object__ColorAssignment_2_0 )? )
+            // InternalXDrone.g:2297:1: ( ( ( rule__Object__ColorAssignment_2_0 )? ) )
+            // InternalXDrone.g:2298:1: ( ( rule__Object__ColorAssignment_2_0 )? )
             {
-            // InternalXDrone.g:1893:1: ( ( rule__Object__ColorAssignment_2_0 )? )
-            // InternalXDrone.g:1894:2: ( rule__Object__ColorAssignment_2_0 )?
+            // InternalXDrone.g:2298:1: ( ( rule__Object__ColorAssignment_2_0 )? )
+            // InternalXDrone.g:2299:2: ( rule__Object__ColorAssignment_2_0 )?
             {
              before(grammarAccess.getObjectAccess().getColorAssignment_2_0()); 
-            // InternalXDrone.g:1895:2: ( rule__Object__ColorAssignment_2_0 )?
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // InternalXDrone.g:2300:2: ( rule__Object__ColorAssignment_2_0 )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA9_0==31) ) {
-                alt9=1;
+            if ( (LA10_0==35) ) {
+                alt10=1;
             }
-            switch (alt9) {
+            switch (alt10) {
                 case 1 :
-                    // InternalXDrone.g:1895:3: rule__Object__ColorAssignment_2_0
+                    // InternalXDrone.g:2300:3: rule__Object__ColorAssignment_2_0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__ColorAssignment_2_0();
@@ -5764,14 +6936,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_2__1"
-    // InternalXDrone.g:1903:1: rule__Object__Group_2__1 : rule__Object__Group_2__1__Impl ;
+    // InternalXDrone.g:2308:1: rule__Object__Group_2__1 : rule__Object__Group_2__1__Impl ;
     public final void rule__Object__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1907:1: ( rule__Object__Group_2__1__Impl )
-            // InternalXDrone.g:1908:2: rule__Object__Group_2__1__Impl
+            // InternalXDrone.g:2312:1: ( rule__Object__Group_2__1__Impl )
+            // InternalXDrone.g:2313:2: rule__Object__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Object__Group_2__1__Impl();
@@ -5797,17 +6969,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__Group_2__1__Impl"
-    // InternalXDrone.g:1914:1: rule__Object__Group_2__1__Impl : ( '}' ) ;
+    // InternalXDrone.g:2319:1: rule__Object__Group_2__1__Impl : ( '}' ) ;
     public final void rule__Object__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1918:1: ( ( '}' ) )
-            // InternalXDrone.g:1919:1: ( '}' )
+            // InternalXDrone.g:2323:1: ( ( '}' ) )
+            // InternalXDrone.g:2324:1: ( '}' )
             {
-            // InternalXDrone.g:1919:1: ( '}' )
-            // InternalXDrone.g:1920:2: '}'
+            // InternalXDrone.g:2324:1: ( '}' )
+            // InternalXDrone.g:2325:2: '}'
             {
              before(grammarAccess.getObjectAccess().getRightCurlyBracketKeyword_2_1()); 
             match(input,14,FOLLOW_2); 
@@ -5834,14 +7006,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__0"
-    // InternalXDrone.g:1930:1: rule__Origin__Group__0 : rule__Origin__Group__0__Impl rule__Origin__Group__1 ;
+    // InternalXDrone.g:2335:1: rule__Origin__Group__0 : rule__Origin__Group__0__Impl rule__Origin__Group__1 ;
     public final void rule__Origin__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1934:1: ( rule__Origin__Group__0__Impl rule__Origin__Group__1 )
-            // InternalXDrone.g:1935:2: rule__Origin__Group__0__Impl rule__Origin__Group__1
+            // InternalXDrone.g:2339:1: ( rule__Origin__Group__0__Impl rule__Origin__Group__1 )
+            // InternalXDrone.g:2340:2: rule__Origin__Group__0__Impl rule__Origin__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Origin__Group__0__Impl();
@@ -5872,20 +7044,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__0__Impl"
-    // InternalXDrone.g:1942:1: rule__Origin__Group__0__Impl : ( 'origin' ) ;
+    // InternalXDrone.g:2347:1: rule__Origin__Group__0__Impl : ( 'origin' ) ;
     public final void rule__Origin__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1946:1: ( ( 'origin' ) )
-            // InternalXDrone.g:1947:1: ( 'origin' )
+            // InternalXDrone.g:2351:1: ( ( 'origin' ) )
+            // InternalXDrone.g:2352:1: ( 'origin' )
             {
-            // InternalXDrone.g:1947:1: ( 'origin' )
-            // InternalXDrone.g:1948:2: 'origin'
+            // InternalXDrone.g:2352:1: ( 'origin' )
+            // InternalXDrone.g:2353:2: 'origin'
             {
              before(grammarAccess.getOriginAccess().getOriginKeyword_0()); 
-            match(input,27,FOLLOW_2); 
+            match(input,32,FOLLOW_2); 
              after(grammarAccess.getOriginAccess().getOriginKeyword_0()); 
 
             }
@@ -5909,14 +7081,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__1"
-    // InternalXDrone.g:1957:1: rule__Origin__Group__1 : rule__Origin__Group__1__Impl rule__Origin__Group__2 ;
+    // InternalXDrone.g:2362:1: rule__Origin__Group__1 : rule__Origin__Group__1__Impl rule__Origin__Group__2 ;
     public final void rule__Origin__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1961:1: ( rule__Origin__Group__1__Impl rule__Origin__Group__2 )
-            // InternalXDrone.g:1962:2: rule__Origin__Group__1__Impl rule__Origin__Group__2
+            // InternalXDrone.g:2366:1: ( rule__Origin__Group__1__Impl rule__Origin__Group__2 )
+            // InternalXDrone.g:2367:2: rule__Origin__Group__1__Impl rule__Origin__Group__2
             {
             pushFollow(FOLLOW_12);
             rule__Origin__Group__1__Impl();
@@ -5947,17 +7119,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__1__Impl"
-    // InternalXDrone.g:1969:1: rule__Origin__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:2374:1: rule__Origin__Group__1__Impl : ( '=' ) ;
     public final void rule__Origin__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1973:1: ( ( '=' ) )
-            // InternalXDrone.g:1974:1: ( '=' )
+            // InternalXDrone.g:2378:1: ( ( '=' ) )
+            // InternalXDrone.g:2379:1: ( '=' )
             {
-            // InternalXDrone.g:1974:1: ( '=' )
-            // InternalXDrone.g:1975:2: '='
+            // InternalXDrone.g:2379:1: ( '=' )
+            // InternalXDrone.g:2380:2: '='
             {
              before(grammarAccess.getOriginAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -5984,14 +7156,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__2"
-    // InternalXDrone.g:1984:1: rule__Origin__Group__2 : rule__Origin__Group__2__Impl ;
+    // InternalXDrone.g:2389:1: rule__Origin__Group__2 : rule__Origin__Group__2__Impl ;
     public final void rule__Origin__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1988:1: ( rule__Origin__Group__2__Impl )
-            // InternalXDrone.g:1989:2: rule__Origin__Group__2__Impl
+            // InternalXDrone.g:2393:1: ( rule__Origin__Group__2__Impl )
+            // InternalXDrone.g:2394:2: rule__Origin__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Origin__Group__2__Impl();
@@ -6017,21 +7189,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__Group__2__Impl"
-    // InternalXDrone.g:1995:1: rule__Origin__Group__2__Impl : ( ( rule__Origin__VectorAssignment_2 ) ) ;
+    // InternalXDrone.g:2400:1: rule__Origin__Group__2__Impl : ( ( rule__Origin__VectorAssignment_2 ) ) ;
     public final void rule__Origin__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:1999:1: ( ( ( rule__Origin__VectorAssignment_2 ) ) )
-            // InternalXDrone.g:2000:1: ( ( rule__Origin__VectorAssignment_2 ) )
+            // InternalXDrone.g:2404:1: ( ( ( rule__Origin__VectorAssignment_2 ) ) )
+            // InternalXDrone.g:2405:1: ( ( rule__Origin__VectorAssignment_2 ) )
             {
-            // InternalXDrone.g:2000:1: ( ( rule__Origin__VectorAssignment_2 ) )
-            // InternalXDrone.g:2001:2: ( rule__Origin__VectorAssignment_2 )
+            // InternalXDrone.g:2405:1: ( ( rule__Origin__VectorAssignment_2 ) )
+            // InternalXDrone.g:2406:2: ( rule__Origin__VectorAssignment_2 )
             {
              before(grammarAccess.getOriginAccess().getVectorAssignment_2()); 
-            // InternalXDrone.g:2002:2: ( rule__Origin__VectorAssignment_2 )
-            // InternalXDrone.g:2002:3: rule__Origin__VectorAssignment_2
+            // InternalXDrone.g:2407:2: ( rule__Origin__VectorAssignment_2 )
+            // InternalXDrone.g:2407:3: rule__Origin__VectorAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Origin__VectorAssignment_2();
@@ -6064,14 +7236,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__0"
-    // InternalXDrone.g:2011:1: rule__Size__Group__0 : rule__Size__Group__0__Impl rule__Size__Group__1 ;
+    // InternalXDrone.g:2416:1: rule__Size__Group__0 : rule__Size__Group__0__Impl rule__Size__Group__1 ;
     public final void rule__Size__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2015:1: ( rule__Size__Group__0__Impl rule__Size__Group__1 )
-            // InternalXDrone.g:2016:2: rule__Size__Group__0__Impl rule__Size__Group__1
+            // InternalXDrone.g:2420:1: ( rule__Size__Group__0__Impl rule__Size__Group__1 )
+            // InternalXDrone.g:2421:2: rule__Size__Group__0__Impl rule__Size__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Size__Group__0__Impl();
@@ -6102,20 +7274,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__0__Impl"
-    // InternalXDrone.g:2023:1: rule__Size__Group__0__Impl : ( 'size' ) ;
+    // InternalXDrone.g:2428:1: rule__Size__Group__0__Impl : ( 'size' ) ;
     public final void rule__Size__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2027:1: ( ( 'size' ) )
-            // InternalXDrone.g:2028:1: ( 'size' )
+            // InternalXDrone.g:2432:1: ( ( 'size' ) )
+            // InternalXDrone.g:2433:1: ( 'size' )
             {
-            // InternalXDrone.g:2028:1: ( 'size' )
-            // InternalXDrone.g:2029:2: 'size'
+            // InternalXDrone.g:2433:1: ( 'size' )
+            // InternalXDrone.g:2434:2: 'size'
             {
              before(grammarAccess.getSizeAccess().getSizeKeyword_0()); 
-            match(input,29,FOLLOW_2); 
+            match(input,33,FOLLOW_2); 
              after(grammarAccess.getSizeAccess().getSizeKeyword_0()); 
 
             }
@@ -6139,14 +7311,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__1"
-    // InternalXDrone.g:2038:1: rule__Size__Group__1 : rule__Size__Group__1__Impl rule__Size__Group__2 ;
+    // InternalXDrone.g:2443:1: rule__Size__Group__1 : rule__Size__Group__1__Impl rule__Size__Group__2 ;
     public final void rule__Size__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2042:1: ( rule__Size__Group__1__Impl rule__Size__Group__2 )
-            // InternalXDrone.g:2043:2: rule__Size__Group__1__Impl rule__Size__Group__2
+            // InternalXDrone.g:2447:1: ( rule__Size__Group__1__Impl rule__Size__Group__2 )
+            // InternalXDrone.g:2448:2: rule__Size__Group__1__Impl rule__Size__Group__2
             {
             pushFollow(FOLLOW_12);
             rule__Size__Group__1__Impl();
@@ -6177,17 +7349,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__1__Impl"
-    // InternalXDrone.g:2050:1: rule__Size__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:2455:1: rule__Size__Group__1__Impl : ( '=' ) ;
     public final void rule__Size__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2054:1: ( ( '=' ) )
-            // InternalXDrone.g:2055:1: ( '=' )
+            // InternalXDrone.g:2459:1: ( ( '=' ) )
+            // InternalXDrone.g:2460:1: ( '=' )
             {
-            // InternalXDrone.g:2055:1: ( '=' )
-            // InternalXDrone.g:2056:2: '='
+            // InternalXDrone.g:2460:1: ( '=' )
+            // InternalXDrone.g:2461:2: '='
             {
              before(grammarAccess.getSizeAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -6214,14 +7386,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__2"
-    // InternalXDrone.g:2065:1: rule__Size__Group__2 : rule__Size__Group__2__Impl ;
+    // InternalXDrone.g:2470:1: rule__Size__Group__2 : rule__Size__Group__2__Impl ;
     public final void rule__Size__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2069:1: ( rule__Size__Group__2__Impl )
-            // InternalXDrone.g:2070:2: rule__Size__Group__2__Impl
+            // InternalXDrone.g:2474:1: ( rule__Size__Group__2__Impl )
+            // InternalXDrone.g:2475:2: rule__Size__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Size__Group__2__Impl();
@@ -6247,21 +7419,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__Group__2__Impl"
-    // InternalXDrone.g:2076:1: rule__Size__Group__2__Impl : ( ( rule__Size__VectorAssignment_2 ) ) ;
+    // InternalXDrone.g:2481:1: rule__Size__Group__2__Impl : ( ( rule__Size__VectorAssignment_2 ) ) ;
     public final void rule__Size__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2080:1: ( ( ( rule__Size__VectorAssignment_2 ) ) )
-            // InternalXDrone.g:2081:1: ( ( rule__Size__VectorAssignment_2 ) )
+            // InternalXDrone.g:2485:1: ( ( ( rule__Size__VectorAssignment_2 ) ) )
+            // InternalXDrone.g:2486:1: ( ( rule__Size__VectorAssignment_2 ) )
             {
-            // InternalXDrone.g:2081:1: ( ( rule__Size__VectorAssignment_2 ) )
-            // InternalXDrone.g:2082:2: ( rule__Size__VectorAssignment_2 )
+            // InternalXDrone.g:2486:1: ( ( rule__Size__VectorAssignment_2 ) )
+            // InternalXDrone.g:2487:2: ( rule__Size__VectorAssignment_2 )
             {
              before(grammarAccess.getSizeAccess().getVectorAssignment_2()); 
-            // InternalXDrone.g:2083:2: ( rule__Size__VectorAssignment_2 )
-            // InternalXDrone.g:2083:3: rule__Size__VectorAssignment_2
+            // InternalXDrone.g:2488:2: ( rule__Size__VectorAssignment_2 )
+            // InternalXDrone.g:2488:3: rule__Size__VectorAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Size__VectorAssignment_2();
@@ -6294,14 +7466,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__0"
-    // InternalXDrone.g:2092:1: rule__Vector__Group__0 : rule__Vector__Group__0__Impl rule__Vector__Group__1 ;
+    // InternalXDrone.g:2497:1: rule__Vector__Group__0 : rule__Vector__Group__0__Impl rule__Vector__Group__1 ;
     public final void rule__Vector__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2096:1: ( rule__Vector__Group__0__Impl rule__Vector__Group__1 )
-            // InternalXDrone.g:2097:2: rule__Vector__Group__0__Impl rule__Vector__Group__1
+            // InternalXDrone.g:2501:1: ( rule__Vector__Group__0__Impl rule__Vector__Group__1 )
+            // InternalXDrone.g:2502:2: rule__Vector__Group__0__Impl rule__Vector__Group__1
             {
             pushFollow(FOLLOW_15);
             rule__Vector__Group__0__Impl();
@@ -6332,17 +7504,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__0__Impl"
-    // InternalXDrone.g:2104:1: rule__Vector__Group__0__Impl : ( '(' ) ;
+    // InternalXDrone.g:2509:1: rule__Vector__Group__0__Impl : ( '(' ) ;
     public final void rule__Vector__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2108:1: ( ( '(' ) )
-            // InternalXDrone.g:2109:1: ( '(' )
+            // InternalXDrone.g:2513:1: ( ( '(' ) )
+            // InternalXDrone.g:2514:1: ( '(' )
             {
-            // InternalXDrone.g:2109:1: ( '(' )
-            // InternalXDrone.g:2110:2: '('
+            // InternalXDrone.g:2514:1: ( '(' )
+            // InternalXDrone.g:2515:2: '('
             {
              before(grammarAccess.getVectorAccess().getLeftParenthesisKeyword_0()); 
             match(input,19,FOLLOW_2); 
@@ -6369,16 +7541,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__1"
-    // InternalXDrone.g:2119:1: rule__Vector__Group__1 : rule__Vector__Group__1__Impl rule__Vector__Group__2 ;
+    // InternalXDrone.g:2524:1: rule__Vector__Group__1 : rule__Vector__Group__1__Impl rule__Vector__Group__2 ;
     public final void rule__Vector__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2123:1: ( rule__Vector__Group__1__Impl rule__Vector__Group__2 )
-            // InternalXDrone.g:2124:2: rule__Vector__Group__1__Impl rule__Vector__Group__2
+            // InternalXDrone.g:2528:1: ( rule__Vector__Group__1__Impl rule__Vector__Group__2 )
+            // InternalXDrone.g:2529:2: rule__Vector__Group__1__Impl rule__Vector__Group__2
             {
-            pushFollow(FOLLOW_20);
+            pushFollow(FOLLOW_22);
             rule__Vector__Group__1__Impl();
 
             state._fsp--;
@@ -6407,21 +7579,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__1__Impl"
-    // InternalXDrone.g:2131:1: rule__Vector__Group__1__Impl : ( ( rule__Vector__XAssignment_1 ) ) ;
+    // InternalXDrone.g:2536:1: rule__Vector__Group__1__Impl : ( ( rule__Vector__XAssignment_1 ) ) ;
     public final void rule__Vector__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2135:1: ( ( ( rule__Vector__XAssignment_1 ) ) )
-            // InternalXDrone.g:2136:1: ( ( rule__Vector__XAssignment_1 ) )
+            // InternalXDrone.g:2540:1: ( ( ( rule__Vector__XAssignment_1 ) ) )
+            // InternalXDrone.g:2541:1: ( ( rule__Vector__XAssignment_1 ) )
             {
-            // InternalXDrone.g:2136:1: ( ( rule__Vector__XAssignment_1 ) )
-            // InternalXDrone.g:2137:2: ( rule__Vector__XAssignment_1 )
+            // InternalXDrone.g:2541:1: ( ( rule__Vector__XAssignment_1 ) )
+            // InternalXDrone.g:2542:2: ( rule__Vector__XAssignment_1 )
             {
              before(grammarAccess.getVectorAccess().getXAssignment_1()); 
-            // InternalXDrone.g:2138:2: ( rule__Vector__XAssignment_1 )
-            // InternalXDrone.g:2138:3: rule__Vector__XAssignment_1
+            // InternalXDrone.g:2543:2: ( rule__Vector__XAssignment_1 )
+            // InternalXDrone.g:2543:3: rule__Vector__XAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Vector__XAssignment_1();
@@ -6454,14 +7626,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__2"
-    // InternalXDrone.g:2146:1: rule__Vector__Group__2 : rule__Vector__Group__2__Impl rule__Vector__Group__3 ;
+    // InternalXDrone.g:2551:1: rule__Vector__Group__2 : rule__Vector__Group__2__Impl rule__Vector__Group__3 ;
     public final void rule__Vector__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2150:1: ( rule__Vector__Group__2__Impl rule__Vector__Group__3 )
-            // InternalXDrone.g:2151:2: rule__Vector__Group__2__Impl rule__Vector__Group__3
+            // InternalXDrone.g:2555:1: ( rule__Vector__Group__2__Impl rule__Vector__Group__3 )
+            // InternalXDrone.g:2556:2: rule__Vector__Group__2__Impl rule__Vector__Group__3
             {
             pushFollow(FOLLOW_15);
             rule__Vector__Group__2__Impl();
@@ -6492,20 +7664,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__2__Impl"
-    // InternalXDrone.g:2158:1: rule__Vector__Group__2__Impl : ( ',' ) ;
+    // InternalXDrone.g:2563:1: rule__Vector__Group__2__Impl : ( ',' ) ;
     public final void rule__Vector__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2162:1: ( ( ',' ) )
-            // InternalXDrone.g:2163:1: ( ',' )
+            // InternalXDrone.g:2567:1: ( ( ',' ) )
+            // InternalXDrone.g:2568:1: ( ',' )
             {
-            // InternalXDrone.g:2163:1: ( ',' )
-            // InternalXDrone.g:2164:2: ','
+            // InternalXDrone.g:2568:1: ( ',' )
+            // InternalXDrone.g:2569:2: ','
             {
              before(grammarAccess.getVectorAccess().getCommaKeyword_2()); 
-            match(input,30,FOLLOW_2); 
+            match(input,34,FOLLOW_2); 
              after(grammarAccess.getVectorAccess().getCommaKeyword_2()); 
 
             }
@@ -6529,16 +7701,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__3"
-    // InternalXDrone.g:2173:1: rule__Vector__Group__3 : rule__Vector__Group__3__Impl rule__Vector__Group__4 ;
+    // InternalXDrone.g:2578:1: rule__Vector__Group__3 : rule__Vector__Group__3__Impl rule__Vector__Group__4 ;
     public final void rule__Vector__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2177:1: ( rule__Vector__Group__3__Impl rule__Vector__Group__4 )
-            // InternalXDrone.g:2178:2: rule__Vector__Group__3__Impl rule__Vector__Group__4
+            // InternalXDrone.g:2582:1: ( rule__Vector__Group__3__Impl rule__Vector__Group__4 )
+            // InternalXDrone.g:2583:2: rule__Vector__Group__3__Impl rule__Vector__Group__4
             {
-            pushFollow(FOLLOW_20);
+            pushFollow(FOLLOW_22);
             rule__Vector__Group__3__Impl();
 
             state._fsp--;
@@ -6567,21 +7739,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__3__Impl"
-    // InternalXDrone.g:2185:1: rule__Vector__Group__3__Impl : ( ( rule__Vector__YAssignment_3 ) ) ;
+    // InternalXDrone.g:2590:1: rule__Vector__Group__3__Impl : ( ( rule__Vector__YAssignment_3 ) ) ;
     public final void rule__Vector__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2189:1: ( ( ( rule__Vector__YAssignment_3 ) ) )
-            // InternalXDrone.g:2190:1: ( ( rule__Vector__YAssignment_3 ) )
+            // InternalXDrone.g:2594:1: ( ( ( rule__Vector__YAssignment_3 ) ) )
+            // InternalXDrone.g:2595:1: ( ( rule__Vector__YAssignment_3 ) )
             {
-            // InternalXDrone.g:2190:1: ( ( rule__Vector__YAssignment_3 ) )
-            // InternalXDrone.g:2191:2: ( rule__Vector__YAssignment_3 )
+            // InternalXDrone.g:2595:1: ( ( rule__Vector__YAssignment_3 ) )
+            // InternalXDrone.g:2596:2: ( rule__Vector__YAssignment_3 )
             {
              before(grammarAccess.getVectorAccess().getYAssignment_3()); 
-            // InternalXDrone.g:2192:2: ( rule__Vector__YAssignment_3 )
-            // InternalXDrone.g:2192:3: rule__Vector__YAssignment_3
+            // InternalXDrone.g:2597:2: ( rule__Vector__YAssignment_3 )
+            // InternalXDrone.g:2597:3: rule__Vector__YAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__Vector__YAssignment_3();
@@ -6614,14 +7786,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__4"
-    // InternalXDrone.g:2200:1: rule__Vector__Group__4 : rule__Vector__Group__4__Impl rule__Vector__Group__5 ;
+    // InternalXDrone.g:2605:1: rule__Vector__Group__4 : rule__Vector__Group__4__Impl rule__Vector__Group__5 ;
     public final void rule__Vector__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2204:1: ( rule__Vector__Group__4__Impl rule__Vector__Group__5 )
-            // InternalXDrone.g:2205:2: rule__Vector__Group__4__Impl rule__Vector__Group__5
+            // InternalXDrone.g:2609:1: ( rule__Vector__Group__4__Impl rule__Vector__Group__5 )
+            // InternalXDrone.g:2610:2: rule__Vector__Group__4__Impl rule__Vector__Group__5
             {
             pushFollow(FOLLOW_15);
             rule__Vector__Group__4__Impl();
@@ -6652,20 +7824,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__4__Impl"
-    // InternalXDrone.g:2212:1: rule__Vector__Group__4__Impl : ( ',' ) ;
+    // InternalXDrone.g:2617:1: rule__Vector__Group__4__Impl : ( ',' ) ;
     public final void rule__Vector__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2216:1: ( ( ',' ) )
-            // InternalXDrone.g:2217:1: ( ',' )
+            // InternalXDrone.g:2621:1: ( ( ',' ) )
+            // InternalXDrone.g:2622:1: ( ',' )
             {
-            // InternalXDrone.g:2217:1: ( ',' )
-            // InternalXDrone.g:2218:2: ','
+            // InternalXDrone.g:2622:1: ( ',' )
+            // InternalXDrone.g:2623:2: ','
             {
              before(grammarAccess.getVectorAccess().getCommaKeyword_4()); 
-            match(input,30,FOLLOW_2); 
+            match(input,34,FOLLOW_2); 
              after(grammarAccess.getVectorAccess().getCommaKeyword_4()); 
 
             }
@@ -6689,14 +7861,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__5"
-    // InternalXDrone.g:2227:1: rule__Vector__Group__5 : rule__Vector__Group__5__Impl rule__Vector__Group__6 ;
+    // InternalXDrone.g:2632:1: rule__Vector__Group__5 : rule__Vector__Group__5__Impl rule__Vector__Group__6 ;
     public final void rule__Vector__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2231:1: ( rule__Vector__Group__5__Impl rule__Vector__Group__6 )
-            // InternalXDrone.g:2232:2: rule__Vector__Group__5__Impl rule__Vector__Group__6
+            // InternalXDrone.g:2636:1: ( rule__Vector__Group__5__Impl rule__Vector__Group__6 )
+            // InternalXDrone.g:2637:2: rule__Vector__Group__5__Impl rule__Vector__Group__6
             {
             pushFollow(FOLLOW_14);
             rule__Vector__Group__5__Impl();
@@ -6727,21 +7899,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__5__Impl"
-    // InternalXDrone.g:2239:1: rule__Vector__Group__5__Impl : ( ( rule__Vector__ZAssignment_5 ) ) ;
+    // InternalXDrone.g:2644:1: rule__Vector__Group__5__Impl : ( ( rule__Vector__ZAssignment_5 ) ) ;
     public final void rule__Vector__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2243:1: ( ( ( rule__Vector__ZAssignment_5 ) ) )
-            // InternalXDrone.g:2244:1: ( ( rule__Vector__ZAssignment_5 ) )
+            // InternalXDrone.g:2648:1: ( ( ( rule__Vector__ZAssignment_5 ) ) )
+            // InternalXDrone.g:2649:1: ( ( rule__Vector__ZAssignment_5 ) )
             {
-            // InternalXDrone.g:2244:1: ( ( rule__Vector__ZAssignment_5 ) )
-            // InternalXDrone.g:2245:2: ( rule__Vector__ZAssignment_5 )
+            // InternalXDrone.g:2649:1: ( ( rule__Vector__ZAssignment_5 ) )
+            // InternalXDrone.g:2650:2: ( rule__Vector__ZAssignment_5 )
             {
              before(grammarAccess.getVectorAccess().getZAssignment_5()); 
-            // InternalXDrone.g:2246:2: ( rule__Vector__ZAssignment_5 )
-            // InternalXDrone.g:2246:3: rule__Vector__ZAssignment_5
+            // InternalXDrone.g:2651:2: ( rule__Vector__ZAssignment_5 )
+            // InternalXDrone.g:2651:3: rule__Vector__ZAssignment_5
             {
             pushFollow(FOLLOW_2);
             rule__Vector__ZAssignment_5();
@@ -6774,14 +7946,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__6"
-    // InternalXDrone.g:2254:1: rule__Vector__Group__6 : rule__Vector__Group__6__Impl ;
+    // InternalXDrone.g:2659:1: rule__Vector__Group__6 : rule__Vector__Group__6__Impl ;
     public final void rule__Vector__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2258:1: ( rule__Vector__Group__6__Impl )
-            // InternalXDrone.g:2259:2: rule__Vector__Group__6__Impl
+            // InternalXDrone.g:2663:1: ( rule__Vector__Group__6__Impl )
+            // InternalXDrone.g:2664:2: rule__Vector__Group__6__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Vector__Group__6__Impl();
@@ -6807,17 +7979,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__Group__6__Impl"
-    // InternalXDrone.g:2265:1: rule__Vector__Group__6__Impl : ( ')' ) ;
+    // InternalXDrone.g:2670:1: rule__Vector__Group__6__Impl : ( ')' ) ;
     public final void rule__Vector__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2269:1: ( ( ')' ) )
-            // InternalXDrone.g:2270:1: ( ')' )
+            // InternalXDrone.g:2674:1: ( ( ')' ) )
+            // InternalXDrone.g:2675:1: ( ')' )
             {
-            // InternalXDrone.g:2270:1: ( ')' )
-            // InternalXDrone.g:2271:2: ')'
+            // InternalXDrone.g:2675:1: ( ')' )
+            // InternalXDrone.g:2676:2: ')'
             {
              before(grammarAccess.getVectorAccess().getRightParenthesisKeyword_6()); 
             match(input,20,FOLLOW_2); 
@@ -6844,14 +8016,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__0"
-    // InternalXDrone.g:2281:1: rule__Color__Group__0 : rule__Color__Group__0__Impl rule__Color__Group__1 ;
+    // InternalXDrone.g:2686:1: rule__Color__Group__0 : rule__Color__Group__0__Impl rule__Color__Group__1 ;
     public final void rule__Color__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2285:1: ( rule__Color__Group__0__Impl rule__Color__Group__1 )
-            // InternalXDrone.g:2286:2: rule__Color__Group__0__Impl rule__Color__Group__1
+            // InternalXDrone.g:2690:1: ( rule__Color__Group__0__Impl rule__Color__Group__1 )
+            // InternalXDrone.g:2691:2: rule__Color__Group__0__Impl rule__Color__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Color__Group__0__Impl();
@@ -6882,20 +8054,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__0__Impl"
-    // InternalXDrone.g:2293:1: rule__Color__Group__0__Impl : ( 'color' ) ;
+    // InternalXDrone.g:2698:1: rule__Color__Group__0__Impl : ( 'color' ) ;
     public final void rule__Color__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2297:1: ( ( 'color' ) )
-            // InternalXDrone.g:2298:1: ( 'color' )
+            // InternalXDrone.g:2702:1: ( ( 'color' ) )
+            // InternalXDrone.g:2703:1: ( 'color' )
             {
-            // InternalXDrone.g:2298:1: ( 'color' )
-            // InternalXDrone.g:2299:2: 'color'
+            // InternalXDrone.g:2703:1: ( 'color' )
+            // InternalXDrone.g:2704:2: 'color'
             {
              before(grammarAccess.getColorAccess().getColorKeyword_0()); 
-            match(input,31,FOLLOW_2); 
+            match(input,35,FOLLOW_2); 
              after(grammarAccess.getColorAccess().getColorKeyword_0()); 
 
             }
@@ -6919,14 +8091,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__1"
-    // InternalXDrone.g:2308:1: rule__Color__Group__1 : rule__Color__Group__1__Impl rule__Color__Group__2 ;
+    // InternalXDrone.g:2713:1: rule__Color__Group__1 : rule__Color__Group__1__Impl rule__Color__Group__2 ;
     public final void rule__Color__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2312:1: ( rule__Color__Group__1__Impl rule__Color__Group__2 )
-            // InternalXDrone.g:2313:2: rule__Color__Group__1__Impl rule__Color__Group__2
+            // InternalXDrone.g:2717:1: ( rule__Color__Group__1__Impl rule__Color__Group__2 )
+            // InternalXDrone.g:2718:2: rule__Color__Group__1__Impl rule__Color__Group__2
             {
             pushFollow(FOLLOW_13);
             rule__Color__Group__1__Impl();
@@ -6957,17 +8129,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__1__Impl"
-    // InternalXDrone.g:2320:1: rule__Color__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:2725:1: rule__Color__Group__1__Impl : ( '=' ) ;
     public final void rule__Color__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2324:1: ( ( '=' ) )
-            // InternalXDrone.g:2325:1: ( '=' )
+            // InternalXDrone.g:2729:1: ( ( '=' ) )
+            // InternalXDrone.g:2730:1: ( '=' )
             {
-            // InternalXDrone.g:2325:1: ( '=' )
-            // InternalXDrone.g:2326:2: '='
+            // InternalXDrone.g:2730:1: ( '=' )
+            // InternalXDrone.g:2731:2: '='
             {
              before(grammarAccess.getColorAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -6994,14 +8166,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__2"
-    // InternalXDrone.g:2335:1: rule__Color__Group__2 : rule__Color__Group__2__Impl ;
+    // InternalXDrone.g:2740:1: rule__Color__Group__2 : rule__Color__Group__2__Impl ;
     public final void rule__Color__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2339:1: ( rule__Color__Group__2__Impl )
-            // InternalXDrone.g:2340:2: rule__Color__Group__2__Impl
+            // InternalXDrone.g:2744:1: ( rule__Color__Group__2__Impl )
+            // InternalXDrone.g:2745:2: rule__Color__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Color__Group__2__Impl();
@@ -7027,21 +8199,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Group__2__Impl"
-    // InternalXDrone.g:2346:1: rule__Color__Group__2__Impl : ( ( rule__Color__Color_valueAssignment_2 ) ) ;
+    // InternalXDrone.g:2751:1: rule__Color__Group__2__Impl : ( ( rule__Color__Color_valueAssignment_2 ) ) ;
     public final void rule__Color__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2350:1: ( ( ( rule__Color__Color_valueAssignment_2 ) ) )
-            // InternalXDrone.g:2351:1: ( ( rule__Color__Color_valueAssignment_2 ) )
+            // InternalXDrone.g:2755:1: ( ( ( rule__Color__Color_valueAssignment_2 ) ) )
+            // InternalXDrone.g:2756:1: ( ( rule__Color__Color_valueAssignment_2 ) )
             {
-            // InternalXDrone.g:2351:1: ( ( rule__Color__Color_valueAssignment_2 ) )
-            // InternalXDrone.g:2352:2: ( rule__Color__Color_valueAssignment_2 )
+            // InternalXDrone.g:2756:1: ( ( rule__Color__Color_valueAssignment_2 ) )
+            // InternalXDrone.g:2757:2: ( rule__Color__Color_valueAssignment_2 )
             {
              before(grammarAccess.getColorAccess().getColor_valueAssignment_2()); 
-            // InternalXDrone.g:2353:2: ( rule__Color__Color_valueAssignment_2 )
-            // InternalXDrone.g:2353:3: rule__Color__Color_valueAssignment_2
+            // InternalXDrone.g:2758:2: ( rule__Color__Color_valueAssignment_2 )
+            // InternalXDrone.g:2758:3: rule__Color__Color_valueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Color__Color_valueAssignment_2();
@@ -7074,14 +8246,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__0"
-    // InternalXDrone.g:2362:1: rule__Walls__Group_0__0 : rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1 ;
+    // InternalXDrone.g:2767:1: rule__Walls__Group_0__0 : rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1 ;
     public final void rule__Walls__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2366:1: ( rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1 )
-            // InternalXDrone.g:2367:2: rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1
+            // InternalXDrone.g:2771:1: ( rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1 )
+            // InternalXDrone.g:2772:2: rule__Walls__Group_0__0__Impl rule__Walls__Group_0__1
             {
             pushFollow(FOLLOW_17);
             rule__Walls__Group_0__0__Impl();
@@ -7112,20 +8284,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__0__Impl"
-    // InternalXDrone.g:2374:1: rule__Walls__Group_0__0__Impl : ( 'WALLS' ) ;
+    // InternalXDrone.g:2779:1: rule__Walls__Group_0__0__Impl : ( 'WALLS' ) ;
     public final void rule__Walls__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2378:1: ( ( 'WALLS' ) )
-            // InternalXDrone.g:2379:1: ( 'WALLS' )
+            // InternalXDrone.g:2783:1: ( ( 'WALLS' ) )
+            // InternalXDrone.g:2784:1: ( 'WALLS' )
             {
-            // InternalXDrone.g:2379:1: ( 'WALLS' )
-            // InternalXDrone.g:2380:2: 'WALLS'
+            // InternalXDrone.g:2784:1: ( 'WALLS' )
+            // InternalXDrone.g:2785:2: 'WALLS'
             {
              before(grammarAccess.getWallsAccess().getWALLSKeyword_0_0()); 
-            match(input,32,FOLLOW_2); 
+            match(input,36,FOLLOW_2); 
              after(grammarAccess.getWallsAccess().getWALLSKeyword_0_0()); 
 
             }
@@ -7149,16 +8321,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__1"
-    // InternalXDrone.g:2389:1: rule__Walls__Group_0__1 : rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2 ;
+    // InternalXDrone.g:2794:1: rule__Walls__Group_0__1 : rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2 ;
     public final void rule__Walls__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2393:1: ( rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2 )
-            // InternalXDrone.g:2394:2: rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2
+            // InternalXDrone.g:2798:1: ( rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2 )
+            // InternalXDrone.g:2799:2: rule__Walls__Group_0__1__Impl rule__Walls__Group_0__2
             {
-            pushFollow(FOLLOW_21);
+            pushFollow(FOLLOW_23);
             rule__Walls__Group_0__1__Impl();
 
             state._fsp--;
@@ -7187,17 +8359,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__1__Impl"
-    // InternalXDrone.g:2401:1: rule__Walls__Group_0__1__Impl : ( '{' ) ;
+    // InternalXDrone.g:2806:1: rule__Walls__Group_0__1__Impl : ( '{' ) ;
     public final void rule__Walls__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2405:1: ( ( '{' ) )
-            // InternalXDrone.g:2406:1: ( '{' )
+            // InternalXDrone.g:2810:1: ( ( '{' ) )
+            // InternalXDrone.g:2811:1: ( '{' )
             {
-            // InternalXDrone.g:2406:1: ( '{' )
-            // InternalXDrone.g:2407:2: '{'
+            // InternalXDrone.g:2811:1: ( '{' )
+            // InternalXDrone.g:2812:2: '{'
             {
              before(grammarAccess.getWallsAccess().getLeftCurlyBracketKeyword_0_1()); 
             match(input,26,FOLLOW_2); 
@@ -7224,14 +8396,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__2"
-    // InternalXDrone.g:2416:1: rule__Walls__Group_0__2 : rule__Walls__Group_0__2__Impl ;
+    // InternalXDrone.g:2821:1: rule__Walls__Group_0__2 : rule__Walls__Group_0__2__Impl ;
     public final void rule__Walls__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2420:1: ( rule__Walls__Group_0__2__Impl )
-            // InternalXDrone.g:2421:2: rule__Walls__Group_0__2__Impl
+            // InternalXDrone.g:2825:1: ( rule__Walls__Group_0__2__Impl )
+            // InternalXDrone.g:2826:2: rule__Walls__Group_0__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Walls__Group_0__2__Impl();
@@ -7257,21 +8429,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_0__2__Impl"
-    // InternalXDrone.g:2427:1: rule__Walls__Group_0__2__Impl : ( ( rule__Walls__FrontAssignment_0_2 ) ) ;
+    // InternalXDrone.g:2832:1: rule__Walls__Group_0__2__Impl : ( ( rule__Walls__FrontAssignment_0_2 ) ) ;
     public final void rule__Walls__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2431:1: ( ( ( rule__Walls__FrontAssignment_0_2 ) ) )
-            // InternalXDrone.g:2432:1: ( ( rule__Walls__FrontAssignment_0_2 ) )
+            // InternalXDrone.g:2836:1: ( ( ( rule__Walls__FrontAssignment_0_2 ) ) )
+            // InternalXDrone.g:2837:1: ( ( rule__Walls__FrontAssignment_0_2 ) )
             {
-            // InternalXDrone.g:2432:1: ( ( rule__Walls__FrontAssignment_0_2 ) )
-            // InternalXDrone.g:2433:2: ( rule__Walls__FrontAssignment_0_2 )
+            // InternalXDrone.g:2837:1: ( ( rule__Walls__FrontAssignment_0_2 ) )
+            // InternalXDrone.g:2838:2: ( rule__Walls__FrontAssignment_0_2 )
             {
              before(grammarAccess.getWallsAccess().getFrontAssignment_0_2()); 
-            // InternalXDrone.g:2434:2: ( rule__Walls__FrontAssignment_0_2 )
-            // InternalXDrone.g:2434:3: rule__Walls__FrontAssignment_0_2
+            // InternalXDrone.g:2839:2: ( rule__Walls__FrontAssignment_0_2 )
+            // InternalXDrone.g:2839:3: rule__Walls__FrontAssignment_0_2
             {
             pushFollow(FOLLOW_2);
             rule__Walls__FrontAssignment_0_2();
@@ -7304,14 +8476,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_4__0"
-    // InternalXDrone.g:2443:1: rule__Walls__Group_4__0 : rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1 ;
+    // InternalXDrone.g:2848:1: rule__Walls__Group_4__0 : rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1 ;
     public final void rule__Walls__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2447:1: ( rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1 )
-            // InternalXDrone.g:2448:2: rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1
+            // InternalXDrone.g:2852:1: ( rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1 )
+            // InternalXDrone.g:2853:2: rule__Walls__Group_4__0__Impl rule__Walls__Group_4__1
             {
             pushFollow(FOLLOW_5);
             rule__Walls__Group_4__0__Impl();
@@ -7342,21 +8514,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_4__0__Impl"
-    // InternalXDrone.g:2455:1: rule__Walls__Group_4__0__Impl : ( ( rule__Walls__UpAssignment_4_0 ) ) ;
+    // InternalXDrone.g:2860:1: rule__Walls__Group_4__0__Impl : ( ( rule__Walls__UpAssignment_4_0 ) ) ;
     public final void rule__Walls__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2459:1: ( ( ( rule__Walls__UpAssignment_4_0 ) ) )
-            // InternalXDrone.g:2460:1: ( ( rule__Walls__UpAssignment_4_0 ) )
+            // InternalXDrone.g:2864:1: ( ( ( rule__Walls__UpAssignment_4_0 ) ) )
+            // InternalXDrone.g:2865:1: ( ( rule__Walls__UpAssignment_4_0 ) )
             {
-            // InternalXDrone.g:2460:1: ( ( rule__Walls__UpAssignment_4_0 ) )
-            // InternalXDrone.g:2461:2: ( rule__Walls__UpAssignment_4_0 )
+            // InternalXDrone.g:2865:1: ( ( rule__Walls__UpAssignment_4_0 ) )
+            // InternalXDrone.g:2866:2: ( rule__Walls__UpAssignment_4_0 )
             {
              before(grammarAccess.getWallsAccess().getUpAssignment_4_0()); 
-            // InternalXDrone.g:2462:2: ( rule__Walls__UpAssignment_4_0 )
-            // InternalXDrone.g:2462:3: rule__Walls__UpAssignment_4_0
+            // InternalXDrone.g:2867:2: ( rule__Walls__UpAssignment_4_0 )
+            // InternalXDrone.g:2867:3: rule__Walls__UpAssignment_4_0
             {
             pushFollow(FOLLOW_2);
             rule__Walls__UpAssignment_4_0();
@@ -7389,14 +8561,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_4__1"
-    // InternalXDrone.g:2470:1: rule__Walls__Group_4__1 : rule__Walls__Group_4__1__Impl ;
+    // InternalXDrone.g:2875:1: rule__Walls__Group_4__1 : rule__Walls__Group_4__1__Impl ;
     public final void rule__Walls__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2474:1: ( rule__Walls__Group_4__1__Impl )
-            // InternalXDrone.g:2475:2: rule__Walls__Group_4__1__Impl
+            // InternalXDrone.g:2879:1: ( rule__Walls__Group_4__1__Impl )
+            // InternalXDrone.g:2880:2: rule__Walls__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Walls__Group_4__1__Impl();
@@ -7422,17 +8594,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__Group_4__1__Impl"
-    // InternalXDrone.g:2481:1: rule__Walls__Group_4__1__Impl : ( '}' ) ;
+    // InternalXDrone.g:2886:1: rule__Walls__Group_4__1__Impl : ( '}' ) ;
     public final void rule__Walls__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2485:1: ( ( '}' ) )
-            // InternalXDrone.g:2486:1: ( '}' )
+            // InternalXDrone.g:2890:1: ( ( '}' ) )
+            // InternalXDrone.g:2891:1: ( '}' )
             {
-            // InternalXDrone.g:2486:1: ( '}' )
-            // InternalXDrone.g:2487:2: '}'
+            // InternalXDrone.g:2891:1: ( '}' )
+            // InternalXDrone.g:2892:2: '}'
             {
              before(grammarAccess.getWallsAccess().getRightCurlyBracketKeyword_4_1()); 
             match(input,14,FOLLOW_2); 
@@ -7459,14 +8631,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__0"
-    // InternalXDrone.g:2497:1: rule__Front__Group__0 : rule__Front__Group__0__Impl rule__Front__Group__1 ;
+    // InternalXDrone.g:2902:1: rule__Front__Group__0 : rule__Front__Group__0__Impl rule__Front__Group__1 ;
     public final void rule__Front__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2501:1: ( rule__Front__Group__0__Impl rule__Front__Group__1 )
-            // InternalXDrone.g:2502:2: rule__Front__Group__0__Impl rule__Front__Group__1
+            // InternalXDrone.g:2906:1: ( rule__Front__Group__0__Impl rule__Front__Group__1 )
+            // InternalXDrone.g:2907:2: rule__Front__Group__0__Impl rule__Front__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Front__Group__0__Impl();
@@ -7497,20 +8669,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__0__Impl"
-    // InternalXDrone.g:2509:1: rule__Front__Group__0__Impl : ( 'front' ) ;
+    // InternalXDrone.g:2914:1: rule__Front__Group__0__Impl : ( 'front' ) ;
     public final void rule__Front__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2513:1: ( ( 'front' ) )
-            // InternalXDrone.g:2514:1: ( 'front' )
+            // InternalXDrone.g:2918:1: ( ( 'front' ) )
+            // InternalXDrone.g:2919:1: ( 'front' )
             {
-            // InternalXDrone.g:2514:1: ( 'front' )
-            // InternalXDrone.g:2515:2: 'front'
+            // InternalXDrone.g:2919:1: ( 'front' )
+            // InternalXDrone.g:2920:2: 'front'
             {
              before(grammarAccess.getFrontAccess().getFrontKeyword_0()); 
-            match(input,33,FOLLOW_2); 
+            match(input,37,FOLLOW_2); 
              after(grammarAccess.getFrontAccess().getFrontKeyword_0()); 
 
             }
@@ -7534,14 +8706,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__1"
-    // InternalXDrone.g:2524:1: rule__Front__Group__1 : rule__Front__Group__1__Impl rule__Front__Group__2 ;
+    // InternalXDrone.g:2929:1: rule__Front__Group__1 : rule__Front__Group__1__Impl rule__Front__Group__2 ;
     public final void rule__Front__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2528:1: ( rule__Front__Group__1__Impl rule__Front__Group__2 )
-            // InternalXDrone.g:2529:2: rule__Front__Group__1__Impl rule__Front__Group__2
+            // InternalXDrone.g:2933:1: ( rule__Front__Group__1__Impl rule__Front__Group__2 )
+            // InternalXDrone.g:2934:2: rule__Front__Group__1__Impl rule__Front__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Front__Group__1__Impl();
@@ -7572,17 +8744,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__1__Impl"
-    // InternalXDrone.g:2536:1: rule__Front__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:2941:1: rule__Front__Group__1__Impl : ( '=' ) ;
     public final void rule__Front__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2540:1: ( ( '=' ) )
-            // InternalXDrone.g:2541:1: ( '=' )
+            // InternalXDrone.g:2945:1: ( ( '=' ) )
+            // InternalXDrone.g:2946:1: ( '=' )
             {
-            // InternalXDrone.g:2541:1: ( '=' )
-            // InternalXDrone.g:2542:2: '='
+            // InternalXDrone.g:2946:1: ( '=' )
+            // InternalXDrone.g:2947:2: '='
             {
              before(grammarAccess.getFrontAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -7609,14 +8781,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__2"
-    // InternalXDrone.g:2551:1: rule__Front__Group__2 : rule__Front__Group__2__Impl ;
+    // InternalXDrone.g:2956:1: rule__Front__Group__2 : rule__Front__Group__2__Impl ;
     public final void rule__Front__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2555:1: ( rule__Front__Group__2__Impl )
-            // InternalXDrone.g:2556:2: rule__Front__Group__2__Impl
+            // InternalXDrone.g:2960:1: ( rule__Front__Group__2__Impl )
+            // InternalXDrone.g:2961:2: rule__Front__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Front__Group__2__Impl();
@@ -7642,21 +8814,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__Group__2__Impl"
-    // InternalXDrone.g:2562:1: rule__Front__Group__2__Impl : ( ( rule__Front__ValueAssignment_2 ) ) ;
+    // InternalXDrone.g:2967:1: rule__Front__Group__2__Impl : ( ( rule__Front__ValueAssignment_2 ) ) ;
     public final void rule__Front__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2566:1: ( ( ( rule__Front__ValueAssignment_2 ) ) )
-            // InternalXDrone.g:2567:1: ( ( rule__Front__ValueAssignment_2 ) )
+            // InternalXDrone.g:2971:1: ( ( ( rule__Front__ValueAssignment_2 ) ) )
+            // InternalXDrone.g:2972:1: ( ( rule__Front__ValueAssignment_2 ) )
             {
-            // InternalXDrone.g:2567:1: ( ( rule__Front__ValueAssignment_2 ) )
-            // InternalXDrone.g:2568:2: ( rule__Front__ValueAssignment_2 )
+            // InternalXDrone.g:2972:1: ( ( rule__Front__ValueAssignment_2 ) )
+            // InternalXDrone.g:2973:2: ( rule__Front__ValueAssignment_2 )
             {
              before(grammarAccess.getFrontAccess().getValueAssignment_2()); 
-            // InternalXDrone.g:2569:2: ( rule__Front__ValueAssignment_2 )
-            // InternalXDrone.g:2569:3: rule__Front__ValueAssignment_2
+            // InternalXDrone.g:2974:2: ( rule__Front__ValueAssignment_2 )
+            // InternalXDrone.g:2974:3: rule__Front__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Front__ValueAssignment_2();
@@ -7689,14 +8861,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__0"
-    // InternalXDrone.g:2578:1: rule__Right__Group__0 : rule__Right__Group__0__Impl rule__Right__Group__1 ;
+    // InternalXDrone.g:2983:1: rule__Right__Group__0 : rule__Right__Group__0__Impl rule__Right__Group__1 ;
     public final void rule__Right__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2582:1: ( rule__Right__Group__0__Impl rule__Right__Group__1 )
-            // InternalXDrone.g:2583:2: rule__Right__Group__0__Impl rule__Right__Group__1
+            // InternalXDrone.g:2987:1: ( rule__Right__Group__0__Impl rule__Right__Group__1 )
+            // InternalXDrone.g:2988:2: rule__Right__Group__0__Impl rule__Right__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Right__Group__0__Impl();
@@ -7727,20 +8899,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__0__Impl"
-    // InternalXDrone.g:2590:1: rule__Right__Group__0__Impl : ( 'right' ) ;
+    // InternalXDrone.g:2995:1: rule__Right__Group__0__Impl : ( 'right' ) ;
     public final void rule__Right__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2594:1: ( ( 'right' ) )
-            // InternalXDrone.g:2595:1: ( 'right' )
+            // InternalXDrone.g:2999:1: ( ( 'right' ) )
+            // InternalXDrone.g:3000:1: ( 'right' )
             {
-            // InternalXDrone.g:2595:1: ( 'right' )
-            // InternalXDrone.g:2596:2: 'right'
+            // InternalXDrone.g:3000:1: ( 'right' )
+            // InternalXDrone.g:3001:2: 'right'
             {
              before(grammarAccess.getRightAccess().getRightKeyword_0()); 
-            match(input,34,FOLLOW_2); 
+            match(input,38,FOLLOW_2); 
              after(grammarAccess.getRightAccess().getRightKeyword_0()); 
 
             }
@@ -7764,14 +8936,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__1"
-    // InternalXDrone.g:2605:1: rule__Right__Group__1 : rule__Right__Group__1__Impl rule__Right__Group__2 ;
+    // InternalXDrone.g:3010:1: rule__Right__Group__1 : rule__Right__Group__1__Impl rule__Right__Group__2 ;
     public final void rule__Right__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2609:1: ( rule__Right__Group__1__Impl rule__Right__Group__2 )
-            // InternalXDrone.g:2610:2: rule__Right__Group__1__Impl rule__Right__Group__2
+            // InternalXDrone.g:3014:1: ( rule__Right__Group__1__Impl rule__Right__Group__2 )
+            // InternalXDrone.g:3015:2: rule__Right__Group__1__Impl rule__Right__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Right__Group__1__Impl();
@@ -7802,17 +8974,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__1__Impl"
-    // InternalXDrone.g:2617:1: rule__Right__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:3022:1: rule__Right__Group__1__Impl : ( '=' ) ;
     public final void rule__Right__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2621:1: ( ( '=' ) )
-            // InternalXDrone.g:2622:1: ( '=' )
+            // InternalXDrone.g:3026:1: ( ( '=' ) )
+            // InternalXDrone.g:3027:1: ( '=' )
             {
-            // InternalXDrone.g:2622:1: ( '=' )
-            // InternalXDrone.g:2623:2: '='
+            // InternalXDrone.g:3027:1: ( '=' )
+            // InternalXDrone.g:3028:2: '='
             {
              before(grammarAccess.getRightAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -7839,14 +9011,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__2"
-    // InternalXDrone.g:2632:1: rule__Right__Group__2 : rule__Right__Group__2__Impl ;
+    // InternalXDrone.g:3037:1: rule__Right__Group__2 : rule__Right__Group__2__Impl ;
     public final void rule__Right__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2636:1: ( rule__Right__Group__2__Impl )
-            // InternalXDrone.g:2637:2: rule__Right__Group__2__Impl
+            // InternalXDrone.g:3041:1: ( rule__Right__Group__2__Impl )
+            // InternalXDrone.g:3042:2: rule__Right__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Right__Group__2__Impl();
@@ -7872,21 +9044,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__Group__2__Impl"
-    // InternalXDrone.g:2643:1: rule__Right__Group__2__Impl : ( ( rule__Right__ValueAssignment_2 ) ) ;
+    // InternalXDrone.g:3048:1: rule__Right__Group__2__Impl : ( ( rule__Right__ValueAssignment_2 ) ) ;
     public final void rule__Right__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2647:1: ( ( ( rule__Right__ValueAssignment_2 ) ) )
-            // InternalXDrone.g:2648:1: ( ( rule__Right__ValueAssignment_2 ) )
+            // InternalXDrone.g:3052:1: ( ( ( rule__Right__ValueAssignment_2 ) ) )
+            // InternalXDrone.g:3053:1: ( ( rule__Right__ValueAssignment_2 ) )
             {
-            // InternalXDrone.g:2648:1: ( ( rule__Right__ValueAssignment_2 ) )
-            // InternalXDrone.g:2649:2: ( rule__Right__ValueAssignment_2 )
+            // InternalXDrone.g:3053:1: ( ( rule__Right__ValueAssignment_2 ) )
+            // InternalXDrone.g:3054:2: ( rule__Right__ValueAssignment_2 )
             {
              before(grammarAccess.getRightAccess().getValueAssignment_2()); 
-            // InternalXDrone.g:2650:2: ( rule__Right__ValueAssignment_2 )
-            // InternalXDrone.g:2650:3: rule__Right__ValueAssignment_2
+            // InternalXDrone.g:3055:2: ( rule__Right__ValueAssignment_2 )
+            // InternalXDrone.g:3055:3: rule__Right__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Right__ValueAssignment_2();
@@ -7919,14 +9091,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__0"
-    // InternalXDrone.g:2659:1: rule__Left__Group__0 : rule__Left__Group__0__Impl rule__Left__Group__1 ;
+    // InternalXDrone.g:3064:1: rule__Left__Group__0 : rule__Left__Group__0__Impl rule__Left__Group__1 ;
     public final void rule__Left__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2663:1: ( rule__Left__Group__0__Impl rule__Left__Group__1 )
-            // InternalXDrone.g:2664:2: rule__Left__Group__0__Impl rule__Left__Group__1
+            // InternalXDrone.g:3068:1: ( rule__Left__Group__0__Impl rule__Left__Group__1 )
+            // InternalXDrone.g:3069:2: rule__Left__Group__0__Impl rule__Left__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Left__Group__0__Impl();
@@ -7957,20 +9129,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__0__Impl"
-    // InternalXDrone.g:2671:1: rule__Left__Group__0__Impl : ( 'left' ) ;
+    // InternalXDrone.g:3076:1: rule__Left__Group__0__Impl : ( 'left' ) ;
     public final void rule__Left__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2675:1: ( ( 'left' ) )
-            // InternalXDrone.g:2676:1: ( 'left' )
+            // InternalXDrone.g:3080:1: ( ( 'left' ) )
+            // InternalXDrone.g:3081:1: ( 'left' )
             {
-            // InternalXDrone.g:2676:1: ( 'left' )
-            // InternalXDrone.g:2677:2: 'left'
+            // InternalXDrone.g:3081:1: ( 'left' )
+            // InternalXDrone.g:3082:2: 'left'
             {
              before(grammarAccess.getLeftAccess().getLeftKeyword_0()); 
-            match(input,35,FOLLOW_2); 
+            match(input,39,FOLLOW_2); 
              after(grammarAccess.getLeftAccess().getLeftKeyword_0()); 
 
             }
@@ -7994,14 +9166,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__1"
-    // InternalXDrone.g:2686:1: rule__Left__Group__1 : rule__Left__Group__1__Impl rule__Left__Group__2 ;
+    // InternalXDrone.g:3091:1: rule__Left__Group__1 : rule__Left__Group__1__Impl rule__Left__Group__2 ;
     public final void rule__Left__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2690:1: ( rule__Left__Group__1__Impl rule__Left__Group__2 )
-            // InternalXDrone.g:2691:2: rule__Left__Group__1__Impl rule__Left__Group__2
+            // InternalXDrone.g:3095:1: ( rule__Left__Group__1__Impl rule__Left__Group__2 )
+            // InternalXDrone.g:3096:2: rule__Left__Group__1__Impl rule__Left__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Left__Group__1__Impl();
@@ -8032,17 +9204,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__1__Impl"
-    // InternalXDrone.g:2698:1: rule__Left__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:3103:1: rule__Left__Group__1__Impl : ( '=' ) ;
     public final void rule__Left__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2702:1: ( ( '=' ) )
-            // InternalXDrone.g:2703:1: ( '=' )
+            // InternalXDrone.g:3107:1: ( ( '=' ) )
+            // InternalXDrone.g:3108:1: ( '=' )
             {
-            // InternalXDrone.g:2703:1: ( '=' )
-            // InternalXDrone.g:2704:2: '='
+            // InternalXDrone.g:3108:1: ( '=' )
+            // InternalXDrone.g:3109:2: '='
             {
              before(grammarAccess.getLeftAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -8069,14 +9241,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__2"
-    // InternalXDrone.g:2713:1: rule__Left__Group__2 : rule__Left__Group__2__Impl ;
+    // InternalXDrone.g:3118:1: rule__Left__Group__2 : rule__Left__Group__2__Impl ;
     public final void rule__Left__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2717:1: ( rule__Left__Group__2__Impl )
-            // InternalXDrone.g:2718:2: rule__Left__Group__2__Impl
+            // InternalXDrone.g:3122:1: ( rule__Left__Group__2__Impl )
+            // InternalXDrone.g:3123:2: rule__Left__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Left__Group__2__Impl();
@@ -8102,21 +9274,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__Group__2__Impl"
-    // InternalXDrone.g:2724:1: rule__Left__Group__2__Impl : ( ( rule__Left__ValueAssignment_2 ) ) ;
+    // InternalXDrone.g:3129:1: rule__Left__Group__2__Impl : ( ( rule__Left__ValueAssignment_2 ) ) ;
     public final void rule__Left__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2728:1: ( ( ( rule__Left__ValueAssignment_2 ) ) )
-            // InternalXDrone.g:2729:1: ( ( rule__Left__ValueAssignment_2 ) )
+            // InternalXDrone.g:3133:1: ( ( ( rule__Left__ValueAssignment_2 ) ) )
+            // InternalXDrone.g:3134:1: ( ( rule__Left__ValueAssignment_2 ) )
             {
-            // InternalXDrone.g:2729:1: ( ( rule__Left__ValueAssignment_2 ) )
-            // InternalXDrone.g:2730:2: ( rule__Left__ValueAssignment_2 )
+            // InternalXDrone.g:3134:1: ( ( rule__Left__ValueAssignment_2 ) )
+            // InternalXDrone.g:3135:2: ( rule__Left__ValueAssignment_2 )
             {
              before(grammarAccess.getLeftAccess().getValueAssignment_2()); 
-            // InternalXDrone.g:2731:2: ( rule__Left__ValueAssignment_2 )
-            // InternalXDrone.g:2731:3: rule__Left__ValueAssignment_2
+            // InternalXDrone.g:3136:2: ( rule__Left__ValueAssignment_2 )
+            // InternalXDrone.g:3136:3: rule__Left__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Left__ValueAssignment_2();
@@ -8149,14 +9321,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__0"
-    // InternalXDrone.g:2740:1: rule__Back__Group__0 : rule__Back__Group__0__Impl rule__Back__Group__1 ;
+    // InternalXDrone.g:3145:1: rule__Back__Group__0 : rule__Back__Group__0__Impl rule__Back__Group__1 ;
     public final void rule__Back__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2744:1: ( rule__Back__Group__0__Impl rule__Back__Group__1 )
-            // InternalXDrone.g:2745:2: rule__Back__Group__0__Impl rule__Back__Group__1
+            // InternalXDrone.g:3149:1: ( rule__Back__Group__0__Impl rule__Back__Group__1 )
+            // InternalXDrone.g:3150:2: rule__Back__Group__0__Impl rule__Back__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Back__Group__0__Impl();
@@ -8187,20 +9359,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__0__Impl"
-    // InternalXDrone.g:2752:1: rule__Back__Group__0__Impl : ( 'back' ) ;
+    // InternalXDrone.g:3157:1: rule__Back__Group__0__Impl : ( 'back' ) ;
     public final void rule__Back__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2756:1: ( ( 'back' ) )
-            // InternalXDrone.g:2757:1: ( 'back' )
+            // InternalXDrone.g:3161:1: ( ( 'back' ) )
+            // InternalXDrone.g:3162:1: ( 'back' )
             {
-            // InternalXDrone.g:2757:1: ( 'back' )
-            // InternalXDrone.g:2758:2: 'back'
+            // InternalXDrone.g:3162:1: ( 'back' )
+            // InternalXDrone.g:3163:2: 'back'
             {
              before(grammarAccess.getBackAccess().getBackKeyword_0()); 
-            match(input,36,FOLLOW_2); 
+            match(input,40,FOLLOW_2); 
              after(grammarAccess.getBackAccess().getBackKeyword_0()); 
 
             }
@@ -8224,14 +9396,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__1"
-    // InternalXDrone.g:2767:1: rule__Back__Group__1 : rule__Back__Group__1__Impl rule__Back__Group__2 ;
+    // InternalXDrone.g:3172:1: rule__Back__Group__1 : rule__Back__Group__1__Impl rule__Back__Group__2 ;
     public final void rule__Back__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2771:1: ( rule__Back__Group__1__Impl rule__Back__Group__2 )
-            // InternalXDrone.g:2772:2: rule__Back__Group__1__Impl rule__Back__Group__2
+            // InternalXDrone.g:3176:1: ( rule__Back__Group__1__Impl rule__Back__Group__2 )
+            // InternalXDrone.g:3177:2: rule__Back__Group__1__Impl rule__Back__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Back__Group__1__Impl();
@@ -8262,17 +9434,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__1__Impl"
-    // InternalXDrone.g:2779:1: rule__Back__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:3184:1: rule__Back__Group__1__Impl : ( '=' ) ;
     public final void rule__Back__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2783:1: ( ( '=' ) )
-            // InternalXDrone.g:2784:1: ( '=' )
+            // InternalXDrone.g:3188:1: ( ( '=' ) )
+            // InternalXDrone.g:3189:1: ( '=' )
             {
-            // InternalXDrone.g:2784:1: ( '=' )
-            // InternalXDrone.g:2785:2: '='
+            // InternalXDrone.g:3189:1: ( '=' )
+            // InternalXDrone.g:3190:2: '='
             {
              before(grammarAccess.getBackAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -8299,14 +9471,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__2"
-    // InternalXDrone.g:2794:1: rule__Back__Group__2 : rule__Back__Group__2__Impl ;
+    // InternalXDrone.g:3199:1: rule__Back__Group__2 : rule__Back__Group__2__Impl ;
     public final void rule__Back__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2798:1: ( rule__Back__Group__2__Impl )
-            // InternalXDrone.g:2799:2: rule__Back__Group__2__Impl
+            // InternalXDrone.g:3203:1: ( rule__Back__Group__2__Impl )
+            // InternalXDrone.g:3204:2: rule__Back__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Back__Group__2__Impl();
@@ -8332,21 +9504,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__Group__2__Impl"
-    // InternalXDrone.g:2805:1: rule__Back__Group__2__Impl : ( ( rule__Back__ValueAssignment_2 ) ) ;
+    // InternalXDrone.g:3210:1: rule__Back__Group__2__Impl : ( ( rule__Back__ValueAssignment_2 ) ) ;
     public final void rule__Back__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2809:1: ( ( ( rule__Back__ValueAssignment_2 ) ) )
-            // InternalXDrone.g:2810:1: ( ( rule__Back__ValueAssignment_2 ) )
+            // InternalXDrone.g:3214:1: ( ( ( rule__Back__ValueAssignment_2 ) ) )
+            // InternalXDrone.g:3215:1: ( ( rule__Back__ValueAssignment_2 ) )
             {
-            // InternalXDrone.g:2810:1: ( ( rule__Back__ValueAssignment_2 ) )
-            // InternalXDrone.g:2811:2: ( rule__Back__ValueAssignment_2 )
+            // InternalXDrone.g:3215:1: ( ( rule__Back__ValueAssignment_2 ) )
+            // InternalXDrone.g:3216:2: ( rule__Back__ValueAssignment_2 )
             {
              before(grammarAccess.getBackAccess().getValueAssignment_2()); 
-            // InternalXDrone.g:2812:2: ( rule__Back__ValueAssignment_2 )
-            // InternalXDrone.g:2812:3: rule__Back__ValueAssignment_2
+            // InternalXDrone.g:3217:2: ( rule__Back__ValueAssignment_2 )
+            // InternalXDrone.g:3217:3: rule__Back__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Back__ValueAssignment_2();
@@ -8379,14 +9551,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__0"
-    // InternalXDrone.g:2821:1: rule__Up__Group__0 : rule__Up__Group__0__Impl rule__Up__Group__1 ;
+    // InternalXDrone.g:3226:1: rule__Up__Group__0 : rule__Up__Group__0__Impl rule__Up__Group__1 ;
     public final void rule__Up__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2825:1: ( rule__Up__Group__0__Impl rule__Up__Group__1 )
-            // InternalXDrone.g:2826:2: rule__Up__Group__0__Impl rule__Up__Group__1
+            // InternalXDrone.g:3230:1: ( rule__Up__Group__0__Impl rule__Up__Group__1 )
+            // InternalXDrone.g:3231:2: rule__Up__Group__0__Impl rule__Up__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__Up__Group__0__Impl();
@@ -8417,20 +9589,20 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__0__Impl"
-    // InternalXDrone.g:2833:1: rule__Up__Group__0__Impl : ( 'up' ) ;
+    // InternalXDrone.g:3238:1: rule__Up__Group__0__Impl : ( 'up' ) ;
     public final void rule__Up__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2837:1: ( ( 'up' ) )
-            // InternalXDrone.g:2838:1: ( 'up' )
+            // InternalXDrone.g:3242:1: ( ( 'up' ) )
+            // InternalXDrone.g:3243:1: ( 'up' )
             {
-            // InternalXDrone.g:2838:1: ( 'up' )
-            // InternalXDrone.g:2839:2: 'up'
+            // InternalXDrone.g:3243:1: ( 'up' )
+            // InternalXDrone.g:3244:2: 'up'
             {
              before(grammarAccess.getUpAccess().getUpKeyword_0()); 
-            match(input,37,FOLLOW_2); 
+            match(input,41,FOLLOW_2); 
              after(grammarAccess.getUpAccess().getUpKeyword_0()); 
 
             }
@@ -8454,14 +9626,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__1"
-    // InternalXDrone.g:2848:1: rule__Up__Group__1 : rule__Up__Group__1__Impl rule__Up__Group__2 ;
+    // InternalXDrone.g:3253:1: rule__Up__Group__1 : rule__Up__Group__1__Impl rule__Up__Group__2 ;
     public final void rule__Up__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2852:1: ( rule__Up__Group__1__Impl rule__Up__Group__2 )
-            // InternalXDrone.g:2853:2: rule__Up__Group__1__Impl rule__Up__Group__2
+            // InternalXDrone.g:3257:1: ( rule__Up__Group__1__Impl rule__Up__Group__2 )
+            // InternalXDrone.g:3258:2: rule__Up__Group__1__Impl rule__Up__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Up__Group__1__Impl();
@@ -8492,17 +9664,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__1__Impl"
-    // InternalXDrone.g:2860:1: rule__Up__Group__1__Impl : ( '=' ) ;
+    // InternalXDrone.g:3265:1: rule__Up__Group__1__Impl : ( '=' ) ;
     public final void rule__Up__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2864:1: ( ( '=' ) )
-            // InternalXDrone.g:2865:1: ( '=' )
+            // InternalXDrone.g:3269:1: ( ( '=' ) )
+            // InternalXDrone.g:3270:1: ( '=' )
             {
-            // InternalXDrone.g:2865:1: ( '=' )
-            // InternalXDrone.g:2866:2: '='
+            // InternalXDrone.g:3270:1: ( '=' )
+            // InternalXDrone.g:3271:2: '='
             {
              before(grammarAccess.getUpAccess().getEqualsSignKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -8529,14 +9701,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__2"
-    // InternalXDrone.g:2875:1: rule__Up__Group__2 : rule__Up__Group__2__Impl ;
+    // InternalXDrone.g:3280:1: rule__Up__Group__2 : rule__Up__Group__2__Impl ;
     public final void rule__Up__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2879:1: ( rule__Up__Group__2__Impl )
-            // InternalXDrone.g:2880:2: rule__Up__Group__2__Impl
+            // InternalXDrone.g:3284:1: ( rule__Up__Group__2__Impl )
+            // InternalXDrone.g:3285:2: rule__Up__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Up__Group__2__Impl();
@@ -8562,21 +9734,21 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__Group__2__Impl"
-    // InternalXDrone.g:2886:1: rule__Up__Group__2__Impl : ( ( rule__Up__ValueAssignment_2 ) ) ;
+    // InternalXDrone.g:3291:1: rule__Up__Group__2__Impl : ( ( rule__Up__ValueAssignment_2 ) ) ;
     public final void rule__Up__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2890:1: ( ( ( rule__Up__ValueAssignment_2 ) ) )
-            // InternalXDrone.g:2891:1: ( ( rule__Up__ValueAssignment_2 ) )
+            // InternalXDrone.g:3295:1: ( ( ( rule__Up__ValueAssignment_2 ) ) )
+            // InternalXDrone.g:3296:1: ( ( rule__Up__ValueAssignment_2 ) )
             {
-            // InternalXDrone.g:2891:1: ( ( rule__Up__ValueAssignment_2 ) )
-            // InternalXDrone.g:2892:2: ( rule__Up__ValueAssignment_2 )
+            // InternalXDrone.g:3296:1: ( ( rule__Up__ValueAssignment_2 ) )
+            // InternalXDrone.g:3297:2: ( rule__Up__ValueAssignment_2 )
             {
              before(grammarAccess.getUpAccess().getValueAssignment_2()); 
-            // InternalXDrone.g:2893:2: ( rule__Up__ValueAssignment_2 )
-            // InternalXDrone.g:2893:3: rule__Up__ValueAssignment_2
+            // InternalXDrone.g:3298:2: ( rule__Up__ValueAssignment_2 )
+            // InternalXDrone.g:3298:3: rule__Up__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Up__ValueAssignment_2();
@@ -8608,16 +9780,481 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Up__Group__2__Impl"
 
 
+    // $ANTLR start "rule__Drone__UnorderedGroup"
+    // InternalXDrone.g:3307:1: rule__Drone__UnorderedGroup : rule__Drone__UnorderedGroup__0 {...}?;
+    public final void rule__Drone__UnorderedGroup() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        		getUnorderedGroupHelper().enter(grammarAccess.getDroneAccess().getUnorderedGroup());
+        	
+        try {
+            // InternalXDrone.g:3312:1: ( rule__Drone__UnorderedGroup__0 {...}?)
+            // InternalXDrone.g:3313:2: rule__Drone__UnorderedGroup__0 {...}?
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__UnorderedGroup__0();
+
+            state._fsp--;
+
+            if ( ! getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {
+                throw new FailedPredicateException(input, "rule__Drone__UnorderedGroup", "getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup())");
+            }
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	getUnorderedGroupHelper().leave(grammarAccess.getDroneAccess().getUnorderedGroup());
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup"
+
+
+    // $ANTLR start "rule__Drone__UnorderedGroup__Impl"
+    // InternalXDrone.g:3321:1: rule__Drone__UnorderedGroup__Impl : ( ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) ) ) ;
+    public final void rule__Drone__UnorderedGroup__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        		boolean selected = false;
+        	
+        try {
+            // InternalXDrone.g:3326:1: ( ( ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) ) ) )
+            // InternalXDrone.g:3327:3: ( ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) ) )
+            {
+            // InternalXDrone.g:3327:3: ( ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) ) | ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) ) )
+            int alt11=4;
+            int LA11_0 = input.LA(1);
+
+            if ( LA11_0 == 25 && getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {
+                alt11=1;
+            }
+            else if ( LA11_0 == 29 && getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {
+                alt11=2;
+            }
+            else if ( LA11_0 == 30 && getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {
+                alt11=3;
+            }
+            else if ( ( LA11_0 == 14 || LA11_0 == 31 ) && getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {
+                alt11=4;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 11, 0, input);
+
+                throw nvae;
+            }
+            switch (alt11) {
+                case 1 :
+                    // InternalXDrone.g:3328:3: ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) )
+                    {
+                    // InternalXDrone.g:3328:3: ({...}? => ( ( ( rule__Drone__Group_0__0 ) ) ) )
+                    // InternalXDrone.g:3329:4: {...}? => ( ( ( rule__Drone__Group_0__0 ) ) )
+                    {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {
+                        throw new FailedPredicateException(input, "rule__Drone__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0)");
+                    }
+                    // InternalXDrone.g:3329:99: ( ( ( rule__Drone__Group_0__0 ) ) )
+                    // InternalXDrone.g:3330:5: ( ( rule__Drone__Group_0__0 ) )
+                    {
+
+                    					getUnorderedGroupHelper().select(grammarAccess.getDroneAccess().getUnorderedGroup(), 0);
+                    				
+
+                    					selected = true;
+                    				
+                    // InternalXDrone.g:3336:5: ( ( rule__Drone__Group_0__0 ) )
+                    // InternalXDrone.g:3337:6: ( rule__Drone__Group_0__0 )
+                    {
+                     before(grammarAccess.getDroneAccess().getGroup_0()); 
+                    // InternalXDrone.g:3338:6: ( rule__Drone__Group_0__0 )
+                    // InternalXDrone.g:3338:7: rule__Drone__Group_0__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__Group_0__0();
+
+                    state._fsp--;
+
+
+                    }
+
+                     after(grammarAccess.getDroneAccess().getGroup_0()); 
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalXDrone.g:3343:3: ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) )
+                    {
+                    // InternalXDrone.g:3343:3: ({...}? => ( ( ( rule__Drone__Group_1__0 ) ) ) )
+                    // InternalXDrone.g:3344:4: {...}? => ( ( ( rule__Drone__Group_1__0 ) ) )
+                    {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {
+                        throw new FailedPredicateException(input, "rule__Drone__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1)");
+                    }
+                    // InternalXDrone.g:3344:99: ( ( ( rule__Drone__Group_1__0 ) ) )
+                    // InternalXDrone.g:3345:5: ( ( rule__Drone__Group_1__0 ) )
+                    {
+
+                    					getUnorderedGroupHelper().select(grammarAccess.getDroneAccess().getUnorderedGroup(), 1);
+                    				
+
+                    					selected = true;
+                    				
+                    // InternalXDrone.g:3351:5: ( ( rule__Drone__Group_1__0 ) )
+                    // InternalXDrone.g:3352:6: ( rule__Drone__Group_1__0 )
+                    {
+                     before(grammarAccess.getDroneAccess().getGroup_1()); 
+                    // InternalXDrone.g:3353:6: ( rule__Drone__Group_1__0 )
+                    // InternalXDrone.g:3353:7: rule__Drone__Group_1__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__Group_1__0();
+
+                    state._fsp--;
+
+
+                    }
+
+                     after(grammarAccess.getDroneAccess().getGroup_1()); 
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // InternalXDrone.g:3358:3: ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) )
+                    {
+                    // InternalXDrone.g:3358:3: ({...}? => ( ( ( rule__Drone__Group_2__0 ) ) ) )
+                    // InternalXDrone.g:3359:4: {...}? => ( ( ( rule__Drone__Group_2__0 ) ) )
+                    {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {
+                        throw new FailedPredicateException(input, "rule__Drone__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2)");
+                    }
+                    // InternalXDrone.g:3359:99: ( ( ( rule__Drone__Group_2__0 ) ) )
+                    // InternalXDrone.g:3360:5: ( ( rule__Drone__Group_2__0 ) )
+                    {
+
+                    					getUnorderedGroupHelper().select(grammarAccess.getDroneAccess().getUnorderedGroup(), 2);
+                    				
+
+                    					selected = true;
+                    				
+                    // InternalXDrone.g:3366:5: ( ( rule__Drone__Group_2__0 ) )
+                    // InternalXDrone.g:3367:6: ( rule__Drone__Group_2__0 )
+                    {
+                     before(grammarAccess.getDroneAccess().getGroup_2()); 
+                    // InternalXDrone.g:3368:6: ( rule__Drone__Group_2__0 )
+                    // InternalXDrone.g:3368:7: rule__Drone__Group_2__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__Group_2__0();
+
+                    state._fsp--;
+
+
+                    }
+
+                     after(grammarAccess.getDroneAccess().getGroup_2()); 
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalXDrone.g:3373:3: ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) )
+                    {
+                    // InternalXDrone.g:3373:3: ({...}? => ( ( ( rule__Drone__Group_3__0 ) ) ) )
+                    // InternalXDrone.g:3374:4: {...}? => ( ( ( rule__Drone__Group_3__0 ) ) )
+                    {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {
+                        throw new FailedPredicateException(input, "rule__Drone__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3)");
+                    }
+                    // InternalXDrone.g:3374:99: ( ( ( rule__Drone__Group_3__0 ) ) )
+                    // InternalXDrone.g:3375:5: ( ( rule__Drone__Group_3__0 ) )
+                    {
+
+                    					getUnorderedGroupHelper().select(grammarAccess.getDroneAccess().getUnorderedGroup(), 3);
+                    				
+
+                    					selected = true;
+                    				
+                    // InternalXDrone.g:3381:5: ( ( rule__Drone__Group_3__0 ) )
+                    // InternalXDrone.g:3382:6: ( rule__Drone__Group_3__0 )
+                    {
+                     before(grammarAccess.getDroneAccess().getGroup_3()); 
+                    // InternalXDrone.g:3383:6: ( rule__Drone__Group_3__0 )
+                    // InternalXDrone.g:3383:7: rule__Drone__Group_3__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__Group_3__0();
+
+                    state._fsp--;
+
+
+                    }
+
+                     after(grammarAccess.getDroneAccess().getGroup_3()); 
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	if (selected)
+            		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDroneAccess().getUnorderedGroup());
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup__Impl"
+
+
+    // $ANTLR start "rule__Drone__UnorderedGroup__0"
+    // InternalXDrone.g:3396:1: rule__Drone__UnorderedGroup__0 : rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__1 )? ;
+    public final void rule__Drone__UnorderedGroup__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3400:1: ( rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__1 )? )
+            // InternalXDrone.g:3401:2: rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__1 )?
+            {
+            pushFollow(FOLLOW_24);
+            rule__Drone__UnorderedGroup__Impl();
+
+            state._fsp--;
+
+            // InternalXDrone.g:3402:2: ( rule__Drone__UnorderedGroup__1 )?
+            int alt12=2;
+            alt12 = dfa12.predict(input);
+            switch (alt12) {
+                case 1 :
+                    // InternalXDrone.g:3402:2: rule__Drone__UnorderedGroup__1
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__UnorderedGroup__1();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup__0"
+
+
+    // $ANTLR start "rule__Drone__UnorderedGroup__1"
+    // InternalXDrone.g:3408:1: rule__Drone__UnorderedGroup__1 : rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__2 )? ;
+    public final void rule__Drone__UnorderedGroup__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3412:1: ( rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__2 )? )
+            // InternalXDrone.g:3413:2: rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__2 )?
+            {
+            pushFollow(FOLLOW_24);
+            rule__Drone__UnorderedGroup__Impl();
+
+            state._fsp--;
+
+            // InternalXDrone.g:3414:2: ( rule__Drone__UnorderedGroup__2 )?
+            int alt13=2;
+            alt13 = dfa13.predict(input);
+            switch (alt13) {
+                case 1 :
+                    // InternalXDrone.g:3414:2: rule__Drone__UnorderedGroup__2
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__UnorderedGroup__2();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup__1"
+
+
+    // $ANTLR start "rule__Drone__UnorderedGroup__2"
+    // InternalXDrone.g:3420:1: rule__Drone__UnorderedGroup__2 : rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__3 )? ;
+    public final void rule__Drone__UnorderedGroup__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3424:1: ( rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__3 )? )
+            // InternalXDrone.g:3425:2: rule__Drone__UnorderedGroup__Impl ( rule__Drone__UnorderedGroup__3 )?
+            {
+            pushFollow(FOLLOW_24);
+            rule__Drone__UnorderedGroup__Impl();
+
+            state._fsp--;
+
+            // InternalXDrone.g:3426:2: ( rule__Drone__UnorderedGroup__3 )?
+            int alt14=2;
+            alt14 = dfa14.predict(input);
+            switch (alt14) {
+                case 1 :
+                    // InternalXDrone.g:3426:2: rule__Drone__UnorderedGroup__3
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Drone__UnorderedGroup__3();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup__2"
+
+
+    // $ANTLR start "rule__Drone__UnorderedGroup__3"
+    // InternalXDrone.g:3432:1: rule__Drone__UnorderedGroup__3 : rule__Drone__UnorderedGroup__Impl ;
+    public final void rule__Drone__UnorderedGroup__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3436:1: ( rule__Drone__UnorderedGroup__Impl )
+            // InternalXDrone.g:3437:2: rule__Drone__UnorderedGroup__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Drone__UnorderedGroup__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__UnorderedGroup__3"
+
+
     // $ANTLR start "rule__Object__UnorderedGroup"
-    // InternalXDrone.g:2902:1: rule__Object__UnorderedGroup : rule__Object__UnorderedGroup__0 {...}?;
+    // InternalXDrone.g:3444:1: rule__Object__UnorderedGroup : rule__Object__UnorderedGroup__0 {...}?;
     public final void rule__Object__UnorderedGroup() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		getUnorderedGroupHelper().enter(grammarAccess.getObjectAccess().getUnorderedGroup());
         	
         try {
-            // InternalXDrone.g:2907:1: ( rule__Object__UnorderedGroup__0 {...}?)
-            // InternalXDrone.g:2908:2: rule__Object__UnorderedGroup__0 {...}?
+            // InternalXDrone.g:3449:1: ( rule__Object__UnorderedGroup__0 {...}?)
+            // InternalXDrone.g:3450:2: rule__Object__UnorderedGroup__0 {...}?
             {
             pushFollow(FOLLOW_2);
             rule__Object__UnorderedGroup__0();
@@ -8647,47 +10284,47 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__UnorderedGroup__Impl"
-    // InternalXDrone.g:2916:1: rule__Object__UnorderedGroup__Impl : ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) ) ;
+    // InternalXDrone.g:3458:1: rule__Object__UnorderedGroup__Impl : ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) ) ;
     public final void rule__Object__UnorderedGroup__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		boolean selected = false;
         	
         try {
-            // InternalXDrone.g:2921:1: ( ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) ) )
-            // InternalXDrone.g:2922:3: ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) )
+            // InternalXDrone.g:3463:1: ( ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) ) )
+            // InternalXDrone.g:3464:3: ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) )
             {
-            // InternalXDrone.g:2922:3: ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) )
-            int alt10=3;
-            int LA10_0 = input.LA(1);
+            // InternalXDrone.g:3464:3: ( ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) ) )
+            int alt15=3;
+            int LA15_0 = input.LA(1);
 
-            if ( LA10_0 == RULE_ID && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {
-                alt10=1;
+            if ( LA15_0 == RULE_ID && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {
+                alt15=1;
             }
-            else if ( LA10_0 == 29 && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {
-                alt10=2;
+            else if ( LA15_0 == 33 && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {
+                alt15=2;
             }
-            else if ( ( LA10_0 == 14 || LA10_0 == 31 ) && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {
-                alt10=3;
+            else if ( ( LA15_0 == 14 || LA15_0 == 35 ) && getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {
+                alt15=3;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
-            switch (alt10) {
+            switch (alt15) {
                 case 1 :
-                    // InternalXDrone.g:2923:3: ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) )
+                    // InternalXDrone.g:3465:3: ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) )
                     {
-                    // InternalXDrone.g:2923:3: ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) )
-                    // InternalXDrone.g:2924:4: {...}? => ( ( ( rule__Object__Group_0__0 ) ) )
+                    // InternalXDrone.g:3465:3: ({...}? => ( ( ( rule__Object__Group_0__0 ) ) ) )
+                    // InternalXDrone.g:3466:4: {...}? => ( ( ( rule__Object__Group_0__0 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {
                         throw new FailedPredicateException(input, "rule__Object__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0)");
                     }
-                    // InternalXDrone.g:2924:100: ( ( ( rule__Object__Group_0__0 ) ) )
-                    // InternalXDrone.g:2925:5: ( ( rule__Object__Group_0__0 ) )
+                    // InternalXDrone.g:3466:100: ( ( ( rule__Object__Group_0__0 ) ) )
+                    // InternalXDrone.g:3467:5: ( ( rule__Object__Group_0__0 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getObjectAccess().getUnorderedGroup(), 0);
@@ -8695,12 +10332,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:2931:5: ( ( rule__Object__Group_0__0 ) )
-                    // InternalXDrone.g:2932:6: ( rule__Object__Group_0__0 )
+                    // InternalXDrone.g:3473:5: ( ( rule__Object__Group_0__0 ) )
+                    // InternalXDrone.g:3474:6: ( rule__Object__Group_0__0 )
                     {
                      before(grammarAccess.getObjectAccess().getGroup_0()); 
-                    // InternalXDrone.g:2933:6: ( rule__Object__Group_0__0 )
-                    // InternalXDrone.g:2933:7: rule__Object__Group_0__0
+                    // InternalXDrone.g:3475:6: ( rule__Object__Group_0__0 )
+                    // InternalXDrone.g:3475:7: rule__Object__Group_0__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__Group_0__0();
@@ -8724,16 +10361,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalXDrone.g:2938:3: ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) )
+                    // InternalXDrone.g:3480:3: ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) )
                     {
-                    // InternalXDrone.g:2938:3: ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) )
-                    // InternalXDrone.g:2939:4: {...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) )
+                    // InternalXDrone.g:3480:3: ({...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) ) )
+                    // InternalXDrone.g:3481:4: {...}? => ( ( ( rule__Object__SizeAssignment_1 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {
                         throw new FailedPredicateException(input, "rule__Object__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1)");
                     }
-                    // InternalXDrone.g:2939:100: ( ( ( rule__Object__SizeAssignment_1 ) ) )
-                    // InternalXDrone.g:2940:5: ( ( rule__Object__SizeAssignment_1 ) )
+                    // InternalXDrone.g:3481:100: ( ( ( rule__Object__SizeAssignment_1 ) ) )
+                    // InternalXDrone.g:3482:5: ( ( rule__Object__SizeAssignment_1 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getObjectAccess().getUnorderedGroup(), 1);
@@ -8741,12 +10378,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:2946:5: ( ( rule__Object__SizeAssignment_1 ) )
-                    // InternalXDrone.g:2947:6: ( rule__Object__SizeAssignment_1 )
+                    // InternalXDrone.g:3488:5: ( ( rule__Object__SizeAssignment_1 ) )
+                    // InternalXDrone.g:3489:6: ( rule__Object__SizeAssignment_1 )
                     {
                      before(grammarAccess.getObjectAccess().getSizeAssignment_1()); 
-                    // InternalXDrone.g:2948:6: ( rule__Object__SizeAssignment_1 )
-                    // InternalXDrone.g:2948:7: rule__Object__SizeAssignment_1
+                    // InternalXDrone.g:3490:6: ( rule__Object__SizeAssignment_1 )
+                    // InternalXDrone.g:3490:7: rule__Object__SizeAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__SizeAssignment_1();
@@ -8770,16 +10407,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalXDrone.g:2953:3: ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) )
+                    // InternalXDrone.g:3495:3: ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) )
                     {
-                    // InternalXDrone.g:2953:3: ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) )
-                    // InternalXDrone.g:2954:4: {...}? => ( ( ( rule__Object__Group_2__0 ) ) )
+                    // InternalXDrone.g:3495:3: ({...}? => ( ( ( rule__Object__Group_2__0 ) ) ) )
+                    // InternalXDrone.g:3496:4: {...}? => ( ( ( rule__Object__Group_2__0 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {
                         throw new FailedPredicateException(input, "rule__Object__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2)");
                     }
-                    // InternalXDrone.g:2954:100: ( ( ( rule__Object__Group_2__0 ) ) )
-                    // InternalXDrone.g:2955:5: ( ( rule__Object__Group_2__0 ) )
+                    // InternalXDrone.g:3496:100: ( ( ( rule__Object__Group_2__0 ) ) )
+                    // InternalXDrone.g:3497:5: ( ( rule__Object__Group_2__0 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getObjectAccess().getUnorderedGroup(), 2);
@@ -8787,12 +10424,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:2961:5: ( ( rule__Object__Group_2__0 ) )
-                    // InternalXDrone.g:2962:6: ( rule__Object__Group_2__0 )
+                    // InternalXDrone.g:3503:5: ( ( rule__Object__Group_2__0 ) )
+                    // InternalXDrone.g:3504:6: ( rule__Object__Group_2__0 )
                     {
                      before(grammarAccess.getObjectAccess().getGroup_2()); 
-                    // InternalXDrone.g:2963:6: ( rule__Object__Group_2__0 )
-                    // InternalXDrone.g:2963:7: rule__Object__Group_2__0
+                    // InternalXDrone.g:3505:6: ( rule__Object__Group_2__0 )
+                    // InternalXDrone.g:3505:7: rule__Object__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__Group_2__0();
@@ -8839,26 +10476,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__UnorderedGroup__0"
-    // InternalXDrone.g:2976:1: rule__Object__UnorderedGroup__0 : rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )? ;
+    // InternalXDrone.g:3518:1: rule__Object__UnorderedGroup__0 : rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )? ;
     public final void rule__Object__UnorderedGroup__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2980:1: ( rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )? )
-            // InternalXDrone.g:2981:2: rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )?
+            // InternalXDrone.g:3522:1: ( rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )? )
+            // InternalXDrone.g:3523:2: rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__1 )?
             {
             pushFollow(FOLLOW_9);
             rule__Object__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:2982:2: ( rule__Object__UnorderedGroup__1 )?
-            int alt11=2;
-            alt11 = dfa11.predict(input);
-            switch (alt11) {
+            // InternalXDrone.g:3524:2: ( rule__Object__UnorderedGroup__1 )?
+            int alt16=2;
+            alt16 = dfa16.predict(input);
+            switch (alt16) {
                 case 1 :
-                    // InternalXDrone.g:2982:2: rule__Object__UnorderedGroup__1
+                    // InternalXDrone.g:3524:2: rule__Object__UnorderedGroup__1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__UnorderedGroup__1();
@@ -8890,26 +10527,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__UnorderedGroup__1"
-    // InternalXDrone.g:2988:1: rule__Object__UnorderedGroup__1 : rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )? ;
+    // InternalXDrone.g:3530:1: rule__Object__UnorderedGroup__1 : rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )? ;
     public final void rule__Object__UnorderedGroup__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:2992:1: ( rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )? )
-            // InternalXDrone.g:2993:2: rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )?
+            // InternalXDrone.g:3534:1: ( rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )? )
+            // InternalXDrone.g:3535:2: rule__Object__UnorderedGroup__Impl ( rule__Object__UnorderedGroup__2 )?
             {
             pushFollow(FOLLOW_9);
             rule__Object__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:2994:2: ( rule__Object__UnorderedGroup__2 )?
-            int alt12=2;
-            alt12 = dfa12.predict(input);
-            switch (alt12) {
+            // InternalXDrone.g:3536:2: ( rule__Object__UnorderedGroup__2 )?
+            int alt17=2;
+            alt17 = dfa17.predict(input);
+            switch (alt17) {
                 case 1 :
-                    // InternalXDrone.g:2994:2: rule__Object__UnorderedGroup__2
+                    // InternalXDrone.g:3536:2: rule__Object__UnorderedGroup__2
                     {
                     pushFollow(FOLLOW_2);
                     rule__Object__UnorderedGroup__2();
@@ -8941,14 +10578,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__UnorderedGroup__2"
-    // InternalXDrone.g:3000:1: rule__Object__UnorderedGroup__2 : rule__Object__UnorderedGroup__Impl ;
+    // InternalXDrone.g:3542:1: rule__Object__UnorderedGroup__2 : rule__Object__UnorderedGroup__Impl ;
     public final void rule__Object__UnorderedGroup__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3004:1: ( rule__Object__UnorderedGroup__Impl )
-            // InternalXDrone.g:3005:2: rule__Object__UnorderedGroup__Impl
+            // InternalXDrone.g:3546:1: ( rule__Object__UnorderedGroup__Impl )
+            // InternalXDrone.g:3547:2: rule__Object__UnorderedGroup__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Object__UnorderedGroup__Impl();
@@ -8974,15 +10611,15 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup"
-    // InternalXDrone.g:3012:1: rule__Walls__UnorderedGroup : rule__Walls__UnorderedGroup__0 {...}?;
+    // InternalXDrone.g:3554:1: rule__Walls__UnorderedGroup : rule__Walls__UnorderedGroup__0 {...}?;
     public final void rule__Walls__UnorderedGroup() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		getUnorderedGroupHelper().enter(grammarAccess.getWallsAccess().getUnorderedGroup());
         	
         try {
-            // InternalXDrone.g:3017:1: ( rule__Walls__UnorderedGroup__0 {...}?)
-            // InternalXDrone.g:3018:2: rule__Walls__UnorderedGroup__0 {...}?
+            // InternalXDrone.g:3559:1: ( rule__Walls__UnorderedGroup__0 {...}?)
+            // InternalXDrone.g:3560:2: rule__Walls__UnorderedGroup__0 {...}?
             {
             pushFollow(FOLLOW_2);
             rule__Walls__UnorderedGroup__0();
@@ -9012,53 +10649,53 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__Impl"
-    // InternalXDrone.g:3026:1: rule__Walls__UnorderedGroup__Impl : ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) ) ;
+    // InternalXDrone.g:3568:1: rule__Walls__UnorderedGroup__Impl : ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) ) ;
     public final void rule__Walls__UnorderedGroup__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		boolean selected = false;
         	
         try {
-            // InternalXDrone.g:3031:1: ( ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) ) )
-            // InternalXDrone.g:3032:3: ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) )
+            // InternalXDrone.g:3573:1: ( ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) ) )
+            // InternalXDrone.g:3574:3: ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) )
             {
-            // InternalXDrone.g:3032:3: ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) )
-            int alt13=5;
-            int LA13_0 = input.LA(1);
+            // InternalXDrone.g:3574:3: ( ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) ) | ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) ) | ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) ) | ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) ) | ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) ) )
+            int alt18=5;
+            int LA18_0 = input.LA(1);
 
-            if ( LA13_0 == 32 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {
-                alt13=1;
+            if ( LA18_0 == 36 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {
+                alt18=1;
             }
-            else if ( LA13_0 == 34 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {
-                alt13=2;
+            else if ( LA18_0 == 38 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {
+                alt18=2;
             }
-            else if ( LA13_0 == 36 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {
-                alt13=3;
+            else if ( LA18_0 == 40 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {
+                alt18=3;
             }
-            else if ( LA13_0 == 35 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {
-                alt13=4;
+            else if ( LA18_0 == 39 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {
+                alt18=4;
             }
-            else if ( LA13_0 == 37 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {
-                alt13=5;
+            else if ( LA18_0 == 41 && getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {
+                alt18=5;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt18) {
                 case 1 :
-                    // InternalXDrone.g:3033:3: ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) )
+                    // InternalXDrone.g:3575:3: ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) )
                     {
-                    // InternalXDrone.g:3033:3: ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) )
-                    // InternalXDrone.g:3034:4: {...}? => ( ( ( rule__Walls__Group_0__0 ) ) )
+                    // InternalXDrone.g:3575:3: ({...}? => ( ( ( rule__Walls__Group_0__0 ) ) ) )
+                    // InternalXDrone.g:3576:4: {...}? => ( ( ( rule__Walls__Group_0__0 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {
                         throw new FailedPredicateException(input, "rule__Walls__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0)");
                     }
-                    // InternalXDrone.g:3034:99: ( ( ( rule__Walls__Group_0__0 ) ) )
-                    // InternalXDrone.g:3035:5: ( ( rule__Walls__Group_0__0 ) )
+                    // InternalXDrone.g:3576:99: ( ( ( rule__Walls__Group_0__0 ) ) )
+                    // InternalXDrone.g:3577:5: ( ( rule__Walls__Group_0__0 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getWallsAccess().getUnorderedGroup(), 0);
@@ -9066,12 +10703,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:3041:5: ( ( rule__Walls__Group_0__0 ) )
-                    // InternalXDrone.g:3042:6: ( rule__Walls__Group_0__0 )
+                    // InternalXDrone.g:3583:5: ( ( rule__Walls__Group_0__0 ) )
+                    // InternalXDrone.g:3584:6: ( rule__Walls__Group_0__0 )
                     {
                      before(grammarAccess.getWallsAccess().getGroup_0()); 
-                    // InternalXDrone.g:3043:6: ( rule__Walls__Group_0__0 )
-                    // InternalXDrone.g:3043:7: rule__Walls__Group_0__0
+                    // InternalXDrone.g:3585:6: ( rule__Walls__Group_0__0 )
+                    // InternalXDrone.g:3585:7: rule__Walls__Group_0__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__Group_0__0();
@@ -9095,16 +10732,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalXDrone.g:3048:3: ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) )
+                    // InternalXDrone.g:3590:3: ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) )
                     {
-                    // InternalXDrone.g:3048:3: ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) )
-                    // InternalXDrone.g:3049:4: {...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) )
+                    // InternalXDrone.g:3590:3: ({...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) ) )
+                    // InternalXDrone.g:3591:4: {...}? => ( ( ( rule__Walls__RightAssignment_1 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {
                         throw new FailedPredicateException(input, "rule__Walls__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1)");
                     }
-                    // InternalXDrone.g:3049:99: ( ( ( rule__Walls__RightAssignment_1 ) ) )
-                    // InternalXDrone.g:3050:5: ( ( rule__Walls__RightAssignment_1 ) )
+                    // InternalXDrone.g:3591:99: ( ( ( rule__Walls__RightAssignment_1 ) ) )
+                    // InternalXDrone.g:3592:5: ( ( rule__Walls__RightAssignment_1 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getWallsAccess().getUnorderedGroup(), 1);
@@ -9112,12 +10749,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:3056:5: ( ( rule__Walls__RightAssignment_1 ) )
-                    // InternalXDrone.g:3057:6: ( rule__Walls__RightAssignment_1 )
+                    // InternalXDrone.g:3598:5: ( ( rule__Walls__RightAssignment_1 ) )
+                    // InternalXDrone.g:3599:6: ( rule__Walls__RightAssignment_1 )
                     {
                      before(grammarAccess.getWallsAccess().getRightAssignment_1()); 
-                    // InternalXDrone.g:3058:6: ( rule__Walls__RightAssignment_1 )
-                    // InternalXDrone.g:3058:7: rule__Walls__RightAssignment_1
+                    // InternalXDrone.g:3600:6: ( rule__Walls__RightAssignment_1 )
+                    // InternalXDrone.g:3600:7: rule__Walls__RightAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__RightAssignment_1();
@@ -9141,16 +10778,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalXDrone.g:3063:3: ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) )
+                    // InternalXDrone.g:3605:3: ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) )
                     {
-                    // InternalXDrone.g:3063:3: ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) )
-                    // InternalXDrone.g:3064:4: {...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) )
+                    // InternalXDrone.g:3605:3: ({...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) ) )
+                    // InternalXDrone.g:3606:4: {...}? => ( ( ( rule__Walls__BackAssignment_2 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {
                         throw new FailedPredicateException(input, "rule__Walls__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2)");
                     }
-                    // InternalXDrone.g:3064:99: ( ( ( rule__Walls__BackAssignment_2 ) ) )
-                    // InternalXDrone.g:3065:5: ( ( rule__Walls__BackAssignment_2 ) )
+                    // InternalXDrone.g:3606:99: ( ( ( rule__Walls__BackAssignment_2 ) ) )
+                    // InternalXDrone.g:3607:5: ( ( rule__Walls__BackAssignment_2 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getWallsAccess().getUnorderedGroup(), 2);
@@ -9158,12 +10795,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:3071:5: ( ( rule__Walls__BackAssignment_2 ) )
-                    // InternalXDrone.g:3072:6: ( rule__Walls__BackAssignment_2 )
+                    // InternalXDrone.g:3613:5: ( ( rule__Walls__BackAssignment_2 ) )
+                    // InternalXDrone.g:3614:6: ( rule__Walls__BackAssignment_2 )
                     {
                      before(grammarAccess.getWallsAccess().getBackAssignment_2()); 
-                    // InternalXDrone.g:3073:6: ( rule__Walls__BackAssignment_2 )
-                    // InternalXDrone.g:3073:7: rule__Walls__BackAssignment_2
+                    // InternalXDrone.g:3615:6: ( rule__Walls__BackAssignment_2 )
+                    // InternalXDrone.g:3615:7: rule__Walls__BackAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__BackAssignment_2();
@@ -9187,16 +10824,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalXDrone.g:3078:3: ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) )
+                    // InternalXDrone.g:3620:3: ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) )
                     {
-                    // InternalXDrone.g:3078:3: ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) )
-                    // InternalXDrone.g:3079:4: {...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) )
+                    // InternalXDrone.g:3620:3: ({...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) ) )
+                    // InternalXDrone.g:3621:4: {...}? => ( ( ( rule__Walls__LeftAssignment_3 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {
                         throw new FailedPredicateException(input, "rule__Walls__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3)");
                     }
-                    // InternalXDrone.g:3079:99: ( ( ( rule__Walls__LeftAssignment_3 ) ) )
-                    // InternalXDrone.g:3080:5: ( ( rule__Walls__LeftAssignment_3 ) )
+                    // InternalXDrone.g:3621:99: ( ( ( rule__Walls__LeftAssignment_3 ) ) )
+                    // InternalXDrone.g:3622:5: ( ( rule__Walls__LeftAssignment_3 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getWallsAccess().getUnorderedGroup(), 3);
@@ -9204,12 +10841,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:3086:5: ( ( rule__Walls__LeftAssignment_3 ) )
-                    // InternalXDrone.g:3087:6: ( rule__Walls__LeftAssignment_3 )
+                    // InternalXDrone.g:3628:5: ( ( rule__Walls__LeftAssignment_3 ) )
+                    // InternalXDrone.g:3629:6: ( rule__Walls__LeftAssignment_3 )
                     {
                      before(grammarAccess.getWallsAccess().getLeftAssignment_3()); 
-                    // InternalXDrone.g:3088:6: ( rule__Walls__LeftAssignment_3 )
-                    // InternalXDrone.g:3088:7: rule__Walls__LeftAssignment_3
+                    // InternalXDrone.g:3630:6: ( rule__Walls__LeftAssignment_3 )
+                    // InternalXDrone.g:3630:7: rule__Walls__LeftAssignment_3
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__LeftAssignment_3();
@@ -9233,16 +10870,16 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 5 :
-                    // InternalXDrone.g:3093:3: ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) )
+                    // InternalXDrone.g:3635:3: ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) )
                     {
-                    // InternalXDrone.g:3093:3: ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) )
-                    // InternalXDrone.g:3094:4: {...}? => ( ( ( rule__Walls__Group_4__0 ) ) )
+                    // InternalXDrone.g:3635:3: ({...}? => ( ( ( rule__Walls__Group_4__0 ) ) ) )
+                    // InternalXDrone.g:3636:4: {...}? => ( ( ( rule__Walls__Group_4__0 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {
                         throw new FailedPredicateException(input, "rule__Walls__UnorderedGroup__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4)");
                     }
-                    // InternalXDrone.g:3094:99: ( ( ( rule__Walls__Group_4__0 ) ) )
-                    // InternalXDrone.g:3095:5: ( ( rule__Walls__Group_4__0 ) )
+                    // InternalXDrone.g:3636:99: ( ( ( rule__Walls__Group_4__0 ) ) )
+                    // InternalXDrone.g:3637:5: ( ( rule__Walls__Group_4__0 ) )
                     {
 
                     					getUnorderedGroupHelper().select(grammarAccess.getWallsAccess().getUnorderedGroup(), 4);
@@ -9250,12 +10887,12 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
                     					selected = true;
                     				
-                    // InternalXDrone.g:3101:5: ( ( rule__Walls__Group_4__0 ) )
-                    // InternalXDrone.g:3102:6: ( rule__Walls__Group_4__0 )
+                    // InternalXDrone.g:3643:5: ( ( rule__Walls__Group_4__0 ) )
+                    // InternalXDrone.g:3644:6: ( rule__Walls__Group_4__0 )
                     {
                      before(grammarAccess.getWallsAccess().getGroup_4()); 
-                    // InternalXDrone.g:3103:6: ( rule__Walls__Group_4__0 )
-                    // InternalXDrone.g:3103:7: rule__Walls__Group_4__0
+                    // InternalXDrone.g:3645:6: ( rule__Walls__Group_4__0 )
+                    // InternalXDrone.g:3645:7: rule__Walls__Group_4__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__Group_4__0();
@@ -9302,26 +10939,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__0"
-    // InternalXDrone.g:3116:1: rule__Walls__UnorderedGroup__0 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )? ;
+    // InternalXDrone.g:3658:1: rule__Walls__UnorderedGroup__0 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )? ;
     public final void rule__Walls__UnorderedGroup__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3120:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )? )
-            // InternalXDrone.g:3121:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )?
+            // InternalXDrone.g:3662:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )? )
+            // InternalXDrone.g:3663:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__1 )?
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_25);
             rule__Walls__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:3122:2: ( rule__Walls__UnorderedGroup__1 )?
-            int alt14=2;
-            alt14 = dfa14.predict(input);
-            switch (alt14) {
+            // InternalXDrone.g:3664:2: ( rule__Walls__UnorderedGroup__1 )?
+            int alt19=2;
+            alt19 = dfa19.predict(input);
+            switch (alt19) {
                 case 1 :
-                    // InternalXDrone.g:3122:2: rule__Walls__UnorderedGroup__1
+                    // InternalXDrone.g:3664:2: rule__Walls__UnorderedGroup__1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__UnorderedGroup__1();
@@ -9353,26 +10990,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__1"
-    // InternalXDrone.g:3128:1: rule__Walls__UnorderedGroup__1 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )? ;
+    // InternalXDrone.g:3670:1: rule__Walls__UnorderedGroup__1 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )? ;
     public final void rule__Walls__UnorderedGroup__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3132:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )? )
-            // InternalXDrone.g:3133:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )?
+            // InternalXDrone.g:3674:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )? )
+            // InternalXDrone.g:3675:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__2 )?
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_25);
             rule__Walls__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:3134:2: ( rule__Walls__UnorderedGroup__2 )?
-            int alt15=2;
-            alt15 = dfa15.predict(input);
-            switch (alt15) {
+            // InternalXDrone.g:3676:2: ( rule__Walls__UnorderedGroup__2 )?
+            int alt20=2;
+            alt20 = dfa20.predict(input);
+            switch (alt20) {
                 case 1 :
-                    // InternalXDrone.g:3134:2: rule__Walls__UnorderedGroup__2
+                    // InternalXDrone.g:3676:2: rule__Walls__UnorderedGroup__2
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__UnorderedGroup__2();
@@ -9404,26 +11041,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__2"
-    // InternalXDrone.g:3140:1: rule__Walls__UnorderedGroup__2 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )? ;
+    // InternalXDrone.g:3682:1: rule__Walls__UnorderedGroup__2 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )? ;
     public final void rule__Walls__UnorderedGroup__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3144:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )? )
-            // InternalXDrone.g:3145:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )?
+            // InternalXDrone.g:3686:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )? )
+            // InternalXDrone.g:3687:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__3 )?
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_25);
             rule__Walls__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:3146:2: ( rule__Walls__UnorderedGroup__3 )?
-            int alt16=2;
-            alt16 = dfa16.predict(input);
-            switch (alt16) {
+            // InternalXDrone.g:3688:2: ( rule__Walls__UnorderedGroup__3 )?
+            int alt21=2;
+            alt21 = dfa21.predict(input);
+            switch (alt21) {
                 case 1 :
-                    // InternalXDrone.g:3146:2: rule__Walls__UnorderedGroup__3
+                    // InternalXDrone.g:3688:2: rule__Walls__UnorderedGroup__3
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__UnorderedGroup__3();
@@ -9455,26 +11092,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__3"
-    // InternalXDrone.g:3152:1: rule__Walls__UnorderedGroup__3 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )? ;
+    // InternalXDrone.g:3694:1: rule__Walls__UnorderedGroup__3 : rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )? ;
     public final void rule__Walls__UnorderedGroup__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3156:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )? )
-            // InternalXDrone.g:3157:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )?
+            // InternalXDrone.g:3698:1: ( rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )? )
+            // InternalXDrone.g:3699:2: rule__Walls__UnorderedGroup__Impl ( rule__Walls__UnorderedGroup__4 )?
             {
-            pushFollow(FOLLOW_22);
+            pushFollow(FOLLOW_25);
             rule__Walls__UnorderedGroup__Impl();
 
             state._fsp--;
 
-            // InternalXDrone.g:3158:2: ( rule__Walls__UnorderedGroup__4 )?
-            int alt17=2;
-            alt17 = dfa17.predict(input);
-            switch (alt17) {
+            // InternalXDrone.g:3700:2: ( rule__Walls__UnorderedGroup__4 )?
+            int alt22=2;
+            alt22 = dfa22.predict(input);
+            switch (alt22) {
                 case 1 :
-                    // InternalXDrone.g:3158:2: rule__Walls__UnorderedGroup__4
+                    // InternalXDrone.g:3700:2: rule__Walls__UnorderedGroup__4
                     {
                     pushFollow(FOLLOW_2);
                     rule__Walls__UnorderedGroup__4();
@@ -9506,14 +11143,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UnorderedGroup__4"
-    // InternalXDrone.g:3164:1: rule__Walls__UnorderedGroup__4 : rule__Walls__UnorderedGroup__Impl ;
+    // InternalXDrone.g:3706:1: rule__Walls__UnorderedGroup__4 : rule__Walls__UnorderedGroup__Impl ;
     public final void rule__Walls__UnorderedGroup__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3168:1: ( rule__Walls__UnorderedGroup__Impl )
-            // InternalXDrone.g:3169:2: rule__Walls__UnorderedGroup__Impl
+            // InternalXDrone.g:3710:1: ( rule__Walls__UnorderedGroup__Impl )
+            // InternalXDrone.g:3711:2: rule__Walls__UnorderedGroup__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Walls__UnorderedGroup__Impl();
@@ -9539,17 +11176,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__MainAssignment"
-    // InternalXDrone.g:3176:1: rule__Program__MainAssignment : ( ruleMain ) ;
+    // InternalXDrone.g:3718:1: rule__Program__MainAssignment : ( ruleMain ) ;
     public final void rule__Program__MainAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3180:1: ( ( ruleMain ) )
-            // InternalXDrone.g:3181:2: ( ruleMain )
+            // InternalXDrone.g:3722:1: ( ( ruleMain ) )
+            // InternalXDrone.g:3723:2: ( ruleMain )
             {
-            // InternalXDrone.g:3181:2: ( ruleMain )
-            // InternalXDrone.g:3182:3: ruleMain
+            // InternalXDrone.g:3723:2: ( ruleMain )
+            // InternalXDrone.g:3724:3: ruleMain
             {
              before(grammarAccess.getProgramAccess().getMainMainParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -9580,17 +11217,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__FlyAssignment_0"
-    // InternalXDrone.g:3191:1: rule__Main__FlyAssignment_0 : ( ruleFly ) ;
+    // InternalXDrone.g:3733:1: rule__Main__FlyAssignment_0 : ( ruleFly ) ;
     public final void rule__Main__FlyAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3195:1: ( ( ruleFly ) )
-            // InternalXDrone.g:3196:2: ( ruleFly )
+            // InternalXDrone.g:3737:1: ( ( ruleFly ) )
+            // InternalXDrone.g:3738:2: ( ruleFly )
             {
-            // InternalXDrone.g:3196:2: ( ruleFly )
-            // InternalXDrone.g:3197:3: ruleFly
+            // InternalXDrone.g:3738:2: ( ruleFly )
+            // InternalXDrone.g:3739:3: ruleFly
             {
              before(grammarAccess.getMainAccess().getFlyFlyParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -9621,17 +11258,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__EnvironmentAssignment_1"
-    // InternalXDrone.g:3206:1: rule__Main__EnvironmentAssignment_1 : ( ruleEnvironment ) ;
+    // InternalXDrone.g:3748:1: rule__Main__EnvironmentAssignment_1 : ( ruleEnvironment ) ;
     public final void rule__Main__EnvironmentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3210:1: ( ( ruleEnvironment ) )
-            // InternalXDrone.g:3211:2: ( ruleEnvironment )
+            // InternalXDrone.g:3752:1: ( ( ruleEnvironment ) )
+            // InternalXDrone.g:3753:2: ( ruleEnvironment )
             {
-            // InternalXDrone.g:3211:2: ( ruleEnvironment )
-            // InternalXDrone.g:3212:3: ruleEnvironment
+            // InternalXDrone.g:3753:2: ( ruleEnvironment )
+            // InternalXDrone.g:3754:3: ruleEnvironment
             {
              before(grammarAccess.getMainAccess().getEnvironmentEnvironmentParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -9662,17 +11299,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fly__TakeoffAssignment_1_0"
-    // InternalXDrone.g:3221:1: rule__Fly__TakeoffAssignment_1_0 : ( ruleTakeoff ) ;
+    // InternalXDrone.g:3763:1: rule__Fly__TakeoffAssignment_1_0 : ( ruleTakeoff ) ;
     public final void rule__Fly__TakeoffAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3225:1: ( ( ruleTakeoff ) )
-            // InternalXDrone.g:3226:2: ( ruleTakeoff )
+            // InternalXDrone.g:3767:1: ( ( ruleTakeoff ) )
+            // InternalXDrone.g:3768:2: ( ruleTakeoff )
             {
-            // InternalXDrone.g:3226:2: ( ruleTakeoff )
-            // InternalXDrone.g:3227:3: ruleTakeoff
+            // InternalXDrone.g:3768:2: ( ruleTakeoff )
+            // InternalXDrone.g:3769:3: ruleTakeoff
             {
              before(grammarAccess.getFlyAccess().getTakeoffTakeoffParserRuleCall_1_0_0()); 
             pushFollow(FOLLOW_2);
@@ -9703,17 +11340,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fly__CommandsAssignment_1_1"
-    // InternalXDrone.g:3236:1: rule__Fly__CommandsAssignment_1_1 : ( ruleSuperCommand ) ;
+    // InternalXDrone.g:3778:1: rule__Fly__CommandsAssignment_1_1 : ( ruleSuperCommand ) ;
     public final void rule__Fly__CommandsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3240:1: ( ( ruleSuperCommand ) )
-            // InternalXDrone.g:3241:2: ( ruleSuperCommand )
+            // InternalXDrone.g:3782:1: ( ( ruleSuperCommand ) )
+            // InternalXDrone.g:3783:2: ( ruleSuperCommand )
             {
-            // InternalXDrone.g:3241:2: ( ruleSuperCommand )
-            // InternalXDrone.g:3242:3: ruleSuperCommand
+            // InternalXDrone.g:3783:2: ( ruleSuperCommand )
+            // InternalXDrone.g:3784:3: ruleSuperCommand
             {
              before(grammarAccess.getFlyAccess().getCommandsSuperCommandParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -9744,17 +11381,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fly__LandAssignment_1_2"
-    // InternalXDrone.g:3251:1: rule__Fly__LandAssignment_1_2 : ( ruleLand ) ;
+    // InternalXDrone.g:3793:1: rule__Fly__LandAssignment_1_2 : ( ruleLand ) ;
     public final void rule__Fly__LandAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3255:1: ( ( ruleLand ) )
-            // InternalXDrone.g:3256:2: ( ruleLand )
+            // InternalXDrone.g:3797:1: ( ( ruleLand ) )
+            // InternalXDrone.g:3798:2: ( ruleLand )
             {
-            // InternalXDrone.g:3256:2: ( ruleLand )
-            // InternalXDrone.g:3257:3: ruleLand
+            // InternalXDrone.g:3798:2: ( ruleLand )
+            // InternalXDrone.g:3799:3: ruleLand
             {
              before(grammarAccess.getFlyAccess().getLandLandParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -9785,17 +11422,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Environment__DroneAssignment_2_0"
-    // InternalXDrone.g:3266:1: rule__Environment__DroneAssignment_2_0 : ( ruleDrone ) ;
+    // InternalXDrone.g:3808:1: rule__Environment__DroneAssignment_2_0 : ( ruleDrone ) ;
     public final void rule__Environment__DroneAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3270:1: ( ( ruleDrone ) )
-            // InternalXDrone.g:3271:2: ( ruleDrone )
+            // InternalXDrone.g:3812:1: ( ( ruleDrone ) )
+            // InternalXDrone.g:3813:2: ( ruleDrone )
             {
-            // InternalXDrone.g:3271:2: ( ruleDrone )
-            // InternalXDrone.g:3272:3: ruleDrone
+            // InternalXDrone.g:3813:2: ( ruleDrone )
+            // InternalXDrone.g:3814:3: ruleDrone
             {
              before(grammarAccess.getEnvironmentAccess().getDroneDroneParserRuleCall_2_0_0()); 
             pushFollow(FOLLOW_2);
@@ -9826,17 +11463,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Environment__WallsAssignment_2_1"
-    // InternalXDrone.g:3281:1: rule__Environment__WallsAssignment_2_1 : ( ruleWalls ) ;
+    // InternalXDrone.g:3823:1: rule__Environment__WallsAssignment_2_1 : ( ruleWalls ) ;
     public final void rule__Environment__WallsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3285:1: ( ( ruleWalls ) )
-            // InternalXDrone.g:3286:2: ( ruleWalls )
+            // InternalXDrone.g:3827:1: ( ( ruleWalls ) )
+            // InternalXDrone.g:3828:2: ( ruleWalls )
             {
-            // InternalXDrone.g:3286:2: ( ruleWalls )
-            // InternalXDrone.g:3287:3: ruleWalls
+            // InternalXDrone.g:3828:2: ( ruleWalls )
+            // InternalXDrone.g:3829:3: ruleWalls
             {
              before(grammarAccess.getEnvironmentAccess().getWallsWallsParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -9867,17 +11504,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Environment__ObjectsAssignment_2_2"
-    // InternalXDrone.g:3296:1: rule__Environment__ObjectsAssignment_2_2 : ( ruleObject ) ;
+    // InternalXDrone.g:3838:1: rule__Environment__ObjectsAssignment_2_2 : ( ruleObject ) ;
     public final void rule__Environment__ObjectsAssignment_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3300:1: ( ( ruleObject ) )
-            // InternalXDrone.g:3301:2: ( ruleObject )
+            // InternalXDrone.g:3842:1: ( ( ruleObject ) )
+            // InternalXDrone.g:3843:2: ( ruleObject )
             {
-            // InternalXDrone.g:3301:2: ( ruleObject )
-            // InternalXDrone.g:3302:3: ruleObject
+            // InternalXDrone.g:3843:2: ( ruleObject )
+            // InternalXDrone.g:3844:3: ruleObject
             {
              before(grammarAccess.getEnvironmentAccess().getObjectsObjectParserRuleCall_2_2_0()); 
             pushFollow(FOLLOW_2);
@@ -9908,17 +11545,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FlyTo__Object_nameAssignment_2"
-    // InternalXDrone.g:3311:1: rule__FlyTo__Object_nameAssignment_2 : ( RULE_STRING ) ;
+    // InternalXDrone.g:3853:1: rule__FlyTo__Object_nameAssignment_2 : ( RULE_STRING ) ;
     public final void rule__FlyTo__Object_nameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3315:1: ( ( RULE_STRING ) )
-            // InternalXDrone.g:3316:2: ( RULE_STRING )
+            // InternalXDrone.g:3857:1: ( ( RULE_STRING ) )
+            // InternalXDrone.g:3858:2: ( RULE_STRING )
             {
-            // InternalXDrone.g:3316:2: ( RULE_STRING )
-            // InternalXDrone.g:3317:3: RULE_STRING
+            // InternalXDrone.g:3858:2: ( RULE_STRING )
+            // InternalXDrone.g:3859:3: RULE_STRING
             {
              before(grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -9945,17 +11582,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Move__VectorAssignment_1"
-    // InternalXDrone.g:3326:1: rule__Move__VectorAssignment_1 : ( ruleVector ) ;
+    // InternalXDrone.g:3868:1: rule__Move__VectorAssignment_1 : ( ruleVector ) ;
     public final void rule__Move__VectorAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3330:1: ( ( ruleVector ) )
-            // InternalXDrone.g:3331:2: ( ruleVector )
+            // InternalXDrone.g:3872:1: ( ( ruleVector ) )
+            // InternalXDrone.g:3873:2: ( ruleVector )
             {
-            // InternalXDrone.g:3331:2: ( ruleVector )
-            // InternalXDrone.g:3332:3: ruleVector
+            // InternalXDrone.g:3873:2: ( ruleVector )
+            // InternalXDrone.g:3874:3: ruleVector
             {
              before(grammarAccess.getMoveAccess().getVectorVectorParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -9986,17 +11623,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Rotate__AngleAssignment_2"
-    // InternalXDrone.g:3341:1: rule__Rotate__AngleAssignment_2 : ( ruleDOUBLE ) ;
+    // InternalXDrone.g:3883:1: rule__Rotate__AngleAssignment_2 : ( ruleDOUBLE ) ;
     public final void rule__Rotate__AngleAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3345:1: ( ( ruleDOUBLE ) )
-            // InternalXDrone.g:3346:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3887:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:3888:2: ( ruleDOUBLE )
             {
-            // InternalXDrone.g:3346:2: ( ruleDOUBLE )
-            // InternalXDrone.g:3347:3: ruleDOUBLE
+            // InternalXDrone.g:3888:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3889:3: ruleDOUBLE
             {
              before(grammarAccess.getRotateAccess().getAngleDOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10027,17 +11664,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Wait__SecondsAssignment_2"
-    // InternalXDrone.g:3356:1: rule__Wait__SecondsAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:3898:1: rule__Wait__SecondsAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Wait__SecondsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3360:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3361:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:3902:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:3903:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3361:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3362:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:3903:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:3904:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getWaitAccess().getSecondsPOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10068,17 +11705,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionName__Func_nameAssignment_0"
-    // InternalXDrone.g:3371:1: rule__FunctionName__Func_nameAssignment_0 : ( RULE_ID ) ;
+    // InternalXDrone.g:3913:1: rule__FunctionName__Func_nameAssignment_0 : ( RULE_ID ) ;
     public final void rule__FunctionName__Func_nameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3375:1: ( ( RULE_ID ) )
-            // InternalXDrone.g:3376:2: ( RULE_ID )
+            // InternalXDrone.g:3917:1: ( ( RULE_ID ) )
+            // InternalXDrone.g:3918:2: ( RULE_ID )
             {
-            // InternalXDrone.g:3376:2: ( RULE_ID )
-            // InternalXDrone.g:3377:3: RULE_ID
+            // InternalXDrone.g:3918:2: ( RULE_ID )
+            // InternalXDrone.g:3919:3: RULE_ID
             {
              before(grammarAccess.getFunctionNameAccess().getFunc_nameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10104,26 +11741,26 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__FunctionName__Func_nameAssignment_0"
 
 
-    // $ANTLR start "rule__Drone__VectorAssignment_1"
-    // InternalXDrone.g:3386:1: rule__Drone__VectorAssignment_1 : ( ruleVector ) ;
-    public final void rule__Drone__VectorAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__Drone__XAssignment_0_2_2"
+    // InternalXDrone.g:3928:1: rule__Drone__XAssignment_0_2_2 : ( ruleDOUBLE ) ;
+    public final void rule__Drone__XAssignment_0_2_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3390:1: ( ( ruleVector ) )
-            // InternalXDrone.g:3391:2: ( ruleVector )
+            // InternalXDrone.g:3932:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:3933:2: ( ruleDOUBLE )
             {
-            // InternalXDrone.g:3391:2: ( ruleVector )
-            // InternalXDrone.g:3392:3: ruleVector
+            // InternalXDrone.g:3933:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3934:3: ruleDOUBLE
             {
-             before(grammarAccess.getDroneAccess().getVectorVectorParserRuleCall_1_0()); 
+             before(grammarAccess.getDroneAccess().getXDOUBLEParserRuleCall_0_2_2_0()); 
             pushFollow(FOLLOW_2);
-            ruleVector();
+            ruleDOUBLE();
 
             state._fsp--;
 
-             after(grammarAccess.getDroneAccess().getVectorVectorParserRuleCall_1_0()); 
+             after(grammarAccess.getDroneAccess().getXDOUBLEParserRuleCall_0_2_2_0()); 
 
             }
 
@@ -10142,21 +11779,144 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Drone__VectorAssignment_1"
+    // $ANTLR end "rule__Drone__XAssignment_0_2_2"
+
+
+    // $ANTLR start "rule__Drone__YAssignment_1_2"
+    // InternalXDrone.g:3943:1: rule__Drone__YAssignment_1_2 : ( ruleDOUBLE ) ;
+    public final void rule__Drone__YAssignment_1_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3947:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:3948:2: ( ruleDOUBLE )
+            {
+            // InternalXDrone.g:3948:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3949:3: ruleDOUBLE
+            {
+             before(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_1_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleDOUBLE();
+
+            state._fsp--;
+
+             after(grammarAccess.getDroneAccess().getYDOUBLEParserRuleCall_1_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__YAssignment_1_2"
+
+
+    // $ANTLR start "rule__Drone__ZAssignment_2_2"
+    // InternalXDrone.g:3958:1: rule__Drone__ZAssignment_2_2 : ( ruleDOUBLE ) ;
+    public final void rule__Drone__ZAssignment_2_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3962:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:3963:2: ( ruleDOUBLE )
+            {
+            // InternalXDrone.g:3963:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3964:3: ruleDOUBLE
+            {
+             before(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_2_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleDOUBLE();
+
+            state._fsp--;
+
+             after(grammarAccess.getDroneAccess().getZDOUBLEParserRuleCall_2_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__ZAssignment_2_2"
+
+
+    // $ANTLR start "rule__Drone__RotationAssignment_3_0_2"
+    // InternalXDrone.g:3973:1: rule__Drone__RotationAssignment_3_0_2 : ( ruleDOUBLE ) ;
+    public final void rule__Drone__RotationAssignment_3_0_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXDrone.g:3977:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:3978:2: ( ruleDOUBLE )
+            {
+            // InternalXDrone.g:3978:2: ( ruleDOUBLE )
+            // InternalXDrone.g:3979:3: ruleDOUBLE
+            {
+             before(grammarAccess.getDroneAccess().getRotationDOUBLEParserRuleCall_3_0_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleDOUBLE();
+
+            state._fsp--;
+
+             after(grammarAccess.getDroneAccess().getRotationDOUBLEParserRuleCall_3_0_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Drone__RotationAssignment_3_0_2"
 
 
     // $ANTLR start "rule__Object__Object_nameAssignment_0_0"
-    // InternalXDrone.g:3401:1: rule__Object__Object_nameAssignment_0_0 : ( RULE_ID ) ;
+    // InternalXDrone.g:3988:1: rule__Object__Object_nameAssignment_0_0 : ( RULE_ID ) ;
     public final void rule__Object__Object_nameAssignment_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3405:1: ( ( RULE_ID ) )
-            // InternalXDrone.g:3406:2: ( RULE_ID )
+            // InternalXDrone.g:3992:1: ( ( RULE_ID ) )
+            // InternalXDrone.g:3993:2: ( RULE_ID )
             {
-            // InternalXDrone.g:3406:2: ( RULE_ID )
-            // InternalXDrone.g:3407:3: RULE_ID
+            // InternalXDrone.g:3993:2: ( RULE_ID )
+            // InternalXDrone.g:3994:3: RULE_ID
             {
              before(grammarAccess.getObjectAccess().getObject_nameIDTerminalRuleCall_0_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -10183,17 +11943,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__OriginAssignment_0_2"
-    // InternalXDrone.g:3416:1: rule__Object__OriginAssignment_0_2 : ( ruleOrigin ) ;
+    // InternalXDrone.g:4003:1: rule__Object__OriginAssignment_0_2 : ( ruleOrigin ) ;
     public final void rule__Object__OriginAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3420:1: ( ( ruleOrigin ) )
-            // InternalXDrone.g:3421:2: ( ruleOrigin )
+            // InternalXDrone.g:4007:1: ( ( ruleOrigin ) )
+            // InternalXDrone.g:4008:2: ( ruleOrigin )
             {
-            // InternalXDrone.g:3421:2: ( ruleOrigin )
-            // InternalXDrone.g:3422:3: ruleOrigin
+            // InternalXDrone.g:4008:2: ( ruleOrigin )
+            // InternalXDrone.g:4009:3: ruleOrigin
             {
              before(grammarAccess.getObjectAccess().getOriginOriginParserRuleCall_0_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10224,17 +11984,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__SizeAssignment_1"
-    // InternalXDrone.g:3431:1: rule__Object__SizeAssignment_1 : ( ruleSize ) ;
+    // InternalXDrone.g:4018:1: rule__Object__SizeAssignment_1 : ( ruleSize ) ;
     public final void rule__Object__SizeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3435:1: ( ( ruleSize ) )
-            // InternalXDrone.g:3436:2: ( ruleSize )
+            // InternalXDrone.g:4022:1: ( ( ruleSize ) )
+            // InternalXDrone.g:4023:2: ( ruleSize )
             {
-            // InternalXDrone.g:3436:2: ( ruleSize )
-            // InternalXDrone.g:3437:3: ruleSize
+            // InternalXDrone.g:4023:2: ( ruleSize )
+            // InternalXDrone.g:4024:3: ruleSize
             {
              before(grammarAccess.getObjectAccess().getSizeSizeParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -10265,17 +12025,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Object__ColorAssignment_2_0"
-    // InternalXDrone.g:3446:1: rule__Object__ColorAssignment_2_0 : ( ruleColor ) ;
+    // InternalXDrone.g:4033:1: rule__Object__ColorAssignment_2_0 : ( ruleColor ) ;
     public final void rule__Object__ColorAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3450:1: ( ( ruleColor ) )
-            // InternalXDrone.g:3451:2: ( ruleColor )
+            // InternalXDrone.g:4037:1: ( ( ruleColor ) )
+            // InternalXDrone.g:4038:2: ( ruleColor )
             {
-            // InternalXDrone.g:3451:2: ( ruleColor )
-            // InternalXDrone.g:3452:3: ruleColor
+            // InternalXDrone.g:4038:2: ( ruleColor )
+            // InternalXDrone.g:4039:3: ruleColor
             {
              before(grammarAccess.getObjectAccess().getColorColorParserRuleCall_2_0_0()); 
             pushFollow(FOLLOW_2);
@@ -10306,17 +12066,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Origin__VectorAssignment_2"
-    // InternalXDrone.g:3461:1: rule__Origin__VectorAssignment_2 : ( ruleVector ) ;
+    // InternalXDrone.g:4048:1: rule__Origin__VectorAssignment_2 : ( ruleVector ) ;
     public final void rule__Origin__VectorAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3465:1: ( ( ruleVector ) )
-            // InternalXDrone.g:3466:2: ( ruleVector )
+            // InternalXDrone.g:4052:1: ( ( ruleVector ) )
+            // InternalXDrone.g:4053:2: ( ruleVector )
             {
-            // InternalXDrone.g:3466:2: ( ruleVector )
-            // InternalXDrone.g:3467:3: ruleVector
+            // InternalXDrone.g:4053:2: ( ruleVector )
+            // InternalXDrone.g:4054:3: ruleVector
             {
              before(grammarAccess.getOriginAccess().getVectorVectorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10347,17 +12107,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Size__VectorAssignment_2"
-    // InternalXDrone.g:3476:1: rule__Size__VectorAssignment_2 : ( ruleVector ) ;
+    // InternalXDrone.g:4063:1: rule__Size__VectorAssignment_2 : ( ruleVector ) ;
     public final void rule__Size__VectorAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3480:1: ( ( ruleVector ) )
-            // InternalXDrone.g:3481:2: ( ruleVector )
+            // InternalXDrone.g:4067:1: ( ( ruleVector ) )
+            // InternalXDrone.g:4068:2: ( ruleVector )
             {
-            // InternalXDrone.g:3481:2: ( ruleVector )
-            // InternalXDrone.g:3482:3: ruleVector
+            // InternalXDrone.g:4068:2: ( ruleVector )
+            // InternalXDrone.g:4069:3: ruleVector
             {
              before(grammarAccess.getSizeAccess().getVectorVectorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10388,17 +12148,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__XAssignment_1"
-    // InternalXDrone.g:3491:1: rule__Vector__XAssignment_1 : ( ruleDOUBLE ) ;
+    // InternalXDrone.g:4078:1: rule__Vector__XAssignment_1 : ( ruleDOUBLE ) ;
     public final void rule__Vector__XAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3495:1: ( ( ruleDOUBLE ) )
-            // InternalXDrone.g:3496:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4082:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:4083:2: ( ruleDOUBLE )
             {
-            // InternalXDrone.g:3496:2: ( ruleDOUBLE )
-            // InternalXDrone.g:3497:3: ruleDOUBLE
+            // InternalXDrone.g:4083:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4084:3: ruleDOUBLE
             {
              before(grammarAccess.getVectorAccess().getXDOUBLEParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -10429,17 +12189,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__YAssignment_3"
-    // InternalXDrone.g:3506:1: rule__Vector__YAssignment_3 : ( ruleDOUBLE ) ;
+    // InternalXDrone.g:4093:1: rule__Vector__YAssignment_3 : ( ruleDOUBLE ) ;
     public final void rule__Vector__YAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3510:1: ( ( ruleDOUBLE ) )
-            // InternalXDrone.g:3511:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4097:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:4098:2: ( ruleDOUBLE )
             {
-            // InternalXDrone.g:3511:2: ( ruleDOUBLE )
-            // InternalXDrone.g:3512:3: ruleDOUBLE
+            // InternalXDrone.g:4098:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4099:3: ruleDOUBLE
             {
              before(grammarAccess.getVectorAccess().getYDOUBLEParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -10470,17 +12230,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Vector__ZAssignment_5"
-    // InternalXDrone.g:3521:1: rule__Vector__ZAssignment_5 : ( ruleDOUBLE ) ;
+    // InternalXDrone.g:4108:1: rule__Vector__ZAssignment_5 : ( ruleDOUBLE ) ;
     public final void rule__Vector__ZAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3525:1: ( ( ruleDOUBLE ) )
-            // InternalXDrone.g:3526:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4112:1: ( ( ruleDOUBLE ) )
+            // InternalXDrone.g:4113:2: ( ruleDOUBLE )
             {
-            // InternalXDrone.g:3526:2: ( ruleDOUBLE )
-            // InternalXDrone.g:3527:3: ruleDOUBLE
+            // InternalXDrone.g:4113:2: ( ruleDOUBLE )
+            // InternalXDrone.g:4114:3: ruleDOUBLE
             {
              before(grammarAccess.getVectorAccess().getZDOUBLEParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -10511,17 +12271,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Color__Color_valueAssignment_2"
-    // InternalXDrone.g:3536:1: rule__Color__Color_valueAssignment_2 : ( RULE_STRING ) ;
+    // InternalXDrone.g:4123:1: rule__Color__Color_valueAssignment_2 : ( RULE_STRING ) ;
     public final void rule__Color__Color_valueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3540:1: ( ( RULE_STRING ) )
-            // InternalXDrone.g:3541:2: ( RULE_STRING )
+            // InternalXDrone.g:4127:1: ( ( RULE_STRING ) )
+            // InternalXDrone.g:4128:2: ( RULE_STRING )
             {
-            // InternalXDrone.g:3541:2: ( RULE_STRING )
-            // InternalXDrone.g:3542:3: RULE_STRING
+            // InternalXDrone.g:4128:2: ( RULE_STRING )
+            // InternalXDrone.g:4129:3: RULE_STRING
             {
              before(grammarAccess.getColorAccess().getColor_valueSTRINGTerminalRuleCall_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -10548,17 +12308,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__FrontAssignment_0_2"
-    // InternalXDrone.g:3551:1: rule__Walls__FrontAssignment_0_2 : ( ruleFront ) ;
+    // InternalXDrone.g:4138:1: rule__Walls__FrontAssignment_0_2 : ( ruleFront ) ;
     public final void rule__Walls__FrontAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3555:1: ( ( ruleFront ) )
-            // InternalXDrone.g:3556:2: ( ruleFront )
+            // InternalXDrone.g:4142:1: ( ( ruleFront ) )
+            // InternalXDrone.g:4143:2: ( ruleFront )
             {
-            // InternalXDrone.g:3556:2: ( ruleFront )
-            // InternalXDrone.g:3557:3: ruleFront
+            // InternalXDrone.g:4143:2: ( ruleFront )
+            // InternalXDrone.g:4144:3: ruleFront
             {
              before(grammarAccess.getWallsAccess().getFrontFrontParserRuleCall_0_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10589,17 +12349,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__RightAssignment_1"
-    // InternalXDrone.g:3566:1: rule__Walls__RightAssignment_1 : ( ruleRight ) ;
+    // InternalXDrone.g:4153:1: rule__Walls__RightAssignment_1 : ( ruleRight ) ;
     public final void rule__Walls__RightAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3570:1: ( ( ruleRight ) )
-            // InternalXDrone.g:3571:2: ( ruleRight )
+            // InternalXDrone.g:4157:1: ( ( ruleRight ) )
+            // InternalXDrone.g:4158:2: ( ruleRight )
             {
-            // InternalXDrone.g:3571:2: ( ruleRight )
-            // InternalXDrone.g:3572:3: ruleRight
+            // InternalXDrone.g:4158:2: ( ruleRight )
+            // InternalXDrone.g:4159:3: ruleRight
             {
              before(grammarAccess.getWallsAccess().getRightRightParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -10630,17 +12390,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__BackAssignment_2"
-    // InternalXDrone.g:3581:1: rule__Walls__BackAssignment_2 : ( ruleBack ) ;
+    // InternalXDrone.g:4168:1: rule__Walls__BackAssignment_2 : ( ruleBack ) ;
     public final void rule__Walls__BackAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3585:1: ( ( ruleBack ) )
-            // InternalXDrone.g:3586:2: ( ruleBack )
+            // InternalXDrone.g:4172:1: ( ( ruleBack ) )
+            // InternalXDrone.g:4173:2: ( ruleBack )
             {
-            // InternalXDrone.g:3586:2: ( ruleBack )
-            // InternalXDrone.g:3587:3: ruleBack
+            // InternalXDrone.g:4173:2: ( ruleBack )
+            // InternalXDrone.g:4174:3: ruleBack
             {
              before(grammarAccess.getWallsAccess().getBackBackParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10671,17 +12431,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__LeftAssignment_3"
-    // InternalXDrone.g:3596:1: rule__Walls__LeftAssignment_3 : ( ruleLeft ) ;
+    // InternalXDrone.g:4183:1: rule__Walls__LeftAssignment_3 : ( ruleLeft ) ;
     public final void rule__Walls__LeftAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3600:1: ( ( ruleLeft ) )
-            // InternalXDrone.g:3601:2: ( ruleLeft )
+            // InternalXDrone.g:4187:1: ( ( ruleLeft ) )
+            // InternalXDrone.g:4188:2: ( ruleLeft )
             {
-            // InternalXDrone.g:3601:2: ( ruleLeft )
-            // InternalXDrone.g:3602:3: ruleLeft
+            // InternalXDrone.g:4188:2: ( ruleLeft )
+            // InternalXDrone.g:4189:3: ruleLeft
             {
              before(grammarAccess.getWallsAccess().getLeftLeftParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -10712,17 +12472,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Walls__UpAssignment_4_0"
-    // InternalXDrone.g:3611:1: rule__Walls__UpAssignment_4_0 : ( ruleUp ) ;
+    // InternalXDrone.g:4198:1: rule__Walls__UpAssignment_4_0 : ( ruleUp ) ;
     public final void rule__Walls__UpAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3615:1: ( ( ruleUp ) )
-            // InternalXDrone.g:3616:2: ( ruleUp )
+            // InternalXDrone.g:4202:1: ( ( ruleUp ) )
+            // InternalXDrone.g:4203:2: ( ruleUp )
             {
-            // InternalXDrone.g:3616:2: ( ruleUp )
-            // InternalXDrone.g:3617:3: ruleUp
+            // InternalXDrone.g:4203:2: ( ruleUp )
+            // InternalXDrone.g:4204:3: ruleUp
             {
              before(grammarAccess.getWallsAccess().getUpUpParserRuleCall_4_0_0()); 
             pushFollow(FOLLOW_2);
@@ -10753,17 +12513,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Front__ValueAssignment_2"
-    // InternalXDrone.g:3626:1: rule__Front__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:4213:1: rule__Front__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Front__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3630:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3631:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4217:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:4218:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3631:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3632:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:4218:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4219:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getFrontAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10794,17 +12554,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Right__ValueAssignment_2"
-    // InternalXDrone.g:3641:1: rule__Right__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:4228:1: rule__Right__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Right__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3645:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3646:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4232:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:4233:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3646:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3647:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:4233:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4234:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getRightAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10835,17 +12595,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Left__ValueAssignment_2"
-    // InternalXDrone.g:3656:1: rule__Left__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:4243:1: rule__Left__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Left__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3660:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3661:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4247:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:4248:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3661:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3662:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:4248:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4249:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getLeftAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10876,17 +12636,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Back__ValueAssignment_2"
-    // InternalXDrone.g:3671:1: rule__Back__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:4258:1: rule__Back__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Back__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3675:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3676:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4262:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:4263:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3676:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3677:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:4263:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4264:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getBackAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10917,17 +12677,17 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Up__ValueAssignment_2"
-    // InternalXDrone.g:3686:1: rule__Up__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
+    // InternalXDrone.g:4273:1: rule__Up__ValueAssignment_2 : ( rulePOSITIVE_DOUBLE ) ;
     public final void rule__Up__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXDrone.g:3690:1: ( ( rulePOSITIVE_DOUBLE ) )
-            // InternalXDrone.g:3691:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4277:1: ( ( rulePOSITIVE_DOUBLE ) )
+            // InternalXDrone.g:4278:2: ( rulePOSITIVE_DOUBLE )
             {
-            // InternalXDrone.g:3691:2: ( rulePOSITIVE_DOUBLE )
-            // InternalXDrone.g:3692:3: rulePOSITIVE_DOUBLE
+            // InternalXDrone.g:4278:2: ( rulePOSITIVE_DOUBLE )
+            // InternalXDrone.g:4279:3: rulePOSITIVE_DOUBLE
             {
              before(grammarAccess.getUpAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -10959,83 +12719,53 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     // Delegated rules
 
 
-    protected DFA11 dfa11 = new DFA11(this);
     protected DFA12 dfa12 = new DFA12(this);
+    protected DFA13 dfa13 = new DFA13(this);
     protected DFA14 dfa14 = new DFA14(this);
-    protected DFA15 dfa15 = new DFA15(this);
     protected DFA16 dfa16 = new DFA16(this);
     protected DFA17 dfa17 = new DFA17(this);
-    static final String dfa_1s = "\100\uffff";
-    static final String dfa_2s = "\1\5\77\uffff";
-    static final String dfa_3s = "\1\6\1\32\2\34\1\0\1\uffff\1\33\1\23\1\5\1\uffff\1\34\1\4\1\16\1\23\1\4\1\21\1\0\1\4\1\21\3\4\1\21\1\4\1\36\1\4\2\21\2\4\1\36\1\21\3\4\1\36\1\4\1\21\1\4\1\36\1\4\1\21\1\36\1\21\2\4\1\36\1\21\1\4\1\0\1\4\1\36\1\4\1\21\1\4\1\24\1\36\1\21\1\0\1\4\1\24\1\4\2\24";
-    static final String dfa_4s = "\1\45\1\32\2\34\1\0\1\uffff\1\33\1\23\1\5\1\uffff\1\34\1\20\1\16\1\23\1\4\1\36\1\0\1\20\1\36\1\4\1\20\1\4\1\36\1\4\1\36\1\4\2\36\1\4\1\20\2\36\1\4\1\20\1\4\1\36\1\4\1\36\1\4\1\36\1\4\1\24\2\36\1\4\1\20\1\36\1\24\1\4\1\0\1\4\1\36\1\4\1\24\1\4\1\24\1\36\1\24\1\0\1\4\1\24\1\4\2\24";
-    static final String dfa_5s = "\5\uffff\1\2\3\uffff\1\1\66\uffff";
-    static final String dfa_6s = "\4\uffff\1\0\13\uffff\1\1\40\uffff\1\3\10\uffff\1\2\5\uffff}>";
+    protected DFA19 dfa19 = new DFA19(this);
+    protected DFA20 dfa20 = new DFA20(this);
+    protected DFA21 dfa21 = new DFA21(this);
+    protected DFA22 dfa22 = new DFA22(this);
+    static final String dfa_1s = "\37\uffff";
+    static final String dfa_2s = "\1\6\36\uffff";
+    static final String dfa_3s = "\1\6\1\32\3\34\1\0\1\uffff\1\33\3\4\1\uffff\1\34\1\4\1\0\1\4\1\0\1\4\1\16\1\4\2\0\1\16\1\4\1\0\1\4\1\0\1\4\1\16\1\0\1\16";
+    static final String dfa_4s = "\1\51\1\32\3\34\1\0\1\uffff\1\33\3\20\1\uffff\1\34\1\4\1\0\1\4\1\0\1\4\1\21\1\20\2\0\1\21\1\4\1\0\1\4\1\0\1\4\1\16\1\0\1\16";
+    static final String dfa_5s = "\6\uffff\1\2\4\uffff\1\1\23\uffff";
+    static final String dfa_6s = "\5\uffff\1\3\10\uffff\1\4\1\uffff\1\6\3\uffff\1\5\1\7\2\uffff\1\2\1\uffff\1\1\2\uffff\1\0\1\uffff}>";
     static final String[] dfa_7s = {
-            "\1\1\7\uffff\1\4\12\uffff\1\5\3\uffff\1\2\1\uffff\1\3\1\5\1\uffff\4\5",
-            "\1\6",
+            "\1\6\7\uffff\1\5\12\uffff\1\1\3\uffff\1\2\1\3\1\4\1\uffff\1\6\1\uffff\2\6\1\uffff\4\6",
             "\1\7",
             "\1\10",
-            "\1\uffff",
-            "",
+            "\1\11",
             "\1\12",
-            "\1\13",
-            "\1\14",
+            "\1\uffff",
             "",
-            "\1\15",
-            "\1\17\13\uffff\1\16",
-            "\1\20",
-            "\1\21",
-            "\1\22",
-            "\1\23\14\uffff\1\24",
+            "\1\14",
+            "\1\16\13\uffff\1\15",
+            "\1\20\13\uffff\1\17",
+            "\1\22\13\uffff\1\21",
+            "",
+            "\1\23",
+            "\1\24",
             "\1\uffff",
-            "\1\26\13\uffff\1\25",
-            "\1\27\14\uffff\1\24",
-            "\1\30",
+            "\1\25",
+            "\1\uffff",
+            "\1\26",
+            "\1\30\2\uffff\1\27",
             "\1\32\13\uffff\1\31",
-            "\1\33",
-            "\1\34\14\uffff\1\35",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\30\2\uffff\1\33",
+            "\1\34",
+            "\1\uffff",
+            "\1\35",
+            "\1\uffff",
             "\1\36",
-            "\1\24",
-            "\1\37",
-            "\1\40\14\uffff\1\41",
-            "\1\42\14\uffff\1\35",
-            "\1\43",
-            "\1\45\13\uffff\1\44",
-            "\1\24",
-            "\1\46\14\uffff\1\41",
-            "\1\47",
-            "\1\51\13\uffff\1\50",
-            "\1\52",
-            "\1\35",
-            "\1\53",
-            "\1\54\14\uffff\1\55",
-            "\1\56",
-            "\1\41",
-            "\1\57",
-            "\1\60\2\uffff\1\61",
-            "\1\35",
-            "\1\62\14\uffff\1\55",
-            "\1\63",
-            "\1\65\13\uffff\1\64",
-            "\1\41",
-            "\1\66\2\uffff\1\61",
-            "\1\67",
+            "\1\30",
             "\1\uffff",
-            "\1\70",
-            "\1\55",
-            "\1\71",
-            "\1\73\2\uffff\1\72",
-            "\1\74",
-            "\1\61",
-            "\1\55",
-            "\1\75\2\uffff\1\72",
-            "\1\uffff",
-            "\1\76",
-            "\1\61",
-            "\1\77",
-            "\1\72",
-            "\1\72"
+            "\1\30"
     };
 
     static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
@@ -11046,11 +12776,11 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     static final short[] dfa_6 = DFA.unpackEncodedString(dfa_6s);
     static final short[][] dfa_7 = unpackEncodedStringArray(dfa_7s);
 
-    class DFA11 extends DFA {
+    class DFA12 extends DFA {
 
-        public DFA11(BaseRecognizer recognizer) {
+        public DFA12(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 11;
+            this.decisionNumber = 12;
             this.eot = dfa_1;
             this.eof = dfa_2;
             this.min = dfa_3;
@@ -11060,84 +12790,447 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "2982:2: ( rule__Object__UnorderedGroup__1 )?";
+            return "3402:2: ( rule__Drone__UnorderedGroup__1 )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA11_4 = input.LA(1);
+                        int LA12_29 = input.LA(1);
 
                          
-                        int index11_4 = input.index();
+                        int index12_29 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
 
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index11_4);
+                        input.seek(index12_29);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA11_16 = input.LA(1);
+                        int LA12_26 = input.LA(1);
 
                          
-                        int index11_16 = input.index();
+                        int index12_26 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
 
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index11_16);
+                        input.seek(index12_26);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA11_58 = input.LA(1);
+                        int LA12_24 = input.LA(1);
 
                          
-                        int index11_58 = input.index();
+                        int index12_24 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {s = 9;}
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
 
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index11_58);
+                        input.seek(index12_24);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA11_49 = input.LA(1);
+                        int LA12_5 = input.LA(1);
 
                          
-                        int index11_49 = input.index();
+                        int index12_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {s = 9;}
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
 
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index11_49);
+                        input.seek(index12_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA12_14 = input.LA(1);
+
+                         
+                        int index12_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index12_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA12_20 = input.LA(1);
+
+                         
+                        int index12_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index12_20);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA12_16 = input.LA(1);
+
+                         
+                        int index12_16 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index12_16);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA12_21 = input.LA(1);
+
+                         
+                        int index12_21 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index12_21);
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 11, _s, input);
+                new NoViableAltException(getDescription(), 12, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_8s = "\1\6\1\32\2\34\1\0\1\uffff\1\33\1\23\1\5\1\uffff\1\34\1\4\1\16\1\23\1\4\1\21\1\0\1\4\1\21\3\4\1\21\1\4\1\36\1\4\2\21\2\4\1\36\1\21\3\4\1\36\1\4\1\21\2\4\1\21\2\36\1\21\2\4\1\36\1\21\1\4\1\0\1\4\1\36\1\4\1\21\1\4\1\24\1\36\1\21\1\0\1\4\1\24\1\4\2\24";
-    static final String dfa_9s = "\1\45\1\32\2\34\1\0\1\uffff\1\33\1\23\1\5\1\uffff\1\34\1\20\1\16\1\23\1\4\1\36\1\0\1\20\1\36\1\4\1\20\1\4\1\36\1\4\1\36\1\4\2\36\1\4\1\20\2\36\1\20\2\4\1\36\1\4\1\36\2\4\1\24\3\36\1\4\1\20\1\36\1\24\1\4\1\0\1\4\1\36\1\4\1\24\1\4\1\24\1\36\1\24\1\0\1\4\1\24\1\4\2\24";
-    static final String dfa_10s = "\4\uffff\1\1\13\uffff\1\0\40\uffff\1\2\10\uffff\1\3\5\uffff}>";
-    static final String[] dfa_11s = {
-            "\1\1\7\uffff\1\4\12\uffff\1\5\3\uffff\1\2\1\uffff\1\3\1\5\1\uffff\4\5",
+    static final String dfa_8s = "\5\uffff\1\1\10\uffff\1\5\1\uffff\1\7\3\uffff\1\4\1\6\2\uffff\1\3\1\uffff\1\0\2\uffff\1\2\1\uffff}>";
+    static final short[] dfa_8 = DFA.unpackEncodedString(dfa_8s);
+
+    class DFA13 extends DFA {
+
+        public DFA13(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 13;
+            this.eot = dfa_1;
+            this.eof = dfa_2;
+            this.min = dfa_3;
+            this.max = dfa_4;
+            this.accept = dfa_5;
+            this.special = dfa_8;
+            this.transition = dfa_7;
+        }
+        public String getDescription() {
+            return "3414:2: ( rule__Drone__UnorderedGroup__2 )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA13_26 = input.LA(1);
+
+                         
+                        int index13_26 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_26);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA13_5 = input.LA(1);
+
+                         
+                        int index13_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA13_29 = input.LA(1);
+
+                         
+                        int index13_29 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_29);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA13_24 = input.LA(1);
+
+                         
+                        int index13_24 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_24);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA13_20 = input.LA(1);
+
+                         
+                        int index13_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_20);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA13_14 = input.LA(1);
+
+                         
+                        int index13_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA13_21 = input.LA(1);
+
+                         
+                        int index13_21 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_21);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA13_16 = input.LA(1);
+
+                         
+                        int index13_16 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index13_16);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 13, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String dfa_9s = "\5\uffff\1\2\10\uffff\1\5\1\uffff\1\3\3\uffff\1\7\1\6\2\uffff\1\4\1\uffff\1\1\2\uffff\1\0\1\uffff}>";
+    static final short[] dfa_9 = DFA.unpackEncodedString(dfa_9s);
+
+    class DFA14 extends DFA {
+
+        public DFA14(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 14;
+            this.eot = dfa_1;
+            this.eof = dfa_2;
+            this.min = dfa_3;
+            this.max = dfa_4;
+            this.accept = dfa_5;
+            this.special = dfa_9;
+            this.transition = dfa_7;
+        }
+        public String getDescription() {
+            return "3426:2: ( rule__Drone__UnorderedGroup__3 )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA14_29 = input.LA(1);
+
+                         
+                        int index14_29 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_29);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA14_26 = input.LA(1);
+
+                         
+                        int index14_26 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 0) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_26);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA14_5 = input.LA(1);
+
+                         
+                        int index14_5 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA14_16 = input.LA(1);
+
+                         
+                        int index14_16 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_16);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA14_24 = input.LA(1);
+
+                         
+                        int index14_24 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 3) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_24);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA14_14 = input.LA(1);
+
+                         
+                        int index14_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA14_21 = input.LA(1);
+
+                         
+                        int index14_21 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 2) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_21);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA14_20 = input.LA(1);
+
+                         
+                        int index14_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getDroneAccess().getUnorderedGroup(), 1) ) {s = 11;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getDroneAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index14_20);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 14, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String dfa_10s = "\100\uffff";
+    static final String dfa_11s = "\1\5\77\uffff";
+    static final String dfa_12s = "\1\6\1\32\2\34\1\0\1\uffff\1\40\1\23\1\5\1\uffff\1\34\1\4\1\16\1\23\1\4\1\21\1\0\1\4\1\21\3\4\1\21\1\4\1\42\1\4\2\21\2\4\1\42\1\21\4\4\1\21\1\42\1\4\1\42\1\4\1\21\1\42\1\21\2\4\1\42\1\21\1\0\2\4\1\42\1\4\1\21\1\4\1\24\1\42\1\21\1\0\1\4\1\24\1\4\2\24";
+    static final String dfa_13s = "\1\51\1\32\2\34\1\0\1\uffff\1\40\1\23\1\5\1\uffff\1\34\1\20\1\16\1\23\1\4\1\42\1\0\1\20\1\42\1\4\1\20\1\4\1\42\1\4\1\42\1\4\2\42\1\20\1\4\2\42\1\4\1\20\2\4\2\42\1\4\1\42\1\4\1\24\2\42\1\4\1\20\1\42\1\24\1\0\2\4\1\42\1\4\1\24\1\4\1\24\1\42\1\24\1\0\1\4\1\24\1\4\2\24";
+    static final String dfa_14s = "\5\uffff\1\2\3\uffff\1\1\66\uffff";
+    static final String dfa_15s = "\4\uffff\1\2\13\uffff\1\3\37\uffff\1\0\11\uffff\1\1\5\uffff}>";
+    static final String[] dfa_16s = {
+            "\1\1\7\uffff\1\4\12\uffff\1\5\3\uffff\3\5\1\uffff\1\2\1\uffff\1\3\1\5\1\uffff\4\5",
             "\1\6",
             "\1\7",
             "\1\10",
@@ -11152,116 +13245,90 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             "\1\20",
             "\1\21",
             "\1\22",
-            "\1\23\14\uffff\1\24",
+            "\1\23\20\uffff\1\24",
             "\1\uffff",
             "\1\26\13\uffff\1\25",
-            "\1\27\14\uffff\1\24",
+            "\1\27\20\uffff\1\24",
             "\1\30",
             "\1\32\13\uffff\1\31",
             "\1\33",
-            "\1\34\14\uffff\1\35",
+            "\1\35\20\uffff\1\34",
             "\1\36",
             "\1\24",
             "\1\37",
-            "\1\41\14\uffff\1\40",
-            "\1\42\14\uffff\1\35",
-            "\1\43",
-            "\1\45\13\uffff\1\44",
+            "\1\40\20\uffff\1\41",
+            "\1\42\20\uffff\1\34",
+            "\1\44\13\uffff\1\43",
+            "\1\45",
             "\1\24",
-            "\1\46\14\uffff\1\40",
-            "\1\50\13\uffff\1\47",
-            "\1\51",
+            "\1\46\20\uffff\1\41",
+            "\1\47",
+            "\1\51\13\uffff\1\50",
             "\1\52",
-            "\1\35",
             "\1\53",
-            "\1\54\14\uffff\1\55",
+            "\1\54\20\uffff\1\55",
+            "\1\34",
             "\1\56",
+            "\1\41",
             "\1\57",
-            "\1\60\2\uffff\1\61",
-            "\1\40",
-            "\1\35",
-            "\1\62\14\uffff\1\55",
+            "\1\61\2\uffff\1\60",
+            "\1\34",
+            "\1\62\20\uffff\1\55",
             "\1\63",
             "\1\65\13\uffff\1\64",
-            "\1\40",
-            "\1\66\2\uffff\1\61",
-            "\1\67",
+            "\1\41",
+            "\1\66\2\uffff\1\60",
             "\1\uffff",
+            "\1\67",
             "\1\70",
             "\1\55",
             "\1\71",
             "\1\73\2\uffff\1\72",
             "\1\74",
-            "\1\61",
+            "\1\60",
             "\1\55",
             "\1\75\2\uffff\1\72",
             "\1\uffff",
             "\1\76",
-            "\1\61",
+            "\1\60",
             "\1\77",
             "\1\72",
             "\1\72"
     };
-    static final char[] dfa_8 = DFA.unpackEncodedStringToUnsignedChars(dfa_8s);
-    static final char[] dfa_9 = DFA.unpackEncodedStringToUnsignedChars(dfa_9s);
+
     static final short[] dfa_10 = DFA.unpackEncodedString(dfa_10s);
-    static final short[][] dfa_11 = unpackEncodedStringArray(dfa_11s);
+    static final short[] dfa_11 = DFA.unpackEncodedString(dfa_11s);
+    static final char[] dfa_12 = DFA.unpackEncodedStringToUnsignedChars(dfa_12s);
+    static final char[] dfa_13 = DFA.unpackEncodedStringToUnsignedChars(dfa_13s);
+    static final short[] dfa_14 = DFA.unpackEncodedString(dfa_14s);
+    static final short[] dfa_15 = DFA.unpackEncodedString(dfa_15s);
+    static final short[][] dfa_16 = unpackEncodedStringArray(dfa_16s);
 
-    class DFA12 extends DFA {
+    class DFA16 extends DFA {
 
-        public DFA12(BaseRecognizer recognizer) {
+        public DFA16(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 12;
-            this.eot = dfa_1;
-            this.eof = dfa_2;
-            this.min = dfa_8;
-            this.max = dfa_9;
-            this.accept = dfa_5;
-            this.special = dfa_10;
-            this.transition = dfa_11;
+            this.decisionNumber = 16;
+            this.eot = dfa_10;
+            this.eof = dfa_11;
+            this.min = dfa_12;
+            this.max = dfa_13;
+            this.accept = dfa_14;
+            this.special = dfa_15;
+            this.transition = dfa_16;
         }
         public String getDescription() {
-            return "2994:2: ( rule__Object__UnorderedGroup__2 )?";
+            return "3524:2: ( rule__Object__UnorderedGroup__1 )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_16 = input.LA(1);
+                        int LA16_48 = input.LA(1);
 
                          
-                        int index12_16 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
-
-                         
-                        input.seek(index12_16);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA12_4 = input.LA(1);
-
-                         
-                        int index12_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
-
-                         
-                        input.seek(index12_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_49 = input.LA(1);
-
-                         
-                        int index12_49 = input.index();
+                        int index16_48 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {s = 9;}
@@ -11269,14 +13336,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
 
                          
-                        input.seek(index12_49);
+                        input.seek(index16_48);
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
-                        int LA12_58 = input.LA(1);
+                    case 1 : 
+                        int LA16_58 = input.LA(1);
 
                          
-                        int index12_58 = input.index();
+                        int index16_58 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {s = 9;}
@@ -11284,24 +13351,144 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
 
                          
-                        input.seek(index12_58);
+                        input.seek(index16_58);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA16_4 = input.LA(1);
+
+                         
+                        int index16_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index16_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA16_16 = input.LA(1);
+
+                         
+                        int index16_16 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index16_16);
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 12, _s, input);
+                new NoViableAltException(getDescription(), 16, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_12s = "\27\uffff";
-    static final String dfa_13s = "\1\6\26\uffff";
-    static final String dfa_14s = "\1\6\1\32\4\34\1\uffff\1\41\4\4\1\34\3\0\1\16\1\4\1\uffff\1\0\1\4\1\0\1\16";
-    static final String dfa_15s = "\1\45\1\32\4\34\1\uffff\1\41\4\4\1\34\3\0\1\21\1\4\1\uffff\1\0\1\4\1\0\1\16";
-    static final String dfa_16s = "\6\uffff\1\2\13\uffff\1\1\4\uffff";
-    static final String dfa_17s = "\15\uffff\1\0\1\4\1\2\3\uffff\1\1\1\uffff\1\3\1\uffff}>";
-    static final String[] dfa_18s = {
-            "\1\6\7\uffff\1\6\12\uffff\1\6\3\uffff\1\6\1\uffff\1\6\1\1\1\uffff\1\2\1\4\1\3\1\5",
+    static final String dfa_17s = "\4\uffff\1\3\13\uffff\1\2\37\uffff\1\1\11\uffff\1\0\5\uffff}>";
+    static final short[] dfa_17 = DFA.unpackEncodedString(dfa_17s);
+
+    class DFA17 extends DFA {
+
+        public DFA17(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 17;
+            this.eot = dfa_10;
+            this.eof = dfa_11;
+            this.min = dfa_12;
+            this.max = dfa_13;
+            this.accept = dfa_14;
+            this.special = dfa_17;
+            this.transition = dfa_16;
+        }
+        public String getDescription() {
+            return "3536:2: ( rule__Object__UnorderedGroup__2 )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA17_58 = input.LA(1);
+
+                         
+                        int index17_58 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 0) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index17_58);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA17_48 = input.LA(1);
+
+                         
+                        int index17_48 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 1) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index17_48);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA17_16 = input.LA(1);
+
+                         
+                        int index17_16 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index17_16);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA17_4 = input.LA(1);
+
+                         
+                        int index17_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getObjectAccess().getUnorderedGroup(), 2) ) {s = 9;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getObjectAccess().getUnorderedGroup()) ) {s = 5;}
+
+                         
+                        input.seek(index17_4);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 17, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String dfa_18s = "\27\uffff";
+    static final String dfa_19s = "\1\6\26\uffff";
+    static final String dfa_20s = "\1\6\1\32\4\34\1\uffff\1\45\4\4\1\34\3\0\1\16\1\4\1\uffff\1\4\2\0\1\16";
+    static final String dfa_21s = "\1\51\1\32\4\34\1\uffff\1\45\4\4\1\34\3\0\1\21\1\4\1\uffff\1\4\2\0\1\16";
+    static final String dfa_22s = "\6\uffff\1\2\13\uffff\1\1\4\uffff";
+    static final String dfa_23s = "\15\uffff\1\2\1\4\1\0\4\uffff\1\1\1\3\1\uffff}>";
+    static final String[] dfa_24s = {
+            "\1\6\7\uffff\1\6\12\uffff\1\6\3\uffff\3\6\1\uffff\1\6\1\uffff\1\6\1\1\1\uffff\1\2\1\4\1\3\1\5",
             "\1\7",
             "\1\10",
             "\1\11",
@@ -11317,213 +13504,48 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
-            "\1\23\2\uffff\1\24",
+            "\1\24\2\uffff\1\23",
             "\1\25",
             "",
-            "\1\uffff",
             "\1\26",
             "\1\uffff",
-            "\1\23"
+            "\1\uffff",
+            "\1\24"
     };
 
-    static final short[] dfa_12 = DFA.unpackEncodedString(dfa_12s);
-    static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
-    static final char[] dfa_14 = DFA.unpackEncodedStringToUnsignedChars(dfa_14s);
-    static final char[] dfa_15 = DFA.unpackEncodedStringToUnsignedChars(dfa_15s);
-    static final short[] dfa_16 = DFA.unpackEncodedString(dfa_16s);
-    static final short[] dfa_17 = DFA.unpackEncodedString(dfa_17s);
-    static final short[][] dfa_18 = unpackEncodedStringArray(dfa_18s);
-
-    class DFA14 extends DFA {
-
-        public DFA14(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 14;
-            this.eot = dfa_12;
-            this.eof = dfa_13;
-            this.min = dfa_14;
-            this.max = dfa_15;
-            this.accept = dfa_16;
-            this.special = dfa_17;
-            this.transition = dfa_18;
-        }
-        public String getDescription() {
-            return "3122:2: ( rule__Walls__UnorderedGroup__1 )?";
-        }
-        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
-            TokenStream input = (TokenStream)_input;
-        	int _s = s;
-            switch ( s ) {
-                    case 0 : 
-                        int LA14_13 = input.LA(1);
-
-                         
-                        int index14_13 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index14_13);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA14_19 = input.LA(1);
-
-                         
-                        int index14_19 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index14_19);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA14_15 = input.LA(1);
-
-                         
-                        int index14_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index14_15);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA14_21 = input.LA(1);
-
-                         
-                        int index14_21 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index14_21);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA14_14 = input.LA(1);
-
-                         
-                        int index14_14 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index14_14);
-                        if ( s>=0 ) return s;
-                        break;
-            }
-            NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 14, _s, input);
-            error(nvae);
-            throw nvae;
-        }
-    }
-    static final String dfa_19s = "\15\uffff\1\3\1\2\1\4\3\uffff\1\1\1\uffff\1\0\1\uffff}>";
+    static final short[] dfa_18 = DFA.unpackEncodedString(dfa_18s);
     static final short[] dfa_19 = DFA.unpackEncodedString(dfa_19s);
+    static final char[] dfa_20 = DFA.unpackEncodedStringToUnsignedChars(dfa_20s);
+    static final char[] dfa_21 = DFA.unpackEncodedStringToUnsignedChars(dfa_21s);
+    static final short[] dfa_22 = DFA.unpackEncodedString(dfa_22s);
+    static final short[] dfa_23 = DFA.unpackEncodedString(dfa_23s);
+    static final short[][] dfa_24 = unpackEncodedStringArray(dfa_24s);
 
-    class DFA15 extends DFA {
+    class DFA19 extends DFA {
 
-        public DFA15(BaseRecognizer recognizer) {
+        public DFA19(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 15;
-            this.eot = dfa_12;
-            this.eof = dfa_13;
-            this.min = dfa_14;
-            this.max = dfa_15;
-            this.accept = dfa_16;
-            this.special = dfa_19;
-            this.transition = dfa_18;
+            this.decisionNumber = 19;
+            this.eot = dfa_18;
+            this.eof = dfa_19;
+            this.min = dfa_20;
+            this.max = dfa_21;
+            this.accept = dfa_22;
+            this.special = dfa_23;
+            this.transition = dfa_24;
         }
         public String getDescription() {
-            return "3134:2: ( rule__Walls__UnorderedGroup__2 )?";
+            return "3664:2: ( rule__Walls__UnorderedGroup__1 )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA15_21 = input.LA(1);
+                        int LA19_15 = input.LA(1);
 
                          
-                        int index15_21 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index15_21);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA15_19 = input.LA(1);
-
-                         
-                        int index15_19 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index15_19);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA15_14 = input.LA(1);
-
-                         
-                        int index15_14 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index15_14);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA15_13 = input.LA(1);
-
-                         
-                        int index15_13 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index15_13);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA15_15 = input.LA(1);
-
-                         
-                        int index15_15 = input.index();
+                        int index19_15 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
@@ -11531,89 +13553,104 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index15_15);
+                        input.seek(index19_15);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA19_20 = input.LA(1);
+
+                         
+                        int index19_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index19_20);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA19_13 = input.LA(1);
+
+                         
+                        int index19_13 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index19_13);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA19_21 = input.LA(1);
+
+                         
+                        int index19_21 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index19_21);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA19_14 = input.LA(1);
+
+                         
+                        int index19_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index19_14);
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 15, _s, input);
+                new NoViableAltException(getDescription(), 19, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_20s = "\15\uffff\1\4\1\2\1\0\3\uffff\1\1\1\uffff\1\3\1\uffff}>";
-    static final short[] dfa_20 = DFA.unpackEncodedString(dfa_20s);
+    static final String dfa_25s = "\15\uffff\1\3\1\1\1\4\4\uffff\1\2\1\0\1\uffff}>";
+    static final short[] dfa_25 = DFA.unpackEncodedString(dfa_25s);
 
-    class DFA16 extends DFA {
+    class DFA20 extends DFA {
 
-        public DFA16(BaseRecognizer recognizer) {
+        public DFA20(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 16;
-            this.eot = dfa_12;
-            this.eof = dfa_13;
-            this.min = dfa_14;
-            this.max = dfa_15;
-            this.accept = dfa_16;
-            this.special = dfa_20;
-            this.transition = dfa_18;
+            this.decisionNumber = 20;
+            this.eot = dfa_18;
+            this.eof = dfa_19;
+            this.min = dfa_20;
+            this.max = dfa_21;
+            this.accept = dfa_22;
+            this.special = dfa_25;
+            this.transition = dfa_24;
         }
         public String getDescription() {
-            return "3146:2: ( rule__Walls__UnorderedGroup__3 )?";
+            return "3676:2: ( rule__Walls__UnorderedGroup__2 )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA16_15 = input.LA(1);
+                        int LA20_21 = input.LA(1);
 
                          
-                        int index16_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index16_15);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA16_19 = input.LA(1);
-
-                         
-                        int index16_19 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index16_19);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA16_14 = input.LA(1);
-
-                         
-                        int index16_14 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index16_14);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA16_21 = input.LA(1);
-
-                         
-                        int index16_21 = input.index();
+                        int index20_21 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
@@ -11621,14 +13658,44 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index16_21);
+                        input.seek(index20_21);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
-                        int LA16_13 = input.LA(1);
+                    case 1 : 
+                        int LA20_14 = input.LA(1);
 
                          
-                        int index16_13 = input.index();
+                        int index20_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index20_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA20_20 = input.LA(1);
+
+                         
+                        int index20_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index20_20);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA20_13 = input.LA(1);
+
+                         
+                        int index20_13 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
@@ -11636,44 +13703,59 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index16_13);
+                        input.seek(index20_13);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA20_15 = input.LA(1);
+
+                         
+                        int index20_15 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index20_15);
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 16, _s, input);
+                new NoViableAltException(getDescription(), 20, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_21s = "\15\uffff\1\0\1\4\1\1\3\uffff\1\2\1\uffff\1\3\1\uffff}>";
-    static final short[] dfa_21 = DFA.unpackEncodedString(dfa_21s);
+    static final String dfa_26s = "\15\uffff\1\0\1\2\1\3\4\uffff\1\4\1\1\1\uffff}>";
+    static final short[] dfa_26 = DFA.unpackEncodedString(dfa_26s);
 
-    class DFA17 extends DFA {
+    class DFA21 extends DFA {
 
-        public DFA17(BaseRecognizer recognizer) {
+        public DFA21(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 17;
-            this.eot = dfa_12;
-            this.eof = dfa_13;
-            this.min = dfa_14;
-            this.max = dfa_15;
-            this.accept = dfa_16;
-            this.special = dfa_21;
-            this.transition = dfa_18;
+            this.decisionNumber = 21;
+            this.eot = dfa_18;
+            this.eof = dfa_19;
+            this.min = dfa_20;
+            this.max = dfa_21;
+            this.accept = dfa_22;
+            this.special = dfa_26;
+            this.transition = dfa_24;
         }
         public String getDescription() {
-            return "3158:2: ( rule__Walls__UnorderedGroup__4 )?";
+            return "3688:2: ( rule__Walls__UnorderedGroup__3 )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA17_13 = input.LA(1);
+                        int LA21_13 = input.LA(1);
 
                          
-                        int index17_13 = input.index();
+                        int index21_13 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
@@ -11681,44 +13763,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index17_13);
+                        input.seek(index21_13);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA17_15 = input.LA(1);
+                        int LA21_21 = input.LA(1);
 
                          
-                        int index17_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index17_15);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA17_19 = input.LA(1);
-
-                         
-                        int index17_19 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
-
-                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
-
-                         
-                        input.seek(index17_19);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA17_21 = input.LA(1);
-
-                         
-                        int index17_21 = input.index();
+                        int index21_21 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
@@ -11726,14 +13778,14 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index17_21);
+                        input.seek(index21_21);
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
-                        int LA17_14 = input.LA(1);
+                    case 2 : 
+                        int LA21_14 = input.LA(1);
 
                          
-                        int index17_14 = input.index();
+                        int index21_14 = input.index();
                         input.rewind();
                         s = -1;
                         if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
@@ -11741,12 +13793,147 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
                         else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
 
                          
-                        input.seek(index17_14);
+                        input.seek(index21_14);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA21_15 = input.LA(1);
+
+                         
+                        int index21_15 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index21_15);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA21_20 = input.LA(1);
+
+                         
+                        int index21_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index21_20);
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 17, _s, input);
+                new NoViableAltException(getDescription(), 21, _s, input);
+            error(nvae);
+            throw nvae;
+        }
+    }
+    static final String dfa_27s = "\15\uffff\1\2\1\4\1\1\4\uffff\1\0\1\3\1\uffff}>";
+    static final short[] dfa_27 = DFA.unpackEncodedString(dfa_27s);
+
+    class DFA22 extends DFA {
+
+        public DFA22(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 22;
+            this.eot = dfa_18;
+            this.eof = dfa_19;
+            this.min = dfa_20;
+            this.max = dfa_21;
+            this.accept = dfa_22;
+            this.special = dfa_27;
+            this.transition = dfa_24;
+        }
+        public String getDescription() {
+            return "3700:2: ( rule__Walls__UnorderedGroup__4 )?";
+        }
+        public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
+            TokenStream input = (TokenStream)_input;
+        	int _s = s;
+            switch ( s ) {
+                    case 0 : 
+                        int LA22_20 = input.LA(1);
+
+                         
+                        int index22_20 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 4) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index22_20);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA22_15 = input.LA(1);
+
+                         
+                        int index22_15 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 3) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index22_15);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA22_13 = input.LA(1);
+
+                         
+                        int index22_13 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 1) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index22_13);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA22_21 = input.LA(1);
+
+                         
+                        int index22_21 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 0) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index22_21);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA22_14 = input.LA(1);
+
+                         
+                        int index22_14 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( getUnorderedGroupHelper().canSelect(grammarAccess.getWallsAccess().getUnorderedGroup(), 2) ) {s = 18;}
+
+                        else if ( getUnorderedGroupHelper().canLeave(grammarAccess.getWallsAccess().getUnorderedGroup()) ) {s = 6;}
+
+                         
+                        input.seek(index22_14);
+                        if ( s>=0 ) return s;
+                        break;
+            }
+            NoViableAltException nvae =
+                new NoViableAltException(getDescription(), 22, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -11760,8 +13947,8 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000E41040L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000E40042L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000003DA2004040L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000003DA2004042L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x000003DAE2004040L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x000003DAE2004042L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000080000L});
@@ -11772,8 +13959,11 @@ public class InternalXDroneParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000003D00000002L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x00000000E2004000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x00000000E2004002L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x000003D000000002L});
 
 }

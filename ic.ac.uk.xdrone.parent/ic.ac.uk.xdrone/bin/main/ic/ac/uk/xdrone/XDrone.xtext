@@ -121,7 +121,10 @@ FunctionName:
 
 
 Drone:
-	'DRONE' vector=Vector
+//	'DRONE' vector=Vector
+	'DRONE' '{'
+		('x' '=' x = DOUBLE) & ('y' '=' y = DOUBLE) & ('z' '=' z = DOUBLE) & ('rotation' '=' rotation = DOUBLE)?
+	'}'
 ;
 
 Object:

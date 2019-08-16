@@ -530,26 +530,117 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class DroneElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Drone");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDRONEKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cVectorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVectorVectorParserRuleCall_1_0 = (RuleCall)cVectorAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cDRONEKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Group cGroup_0_2 = (Group)cGroup_0.eContents().get(2);
+		private final Keyword cXKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_0_2_1 = (Keyword)cGroup_0_2.eContents().get(1);
+		private final Assignment cXAssignment_0_2_2 = (Assignment)cGroup_0_2.eContents().get(2);
+		private final RuleCall cXDOUBLEParserRuleCall_0_2_2_0 = (RuleCall)cXAssignment_0_2_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Keyword cYKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cYAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cYDOUBLEParserRuleCall_1_2_0 = (RuleCall)cYAssignment_1_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
+		private final Keyword cZKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cZAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cZDOUBLEParserRuleCall_2_2_0 = (RuleCall)cZAssignment_2_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cUnorderedGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Keyword cRotationKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cRotationAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
+		private final RuleCall cRotationDOUBLEParserRuleCall_3_0_2_0 = (RuleCall)cRotationAssignment_3_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		
-		//Drone:
-		//	'DRONE' vector=Vector;
+		//Drone: //	'DRONE' vector=Vector
+		//	'DRONE' '{' ('x' '=' x=DOUBLE) & 'y' '=' y=DOUBLE & 'z' '=' z=DOUBLE & ('rotation' '=' rotation=DOUBLE)? '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'DRONE' vector=Vector
-		public Group getGroup() { return cGroup; }
+		////	'DRONE' vector=Vector
+		//'DRONE' '{' ('x' '=' x=DOUBLE) & 'y' '=' y=DOUBLE & 'z' '=' z=DOUBLE & ('rotation' '=' rotation=DOUBLE)? '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
+		////	'DRONE' vector=Vector
+		//'DRONE' '{' ('x' '=' x=DOUBLE)
+		public Group getGroup_0() { return cGroup_0; }
+		
+		////	'DRONE' vector=Vector
 		//'DRONE'
-		public Keyword getDRONEKeyword_0() { return cDRONEKeyword_0; }
+		public Keyword getDRONEKeyword_0_0() { return cDRONEKeyword_0_0; }
 		
-		//vector=Vector
-		public Assignment getVectorAssignment_1() { return cVectorAssignment_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
 		
-		//Vector
-		public RuleCall getVectorVectorParserRuleCall_1_0() { return cVectorVectorParserRuleCall_1_0; }
+		//'x' '=' x=DOUBLE
+		public Group getGroup_0_2() { return cGroup_0_2; }
+		
+		//'x'
+		public Keyword getXKeyword_0_2_0() { return cXKeyword_0_2_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_0_2_1() { return cEqualsSignKeyword_0_2_1; }
+		
+		//x=DOUBLE
+		public Assignment getXAssignment_0_2_2() { return cXAssignment_0_2_2; }
+		
+		//DOUBLE
+		public RuleCall getXDOUBLEParserRuleCall_0_2_2_0() { return cXDOUBLEParserRuleCall_0_2_2_0; }
+		
+		//'y' '=' y=DOUBLE
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'y'
+		public Keyword getYKeyword_1_0() { return cYKeyword_1_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_1_1() { return cEqualsSignKeyword_1_1; }
+		
+		//y=DOUBLE
+		public Assignment getYAssignment_1_2() { return cYAssignment_1_2; }
+		
+		//DOUBLE
+		public RuleCall getYDOUBLEParserRuleCall_1_2_0() { return cYDOUBLEParserRuleCall_1_2_0; }
+		
+		//'z' '=' z=DOUBLE
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'z'
+		public Keyword getZKeyword_2_0() { return cZKeyword_2_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_2_1() { return cEqualsSignKeyword_2_1; }
+		
+		//z=DOUBLE
+		public Assignment getZAssignment_2_2() { return cZAssignment_2_2; }
+		
+		//DOUBLE
+		public RuleCall getZDOUBLEParserRuleCall_2_2_0() { return cZDOUBLEParserRuleCall_2_2_0; }
+		
+		//('rotation' '=' rotation=DOUBLE)? '}'
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//('rotation' '=' rotation=DOUBLE)?
+		public Group getGroup_3_0() { return cGroup_3_0; }
+		
+		//'rotation'
+		public Keyword getRotationKeyword_3_0_0() { return cRotationKeyword_3_0_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_3_0_1() { return cEqualsSignKeyword_3_0_1; }
+		
+		//rotation=DOUBLE
+		public Assignment getRotationAssignment_3_0_2() { return cRotationAssignment_3_0_2; }
+		
+		//DOUBLE
+		public RuleCall getRotationDOUBLEParserRuleCall_3_0_2_0() { return cRotationDOUBLEParserRuleCall_3_0_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3_1() { return cRightCurlyBracketKeyword_3_1; }
 	}
 	public class ObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Object");
@@ -1253,8 +1344,8 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionNameAccess().getRule();
 	}
 	
-	//Drone:
-	//	'DRONE' vector=Vector;
+	//Drone: //	'DRONE' vector=Vector
+	//	'DRONE' '{' ('x' '=' x=DOUBLE) & 'y' '=' y=DOUBLE & 'z' '=' z=DOUBLE & ('rotation' '=' rotation=DOUBLE)? '}';
 	public DroneElements getDroneAccess() {
 		return pDrone;
 	}

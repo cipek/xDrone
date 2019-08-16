@@ -440,13 +440,40 @@ public interface XDronePackage extends EPackage
   int DRONE = 12;
 
   /**
-   * The feature id for the '<em><b>Vector</b></em>' containment reference.
+   * The feature id for the '<em><b>X</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DRONE__VECTOR = 0;
+  int DRONE__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__Y = 1;
+
+  /**
+   * The feature id for the '<em><b>Z</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__Z = 2;
+
+  /**
+   * The feature id for the '<em><b>Rotation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__ROTATION = 3;
 
   /**
    * The number of structural features of the '<em>Drone</em>' class.
@@ -455,7 +482,7 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DRONE_FEATURE_COUNT = 1;
+  int DRONE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.
@@ -1154,15 +1181,48 @@ public interface XDronePackage extends EPackage
   EClass getDrone();
 
   /**
-   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Drone#getVector <em>Vector</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Vector</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Drone#getVector()
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getX()
    * @see #getDrone()
    * @generated
    */
-  EReference getDrone_Vector();
+  EAttribute getDrone_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getY()
+   * @see #getDrone()
+   * @generated
+   */
+  EAttribute getDrone_Y();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Z</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getZ()
+   * @see #getDrone()
+   * @generated
+   */
+  EAttribute getDrone_Z();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getRotation <em>Rotation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Rotation</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getRotation()
+   * @see #getDrone()
+   * @generated
+   */
+  EAttribute getDrone_Rotation();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Object <em>Object</em>}'.
@@ -1776,12 +1836,36 @@ public interface XDronePackage extends EPackage
     EClass DRONE = eINSTANCE.getDrone();
 
     /**
-     * The meta object literal for the '<em><b>Vector</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DRONE__VECTOR = eINSTANCE.getDrone_Vector();
+    EAttribute DRONE__X = eINSTANCE.getDrone_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DRONE__Y = eINSTANCE.getDrone_Y();
+
+    /**
+     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DRONE__Z = eINSTANCE.getDrone_Z();
+
+    /**
+     * The meta object literal for the '<em><b>Rotation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DRONE__ROTATION = eINSTANCE.getDrone_Rotation();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.

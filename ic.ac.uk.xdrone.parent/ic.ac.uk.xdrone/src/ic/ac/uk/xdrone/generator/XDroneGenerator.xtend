@@ -38,9 +38,13 @@ class XDroneGenerator extends AbstractGenerator {
 		drone.position.z = 0;
 		drone.position.y = 0 + modelHeight;
 		«FOR d : environment.drone»
-			drone.position.x = «d.vector.x»
-			drone.position.z = «d.vector.z»
-			drone.position.y = «d.vector.y» + modelHeight
+			drone.position.x = «d.x»
+			drone.position.z = «d.z»
+			drone.position.y = «d.y» + modelHeight
+			«IF d.rotation !== null»
+				window.currentDroneAngle += «d.rotation»;
+				drone.rotateY(«d.rotation»  * (Math.PI/180));
+			«ENDIF»
 		«ENDFOR»
 		«FOR d : environment.walls»
 			drawWalls(«d.front.value», «d.right.value», «d.back.value», «d.left.value»,  «d.up.value»)
@@ -65,7 +69,6 @@ class XDroneGenerator extends AbstractGenerator {
 		var currentFunction = "";
 		var finishSimulation = false;
 		var destination = 0;
-		var currentDroneAngle = 90;
 
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
@@ -93,7 +96,7 @@ class XDroneGenerator extends AbstractGenerator {
 		«ENDFOR»
 		
 		
-		//commands.push({r: 90 / 90 * (Math.PI/2)}); 
+		//commands.push({r: 90 * (Math.PI/2)}); 
 		//commands.push({r: 90}); 
 								
 		

@@ -20,12 +20,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XDroneGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Drone_RightCurlyBracketKeyword_3_1_a;
+	protected AbstractElementAlias match_Drone_RightCurlyBracketKeyword_3_1_p;
 	protected AbstractElementAlias match_Object_RightCurlyBracketKeyword_2_1_a;
 	protected AbstractElementAlias match_Object_RightCurlyBracketKeyword_2_1_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XDroneGrammarAccess) access;
+		match_Drone_RightCurlyBracketKeyword_3_1_a = new TokenAlias(true, true, grammarAccess.getDroneAccess().getRightCurlyBracketKeyword_3_1());
+		match_Drone_RightCurlyBracketKeyword_3_1_p = new TokenAlias(true, false, grammarAccess.getDroneAccess().getRightCurlyBracketKeyword_3_1());
 		match_Object_RightCurlyBracketKeyword_2_1_a = new TokenAlias(true, true, grammarAccess.getObjectAccess().getRightCurlyBracketKeyword_2_1());
 		match_Object_RightCurlyBracketKeyword_2_1_p = new TokenAlias(true, false, grammarAccess.getObjectAccess().getRightCurlyBracketKeyword_2_1());
 	}
@@ -42,7 +46,11 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Object_RightCurlyBracketKeyword_2_1_a.equals(syntax))
+			if (match_Drone_RightCurlyBracketKeyword_3_1_a.equals(syntax))
+				emit_Drone_RightCurlyBracketKeyword_3_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Drone_RightCurlyBracketKeyword_3_1_p.equals(syntax))
+				emit_Drone_RightCurlyBracketKeyword_3_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Object_RightCurlyBracketKeyword_2_1_a.equals(syntax))
 				emit_Object_RightCurlyBracketKeyword_2_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Object_RightCurlyBracketKeyword_2_1_p.equals(syntax))
 				emit_Object_RightCurlyBracketKeyword_2_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -50,6 +58,51 @@ public class XDroneSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '}'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'DRONE' '{' 'x' '=' x=DOUBLE
+	 *     (rule start) (ambiguity) 'rotation' '=' rotation=DOUBLE
+	 *     (rule start) (ambiguity) 'y' '=' y=DOUBLE
+	 *     (rule start) (ambiguity) 'z' '=' z=DOUBLE
+	 *     x=DOUBLE (ambiguity) 'DRONE' '{' 'x' '=' x=DOUBLE
+	 *     x=DOUBLE (ambiguity) 'rotation' '=' rotation=DOUBLE
+	 *     x=DOUBLE (ambiguity) 'y' '=' y=DOUBLE
+	 *     x=DOUBLE (ambiguity) 'z' '=' z=DOUBLE
+	 *     x=DOUBLE (ambiguity) (rule end)
+	 *     y=DOUBLE (ambiguity) 'DRONE' '{' 'x' '=' x=DOUBLE
+	 *     y=DOUBLE (ambiguity) 'rotation' '=' rotation=DOUBLE
+	 *     y=DOUBLE (ambiguity) 'y' '=' y=DOUBLE
+	 *     y=DOUBLE (ambiguity) 'z' '=' z=DOUBLE
+	 *     y=DOUBLE (ambiguity) (rule end)
+	 *     z=DOUBLE (ambiguity) 'DRONE' '{' 'x' '=' x=DOUBLE
+	 *     z=DOUBLE (ambiguity) 'rotation' '=' rotation=DOUBLE
+	 *     z=DOUBLE (ambiguity) 'y' '=' y=DOUBLE
+	 *     z=DOUBLE (ambiguity) 'z' '=' z=DOUBLE
+	 *     z=DOUBLE (ambiguity) (rule end)
+	 */
+	protected void emit_Drone_RightCurlyBracketKeyword_3_1_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '}'+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 *     rotation=DOUBLE (ambiguity) 'DRONE' '{' 'x' '=' x=DOUBLE
+	 *     rotation=DOUBLE (ambiguity) 'rotation' '=' rotation=DOUBLE
+	 *     rotation=DOUBLE (ambiguity) 'y' '=' y=DOUBLE
+	 *     rotation=DOUBLE (ambiguity) 'z' '=' z=DOUBLE
+	 *     rotation=DOUBLE (ambiguity) (rule end)
+	 */
+	protected void emit_Drone_RightCurlyBracketKeyword_3_1_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     '}'*
