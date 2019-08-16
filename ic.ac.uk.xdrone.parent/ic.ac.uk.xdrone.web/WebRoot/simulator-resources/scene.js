@@ -21,12 +21,14 @@ var collisionBox;
 var collisions, collidedWith, wallsColision, walls;
 var lastCameraPosition;
 var landHeight;
+var currentDroneAngle;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
 function init()
 {
-    objects = [], labelObjects = [], labelAxes = [], landHeight = undefined;
+    objects = [], labelObjects = [], labelAxes = [], landHeight = undefined,
+    currentDroneAngle = 90;;
 
     var simulatorContainer = document.getElementById('SIMULATOR_CONTAINER');
     simulator = document.getElementById('SIMULATOR');

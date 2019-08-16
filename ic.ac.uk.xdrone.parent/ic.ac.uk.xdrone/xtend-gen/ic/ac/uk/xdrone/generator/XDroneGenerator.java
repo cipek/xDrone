@@ -78,7 +78,7 @@ public class XDroneGenerator extends AbstractGenerator {
           boolean _tripleNotEquals = (_rotation != null);
           if (_tripleNotEquals) {
             _builder.append("\t");
-            _builder.append("window.currentDroneAngle += ");
+            _builder.append("currentDroneAngle += ");
             String _rotation_1 = d.getRotation();
             _builder.append(_rotation_1, "\t");
             _builder.append(";");
