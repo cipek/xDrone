@@ -70,6 +70,7 @@ class XDroneGenerator extends AbstractGenerator {
 		var currentFunction = "";
 		var finishSimulation = false;
 		var destination = 0;
+		var currentDroneAngle = 90;
 
 		//Drone's path
 		var lineMaterial = new THREE.LineBasicMaterial({color: 0x1ACF10});
@@ -120,9 +121,7 @@ class XDroneGenerator extends AbstractGenerator {
 					|| (currentFunction == "MOVE_X" && fly(destination, 'x'))
 					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
-					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))
-					|| (currentFunction == "FLY_TO_X" && flyTo(destination, 'x'))
-					|| (currentFunction == "FLY_TO_Z" && flyTo(destination, 'z'))){
+					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
 					nextCommand();
 				}
 			}
@@ -160,26 +159,18 @@ class XDroneGenerator extends AbstractGenerator {
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].flyTo !== undefined){
-					currentFunction = "MOVE_Y";
+					
 					var vector = getDistanceToObject(commands[0].flyTo);
+					var angle = getRotationToObject(commands[0].flyTo);
 					
 					commands.shift();
-					destination = vector.y;
-					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 					
-					commands.unshift({flytToX: vector.x}); 
-					commands.unshift({flytToZ: vector.z}); 
+					goalDroneRotation = angle * (Math.PI/180);
+					console.log(angle, angle * (Math.PI/180));
+					currentFunction = "ROTATION";
+					commands.unshift({z: vector.z}); 
 					commands.unshift({y: vector.y}); 
-				}
-				else if(commands[0].flytToX !== undefined){
-					destination = commands[0].flytToX;
-					currentFunction = "FLY_TO_X";
-					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
-				}
-				else if(commands[0].flytToZ !== undefined){
-					destination = commands[0].flytToZ;
-					currentFunction = "FLY_TO_Z";
-					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+					commands.unshift({r: angle});
 				}
 				commands.shift();
 			}

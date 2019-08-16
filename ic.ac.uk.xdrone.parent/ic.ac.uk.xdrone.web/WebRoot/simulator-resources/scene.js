@@ -315,24 +315,6 @@ function fly(destination, axis){
   return stopped;
 }
 
-function flyTo(destination, axis){
-  landHeight = undefined;
-  var stopped = true;
-
-  if(Math.abs(drone.position[axis]-destination) > 0.015){
-    var additionalDistance = flySupporter(drone.position[axis], destination, 0.015);
-    drone.position[axis] += additionalDistance;
-    stopped = false;
-  }
-
-  drawNewLineSegment();
-  if(stopped){
-    coveredDistance = 0;
-  }
-
-  return stopped;
-}
-
 function drawNewLineSegment(){
   var vertices = lineGeometry.vertices;
   vertices.pop();
@@ -357,6 +339,7 @@ function rotation(goalRotation){
   }
   if(stopped){
     coveredAngle = 0;
+    currentDroneAngle = checkAngle(currentDroneAngle + radiansToDegrees(goalRotation));
   }
 
 
@@ -585,7 +568,6 @@ function detectCollisions() {
        ( bounds.yMin <= collisions[ index ].yMax && bounds.yMax >= collisions[ index ].yMin) &&
        ( bounds.zMin <= collisions[ index ].zMax && bounds.zMax >= collisions[ index ].zMin) ) {
       // Hit detected
-      // console.log("IN HIT", collisions[ index ].objectName);
       if(!collidedWith.includes(collisions[ index ].objectName))
         collidedWith.push(collisions[ index ].objectName);
     }
@@ -620,11 +602,15 @@ function getDistanceToObject(objectName){
     }
   }
 
+  var x = getDistance(drone.position.x, object.position.x)
+  var z = getDistance(drone.position.z, object.position.z)
+
+  var distance = Math.sqrt( x*x + z*z );
   if(object !== undefined){
     return {
-      x: getDistance(drone.position.x, object.position.x),
+      //x: getDistance(drone.position.x, object.position.x),
       y: getDistance(drone.position.y, object.position.y) + object.geometry.parameters.height/2 + 0.5,
-      z: getDistance(drone.position.z, object.position.z)
+      z: distance
     }
   }
   else
@@ -636,4 +622,51 @@ function getDistance(dronePos, obPos){
     return - Math.abs(dronePos - obPos);
   else
     return Math.abs(dronePos - obPos);
+}
+
+function getRotationToObject(objectName){
+  let object;
+
+  for (var i = 0; i < objects.length; i++) {
+    if(objects[i].name == objectName){
+      object = objects[i];
+      break;
+    }
+  }
+
+  if(object !== undefined){
+    var angleToObject = -Math.atan2(drone.position.z - object.position.z, drone.position.x - object.position.x) * 180 / Math.PI;
+
+    angleToObject = angleTo360(angleToObject);
+    var isPositive = true;
+    if(currentDroneAngle > angleToObject)
+      isPositive = false;
+
+    angleToObject = Math.abs(currentDroneAngle - angleToObject);
+    if(angleToObject > 180 ){
+      angleToObject = 360 - angleToObject;
+      isPositive = !isPositive;
+    }
+
+    return (isPositive ? angleToObject : -angleToObject)
+  }
+  else
+    return 0;
+}
+
+function radiansToDegrees(radians){
+  return radians * (180/Math.PI);
+}
+
+function angleTo360(angle){
+  if(angle < 0)
+    angle = 360 + angle;
+  return angle;
+}
+
+function checkAngle(angle){
+  angle = angle%360;
+  if(angle < 0)
+    angle = 360 + angle;
+  return angle;
 }
