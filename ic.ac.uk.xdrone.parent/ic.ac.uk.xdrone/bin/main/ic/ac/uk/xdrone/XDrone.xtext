@@ -149,7 +149,7 @@ Color:
 ;
 
 Walls:
-	//'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+//	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 	'WALLS' '{'
 		front = Front & right = Right & back = Back & left = Left & up = Up
 	'}'

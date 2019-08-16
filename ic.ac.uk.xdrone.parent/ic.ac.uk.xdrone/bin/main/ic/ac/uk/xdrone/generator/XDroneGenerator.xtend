@@ -10,13 +10,8 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import ic.ac.uk.xdrone.xDrone.Fly
 import ic.ac.uk.xdrone.xDrone.Command
 import ic.ac.uk.xdrone.xDrone.Up
-import ic.ac.uk.xdrone.xDrone.Down
 import ic.ac.uk.xdrone.xDrone.Left
 import ic.ac.uk.xdrone.xDrone.Right
-import ic.ac.uk.xdrone.xDrone.Forward
-import ic.ac.uk.xdrone.xDrone.Backward
-import ic.ac.uk.xdrone.xDrone.RotateL
-import ic.ac.uk.xdrone.xDrone.RotateR
 import ic.ac.uk.xdrone.xDrone.Wait
 import java.io.PrintWriter
 import java.io.IOException
@@ -48,7 +43,7 @@ class XDroneGenerator extends AbstractGenerator {
 			drone.position.y = «d.vector.y» + modelHeight
 		«ENDFOR»
 		«FOR d : environment.walls»
-			drawWalls(«d.front», «d.right», «d.back», «d.left»,  «d.up»)
+			drawWalls(«d.front.value», «d.right.value», «d.back.value», «d.left.value»,  «d.up.value»)
 		«ENDFOR»
 		«FOR ob : environment.objects»
 «««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
@@ -337,30 +332,30 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compile(Command cmd) '''
-		«IF cmd instanceof Up »
-		move(0.1, «cmd.distance», True, "z")
-	  	«ENDIF»
-	  	«IF cmd instanceof Down»
-	  	move(0.1, «cmd.distance», False, "z")
-	  	«ENDIF»
-	  	«IF cmd instanceof Left »
-	  	move(0.1, «cmd.distance», True, "y")
-	  	«ENDIF»
-	  	«IF cmd instanceof Right»
-	  	move(0.1, «cmd.distance», False, "y")
-	  	«ENDIF»
-	  	«IF cmd instanceof Forward»	
-	  	move(0.1, «cmd.distance», True, "x")
-	  	«ENDIF»
-	  	«IF cmd instanceof Backward»	
-	  	move(0.1, «cmd.distance», False, "x")
-	  	«ENDIF»
-	  	«IF cmd instanceof RotateL»	
-		rotate(30, «cmd.angle», False)
-	  	«ENDIF»
-	  	«IF cmd instanceof RotateR»	
-	  	rotate(30, «cmd.angle», True)
-	  	«ENDIF»
+«««		«IF cmd instanceof Up »
+«««		move(0.1, «cmd.distance», True, "z")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof Down»
+«««	  	move(0.1, «cmd.distance», False, "z")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof Left »
+«««	  	move(0.1, «cmd.distance», True, "y")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof Right»
+«««	  	move(0.1, «cmd.distance», False, "y")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof Forward»	
+«««	  	move(0.1, «cmd.distance», True, "x")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof Backward»	
+«««	  	move(0.1, «cmd.distance», False, "x")
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof RotateL»	
+«««		rotate(30, «cmd.angle», False)
+«««	  	«ENDIF»
+«««	  	«IF cmd instanceof RotateR»	
+«««	  	rotate(30, «cmd.angle», True)
+«««	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 	  	rospy.sleep(«cmd.seconds»)
 	  	«ENDIF»

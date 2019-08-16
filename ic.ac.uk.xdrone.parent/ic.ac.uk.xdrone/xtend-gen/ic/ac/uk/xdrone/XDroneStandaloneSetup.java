@@ -3,13 +3,14 @@
  */
 package ic.ac.uk.xdrone;
 
+import ic.ac.uk.xdrone.XDroneStandaloneSetupGenerated;
+
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class XDroneStandaloneSetup /* implements XDroneStandaloneSetupGenerated  */{
+public class XDroneStandaloneSetup extends XDroneStandaloneSetupGenerated {
   public static void doSetup() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type XDroneStandaloneSetup");
+    new XDroneStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }

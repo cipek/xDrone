@@ -766,19 +766,19 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpUpParserRuleCall_4_0_0 = (RuleCall)cUpAssignment_4_0.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		
-		//Walls: //'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+		//Walls: //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//	'WALLS' '{' front=Front & right=Right & back=Back & left=Left & up=Up '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		////'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+		////	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//'WALLS' '{' front=Front & right=Right & back=Back & left=Left & up=Up '}'
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		////'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+		////	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//'WALLS' '{' front=Front
 		public Group getGroup_0() { return cGroup_0; }
 		
-		////'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+		////	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//'WALLS'
 		public Keyword getWALLSKeyword_0_0() { return cWALLSKeyword_0_0; }
 		
@@ -1315,7 +1315,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getColorAccess().getRule();
 	}
 	
-	//Walls: //'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+	//Walls: //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 	//	'WALLS' '{' front=Front & right=Right & back=Back & left=Left & up=Up '}';
 	public WallsElements getWallsAccess() {
 		return pWalls;

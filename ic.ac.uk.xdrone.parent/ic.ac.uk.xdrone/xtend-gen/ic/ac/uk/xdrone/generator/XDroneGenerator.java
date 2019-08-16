@@ -4,21 +4,16 @@
 package ic.ac.uk.xdrone.generator;
 
 import com.google.common.collect.Iterables;
-import ic.ac.uk.xdrone.xDrone.Back;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.FlyTo;
-import ic.ac.uk.xdrone.xDrone.Front;
-import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
-import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
-import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.Walls;
 import java.io.File;
@@ -85,20 +80,20 @@ public class XDroneGenerator extends AbstractGenerator {
       for(final Walls d_1 : _walls) {
         _builder.append("\t");
         _builder.append("drawWalls(");
-        Front _front = d_1.getFront();
-        _builder.append(_front, "\t");
+        String _value = d_1.getFront().getValue();
+        _builder.append(_value, "\t");
         _builder.append(", ");
-        Right _right = d_1.getRight();
-        _builder.append(_right, "\t");
+        String _value_1 = d_1.getRight().getValue();
+        _builder.append(_value_1, "\t");
         _builder.append(", ");
-        Back _back = d_1.getBack();
-        _builder.append(_back, "\t");
+        String _value_2 = d_1.getBack().getValue();
+        _builder.append(_value_2, "\t");
         _builder.append(", ");
-        Left _left = d_1.getLeft();
-        _builder.append(_left, "\t");
+        String _value_3 = d_1.getLeft().getValue();
+        _builder.append(_value_3, "\t");
         _builder.append(",  ");
-        Up _up = d_1.getUp();
-        _builder.append(_up, "\t");
+        String _value_4 = d_1.getUp().getValue();
+        _builder.append(_value_4, "\t");
         _builder.append(")");
         _builder.newLineIfNotEmpty();
       }
@@ -830,20 +825,21 @@ public class XDroneGenerator extends AbstractGenerator {
   }
   
   public CharSequence compile(final Command cmd) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nDown cannot be resolved to a type."
-      + "\nForward cannot be resolved to a type."
-      + "\nBackward cannot be resolved to a type."
-      + "\nRotateL cannot be resolved to a type."
-      + "\nRotateR cannot be resolved to a type."
-      + "\nThe method or field distance is undefined for the type Command & Up"
-      + "\nThe method or field distance is undefined for the type Command"
-      + "\nThe method or field distance is undefined for the type Command & Left"
-      + "\nThe method or field distance is undefined for the type Command & Right"
-      + "\nThe method or field distance is undefined for the type Command"
-      + "\nThe method or field distance is undefined for the type Command"
-      + "\nThe method or field angle is undefined for the type Command"
-      + "\nThe method or field angle is undefined for the type Command");
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((cmd instanceof Wait)) {
+        _builder.append("rospy.sleep(");
+        String _seconds = ((Wait)cmd).getSeconds();
+        _builder.append(_seconds);
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Move)) {
+      }
+    }
+    return _builder;
   }
   
   @Override
