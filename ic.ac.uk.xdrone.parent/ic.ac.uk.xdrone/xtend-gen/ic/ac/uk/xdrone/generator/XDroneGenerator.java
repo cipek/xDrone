@@ -274,7 +274,13 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("|| (currentFunction == \"LAND\" && land())");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("|| (currentFunction == \"ROTATION\" && rotation(goalDroneRotation))){");
+    _builder.append("|| (currentFunction == \"ROTATION\" && rotation(goalDroneRotation))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("|| (currentFunction == \"FLY_TO_X\" && flyTo(destination, \'x\'))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("|| (currentFunction == \"FLY_TO_Z\" && flyTo(destination, \'z\'))){");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("nextCommand();");
@@ -403,13 +409,43 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("commands.unshift({x: vector.x}); ");
+    _builder.append("commands.unshift({flytToX: vector.x}); ");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("commands.unshift({z: vector.z}); ");
+    _builder.append("commands.unshift({flytToZ: vector.z}); ");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("commands.unshift({y: vector.y}); ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else if(commands[0].flytToX !== undefined){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("destination = commands[0].flytToX;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"FLY_TO_X\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("else if(commands[0].flytToZ !== undefined){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("destination = commands[0].flytToZ;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"FLY_TO_Z\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("}");
@@ -457,10 +493,10 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     {
       if ((cmd instanceof Rotate)) {
-        _builder.append("commands.push({r: 90 / ");
+        _builder.append("commands.push({r: ");
         String _angle = ((Rotate)cmd).getAngle();
         _builder.append(_angle);
-        _builder.append(" * (Math.PI/2)}); ");
+        _builder.append(" * (Math.PI/180)}); ");
         _builder.newLineIfNotEmpty();
       }
     }

@@ -295,7 +295,7 @@ function fly(destination, axis){
   landHeight = undefined;
   var stopped = true;
 
-  if(destination !== 0 && Math.abs(coveredDistance-destination) > 0.04){ //0.02 acceptable movement precision error
+  if(destination !== 0 && Math.abs(coveredDistance-destination) > 0.015){ //0.02 acceptable movement precision error
     var additionalDistance = flySupporter(coveredDistance, destination, 0.015);
     coveredDistance += additionalDistance;
     if(axis == 'x')
@@ -304,6 +304,24 @@ function fly(destination, axis){
       drone.translateY(additionalDistance);
     else if(axis == 'z')
       drone.translateZ(additionalDistance);
+    stopped = false;
+  }
+
+  drawNewLineSegment();
+  if(stopped){
+    coveredDistance = 0;
+  }
+
+  return stopped;
+}
+
+function flyTo(destination, axis){
+  landHeight = undefined;
+  var stopped = true;
+
+  if(Math.abs(drone.position[axis]-destination) > 0.015){
+    var additionalDistance = flySupporter(drone.position[axis], destination, 0.015);
+    drone.position[axis] += additionalDistance;
     stopped = false;
   }
 
@@ -331,7 +349,7 @@ function drawNewLineSegment(){
 function rotation(goalRotation){
   var stopped = true;
   // if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
-  if(Math.abs(coveredAngle-goalRotation) > 0.04){
+  if(Math.abs(coveredAngle-goalRotation) > 0.02){
     var additionalAngle = flySupporter(coveredAngle, goalRotation, 0.02)
     coveredAngle += additionalAngle;
     drone.rotateY(additionalAngle);

@@ -120,7 +120,9 @@ class XDroneGenerator extends AbstractGenerator {
 					|| (currentFunction == "MOVE_X" && fly(destination, 'x'))
 					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
-					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
+					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))
+					|| (currentFunction == "FLY_TO_X" && flyTo(destination, 'x'))
+					|| (currentFunction == "FLY_TO_Z" && flyTo(destination, 'z'))){
 					nextCommand();
 				}
 			}
@@ -165,9 +167,19 @@ class XDroneGenerator extends AbstractGenerator {
 					destination = vector.y;
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 					
-					commands.unshift({x: vector.x}); 
-					commands.unshift({z: vector.z}); 
+					commands.unshift({flytToX: vector.x}); 
+					commands.unshift({flytToZ: vector.z}); 
 					commands.unshift({y: vector.y}); 
+				}
+				else if(commands[0].flytToX !== undefined){
+					destination = commands[0].flytToX;
+					currentFunction = "FLY_TO_X";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+				}
+				else if(commands[0].flytToZ !== undefined){
+					destination = commands[0].flytToZ;
+					currentFunction = "FLY_TO_Z";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				commands.shift();
 			}
@@ -184,7 +196,7 @@ class XDroneGenerator extends AbstractGenerator {
 			commands.push({x: «cmd.vector.x»}); 
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
-			commands.push({r: 90 / «cmd.angle» * (Math.PI/2)}); 
+			commands.push({r: «cmd.angle» * (Math.PI/180)}); 
 	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 			commands.push({w: «cmd.seconds»});
