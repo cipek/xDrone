@@ -3,7 +3,7 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -11,48 +11,49 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Rotate R</b></em>'.
+ * An implementation of the model object '<em><b>Front</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.RotateRImpl#getAngle <em>Angle</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.FrontImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RotateRImpl extends CommandImpl implements RotateR
+public class FrontImpl extends MinimalEObjectImpl.Container implements Front
 {
   /**
-   * The default value of the '{@link #getAngle() <em>Angle</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAngle()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final int ANGLE_EDEFAULT = 0;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAngle() <em>Angle</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAngle()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected int angle = ANGLE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RotateRImpl()
+  protected FrontImpl()
   {
     super();
   }
@@ -65,7 +66,7 @@ public class RotateRImpl extends CommandImpl implements RotateR
   @Override
   protected EClass eStaticClass()
   {
-    return XDronePackage.Literals.ROTATE_R;
+    return XDronePackage.Literals.FRONT;
   }
 
   /**
@@ -73,9 +74,9 @@ public class RotateRImpl extends CommandImpl implements RotateR
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getAngle()
+  public String getValue()
   {
-    return angle;
+    return value;
   }
 
   /**
@@ -83,12 +84,12 @@ public class RotateRImpl extends CommandImpl implements RotateR
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAngle(int newAngle)
+  public void setValue(String newValue)
   {
-    int oldAngle = angle;
-    angle = newAngle;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.ROTATE_R__ANGLE, oldAngle, angle));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.FRONT__VALUE, oldValue, value));
   }
 
   /**
@@ -101,8 +102,8 @@ public class RotateRImpl extends CommandImpl implements RotateR
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE_R__ANGLE:
-        return getAngle();
+      case XDronePackage.FRONT__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +118,8 @@ public class RotateRImpl extends CommandImpl implements RotateR
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE_R__ANGLE:
-        setAngle((Integer)newValue);
+      case XDronePackage.FRONT__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +135,8 @@ public class RotateRImpl extends CommandImpl implements RotateR
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE_R__ANGLE:
-        setAngle(ANGLE_EDEFAULT);
+      case XDronePackage.FRONT__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -151,8 +152,8 @@ public class RotateRImpl extends CommandImpl implements RotateR
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE_R__ANGLE:
-        return angle != ANGLE_EDEFAULT;
+      case XDronePackage.FRONT__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -168,10 +169,10 @@ public class RotateRImpl extends CommandImpl implements RotateR
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (angle: ");
-    result.append(angle);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }
 
-} //RotateRImpl
+} //FrontImpl

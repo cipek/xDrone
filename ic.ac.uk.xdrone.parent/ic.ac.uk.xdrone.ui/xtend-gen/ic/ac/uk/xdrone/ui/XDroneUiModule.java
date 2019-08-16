@@ -3,8 +3,6 @@
  */
 package ic.ac.uk.xdrone.ui;
 
-import ic.ac.uk.xdrone.ui.AbstractXDroneUiModule;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 
 /**
@@ -12,8 +10,5 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
  */
 @FinalFieldsConstructor
 @SuppressWarnings("all")
-public class XDroneUiModule extends AbstractXDroneUiModule {
-  public XDroneUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
-  }
+public class XDroneUiModule /* implements AbstractXDroneUiModule  */{
 }

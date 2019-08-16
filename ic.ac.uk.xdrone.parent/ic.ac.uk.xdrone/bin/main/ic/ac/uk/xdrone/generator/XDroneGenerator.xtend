@@ -48,7 +48,7 @@ class XDroneGenerator extends AbstractGenerator {
 			drone.position.y = «d.vector.y» + modelHeight
 		«ENDFOR»
 		«FOR d : environment.walls»
-			drawWalls(«d.front», «d.right», «d.back», «d.left»)
+			drawWalls(«d.front», «d.right», «d.back», «d.left»,  «d.up»)
 		«ENDFOR»
 		«FOR ob : environment.objects»
 «««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)

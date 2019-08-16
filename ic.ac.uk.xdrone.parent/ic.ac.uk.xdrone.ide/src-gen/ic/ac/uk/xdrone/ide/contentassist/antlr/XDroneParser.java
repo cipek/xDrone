@@ -46,14 +46,6 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFlyToAccess().getGroup(), "rule__FlyTo__Group__0");
 			builder.put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 			builder.put(grammarAccess.getRotateAccess().getGroup(), "rule__Rotate__Group__0");
-			builder.put(grammarAccess.getUpAccess().getGroup(), "rule__Up__Group__0");
-			builder.put(grammarAccess.getDownAccess().getGroup(), "rule__Down__Group__0");
-			builder.put(grammarAccess.getLeftAccess().getGroup(), "rule__Left__Group__0");
-			builder.put(grammarAccess.getRightAccess().getGroup(), "rule__Right__Group__0");
-			builder.put(grammarAccess.getForwardAccess().getGroup(), "rule__Forward__Group__0");
-			builder.put(grammarAccess.getBackwardAccess().getGroup(), "rule__Backward__Group__0");
-			builder.put(grammarAccess.getRotateLAccess().getGroup(), "rule__RotateL__Group__0");
-			builder.put(grammarAccess.getRotateRAccess().getGroup(), "rule__RotateR__Group__0");
 			builder.put(grammarAccess.getWaitAccess().getGroup(), "rule__Wait__Group__0");
 			builder.put(grammarAccess.getFunctionNameAccess().getGroup(), "rule__FunctionName__Group__0");
 			builder.put(grammarAccess.getDroneAccess().getGroup(), "rule__Drone__Group__0");
@@ -63,7 +55,13 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSizeAccess().getGroup(), "rule__Size__Group__0");
 			builder.put(grammarAccess.getVectorAccess().getGroup(), "rule__Vector__Group__0");
 			builder.put(grammarAccess.getColorAccess().getGroup(), "rule__Color__Group__0");
-			builder.put(grammarAccess.getWallsAccess().getGroup(), "rule__Walls__Group__0");
+			builder.put(grammarAccess.getWallsAccess().getGroup_0(), "rule__Walls__Group_0__0");
+			builder.put(grammarAccess.getWallsAccess().getGroup_4(), "rule__Walls__Group_4__0");
+			builder.put(grammarAccess.getFrontAccess().getGroup(), "rule__Front__Group__0");
+			builder.put(grammarAccess.getRightAccess().getGroup(), "rule__Right__Group__0");
+			builder.put(grammarAccess.getLeftAccess().getGroup(), "rule__Left__Group__0");
+			builder.put(grammarAccess.getBackAccess().getGroup(), "rule__Back__Group__0");
+			builder.put(grammarAccess.getUpAccess().getGroup(), "rule__Up__Group__0");
 			builder.put(grammarAccess.getProgramAccess().getMainAssignment(), "rule__Program__MainAssignment");
 			builder.put(grammarAccess.getMainAccess().getFlyAssignment_0(), "rule__Main__FlyAssignment_0");
 			builder.put(grammarAccess.getMainAccess().getEnvironmentAssignment_1(), "rule__Main__EnvironmentAssignment_1");
@@ -78,14 +76,6 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFlyToAccess().getObject_nameAssignment_2(), "rule__FlyTo__Object_nameAssignment_2");
 			builder.put(grammarAccess.getMoveAccess().getVectorAssignment_1(), "rule__Move__VectorAssignment_1");
 			builder.put(grammarAccess.getRotateAccess().getAngleAssignment_2(), "rule__Rotate__AngleAssignment_2");
-			builder.put(grammarAccess.getUpAccess().getDistanceAssignment_2(), "rule__Up__DistanceAssignment_2");
-			builder.put(grammarAccess.getDownAccess().getDistanceAssignment_2(), "rule__Down__DistanceAssignment_2");
-			builder.put(grammarAccess.getLeftAccess().getDistanceAssignment_2(), "rule__Left__DistanceAssignment_2");
-			builder.put(grammarAccess.getRightAccess().getDistanceAssignment_2(), "rule__Right__DistanceAssignment_2");
-			builder.put(grammarAccess.getForwardAccess().getDistanceAssignment_2(), "rule__Forward__DistanceAssignment_2");
-			builder.put(grammarAccess.getBackwardAccess().getDistanceAssignment_2(), "rule__Backward__DistanceAssignment_2");
-			builder.put(grammarAccess.getRotateLAccess().getAngleAssignment_2(), "rule__RotateL__AngleAssignment_2");
-			builder.put(grammarAccess.getRotateRAccess().getAngleAssignment_2(), "rule__RotateR__AngleAssignment_2");
 			builder.put(grammarAccess.getWaitAccess().getSecondsAssignment_2(), "rule__Wait__SecondsAssignment_2");
 			builder.put(grammarAccess.getFunctionNameAccess().getFunc_nameAssignment_0(), "rule__FunctionName__Func_nameAssignment_0");
 			builder.put(grammarAccess.getDroneAccess().getVectorAssignment_1(), "rule__Drone__VectorAssignment_1");
@@ -99,11 +89,18 @@ public class XDroneParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getVectorAccess().getYAssignment_3(), "rule__Vector__YAssignment_3");
 			builder.put(grammarAccess.getVectorAccess().getZAssignment_5(), "rule__Vector__ZAssignment_5");
 			builder.put(grammarAccess.getColorAccess().getColor_valueAssignment_2(), "rule__Color__Color_valueAssignment_2");
-			builder.put(grammarAccess.getWallsAccess().getFrontAssignment_2(), "rule__Walls__FrontAssignment_2");
-			builder.put(grammarAccess.getWallsAccess().getRightAssignment_4(), "rule__Walls__RightAssignment_4");
-			builder.put(grammarAccess.getWallsAccess().getBackAssignment_6(), "rule__Walls__BackAssignment_6");
-			builder.put(grammarAccess.getWallsAccess().getLeftAssignment_8(), "rule__Walls__LeftAssignment_8");
+			builder.put(grammarAccess.getWallsAccess().getFrontAssignment_0_2(), "rule__Walls__FrontAssignment_0_2");
+			builder.put(grammarAccess.getWallsAccess().getRightAssignment_1(), "rule__Walls__RightAssignment_1");
+			builder.put(grammarAccess.getWallsAccess().getBackAssignment_2(), "rule__Walls__BackAssignment_2");
+			builder.put(grammarAccess.getWallsAccess().getLeftAssignment_3(), "rule__Walls__LeftAssignment_3");
+			builder.put(grammarAccess.getWallsAccess().getUpAssignment_4_0(), "rule__Walls__UpAssignment_4_0");
+			builder.put(grammarAccess.getFrontAccess().getValueAssignment_2(), "rule__Front__ValueAssignment_2");
+			builder.put(grammarAccess.getRightAccess().getValueAssignment_2(), "rule__Right__ValueAssignment_2");
+			builder.put(grammarAccess.getLeftAccess().getValueAssignment_2(), "rule__Left__ValueAssignment_2");
+			builder.put(grammarAccess.getBackAccess().getValueAssignment_2(), "rule__Back__ValueAssignment_2");
+			builder.put(grammarAccess.getUpAccess().getValueAssignment_2(), "rule__Up__ValueAssignment_2");
 			builder.put(grammarAccess.getObjectAccess().getUnorderedGroup(), "rule__Object__UnorderedGroup");
+			builder.put(grammarAccess.getWallsAccess().getUnorderedGroup(), "rule__Walls__UnorderedGroup");
 		}
 	}
 	

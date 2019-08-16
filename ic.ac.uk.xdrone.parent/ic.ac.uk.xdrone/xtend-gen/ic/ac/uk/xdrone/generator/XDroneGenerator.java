@@ -4,22 +4,19 @@
 package ic.ac.uk.xdrone.generator;
 
 import com.google.common.collect.Iterables;
-import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Back;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
-import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.FlyTo;
-import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
-import ic.ac.uk.xdrone.xDrone.RotateL;
-import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Wait;
@@ -88,17 +85,20 @@ public class XDroneGenerator extends AbstractGenerator {
       for(final Walls d_1 : _walls) {
         _builder.append("\t");
         _builder.append("drawWalls(");
-        String _front = d_1.getFront();
+        Front _front = d_1.getFront();
         _builder.append(_front, "\t");
         _builder.append(", ");
-        String _right = d_1.getRight();
+        Right _right = d_1.getRight();
         _builder.append(_right, "\t");
         _builder.append(", ");
-        String _back = d_1.getBack();
+        Back _back = d_1.getBack();
         _builder.append(_back, "\t");
         _builder.append(", ");
-        String _left = d_1.getLeft();
+        Left _left = d_1.getLeft();
         _builder.append(_left, "\t");
+        _builder.append(",  ");
+        Up _up = d_1.getUp();
+        _builder.append(_up, "\t");
         _builder.append(")");
         _builder.newLineIfNotEmpty();
       }
@@ -830,100 +830,20 @@ public class XDroneGenerator extends AbstractGenerator {
   }
   
   public CharSequence compile(final Command cmd) {
-    StringConcatenation _builder = new StringConcatenation();
-    {
-      if ((cmd instanceof Up)) {
-        _builder.append("move(0.1, ");
-        String _distance = ((Up)cmd).getDistance();
-        _builder.append(_distance);
-        _builder.append(", True, \"z\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Down)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_1 = ((Down)cmd).getDistance();
-        _builder.append(_distance_1, "\t  \t");
-        _builder.append(", False, \"z\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Left)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_2 = ((Left)cmd).getDistance();
-        _builder.append(_distance_2, "\t  \t");
-        _builder.append(", True, \"y\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Right)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_3 = ((Right)cmd).getDistance();
-        _builder.append(_distance_3, "\t  \t");
-        _builder.append(", False, \"y\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Forward)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_4 = ((Forward)cmd).getDistance();
-        _builder.append(_distance_4, "\t  \t");
-        _builder.append(", True, \"x\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Backward)) {
-        _builder.append("\t  \t");
-        _builder.append("move(0.1, ");
-        String _distance_5 = ((Backward)cmd).getDistance();
-        _builder.append(_distance_5, "\t  \t");
-        _builder.append(", False, \"x\")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof RotateL)) {
-        _builder.append("rotate(30, ");
-        int _angle = ((RotateL)cmd).getAngle();
-        _builder.append(_angle);
-        _builder.append(", False)");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof RotateR)) {
-        _builder.append("\t  \t");
-        _builder.append("rotate(30, ");
-        int _angle_1 = ((RotateR)cmd).getAngle();
-        _builder.append(_angle_1, "\t  \t");
-        _builder.append(", True)");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Wait)) {
-        _builder.append("\t  \t");
-        _builder.append("rospy.sleep(");
-        String _seconds = ((Wait)cmd).getSeconds();
-        _builder.append(_seconds, "\t  \t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Move)) {
-      }
-    }
-    return _builder;
+    throw new Error("Unresolved compilation problems:"
+      + "\nDown cannot be resolved to a type."
+      + "\nForward cannot be resolved to a type."
+      + "\nBackward cannot be resolved to a type."
+      + "\nRotateL cannot be resolved to a type."
+      + "\nRotateR cannot be resolved to a type."
+      + "\nThe method or field distance is undefined for the type Command & Up"
+      + "\nThe method or field distance is undefined for the type Command"
+      + "\nThe method or field distance is undefined for the type Command & Left"
+      + "\nThe method or field distance is undefined for the type Command & Right"
+      + "\nThe method or field distance is undefined for the type Command"
+      + "\nThe method or field distance is undefined for the type Command"
+      + "\nThe method or field angle is undefined for the type Command"
+      + "\nThe method or field angle is undefined for the type Command");
   }
   
   @Override

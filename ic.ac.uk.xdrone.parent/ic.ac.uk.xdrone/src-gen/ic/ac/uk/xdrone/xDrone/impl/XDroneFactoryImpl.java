@@ -3,15 +3,14 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Back;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
-import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.FlyTo;
-import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
@@ -20,8 +19,6 @@ import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
-import ic.ac.uk.xdrone.xDrone.RotateL;
-import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
@@ -102,14 +99,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.FLY_TO: return createFlyTo();
       case XDronePackage.MOVE: return createMove();
       case XDronePackage.ROTATE: return createRotate();
-      case XDronePackage.UP: return createUp();
-      case XDronePackage.DOWN: return createDown();
-      case XDronePackage.LEFT: return createLeft();
-      case XDronePackage.RIGHT: return createRight();
-      case XDronePackage.FORWARD: return createForward();
-      case XDronePackage.BACKWARD: return createBackward();
-      case XDronePackage.ROTATE_L: return createRotateL();
-      case XDronePackage.ROTATE_R: return createRotateR();
       case XDronePackage.WAIT: return createWait();
       case XDronePackage.FUNCTION_NAME: return createFunctionName();
       case XDronePackage.DRONE: return createDrone();
@@ -119,6 +108,11 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.VECTOR: return createVector();
       case XDronePackage.COLOR: return createColor();
       case XDronePackage.WALLS: return createWalls();
+      case XDronePackage.FRONT: return createFront();
+      case XDronePackage.RIGHT: return createRight();
+      case XDronePackage.LEFT: return createLeft();
+      case XDronePackage.BACK: return createBack();
+      case XDronePackage.UP: return createUp();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -239,94 +233,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Up createUp()
-  {
-    UpImpl up = new UpImpl();
-    return up;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Down createDown()
-  {
-    DownImpl down = new DownImpl();
-    return down;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Left createLeft()
-  {
-    LeftImpl left = new LeftImpl();
-    return left;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Right createRight()
-  {
-    RightImpl right = new RightImpl();
-    return right;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Forward createForward()
-  {
-    ForwardImpl forward = new ForwardImpl();
-    return forward;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Backward createBackward()
-  {
-    BackwardImpl backward = new BackwardImpl();
-    return backward;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RotateL createRotateL()
-  {
-    RotateLImpl rotateL = new RotateLImpl();
-    return rotateL;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RotateR createRotateR()
-  {
-    RotateRImpl rotateR = new RotateRImpl();
-    return rotateR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Wait createWait()
   {
     WaitImpl wait = new WaitImpl();
@@ -419,6 +325,61 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     WallsImpl walls = new WallsImpl();
     return walls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Front createFront()
+  {
+    FrontImpl front = new FrontImpl();
+    return front;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Right createRight()
+  {
+    RightImpl right = new RightImpl();
+    return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Left createLeft()
+  {
+    LeftImpl left = new LeftImpl();
+    return left;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Back createBack()
+  {
+    BackImpl back = new BackImpl();
+    return back;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Up createUp()
+  {
+    UpImpl up = new UpImpl();
+    return up;
   }
 
   /**

@@ -114,78 +114,6 @@ public interface XDroneFactory extends EFactory
   Rotate createRotate();
 
   /**
-   * Returns a new object of class '<em>Up</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Up</em>'.
-   * @generated
-   */
-  Up createUp();
-
-  /**
-   * Returns a new object of class '<em>Down</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Down</em>'.
-   * @generated
-   */
-  Down createDown();
-
-  /**
-   * Returns a new object of class '<em>Left</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Left</em>'.
-   * @generated
-   */
-  Left createLeft();
-
-  /**
-   * Returns a new object of class '<em>Right</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Right</em>'.
-   * @generated
-   */
-  Right createRight();
-
-  /**
-   * Returns a new object of class '<em>Forward</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Forward</em>'.
-   * @generated
-   */
-  Forward createForward();
-
-  /**
-   * Returns a new object of class '<em>Backward</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Backward</em>'.
-   * @generated
-   */
-  Backward createBackward();
-
-  /**
-   * Returns a new object of class '<em>Rotate L</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rotate L</em>'.
-   * @generated
-   */
-  RotateL createRotateL();
-
-  /**
-   * Returns a new object of class '<em>Rotate R</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rotate R</em>'.
-   * @generated
-   */
-  RotateR createRotateR();
-
-  /**
    * Returns a new object of class '<em>Wait</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -265,6 +193,51 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Walls createWalls();
+
+  /**
+   * Returns a new object of class '<em>Front</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Front</em>'.
+   * @generated
+   */
+  Front createFront();
+
+  /**
+   * Returns a new object of class '<em>Right</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Right</em>'.
+   * @generated
+   */
+  Right createRight();
+
+  /**
+   * Returns a new object of class '<em>Left</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Left</em>'.
+   * @generated
+   */
+  Left createLeft();
+
+  /**
+   * Returns a new object of class '<em>Back</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Back</em>'.
+   * @generated
+   */
+  Back createBack();
+
+  /**
+   * Returns a new object of class '<em>Up</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Up</em>'.
+   * @generated
+   */
+  Up createUp();
 
   /**
    * Returns the package supported by this factory.

@@ -3,12 +3,19 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
+import ic.ac.uk.xdrone.xDrone.Back;
+import ic.ac.uk.xdrone.xDrone.Front;
+import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -25,6 +32,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl#getRight <em>Right</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl#getBack <em>Back</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl#getUp <em>Up</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,84 +40,54 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
 {
   /**
-   * The default value of the '{@link #getFront() <em>Front</em>}' attribute.
+   * The cached value of the '{@link #getFront() <em>Front</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFront()
    * @generated
    * @ordered
    */
-  protected static final String FRONT_EDEFAULT = null;
+  protected Front front;
 
   /**
-   * The cached value of the '{@link #getFront() <em>Front</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFront()
-   * @generated
-   * @ordered
-   */
-  protected String front = FRONT_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getRight() <em>Right</em>}' attribute.
+   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRight()
    * @generated
    * @ordered
    */
-  protected static final String RIGHT_EDEFAULT = null;
+  protected Right right;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRight()
-   * @generated
-   * @ordered
-   */
-  protected String right = RIGHT_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getBack() <em>Back</em>}' attribute.
+   * The cached value of the '{@link #getBack() <em>Back</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBack()
    * @generated
    * @ordered
    */
-  protected static final String BACK_EDEFAULT = null;
+  protected Back back;
 
   /**
-   * The cached value of the '{@link #getBack() <em>Back</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBack()
-   * @generated
-   * @ordered
-   */
-  protected String back = BACK_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getLeft() <em>Left</em>}' attribute.
+   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getLeft()
    * @generated
    * @ordered
    */
-  protected static final String LEFT_EDEFAULT = null;
+  protected Left left;
 
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' attribute.
+   * The cached value of the '{@link #getUp() <em>Up</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
+   * @see #getUp()
    * @generated
    * @ordered
    */
-  protected String left = LEFT_EDEFAULT;
+  protected Up up;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,7 +115,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getFront()
+  public Front getFront()
   {
     return front;
   }
@@ -147,12 +125,16 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFront(String newFront)
+  public NotificationChain basicSetFront(Front newFront, NotificationChain msgs)
   {
-    String oldFront = front;
+    Front oldFront = front;
     front = newFront;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__FRONT, oldFront, front));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__FRONT, oldFront, newFront);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -160,7 +142,28 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRight()
+  public void setFront(Front newFront)
+  {
+    if (newFront != front)
+    {
+      NotificationChain msgs = null;
+      if (front != null)
+        msgs = ((InternalEObject)front).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__FRONT, null, msgs);
+      if (newFront != null)
+        msgs = ((InternalEObject)newFront).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__FRONT, null, msgs);
+      msgs = basicSetFront(newFront, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__FRONT, newFront, newFront));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Right getRight()
   {
     return right;
   }
@@ -170,12 +173,16 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRight(String newRight)
+  public NotificationChain basicSetRight(Right newRight, NotificationChain msgs)
   {
-    String oldRight = right;
+    Right oldRight = right;
     right = newRight;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__RIGHT, oldRight, right));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__RIGHT, oldRight, newRight);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -183,7 +190,28 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getBack()
+  public void setRight(Right newRight)
+  {
+    if (newRight != right)
+    {
+      NotificationChain msgs = null;
+      if (right != null)
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__RIGHT, null, msgs);
+      if (newRight != null)
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__RIGHT, null, msgs);
+      msgs = basicSetRight(newRight, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__RIGHT, newRight, newRight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Back getBack()
   {
     return back;
   }
@@ -193,12 +221,16 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBack(String newBack)
+  public NotificationChain basicSetBack(Back newBack, NotificationChain msgs)
   {
-    String oldBack = back;
+    Back oldBack = back;
     back = newBack;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__BACK, oldBack, back));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__BACK, oldBack, newBack);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -206,7 +238,28 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getLeft()
+  public void setBack(Back newBack)
+  {
+    if (newBack != back)
+    {
+      NotificationChain msgs = null;
+      if (back != null)
+        msgs = ((InternalEObject)back).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__BACK, null, msgs);
+      if (newBack != null)
+        msgs = ((InternalEObject)newBack).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__BACK, null, msgs);
+      msgs = basicSetBack(newBack, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__BACK, newBack, newBack));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Left getLeft()
   {
     return left;
   }
@@ -216,12 +269,109 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(String newLeft)
+  public NotificationChain basicSetLeft(Left newLeft, NotificationChain msgs)
   {
-    String oldLeft = left;
+    Left oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__LEFT, oldLeft, left));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__LEFT, oldLeft, newLeft);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLeft(Left newLeft)
+  {
+    if (newLeft != left)
+    {
+      NotificationChain msgs = null;
+      if (left != null)
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__LEFT, null, msgs);
+      if (newLeft != null)
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__LEFT, null, msgs);
+      msgs = basicSetLeft(newLeft, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__LEFT, newLeft, newLeft));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Up getUp()
+  {
+    return up;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetUp(Up newUp, NotificationChain msgs)
+  {
+    Up oldUp = up;
+    up = newUp;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__UP, oldUp, newUp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setUp(Up newUp)
+  {
+    if (newUp != up)
+    {
+      NotificationChain msgs = null;
+      if (up != null)
+        msgs = ((InternalEObject)up).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__UP, null, msgs);
+      if (newUp != null)
+        msgs = ((InternalEObject)newUp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.WALLS__UP, null, msgs);
+      msgs = basicSetUp(newUp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.WALLS__UP, newUp, newUp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case XDronePackage.WALLS__FRONT:
+        return basicSetFront(null, msgs);
+      case XDronePackage.WALLS__RIGHT:
+        return basicSetRight(null, msgs);
+      case XDronePackage.WALLS__BACK:
+        return basicSetBack(null, msgs);
+      case XDronePackage.WALLS__LEFT:
+        return basicSetLeft(null, msgs);
+      case XDronePackage.WALLS__UP:
+        return basicSetUp(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -242,6 +392,8 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
         return getBack();
       case XDronePackage.WALLS__LEFT:
         return getLeft();
+      case XDronePackage.WALLS__UP:
+        return getUp();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -257,16 +409,19 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        setFront((String)newValue);
+        setFront((Front)newValue);
         return;
       case XDronePackage.WALLS__RIGHT:
-        setRight((String)newValue);
+        setRight((Right)newValue);
         return;
       case XDronePackage.WALLS__BACK:
-        setBack((String)newValue);
+        setBack((Back)newValue);
         return;
       case XDronePackage.WALLS__LEFT:
-        setLeft((String)newValue);
+        setLeft((Left)newValue);
+        return;
+      case XDronePackage.WALLS__UP:
+        setUp((Up)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,16 +438,19 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        setFront(FRONT_EDEFAULT);
+        setFront((Front)null);
         return;
       case XDronePackage.WALLS__RIGHT:
-        setRight(RIGHT_EDEFAULT);
+        setRight((Right)null);
         return;
       case XDronePackage.WALLS__BACK:
-        setBack(BACK_EDEFAULT);
+        setBack((Back)null);
         return;
       case XDronePackage.WALLS__LEFT:
-        setLeft(LEFT_EDEFAULT);
+        setLeft((Left)null);
+        return;
+      case XDronePackage.WALLS__UP:
+        setUp((Up)null);
         return;
     }
     super.eUnset(featureID);
@@ -309,38 +467,17 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        return FRONT_EDEFAULT == null ? front != null : !FRONT_EDEFAULT.equals(front);
+        return front != null;
       case XDronePackage.WALLS__RIGHT:
-        return RIGHT_EDEFAULT == null ? right != null : !RIGHT_EDEFAULT.equals(right);
+        return right != null;
       case XDronePackage.WALLS__BACK:
-        return BACK_EDEFAULT == null ? back != null : !BACK_EDEFAULT.equals(back);
+        return back != null;
       case XDronePackage.WALLS__LEFT:
-        return LEFT_EDEFAULT == null ? left != null : !LEFT_EDEFAULT.equals(left);
+        return left != null;
+      case XDronePackage.WALLS__UP:
+        return up != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (front: ");
-    result.append(front);
-    result.append(", right: ");
-    result.append(right);
-    result.append(", back: ");
-    result.append(back);
-    result.append(", left: ");
-    result.append(left);
-    result.append(')');
-    return result.toString();
   }
 
 } //WallsImpl

@@ -3,12 +3,8 @@
  */
 package ic.ac.uk.xdrone.ide;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import ic.ac.uk.xdrone.XDroneRuntimeModule;
 import ic.ac.uk.xdrone.XDroneStandaloneSetup;
-import ic.ac.uk.xdrone.ide.XDroneIdeModule;
-import org.eclipse.xtext.util.Modules2;
 
 /**
  * Initialization support for running Xtext languages as language servers.
@@ -17,8 +13,8 @@ import org.eclipse.xtext.util.Modules2;
 public class XDroneIdeSetup extends XDroneStandaloneSetup {
   @Override
   public Injector createInjector() {
-    XDroneRuntimeModule _xDroneRuntimeModule = new XDroneRuntimeModule();
-    XDroneIdeModule _xDroneIdeModule = new XDroneIdeModule();
-    return Guice.createInjector(Modules2.mixin(_xDroneRuntimeModule, _xDroneIdeModule));
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from XDroneRuntimeModule to Module"
+      + "\nType mismatch: cannot convert from XDroneIdeModule to Module");
   }
 }

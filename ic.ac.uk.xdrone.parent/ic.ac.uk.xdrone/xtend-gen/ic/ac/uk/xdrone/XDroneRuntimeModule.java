@@ -3,11 +3,9 @@
  */
 package ic.ac.uk.xdrone;
 
-import ic.ac.uk.xdrone.AbstractXDroneRuntimeModule;
-
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class XDroneRuntimeModule extends AbstractXDroneRuntimeModule {
+public class XDroneRuntimeModule /* implements AbstractXDroneRuntimeModule  */{
 }

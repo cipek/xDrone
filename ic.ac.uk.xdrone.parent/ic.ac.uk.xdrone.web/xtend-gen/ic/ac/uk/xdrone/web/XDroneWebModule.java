@@ -5,7 +5,6 @@ package ic.ac.uk.xdrone.web;
 
 import com.google.inject.Binder;
 import com.google.inject.binder.AnnotatedBindingBuilder;
-import ic.ac.uk.xdrone.web.AbstractXDroneWebModule;
 import ic.ac.uk.xdrone.web.XDroneResourceHandler;
 import ic.ac.uk.xdrone.web.XDroneServiceDispatcher;
 import org.eclipse.xtext.web.server.XtextServiceDispatcher;
@@ -17,7 +16,7 @@ import org.eclipse.xtext.web.server.persistence.ResourceBaseProviderImpl;
  * Use this class to register additional components to be used within the web application.
  */
 @SuppressWarnings("all")
-public class XDroneWebModule extends AbstractXDroneWebModule {
+public class XDroneWebModule /* implements AbstractXDroneWebModule  */{
   public Class<? extends IServerResourceHandler> bindIServerResourceHandler() {
     return XDroneResourceHandler.class;
   }

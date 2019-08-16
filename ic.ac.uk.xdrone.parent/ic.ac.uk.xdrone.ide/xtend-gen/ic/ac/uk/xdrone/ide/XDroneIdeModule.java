@@ -3,11 +3,9 @@
  */
 package ic.ac.uk.xdrone.ide;
 
-import ic.ac.uk.xdrone.ide.AbstractXDroneIdeModule;
-
 /**
  * Use this class to register ide components.
  */
 @SuppressWarnings("all")
-public class XDroneIdeModule extends AbstractXDroneIdeModule {
+public class XDroneIdeModule /* implements AbstractXDroneIdeModule  */{
 }

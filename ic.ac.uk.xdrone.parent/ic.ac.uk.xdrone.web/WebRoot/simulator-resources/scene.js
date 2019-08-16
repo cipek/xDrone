@@ -158,16 +158,16 @@ function labelAxis(x, y, z, label){
   scene2.add(text);
 }
 
-function drawWalls(front, right, back, left){
+function drawWalls(front, right, back, left, up){
   walls = {xMin: -right, xMax: left,
-    yMin: 0, yMax: 3,
+    yMin: 0, yMax: up,
     zMin: -back, zMax: front
   };
-  var cubeGeometry = new THREE.BoxGeometry (right+left, 3, front+back);
+  var cubeGeometry = new THREE.BoxGeometry (right+left, up, front+back);
   var geo = new THREE.EdgesGeometry( cubeGeometry ); // or WireframeGeometry( geometry )
   var mat = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
   var wireframe = new THREE.LineSegments( geo, mat );
-  wireframe.position.set((left-right)/2, 1.5, (front-back)/2);
+  wireframe.position.set((left-right)/2, up/2, (front-back)/2);
   scene.add( wireframe );
 }
 

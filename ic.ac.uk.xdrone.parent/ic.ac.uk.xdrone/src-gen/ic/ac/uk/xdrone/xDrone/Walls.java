@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Walls#getUp <em>Up</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls()
@@ -27,107 +28,133 @@ import org.eclipse.emf.ecore.EObject;
 public interface Walls extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Front</b></em>' attribute.
+   * Returns the value of the '<em><b>Front</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Front</em>' attribute isn't clear,
+   * If the meaning of the '<em>Front</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Front</em>' attribute.
-   * @see #setFront(String)
+   * @return the value of the '<em>Front</em>' containment reference.
+   * @see #setFront(Front)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Front()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getFront();
+  Front getFront();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getFront <em>Front</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getFront <em>Front</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Front</em>' attribute.
+   * @param value the new value of the '<em>Front</em>' containment reference.
    * @see #getFront()
    * @generated
    */
-  void setFront(String value);
+  void setFront(Front value);
 
   /**
-   * Returns the value of the '<em><b>Right</b></em>' attribute.
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Right</em>' attribute isn't clear,
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' attribute.
-   * @see #setRight(String)
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(Right)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Right()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getRight();
+  Right getRight();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' attribute.
+   * @param value the new value of the '<em>Right</em>' containment reference.
    * @see #getRight()
    * @generated
    */
-  void setRight(String value);
+  void setRight(Right value);
 
   /**
-   * Returns the value of the '<em><b>Back</b></em>' attribute.
+   * Returns the value of the '<em><b>Back</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Back</em>' attribute isn't clear,
+   * If the meaning of the '<em>Back</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Back</em>' attribute.
-   * @see #setBack(String)
+   * @return the value of the '<em>Back</em>' containment reference.
+   * @see #setBack(Back)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Back()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getBack();
+  Back getBack();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Back</em>' attribute.
+   * @param value the new value of the '<em>Back</em>' containment reference.
    * @see #getBack()
    * @generated
    */
-  void setBack(String value);
+  void setBack(Back value);
 
   /**
-   * Returns the value of the '<em><b>Left</b></em>' attribute.
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Left</em>' attribute isn't clear,
+   * If the meaning of the '<em>Left</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Left</em>' attribute.
-   * @see #setLeft(String)
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(Left)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Left()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getLeft();
+  Left getLeft();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Left</em>' attribute.
+   * @param value the new value of the '<em>Left</em>' containment reference.
    * @see #getLeft()
    * @generated
    */
-  void setLeft(String value);
+  void setLeft(Left value);
+
+  /**
+   * Returns the value of the '<em><b>Up</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Up</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Up</em>' containment reference.
+   * @see #setUp(Up)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Up()
+   * @model containment="true"
+   * @generated
+   */
+  Up getUp();
+
+  /**
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getUp <em>Up</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Up</em>' containment reference.
+   * @see #getUp()
+   * @generated
+   */
+  void setUp(Up value);
 
 } // Walls

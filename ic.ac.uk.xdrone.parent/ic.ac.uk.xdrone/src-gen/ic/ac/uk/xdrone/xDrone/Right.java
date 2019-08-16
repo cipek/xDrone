@@ -3,6 +3,7 @@
  */
 package ic.ac.uk.xdrone.xDrone;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,39 +14,39 @@ package ic.ac.uk.xdrone.xDrone;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Right#getDistance <em>Distance</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Right#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRight()
  * @model
  * @generated
  */
-public interface Right extends Command
+public interface Right extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Distance</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Distance</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Distance</em>' attribute.
-   * @see #setDistance(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRight_Distance()
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRight_Value()
    * @model
    * @generated
    */
-  String getDistance();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Right#getDistance <em>Distance</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Right#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Distance</em>' attribute.
-   * @see #getDistance()
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
    * @generated
    */
-  void setDistance(String value);
+  void setValue(String value);
 
 } // Right
