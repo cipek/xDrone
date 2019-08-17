@@ -14,9 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getPosition <em>Position</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.Drone#getRotation <em>Rotation</em>}</li>
  * </ul>
  *
@@ -27,82 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Drone extends EObject
 {
   /**
-   * Returns the value of the '<em><b>X</b></em>' attribute.
+   * Returns the value of the '<em><b>Position</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>X</em>' attribute isn't clear,
+   * If the meaning of the '<em>Position</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>X</em>' attribute.
-   * @see #setX(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_X()
-   * @model
+   * @return the value of the '<em>Position</em>' containment reference.
+   * @see #setPosition(Position)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_Position()
+   * @model containment="true"
    * @generated
    */
-  String getX();
+  Position getPosition();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getX <em>X</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getPosition <em>Position</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>X</em>' attribute.
-   * @see #getX()
+   * @param value the new value of the '<em>Position</em>' containment reference.
+   * @see #getPosition()
    * @generated
    */
-  void setX(String value);
-
-  /**
-   * Returns the value of the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Y</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Y</em>' attribute.
-   * @see #setY(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_Y()
-   * @model
-   * @generated
-   */
-  String getY();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Y</em>' attribute.
-   * @see #getY()
-   * @generated
-   */
-  void setY(String value);
-
-  /**
-   * Returns the value of the '<em><b>Z</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Z</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Z</em>' attribute.
-   * @see #setZ(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getDrone_Z()
-   * @model
-   * @generated
-   */
-  String getZ();
-
-  /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Z</em>' attribute.
-   * @see #getZ()
-   * @generated
-   */
-  void setZ(String value);
+  void setPosition(Position value);
 
   /**
    * Returns the value of the '<em><b>Rotation</b></em>' attribute.

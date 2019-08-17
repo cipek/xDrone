@@ -17,6 +17,7 @@ import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
@@ -91,6 +92,9 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.ORIGIN:
 				sequence_Origin(context, (Origin) semanticObject); 
 				return; 
+			case XDronePackage.POSITION:
+				sequence_Position(context, (Position) semanticObject); 
+				return; 
 			case XDronePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
@@ -164,7 +168,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Drone returns Drone
 	 *
 	 * Constraint:
-	 *     (x=DOUBLE | y=DOUBLE | z=DOUBLE | rotation=DOUBLE)*
+	 *     (position=Position | rotation=DOUBLE)+
 	 */
 	protected void sequence_Drone(ISerializationContext context, Drone semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -307,7 +311,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Object returns Object
 	 *
 	 * Constraint:
-	 *     ((size=Size | color=Color)? (object_name=ID origin=Origin)?)+
+	 *     (object_name=ID (origin=Origin | size=Size | color=Color)*)
 	 */
 	protected void sequence_Object(ISerializationContext context, ic.ac.uk.xdrone.xDrone.Object semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -328,6 +332,24 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOriginAccess().getVectorVectorParserRuleCall_2_0(), semanticObject.getVector());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Position returns Position
+	 *
+	 * Constraint:
+	 *     vector=Vector
+	 */
+	protected void sequence_Position(ISerializationContext context, Position semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.POSITION__VECTOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.POSITION__VECTOR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPositionAccess().getVectorVectorParserRuleCall_2_0(), semanticObject.getVector());
 		feeder.finish();
 	}
 	

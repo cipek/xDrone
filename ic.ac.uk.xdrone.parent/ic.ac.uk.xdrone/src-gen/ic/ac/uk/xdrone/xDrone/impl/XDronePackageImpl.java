@@ -16,6 +16,7 @@ import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
@@ -155,6 +156,13 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * @generated
    */
   private EClass sizeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass positionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -570,29 +578,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDrone_X()
+  public EReference getDrone_Position()
   {
-    return (EAttribute)droneEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDrone_Y()
-  {
-    return (EAttribute)droneEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDrone_Z()
-  {
-    return (EAttribute)droneEClass.getEStructuralFeatures().get(2);
+    return (EReference)droneEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -602,7 +590,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    */
   public EAttribute getDrone_Rotation()
   {
-    return (EAttribute)droneEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -693,6 +681,26 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
   public EReference getSize_Vector()
   {
     return (EReference)sizeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPosition()
+  {
+    return positionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPosition_Vector()
+  {
+    return (EReference)positionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -986,9 +994,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     createEAttribute(functionNameEClass, FUNCTION_NAME__FUNC_NAME);
 
     droneEClass = createEClass(DRONE);
-    createEAttribute(droneEClass, DRONE__X);
-    createEAttribute(droneEClass, DRONE__Y);
-    createEAttribute(droneEClass, DRONE__Z);
+    createEReference(droneEClass, DRONE__POSITION);
     createEAttribute(droneEClass, DRONE__ROTATION);
 
     objectEClass = createEClass(OBJECT);
@@ -1002,6 +1008,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     sizeEClass = createEClass(SIZE);
     createEReference(sizeEClass, SIZE__VECTOR);
+
+    positionEClass = createEClass(POSITION);
+    createEReference(positionEClass, POSITION__VECTOR);
 
     vectorEClass = createEClass(VECTOR);
     createEAttribute(vectorEClass, VECTOR__X);
@@ -1112,9 +1121,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     initEAttribute(getFunctionName_Func_name(), ecorePackage.getEString(), "func_name", null, 0, 1, FunctionName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(droneEClass, Drone.class, "Drone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDrone_X(), ecorePackage.getEString(), "x", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDrone_Y(), ecorePackage.getEString(), "y", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDrone_Z(), ecorePackage.getEString(), "z", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDrone_Position(), this.getPosition(), null, "position", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDrone_Rotation(), ecorePackage.getEString(), "rotation", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectEClass, ic.ac.uk.xdrone.xDrone.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1128,6 +1135,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSize_Vector(), this.getVector(), null, "vector", null, 0, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(positionEClass, Position.class, "Position", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPosition_Vector(), this.getVector(), null, "vector", null, 0, 1, Position.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(vectorEClass, Vector.class, "Vector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVector_X(), ecorePackage.getEString(), "x", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

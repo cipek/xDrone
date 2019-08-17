@@ -168,6 +168,15 @@ public interface XDroneFactory extends EFactory
   Size createSize();
 
   /**
+   * Returns a new object of class '<em>Position</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Position</em>'.
+   * @generated
+   */
+  Position createPosition();
+
+  /**
    * Returns a new object of class '<em>Vector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -123,14 +123,14 @@ FunctionName:
 Drone:
 //	'DRONE' vector=Vector
 	'DRONE' '{'
-		('x' '=' x = DOUBLE) & ('y' '=' y = DOUBLE) & ('z' '=' z = DOUBLE) & ('rotation' '=' rotation = DOUBLE)?
+		(position=Position | ('rotation' '=' rotation = DOUBLE))*
 	'}'
 ;
 
 Object:
 //	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 	object_name = ID '{'
-		origin=Origin & size=Size & color=Color?
+		(origin=Origin | size=Size | color=Color)*
 	'}'
 ;
 
@@ -140,6 +140,10 @@ Origin:
 
 Size:
 	'size' '=' vector=Vector
+;
+
+Position:
+	'position' '=' vector=Vector
 ;
 
 Vector:

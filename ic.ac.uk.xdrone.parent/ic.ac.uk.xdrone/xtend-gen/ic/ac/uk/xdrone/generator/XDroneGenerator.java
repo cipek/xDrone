@@ -59,17 +59,17 @@ public class XDroneGenerator extends AbstractGenerator {
       for(final Drone d : _drone) {
         _builder.append("\t");
         _builder.append("drone.position.x = ");
-        String _x = d.getX();
+        String _x = d.getPosition().getVector().getX();
         _builder.append(_x, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("drone.position.z = ");
-        String _z = d.getZ();
+        String _z = d.getPosition().getVector().getZ();
         _builder.append(_z, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         _builder.append("drone.position.y = ");
-        String _y = d.getY();
+        String _y = d.getPosition().getVector().getY();
         _builder.append(_y, "\t");
         _builder.append(" + modelHeight");
         _builder.newLineIfNotEmpty();

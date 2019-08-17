@@ -16,6 +16,7 @@ import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
@@ -177,6 +178,11 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSize(Size object)
       {
         return createSizeAdapter();
+      }
+      @Override
+      public Adapter casePosition(Position object)
+      {
+        return createPositionAdapter();
       }
       @Override
       public Adapter caseVector(Vector object)
@@ -476,6 +482,21 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSizeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Position <em>Position</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Position
+   * @generated
+   */
+  public Adapter createPositionAdapter()
   {
     return null;
   }

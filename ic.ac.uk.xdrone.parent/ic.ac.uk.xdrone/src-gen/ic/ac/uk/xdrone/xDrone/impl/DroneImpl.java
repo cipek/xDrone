@@ -4,11 +4,14 @@
 package ic.ac.uk.xdrone.xDrone.impl;
 
 import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,9 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getX <em>X</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getY <em>Y</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getZ <em>Z</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl#getRotation <em>Rotation</em>}</li>
  * </ul>
  *
@@ -32,64 +33,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
 {
   /**
-   * The default value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getPosition() <em>Position</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getPosition()
    * @generated
    * @ordered
    */
-  protected static final String X_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getX()
-   * @generated
-   * @ordered
-   */
-  protected String x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final String Y_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected String y = Y_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected static final String Z_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getZ() <em>Z</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getZ()
-   * @generated
-   * @ordered
-   */
-  protected String z = Z_EDEFAULT;
+  protected Position position;
 
   /**
    * The default value of the '{@link #getRotation() <em>Rotation</em>}' attribute.
@@ -137,9 +88,9 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getX()
+  public Position getPosition()
   {
-    return x;
+    return position;
   }
 
   /**
@@ -147,12 +98,16 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(String newX)
+  public NotificationChain basicSetPosition(Position newPosition, NotificationChain msgs)
   {
-    String oldX = x;
-    x = newX;
+    Position oldPosition = position;
+    position = newPosition;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__X, oldX, x));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__POSITION, oldPosition, newPosition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -160,45 +115,20 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getY()
+  public void setPosition(Position newPosition)
   {
-    return y;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setY(String newY)
-  {
-    String oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__Y, oldY, y));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getZ()
-  {
-    return z;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setZ(String newZ)
-  {
-    String oldZ = z;
-    z = newZ;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__Z, oldZ, z));
+    if (newPosition != position)
+    {
+      NotificationChain msgs = null;
+      if (position != null)
+        msgs = ((InternalEObject)position).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.DRONE__POSITION, null, msgs);
+      if (newPosition != null)
+        msgs = ((InternalEObject)newPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.DRONE__POSITION, null, msgs);
+      msgs = basicSetPosition(newPosition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.DRONE__POSITION, newPosition, newPosition));
   }
 
   /**
@@ -230,16 +160,28 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case XDronePackage.DRONE__POSITION:
+        return basicSetPosition(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case XDronePackage.DRONE__X:
-        return getX();
-      case XDronePackage.DRONE__Y:
-        return getY();
-      case XDronePackage.DRONE__Z:
-        return getZ();
+      case XDronePackage.DRONE__POSITION:
+        return getPosition();
       case XDronePackage.DRONE__ROTATION:
         return getRotation();
     }
@@ -256,14 +198,8 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
   {
     switch (featureID)
     {
-      case XDronePackage.DRONE__X:
-        setX((String)newValue);
-        return;
-      case XDronePackage.DRONE__Y:
-        setY((String)newValue);
-        return;
-      case XDronePackage.DRONE__Z:
-        setZ((String)newValue);
+      case XDronePackage.DRONE__POSITION:
+        setPosition((Position)newValue);
         return;
       case XDronePackage.DRONE__ROTATION:
         setRotation((String)newValue);
@@ -282,14 +218,8 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
   {
     switch (featureID)
     {
-      case XDronePackage.DRONE__X:
-        setX(X_EDEFAULT);
-        return;
-      case XDronePackage.DRONE__Y:
-        setY(Y_EDEFAULT);
-        return;
-      case XDronePackage.DRONE__Z:
-        setZ(Z_EDEFAULT);
+      case XDronePackage.DRONE__POSITION:
+        setPosition((Position)null);
         return;
       case XDronePackage.DRONE__ROTATION:
         setRotation(ROTATION_EDEFAULT);
@@ -308,12 +238,8 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
   {
     switch (featureID)
     {
-      case XDronePackage.DRONE__X:
-        return X_EDEFAULT == null ? x != null : !X_EDEFAULT.equals(x);
-      case XDronePackage.DRONE__Y:
-        return Y_EDEFAULT == null ? y != null : !Y_EDEFAULT.equals(y);
-      case XDronePackage.DRONE__Z:
-        return Z_EDEFAULT == null ? z != null : !Z_EDEFAULT.equals(z);
+      case XDronePackage.DRONE__POSITION:
+        return position != null;
       case XDronePackage.DRONE__ROTATION:
         return ROTATION_EDEFAULT == null ? rotation != null : !ROTATION_EDEFAULT.equals(rotation);
     }
@@ -331,13 +257,7 @@ public class DroneImpl extends MinimalEObjectImpl.Container implements Drone
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (x: ");
-    result.append(x);
-    result.append(", y: ");
-    result.append(y);
-    result.append(", z: ");
-    result.append(z);
-    result.append(", rotation: ");
+    result.append(" (rotation: ");
     result.append(rotation);
     result.append(')');
     return result.toString();

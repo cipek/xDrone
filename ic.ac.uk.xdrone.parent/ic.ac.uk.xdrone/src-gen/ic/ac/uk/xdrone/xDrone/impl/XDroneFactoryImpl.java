@@ -16,6 +16,7 @@ import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
@@ -105,6 +106,7 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.OBJECT: return createObject();
       case XDronePackage.ORIGIN: return createOrigin();
       case XDronePackage.SIZE: return createSize();
+      case XDronePackage.POSITION: return createPosition();
       case XDronePackage.VECTOR: return createVector();
       case XDronePackage.COLOR: return createColor();
       case XDronePackage.WALLS: return createWalls();
@@ -292,6 +294,17 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     SizeImpl size = new SizeImpl();
     return size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Position createPosition()
+  {
+    PositionImpl position = new PositionImpl();
+    return position;
   }
 
   /**

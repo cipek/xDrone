@@ -38,9 +38,9 @@ class XDroneGenerator extends AbstractGenerator {
 		drone.position.z = 0;
 		drone.position.y = 0 + modelHeight;
 		«FOR d : environment.drone»
-			drone.position.x = «d.x»
-			drone.position.z = «d.z»
-			drone.position.y = «d.y» + modelHeight
+			drone.position.x = «d.position.vector.x»
+			drone.position.z = «d.position.vector.z»
+			drone.position.y = «d.position.vector.y» + modelHeight
 			«IF d.rotation !== null»
 				currentDroneAngle += «d.rotation»;
 				drone.rotateY(«d.rotation»  * (Math.PI/180));

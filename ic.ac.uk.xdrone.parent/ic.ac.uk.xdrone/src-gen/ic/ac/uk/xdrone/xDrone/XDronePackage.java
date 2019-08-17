@@ -440,31 +440,13 @@ public interface XDronePackage extends EPackage
   int DRONE = 12;
 
   /**
-   * The feature id for the '<em><b>X</b></em>' attribute.
+   * The feature id for the '<em><b>Position</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DRONE__X = 0;
-
-  /**
-   * The feature id for the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DRONE__Y = 1;
-
-  /**
-   * The feature id for the '<em><b>Z</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DRONE__Z = 2;
+  int DRONE__POSITION = 0;
 
   /**
    * The feature id for the '<em><b>Rotation</b></em>' attribute.
@@ -473,7 +455,7 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DRONE__ROTATION = 3;
+  int DRONE__ROTATION = 1;
 
   /**
    * The number of structural features of the '<em>Drone</em>' class.
@@ -482,7 +464,7 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DRONE_FEATURE_COUNT = 4;
+  int DRONE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.
@@ -596,6 +578,34 @@ public interface XDronePackage extends EPackage
   int SIZE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.PositionImpl <em>Position</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.PositionImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getPosition()
+   * @generated
+   */
+  int POSITION = 16;
+
+  /**
+   * The feature id for the '<em><b>Vector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POSITION__VECTOR = 0;
+
+  /**
+   * The number of structural features of the '<em>Position</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POSITION_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl <em>Vector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -603,7 +613,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getVector()
    * @generated
    */
-  int VECTOR = 16;
+  int VECTOR = 17;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -649,7 +659,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
    * @generated
    */
-  int COLOR = 17;
+  int COLOR = 18;
 
   /**
    * The feature id for the '<em><b>Color value</b></em>' attribute.
@@ -677,7 +687,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWalls()
    * @generated
    */
-  int WALLS = 18;
+  int WALLS = 19;
 
   /**
    * The feature id for the '<em><b>Front</b></em>' containment reference.
@@ -741,7 +751,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFront()
    * @generated
    */
-  int FRONT = 19;
+  int FRONT = 20;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -769,7 +779,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRight()
    * @generated
    */
-  int RIGHT = 20;
+  int RIGHT = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -797,7 +807,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeft()
    * @generated
    */
-  int LEFT = 21;
+  int LEFT = 22;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -825,7 +835,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBack()
    * @generated
    */
-  int BACK = 22;
+  int BACK = 23;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -853,7 +863,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUp()
    * @generated
    */
-  int UP = 23;
+  int UP = 24;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1181,37 +1191,15 @@ public interface XDronePackage extends EPackage
   EClass getDrone();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getX <em>X</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Drone#getPosition <em>Position</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>X</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Drone#getX()
+   * @return the meta object for the containment reference '<em>Position</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getPosition()
    * @see #getDrone()
    * @generated
    */
-  EAttribute getDrone_X();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getY <em>Y</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Y</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Drone#getY()
-   * @see #getDrone()
-   * @generated
-   */
-  EAttribute getDrone_Y();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getZ <em>Z</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Z</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Drone#getZ()
-   * @see #getDrone()
-   * @generated
-   */
-  EAttribute getDrone_Z();
+  EReference getDrone_Position();
 
   /**
    * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getRotation <em>Rotation</em>}'.
@@ -1319,6 +1307,27 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EReference getSize_Vector();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Position <em>Position</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Position</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Position
+   * @generated
+   */
+  EClass getPosition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Position#getVector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Vector</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Position#getVector()
+   * @see #getPosition()
+   * @generated
+   */
+  EReference getPosition_Vector();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Vector <em>Vector</em>}'.
@@ -1836,28 +1845,12 @@ public interface XDronePackage extends EPackage
     EClass DRONE = eINSTANCE.getDrone();
 
     /**
-     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Position</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DRONE__X = eINSTANCE.getDrone_X();
-
-    /**
-     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DRONE__Y = eINSTANCE.getDrone_Y();
-
-    /**
-     * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DRONE__Z = eINSTANCE.getDrone_Z();
+    EReference DRONE__POSITION = eINSTANCE.getDrone_Position();
 
     /**
      * The meta object literal for the '<em><b>Rotation</b></em>' attribute feature.
@@ -1944,6 +1937,24 @@ public interface XDronePackage extends EPackage
      * @generated
      */
     EReference SIZE__VECTOR = eINSTANCE.getSize_Vector();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.PositionImpl <em>Position</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.PositionImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getPosition()
+     * @generated
+     */
+    EClass POSITION = eINSTANCE.getPosition();
+
+    /**
+     * The meta object literal for the '<em><b>Vector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POSITION__VECTOR = eINSTANCE.getPosition_Vector();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl <em>Vector</em>}' class.
