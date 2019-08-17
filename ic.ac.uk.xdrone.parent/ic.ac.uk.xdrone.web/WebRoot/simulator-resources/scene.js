@@ -76,7 +76,7 @@ function init()
     loader = new THREE.LegacyJSONLoader();
     //Model taken from https://sketchfab.com/3d-models/tron-ish-low-poly-drone-cad1fc9ada864e06ab69a37705656392
     loader.load(baseUrl+'simulator-resources/drone.js', function (geometry, materials) {
-      var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('black'), transparent:true, opacity:1,  side: THREE.DoubleSide } );
+      var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('black'), side: THREE.DoubleSide }); //, transparent:true, opacity:1,  side: THREE.DoubleSide } );
       var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
       obj.scale.set(dronesize,dronesize,dronesize);
@@ -89,7 +89,7 @@ function init()
     loader = new THREE.LegacyJSONLoader();
     loader.load(baseUrl +'simulator-resources/drone-lights.js', function (geometry, materials) {
 
-    var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('red'),  transparent:true, opacity:1,  side: THREE.DoubleSide } );
+    var matt = new THREE.MeshBasicMaterial( { color: new THREE.Color('red'), side: THREE.DoubleSide});//,  transparent:true, opacity:1 } );
     var obj = new THREE.Mesh(geometry, matt);
       geometry.center();
       obj.scale.set(dronesize,dronesize,dronesize);
@@ -544,7 +544,6 @@ function drawSphere(){
     color: 0xffffff, transparent: true,
     opacity: 0.5 } );
 
-
   var sphere = new THREE.Mesh (geometry, material);
   scene.add( sphere );
 }
@@ -661,14 +660,14 @@ function radiansToDegrees(radians){
 }
 
 function angleTo360(angle){
-  if(angle < 0)
+  while(angle < 0)
     angle = 360 + angle;
   return angle;
 }
 
 function checkAngle(angle){
   angle = angle%360;
-  if(angle < 0)
+  while(angle < 0)
     angle = 360 + angle;
   return angle;
 }
