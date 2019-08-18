@@ -1,6 +1,6 @@
 //IMPORTANT!
 //y and z axis are swapped in respect to ROS. Y is down and up axis
-var scene, renderer, camera, drone, simulator;
+var scene, renderer, camera, drone, simulator, outputDiv;
 var modelHeight = 0.1;
 var cube;
 var controls;
@@ -22,23 +22,25 @@ var collisions, collidedWith, wallsColision, walls;
 var lastCameraPosition;
 var landHeight;
 var currentDroneAngle;
+var isOutputVisible = false;
 // Axes in the corner
 // http://jsfiddle.net/aqnL1mx9/
 
 function init()
 {
     objects = [], labelObjects = [], labelAxes = [], landHeight = undefined,
-    currentDroneAngle = 90;;
+    currentDroneAngle = 90, isOutputVisible = false;
 
     var simulatorContainer = document.getElementById('SIMULATOR_CONTAINER');
     simulator = document.getElementById('SIMULATOR');
+    outputDiv = document.getElementById('SIMULATOR_OUTPUT');
     //Removing old canvases
-    while (simulator.firstChild) {
-      simulator.removeChild(simulator.firstChild);
-    }
+    removeChilds(simulator);
+    removeChilds(outputDiv);
+
     renderer = new THREE.WebGLRenderer( {antialias:true} );
-    var width = simulatorContainer.offsetWidth;
-    var height = simulatorContainer.offsetHeight;
+    var width = simulator.offsetWidth;
+    var height = simulator.offsetHeight;
     renderer.setSize (width, height);
     renderer.setPixelRatio( window.devicePixelRatio );
 
@@ -52,9 +54,9 @@ function init()
     if(lastCameraPosition)
       camera.position.copy(lastCameraPosition);
     else{
-      camera.position.y = 3;
-      camera.position.z = 10;
-      camera.position.x = 5;
+      camera.position.y = 2;
+      camera.position.z = 5;
+      camera.position.x = 3;
     }
     camera.lookAt (new THREE.Vector3(0,0,0));
 
@@ -71,7 +73,7 @@ function init()
     scene.add(gridXZ);
 
     drone = new THREE.Group();
-    var dronesize = 0.5;
+    var dronesize = 0.25;
     scene.add(drone);
     loader = new THREE.LegacyJSONLoader();
     //Model taken from https://sketchfab.com/3d-models/tron-ish-low-poly-drone-cad1fc9ada864e06ab69a37705656392
@@ -103,10 +105,11 @@ function init()
     drone.position.x = 0;
     drone.position.z = 0;
 
-    addCollisionBoxToDrone(1,1,1);
+    addCollisionBoxToDrone(0.5,0.36,0.5)
     collisions = [], collidedWith = [], wallsColision = false, walls = {};
+    // changeDroneCollisionBox(0.5,0,0.5);
 
-    var axesDrone = new THREE.AxisHelper(1);
+    var axesDrone = new THREE.AxisHelper(0.5);
     drone.add(axesDrone);
 
     raycaster = new THREE.Raycaster();
@@ -128,9 +131,7 @@ function init()
 function axesSystem(){
   // dom
   axesContainer = document.getElementById('AXES_SYSTEM');
-  while (axesContainer.firstChild) {
-    axesContainer.removeChild(axesContainer.firstChild);
-  }
+  removeChilds(axesContainer);
   // renderer
   renderer2 = new THREE.WebGLRenderer();
   renderer2.setClearColor( 0xf0f0f0, 1 );
@@ -255,6 +256,7 @@ function animate()
       if(execute)
         flySimulation();
       detectCollisions();
+      drawOutput();
     }
 
     raycating();
@@ -539,12 +541,13 @@ function removeEntity(object) {
 }
 
 function drawSphere(){
-  var geometry = new THREE.SphereGeometry(1.0, 32, 32 );
+  var geometry = new THREE.SphereGeometry(collisionBox.scale.x/2, 32, 32 );
   var material = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true,
     opacity: 0.5 } );
 
   var sphere = new THREE.Mesh (geometry, material);
+  sphere.position.copy(drone.position);
   scene.add( sphere );
 }
 
@@ -555,12 +558,12 @@ function drawSphere(){
 function detectCollisions() {
   // Get the drone's current collision area.
   var bounds = {
-    xMin: drone.position.x - collisionBox.geometry.parameters.width / 2,
-    xMax: drone.position.x + collisionBox.geometry.parameters.width / 2,
-    yMin: drone.position.y - collisionBox.geometry.parameters.height / 2,
-    yMax: drone.position.y + collisionBox.geometry.parameters.height / 2,
-    zMin: drone.position.z - collisionBox.geometry.parameters.width / 2,
-    zMax: drone.position.z + collisionBox.geometry.parameters.width / 2,
+    xMin: drone.position.x - collisionBox.scale.x / 2,
+    xMax: drone.position.x + collisionBox.scale.x / 2,
+    yMin: drone.position.y - collisionBox.scale.y / 2,
+    yMax: drone.position.y + collisionBox.scale.y / 2,
+    zMin: drone.position.z - collisionBox.scale.z / 2,
+    zMax: drone.position.z + collisionBox.scale.z / 2,
   };
 
   // Run through each object and detect if there is a collision.
@@ -582,15 +585,24 @@ function detectCollisions() {
 }
 
 function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
-  var cubeGeometry = new THREE.BoxBufferGeometry (sizeX, sizeY, sizeZ);
+  var cubeGeometry = new THREE.BoxBufferGeometry (1, 1, 1);
   var cubeMaterial = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true, alphaTest: 0.5,
     opacity: 0.0 } );
   // var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0xff0000});
   collisionBox = new THREE.Mesh (cubeGeometry, cubeMaterial);
   collisionBox.position.copy(drone.position);
+  collisionBox.scale.x = sizeX; // SCALE
+  collisionBox.scale.y = sizeY; // SCALE
+  collisionBox.scale.z = sizeZ; // SCALE
 
   drone.add(collisionBox);
+}
+
+function changeDroneCollisionBox(additionalX, additionalY, additionalZ) {
+  collisionBox.scale.x += additionalX; // SCALE
+  collisionBox.scale.y += additionalY; // SCALE
+  collisionBox.scale.z += additionalZ; // SCALE
 }
 
 function getDistanceToObject(objectName){
@@ -670,4 +682,30 @@ function checkAngle(angle){
   while(angle < 0)
     angle = 360 + angle;
   return angle;
+}
+
+function drawOutput(){
+  if(finishSimulation && !isOutputVisible){
+    outputDiv.appendChild (createDiv("Radius of the sphere is " + collisionBox.scale.x + "m"));
+    if(collidedWith && collidedWith.length > 0)
+      outputDiv.appendChild (createDiv("Possilbe collison with objects: " + collidedWith.join(','), "red"));
+    if(wallsColision)
+      outputDiv.appendChild (createDiv("Possilbe collison with a wall", "red"));
+
+    drawSphere();
+    isOutputVisible = true;
+  }
+}
+
+function createDiv(text, color){
+  var div = document.createElement("div");
+  div.innerHTML = text;
+  div.style.color = color ? color : "black";
+  return div;
+}
+
+function removeChilds(element){
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }

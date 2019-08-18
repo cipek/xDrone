@@ -203,7 +203,9 @@ public class XDroneGenerator extends AbstractGenerator {
     {
       EList<String> _takeoff = fly.getTakeoff();
       for(final String to : _takeoff) {
-        _builder.append("commands.push({y: 0.7}); ");
+        _builder.append("commands.push(\"TAKEOFF\");");
+        _builder.newLine();
+        _builder.append("//commands.push({y: 0.7}); ");
         _builder.newLine();
         _builder.append("//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));");
         _builder.newLine();
@@ -310,7 +312,10 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("if(commands[0].r !== undefined){");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("goalDroneRotation = commands[0].r;");
+    _builder.append("changeDroneCollisionBox(getDistanceErrorFromAngle(commands[0].r),0,getDistanceErrorFromAngle(commands[0].r))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("goalDroneRotation = commands[0].r * (Math.PI/180);");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("currentFunction = \"ROTATION\";");
@@ -355,6 +360,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("else if(commands[0].x !== undefined){");
     _builder.newLine();
     _builder.append("\t\t\t");
+    _builder.append("changeDroneCollisionBox(0.6,0,0.6)");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("destination = commands[0].x;");
     _builder.newLine();
     _builder.append("\t\t\t");
@@ -370,6 +378,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("else if(commands[0].z !== undefined){");
     _builder.newLine();
     _builder.append("\t\t\t");
+    _builder.append("changeDroneCollisionBox(0.6,0,0.6)");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.append("destination = commands[0].z;");
     _builder.newLine();
     _builder.append("\t\t\t");
@@ -382,7 +393,28 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.append("\t\t");
+    _builder.append("else if(commands[0] == \"TAKEOFF\"){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("changeDroneCollisionBox(0.25,0,0.25)");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("destination = 0.7;");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("currentFunction = \"MOVE_Y\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t\t");
     _builder.append("else if(commands[0] == \"LAND\"){");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("changeDroneCollisionBox(0.25,0,0.25)");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("currentFunction = \"LAND\";");
@@ -412,10 +444,12 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("goalDroneRotation = angle * (Math.PI/180);");
+    _builder.append("changeDroneCollisionBox(getDistanceErrorFromAngle(angle),0,getDistanceErrorFromAngle(angle))");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("console.log(angle, angle * (Math.PI/180));");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("goalDroneRotation = angle * (Math.PI/180);");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("currentFunction = \"ROTATION\";");
@@ -449,6 +483,14 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("function getDistanceErrorFromAngle(angle){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return 1.2 * angle /90");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
     return _builder;
   }
   
@@ -456,19 +498,39 @@ public class XDroneGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       if ((cmd instanceof Move)) {
-        _builder.append("commands.push({y: ");
+        _builder.append("if(");
         String _y = ((Move)cmd).getVector().getY();
         _builder.append(_y);
+        _builder.append(" != 0)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t\t");
+        _builder.append("commands.push({y: ");
+        String _y_1 = ((Move)cmd).getVector().getY();
+        _builder.append(_y_1, "\t\t\t\t");
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
-        _builder.append("commands.push({z: ");
+        _builder.append("\t\t\t");
+        _builder.append("if(");
         String _z = ((Move)cmd).getVector().getZ();
-        _builder.append(_z);
-        _builder.append("}); ");
+        _builder.append(_z, "\t\t\t");
+        _builder.append(" != 0)\t");
         _builder.newLineIfNotEmpty();
-        _builder.append("commands.push({x: ");
+        _builder.append("\t\t\t\t");
+        _builder.append("commands.push({z: ");
+        String _z_1 = ((Move)cmd).getVector().getZ();
+        _builder.append(_z_1, "\t\t\t\t");
+        _builder.append("});");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
+        _builder.append("if(");
         String _x = ((Move)cmd).getVector().getX();
-        _builder.append(_x);
+        _builder.append(_x, "\t\t\t");
+        _builder.append(" != 0)\t ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t\t");
+        _builder.append("commands.push({x: ");
+        String _x_1 = ((Move)cmd).getVector().getX();
+        _builder.append(_x_1, "\t\t\t\t");
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
       }
@@ -478,7 +540,7 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("commands.push({r: ");
         String _angle = ((Rotate)cmd).getAngle();
         _builder.append(_angle);
-        _builder.append(" * (Math.PI/180)}); ");
+        _builder.append("}); ");
         _builder.newLineIfNotEmpty();
       }
     }

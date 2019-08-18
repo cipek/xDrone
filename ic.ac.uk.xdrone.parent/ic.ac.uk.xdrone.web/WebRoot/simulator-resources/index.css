@@ -1,17 +1,27 @@
 #SIMULATOR_CONTAINER{
-  height: 600px;
+  height: 650px;
   width: 600px;
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  top: 30px;
+  right: 30px;
 }
 
 #SIMULATOR{
   position: fixed;
+  width: 600px;
+  height: 550px;
 }
 
 #AXES_SYSTEM{
   position: absolute;
-  top: 10px;
+  top: 130px;
   left: 10px;
+}
+
+#SIMULATOR_OUTPUT{
+  height: 100px;
+  width: auto;
+  border: 2px grey solid;
+  border-bottom: none;
+  padding: 8px;
 }

@@ -78,7 +78,8 @@ class XDroneGenerator extends AbstractGenerator {
 		);
 		//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
 		«FOR to : fly.takeoff»
-			commands.push({y: 0.7}); 
+			commands.push("TAKEOFF");
+			//commands.push({y: 0.7}); 
 			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
 			//lastY += 0.7;
 		«ENDFOR»
@@ -120,6 +121,7 @@ class XDroneGenerator extends AbstractGenerator {
 					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
 					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
+«««					console.log(currentFunction, collisionBox);
 					nextCommand();
 				}
 			}
@@ -128,7 +130,8 @@ class XDroneGenerator extends AbstractGenerator {
 		function nextCommand(){
 			if(commands && commands[0]){
 				if(commands[0].r !== undefined){
-					goalDroneRotation = commands[0].r;
+					changeDroneCollisionBox(getDistanceErrorFromAngle(commands[0].r),0,getDistanceErrorFromAngle(commands[0].r))
+					goalDroneRotation = commands[0].r * (Math.PI/180);
 					currentFunction = "ROTATION";
 				}
 				else if(commands[0].w !== undefined){
@@ -143,16 +146,25 @@ class XDroneGenerator extends AbstractGenerator {
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].x !== undefined){
+					changeDroneCollisionBox(0.6,0,0.6)
 					destination = commands[0].x;
 					currentFunction = "MOVE_X";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].z !== undefined){
+					changeDroneCollisionBox(0.6,0,0.6)
 					destination = commands[0].z;
 					currentFunction = "MOVE_Z";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
+				else if(commands[0] == "TAKEOFF"){
+					changeDroneCollisionBox(0.25,0,0.25)
+					destination = 0.7;
+					currentFunction = "MOVE_Y";
+					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
+				}
 				else if(commands[0] == "LAND"){
+					changeDroneCollisionBox(0.25,0,0.25)
 					currentFunction = "LAND";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
@@ -163,8 +175,9 @@ class XDroneGenerator extends AbstractGenerator {
 					
 					commands.shift();
 					
+					changeDroneCollisionBox(getDistanceErrorFromAngle(angle),0,getDistanceErrorFromAngle(angle))
+					
 					goalDroneRotation = angle * (Math.PI/180);
-					console.log(angle, angle * (Math.PI/180));
 					currentFunction = "ROTATION";
 					commands.unshift({z: vector.z}); 
 					commands.unshift({y: vector.y}); 
@@ -176,16 +189,23 @@ class XDroneGenerator extends AbstractGenerator {
 				finishSimulation = true;	
 			}
 		}
+		
+		function getDistanceErrorFromAngle(angle){
+			return 1.2 * angle /90
+		}
 	'''
 	
 	def compileJS(Command cmd) '''
 	  	«IF cmd instanceof Move»
-			commands.push({y: «cmd.vector.y»}); 
-			commands.push({z: «cmd.vector.z»}); 
-			commands.push({x: «cmd.vector.x»}); 
+	  		if(«cmd.vector.y» != 0)
+				commands.push({y: «cmd.vector.y»}); 
+			if(«cmd.vector.z» != 0)	
+				commands.push({z: «cmd.vector.z»});
+			if(«cmd.vector.x» != 0)	 
+				commands.push({x: «cmd.vector.x»}); 
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
-			commands.push({r: «cmd.angle» * (Math.PI/180)}); 
+			commands.push({r: «cmd.angle»}); 
 	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 			commands.push({w: «cmd.seconds»});
