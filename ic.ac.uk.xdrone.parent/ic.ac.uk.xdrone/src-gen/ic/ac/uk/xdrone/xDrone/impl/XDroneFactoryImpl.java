@@ -9,9 +9,9 @@ import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
@@ -97,7 +97,7 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.USER_FUNCTION: return createUserFunction();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
-      case XDronePackage.FLY_TO: return createFlyTo();
+      case XDronePackage.GO_TO: return createGoTo();
       case XDronePackage.MOVE: return createMove();
       case XDronePackage.ROTATE: return createRotate();
       case XDronePackage.WAIT: return createWait();
@@ -202,10 +202,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FlyTo createFlyTo()
+  public GoTo createGoTo()
   {
-    FlyToImpl flyTo = new FlyToImpl();
-    return flyTo;
+    GoToImpl goTo = new GoToImpl();
+    return goTo;
   }
 
   /**

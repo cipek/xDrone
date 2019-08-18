@@ -10,9 +10,9 @@ import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
@@ -68,14 +68,14 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.FLY:
 				sequence_Fly(context, (Fly) semanticObject); 
 				return; 
-			case XDronePackage.FLY_TO:
-				sequence_FlyTo(context, (FlyTo) semanticObject); 
-				return; 
 			case XDronePackage.FRONT:
 				sequence_Front(context, (Front) semanticObject); 
 				return; 
 			case XDronePackage.FUNCTION_NAME:
 				sequence_FunctionName(context, (FunctionName) semanticObject); 
+				return; 
+			case XDronePackage.GO_TO:
+				sequence_GoTo(context, (GoTo) semanticObject); 
 				return; 
 			case XDronePackage.LEFT:
 				sequence_Left(context, (Left) semanticObject); 
@@ -189,26 +189,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     SuperCommand returns FlyTo
-	 *     Command returns FlyTo
-	 *     FlyTo returns FlyTo
-	 *
-	 * Constraint:
-	 *     object_name=STRING
-	 */
-	protected void sequence_FlyTo(ISerializationContext context, FlyTo semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FLY_TO__OBJECT_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FLY_TO__OBJECT_NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0(), semanticObject.getObject_name());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Fly returns Fly
 	 *
 	 * Constraint:
@@ -252,6 +232,26 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFunctionNameAccess().getFunc_nameIDTerminalRuleCall_0_0(), semanticObject.getFunc_name());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns GoTo
+	 *     Command returns GoTo
+	 *     GoTo returns GoTo
+	 *
+	 * Constraint:
+	 *     object_name=STRING
+	 */
+	protected void sequence_GoTo(ISerializationContext context, GoTo semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.GO_TO__OBJECT_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.GO_TO__OBJECT_NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGoToAccess().getObject_nameSTRINGTerminalRuleCall_2_0(), semanticObject.getObject_name());
 		feeder.finish();
 	}
 	

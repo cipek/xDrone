@@ -458,11 +458,11 @@ ruleCommand returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getFlyToParserRuleCall_3());
+			newCompositeNode(grammarAccess.getCommandAccess().getGoToParserRuleCall_3());
 		}
-		this_FlyTo_3=ruleFlyTo
+		this_GoTo_3=ruleGoTo
 		{
-			$current = $this_FlyTo_3.current;
+			$current = $this_GoTo_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -563,15 +563,15 @@ rulePOSITIVE_DOUBLE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRul
 	)
 ;
 
-// Entry rule entryRuleFlyTo
-entryRuleFlyTo returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getFlyToRule()); }
-	iv_ruleFlyTo=ruleFlyTo
-	{ $current=$iv_ruleFlyTo.current; }
+// Entry rule entryRuleGoTo
+entryRuleGoTo returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGoToRule()); }
+	iv_ruleGoTo=ruleGoTo
+	{ $current=$iv_ruleGoTo.current; }
 	EOF;
 
-// Rule FlyTo
-ruleFlyTo returns [EObject current=null]
+// Rule GoTo
+ruleGoTo returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -579,23 +579,23 @@ ruleFlyTo returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='FLYTO'
+		otherlv_0='GOTO'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getFlyToAccess().getFLYTOKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getGoToAccess().getGOTOKeyword_0());
 		}
 		otherlv_1='('
 		{
-			newLeafNode(otherlv_1, grammarAccess.getFlyToAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getGoToAccess().getLeftParenthesisKeyword_1());
 		}
 		(
 			(
 				lv_object_name_2_0=RULE_STRING
 				{
-					newLeafNode(lv_object_name_2_0, grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0());
+					newLeafNode(lv_object_name_2_0, grammarAccess.getGoToAccess().getObject_nameSTRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getFlyToRule());
+						$current = createModelElement(grammarAccess.getGoToRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -607,7 +607,7 @@ ruleFlyTo returns [EObject current=null]
 		)
 		otherlv_3=')'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getFlyToAccess().getRightParenthesisKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getGoToAccess().getRightParenthesisKeyword_3());
 		}
 	)
 ;

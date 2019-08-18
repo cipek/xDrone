@@ -299,25 +299,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleFlyTo
-entryRuleFlyTo
+// Entry rule entryRuleGoTo
+entryRuleGoTo
 :
-{ before(grammarAccess.getFlyToRule()); }
-	 ruleFlyTo
-{ after(grammarAccess.getFlyToRule()); } 
+{ before(grammarAccess.getGoToRule()); }
+	 ruleGoTo
+{ after(grammarAccess.getGoToRule()); } 
 	 EOF 
 ;
 
-// Rule FlyTo
-ruleFlyTo 
+// Rule GoTo
+ruleGoTo 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getFlyToAccess().getGroup()); }
-		(rule__FlyTo__Group__0)
-		{ after(grammarAccess.getFlyToAccess().getGroup()); }
+		{ before(grammarAccess.getGoToAccess().getGroup()); }
+		(rule__GoTo__Group__0)
+		{ after(grammarAccess.getGoToAccess().getGroup()); }
 	)
 ;
 finally {
@@ -821,9 +821,9 @@ rule__Command__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getCommandAccess().getFlyToParserRuleCall_3()); }
-		ruleFlyTo
-		{ after(grammarAccess.getCommandAccess().getFlyToParserRuleCall_3()); }
+		{ before(grammarAccess.getCommandAccess().getGoToParserRuleCall_3()); }
+		ruleGoTo
+		{ after(grammarAccess.getCommandAccess().getGoToParserRuleCall_3()); }
 	)
 ;
 finally {
@@ -1379,107 +1379,107 @@ finally {
 }
 
 
-rule__FlyTo__Group__0
+rule__GoTo__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FlyTo__Group__0__Impl
-	rule__FlyTo__Group__1
+	rule__GoTo__Group__0__Impl
+	rule__GoTo__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__0__Impl
+rule__GoTo__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFlyToAccess().getFLYTOKeyword_0()); }
-	'FLYTO'
-	{ after(grammarAccess.getFlyToAccess().getFLYTOKeyword_0()); }
+	{ before(grammarAccess.getGoToAccess().getGOTOKeyword_0()); }
+	'GOTO'
+	{ after(grammarAccess.getGoToAccess().getGOTOKeyword_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__1
+rule__GoTo__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FlyTo__Group__1__Impl
-	rule__FlyTo__Group__2
+	rule__GoTo__Group__1__Impl
+	rule__GoTo__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__1__Impl
+rule__GoTo__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFlyToAccess().getLeftParenthesisKeyword_1()); }
+	{ before(grammarAccess.getGoToAccess().getLeftParenthesisKeyword_1()); }
 	'('
-	{ after(grammarAccess.getFlyToAccess().getLeftParenthesisKeyword_1()); }
+	{ after(grammarAccess.getGoToAccess().getLeftParenthesisKeyword_1()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__2
+rule__GoTo__Group__2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FlyTo__Group__2__Impl
-	rule__FlyTo__Group__3
+	rule__GoTo__Group__2__Impl
+	rule__GoTo__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__2__Impl
+rule__GoTo__Group__2__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFlyToAccess().getObject_nameAssignment_2()); }
-	(rule__FlyTo__Object_nameAssignment_2)
-	{ after(grammarAccess.getFlyToAccess().getObject_nameAssignment_2()); }
+	{ before(grammarAccess.getGoToAccess().getObject_nameAssignment_2()); }
+	(rule__GoTo__Object_nameAssignment_2)
+	{ after(grammarAccess.getGoToAccess().getObject_nameAssignment_2()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__3
+rule__GoTo__Group__3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FlyTo__Group__3__Impl
+	rule__GoTo__Group__3__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Group__3__Impl
+rule__GoTo__Group__3__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFlyToAccess().getRightParenthesisKeyword_3()); }
+	{ before(grammarAccess.getGoToAccess().getRightParenthesisKeyword_3()); }
 	')'
-	{ after(grammarAccess.getFlyToAccess().getRightParenthesisKeyword_3()); }
+	{ after(grammarAccess.getGoToAccess().getRightParenthesisKeyword_3()); }
 )
 ;
 finally {
@@ -3460,15 +3460,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FlyTo__Object_nameAssignment_2
+rule__GoTo__Object_nameAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getGoToAccess().getObject_nameSTRINGTerminalRuleCall_2_0()); }
 		RULE_STRING
-		{ after(grammarAccess.getFlyToAccess().getObject_nameSTRINGTerminalRuleCall_2_0()); }
+		{ after(grammarAccess.getGoToAccess().getObject_nameSTRINGTerminalRuleCall_2_0()); }
 	)
 ;
 finally {

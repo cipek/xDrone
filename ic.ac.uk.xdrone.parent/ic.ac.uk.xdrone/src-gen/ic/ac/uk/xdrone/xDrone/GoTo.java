@@ -6,21 +6,21 @@ package ic.ac.uk.xdrone.xDrone;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Fly To</b></em>'.
+ * A representation of the model object '<em><b>Go To</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name <em>Object name</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.GoTo#getObject_name <em>Object name</em>}</li>
  * </ul>
  *
- * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getFlyTo()
+ * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getGoTo()
  * @model
  * @generated
  */
-public interface FlyTo extends Command
+public interface GoTo extends Command
 {
   /**
    * Returns the value of the '<em><b>Object name</b></em>' attribute.
@@ -32,14 +32,14 @@ public interface FlyTo extends Command
    * <!-- end-user-doc -->
    * @return the value of the '<em>Object name</em>' attribute.
    * @see #setObject_name(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getFlyTo_Object_name()
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getGoTo_Object_name()
    * @model
    * @generated
    */
   String getObject_name();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name <em>Object name</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.GoTo#getObject_name <em>Object name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Object name</em>' attribute.
@@ -48,4 +48,4 @@ public interface FlyTo extends Command
    */
   void setObject_name(String value);
 
-} // FlyTo
+} // GoTo

@@ -6,7 +6,7 @@
 '.'=17
 '='=28
 'DRONE'=25
-'FLYTO'=18
+'GOTO'=18
 'LAND()'=12
 'MOVE'=21
 'ROTATE'=22

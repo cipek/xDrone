@@ -61,7 +61,7 @@ Command:
 	Wait
 	| Move
 	| Rotate
-	| FlyTo
+	| GoTo
 ;
 
 DOUBLE:
@@ -74,8 +74,8 @@ POSITIVE_DOUBLE:
 	| INT
 ;
 
-FlyTo:
-	'FLYTO' '(' object_name = STRING ')'
+GoTo:
+	'GOTO' '(' object_name = STRING ')'
 ;
 
 Move:

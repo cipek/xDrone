@@ -290,14 +290,14 @@ public interface XDronePackage extends EPackage
   int COMMAND_FEATURE_COUNT = SUPER_COMMAND_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyToImpl <em>Fly To</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.GoToImpl <em>Go To</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.FlyToImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFlyTo()
+   * @see ic.ac.uk.xdrone.xDrone.impl.GoToImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getGoTo()
    * @generated
    */
-  int FLY_TO = 7;
+  int GO_TO = 7;
 
   /**
    * The feature id for the '<em><b>Object name</b></em>' attribute.
@@ -306,16 +306,16 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int FLY_TO__OBJECT_NAME = COMMAND_FEATURE_COUNT + 0;
+  int GO_TO__OBJECT_NAME = COMMAND_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Fly To</em>' class.
+   * The number of structural features of the '<em>Go To</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FLY_TO_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+  int GO_TO_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
@@ -1076,25 +1076,25 @@ public interface XDronePackage extends EPackage
   EClass getCommand();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FlyTo <em>Fly To</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.GoTo <em>Go To</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Fly To</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FlyTo
+   * @return the meta object for class '<em>Go To</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.GoTo
    * @generated
    */
-  EClass getFlyTo();
+  EClass getGoTo();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name <em>Object name</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.GoTo#getObject_name <em>Object name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Object name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FlyTo#getObject_name()
-   * @see #getFlyTo()
+   * @see ic.ac.uk.xdrone.xDrone.GoTo#getObject_name()
+   * @see #getGoTo()
    * @generated
    */
-  EAttribute getFlyTo_Object_name();
+  EAttribute getGoTo_Object_name();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
@@ -1745,14 +1745,14 @@ public interface XDronePackage extends EPackage
     EClass COMMAND = eINSTANCE.getCommand();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyToImpl <em>Fly To</em>}' class.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.GoToImpl <em>Go To</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.FlyToImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFlyTo()
+     * @see ic.ac.uk.xdrone.xDrone.impl.GoToImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getGoTo()
      * @generated
      */
-    EClass FLY_TO = eINSTANCE.getFlyTo();
+    EClass GO_TO = eINSTANCE.getGoTo();
 
     /**
      * The meta object literal for the '<em><b>Object name</b></em>' attribute feature.
@@ -1760,7 +1760,7 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FLY_TO__OBJECT_NAME = eINSTANCE.getFlyTo_Object_name();
+    EAttribute GO_TO__OBJECT_NAME = eINSTANCE.getGoTo_Object_name();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.

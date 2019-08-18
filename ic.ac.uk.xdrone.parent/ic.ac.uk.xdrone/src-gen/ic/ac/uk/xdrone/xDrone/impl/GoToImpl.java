@@ -3,7 +3,7 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.FlyTo;
+import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Fly To</b></em>'.
+ * An implementation of the model object '<em><b>Go To</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.FlyToImpl#getObject_name <em>Object name</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.GoToImpl#getObject_name <em>Object name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FlyToImpl extends CommandImpl implements FlyTo
+public class GoToImpl extends CommandImpl implements GoTo
 {
   /**
    * The default value of the '{@link #getObject_name() <em>Object name</em>}' attribute.
@@ -52,7 +52,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FlyToImpl()
+  protected GoToImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
   @Override
   protected EClass eStaticClass()
   {
-    return XDronePackage.Literals.FLY_TO;
+    return XDronePackage.Literals.GO_TO;
   }
 
   /**
@@ -88,7 +88,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
     String oldObject_name = object_name;
     object_name = newObject_name;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.FLY_TO__OBJECT_NAME, oldObject_name, object_name));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.GO_TO__OBJECT_NAME, oldObject_name, object_name));
   }
 
   /**
@@ -101,7 +101,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
   {
     switch (featureID)
     {
-      case XDronePackage.FLY_TO__OBJECT_NAME:
+      case XDronePackage.GO_TO__OBJECT_NAME:
         return getObject_name();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
   {
     switch (featureID)
     {
-      case XDronePackage.FLY_TO__OBJECT_NAME:
+      case XDronePackage.GO_TO__OBJECT_NAME:
         setObject_name((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
   {
     switch (featureID)
     {
-      case XDronePackage.FLY_TO__OBJECT_NAME:
+      case XDronePackage.GO_TO__OBJECT_NAME:
         setObject_name(OBJECT_NAME_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class FlyToImpl extends CommandImpl implements FlyTo
   {
     switch (featureID)
     {
-      case XDronePackage.FLY_TO__OBJECT_NAME:
+      case XDronePackage.GO_TO__OBJECT_NAME:
         return OBJECT_NAME_EDEFAULT == null ? object_name != null : !OBJECT_NAME_EDEFAULT.equals(object_name);
     }
     return super.eIsSet(featureID);
@@ -174,4 +174,4 @@ public class FlyToImpl extends CommandImpl implements FlyTo
     return result.toString();
   }
 
-} //FlyToImpl
+} //GoToImpl

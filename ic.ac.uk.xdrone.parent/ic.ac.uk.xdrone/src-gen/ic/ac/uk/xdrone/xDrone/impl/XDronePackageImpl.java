@@ -9,9 +9,9 @@ import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.FlyTo;
 import ic.ac.uk.xdrone.xDrone.Front;
 import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Move;
@@ -99,7 +99,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass flyToEClass = null;
+  private EClass goToEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -468,9 +468,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFlyTo()
+  public EClass getGoTo()
   {
-    return flyToEClass;
+    return goToEClass;
   }
 
   /**
@@ -478,9 +478,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFlyTo_Object_name()
+  public EAttribute getGoTo_Object_name()
   {
-    return (EAttribute)flyToEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)goToEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -978,8 +978,8 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     commandEClass = createEClass(COMMAND);
 
-    flyToEClass = createEClass(FLY_TO);
-    createEAttribute(flyToEClass, FLY_TO__OBJECT_NAME);
+    goToEClass = createEClass(GO_TO);
+    createEAttribute(goToEClass, GO_TO__OBJECT_NAME);
 
     moveEClass = createEClass(MOVE);
     createEReference(moveEClass, MOVE__VECTOR);
@@ -1073,7 +1073,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Add supertypes to classes
     commandEClass.getESuperTypes().add(this.getSuperCommand());
-    flyToEClass.getESuperTypes().add(this.getCommand());
+    goToEClass.getESuperTypes().add(this.getCommand());
     moveEClass.getESuperTypes().add(this.getCommand());
     rotateEClass.getESuperTypes().add(this.getCommand());
     waitEClass.getESuperTypes().add(this.getCommand());
@@ -1105,8 +1105,8 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(flyToEClass, FlyTo.class, "FlyTo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFlyTo_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, FlyTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(goToEClass, GoTo.class, "GoTo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGoTo_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, GoTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMove_Vector(), this.getVector(), null, "vector", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

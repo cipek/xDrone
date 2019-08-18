@@ -21,7 +21,7 @@ import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
 import ic.ac.uk.xdrone.xDrone.Rotate
 import ic.ac.uk.xdrone.xDrone.Main
-import ic.ac.uk.xdrone.xDrone.FlyTo
+import ic.ac.uk.xdrone.xDrone.GoTo
 
 /**
  * Generates code from your model files on save.
@@ -210,7 +210,7 @@ class XDroneGenerator extends AbstractGenerator {
 	  	«IF cmd instanceof Wait»
 			commands.push({w: «cmd.seconds»});
 	  	«ENDIF»
-	  	«IF cmd instanceof FlyTo»
+	  	«IF cmd instanceof GoTo»
 			commands.push({flyTo: "«cmd.object_name»"});
 	  	«ENDIF»
 	'''
@@ -221,95 +221,182 @@ class XDroneGenerator extends AbstractGenerator {
 		import sys
 		sys.path.append('/opt/ros/indigo/lib/python2.7/dist-packages')
 		import rospy
+		import math  
 		
 		from std_msgs.msg import Empty
 		from ardrone_autonomy.msg import Navdata	
 		from geometry_msgs.msg import Twist	
 		PI = 3.1415926535897
 		
-		state = -1;
+		state = -1
+		dronePosition = {
+			'x': 0,
+			'y': 0,
+			'z': 0
+		}
+		currentDroneAngle = 0
+		
+		«FOR d : main.environment.drone»
+			dronePosition.x = «d.position.vector.z»
+			dronePosition.z = «d.position.vector.y»
+			dronePosition.y = «d.position.vector.x»
+			«IF d.rotation !== null»
+				currentDroneAngle += «d.rotation»
+			«ENDIF»
+		«ENDFOR»
+		
+		objects = {}
+		
+		«FOR ob : main.environment.objects»
+			objects['«ob.object_name»'] = {
+				'x': «ob.size.vector.z»,
+				'y': «ob.size.vector.x»,
+				'z': «ob.size.vector.y» + «ob.origin.vector.y»/2,
+			}
+		«ENDFOR»
+		
+		def getDistanceToObject(objectName):
+			global objects
+			obPosition = {}
+			if objects[objectName]:
+				obPosition = objects[objectName]
+			
+			if position['x'] && position['z']:
+				x = math.abs(dronePosition['x'] - obPosition['x'])
+				y = math.abs(dronePosition['y'] - obPosition['y'])
+				
+				return {
+					'x': math.sqrt( x*x + y*y ),
+					'z': getDistance(dronePosition['z'], obPosition['z'])
+				}
+			else:
+				return {'x': 0, 'z': 0}
+				
+				
+		def getDistance(dronePos, obPos):
+		  if(dronePos > obPos)
+		    return - math.abs(dronePos - obPos);
+		  else
+		    return math.abs(dronePos - obPos);
+		
+		
+		def getRotationToObject(objectName):
+			global objects
+			obPosition = {}
+			if objects[objectName]:
+				obPosition = objects[objectName]
+			
+			if position['x'] && position['z']:
+				angleToObject = math.atan2(dronePosition['x'] - obPosition['x'], dronePosition['y'] - obPosition['y']) * 180 / math.pi
+				
+			    angleToObject = angleTo360(angleToObject)
+			    isPositive = true;
+			    if currentDroneAngle > angleToObject:
+			      isPositive = False
+			
+			    angleToObject = math.abs(currentDroneAngle - angleToObject)
+			    ifangleToObject > 180:
+			      angleToObject = 360 - angleToObject;
+			      isPositive = !isPositive;
+			
+			    return (isPositive ? angleToObject : -angleToObject)
+			else:
+				return 0
+		
+		def angleTo360(angle):
+		  while angle < 0:
+		    angle = 360 + angle
+		  return angle
+		
+		
+		def checkAngle(angle):
+		  angle = angle%360
+		  while angle < 0:
+		    angle = 360 + angle;
+		  return angle
+		
 		
 		def ReceiveNavdata(data):
 			global state
 			state = data.state
 			
-			def rotate(speed, angle, clockwise):
-				vel_msg = Twist()
-				velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
-			
-				angular_speed = speed*PI/360
-				relative_angle = angle*PI/360
-			
-				vel_msg.linear.x=0
-				vel_msg.linear.y=0
-				vel_msg.linear.z=0
-				vel_msg.angular.x = 0
-				vel_msg.angular.y = 0
-			
-				if clockwise:
-					vel_msg.angular.z = -abs(angular_speed)
+		def rotate(speed, angle, clockwise):
+			vel_msg = Twist()
+			velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+		
+			angular_speed = speed*PI/360
+			relative_angle = angle*PI/360
+		
+			vel_msg.linear.x=0
+			vel_msg.linear.y=0
+			vel_msg.linear.z=0
+			vel_msg.angular.x = 0
+			vel_msg.angular.y = 0
+		
+			if clockwise:
+				vel_msg.angular.z = -abs(angular_speed)
+			else:
+				vel_msg.angular.z = abs(angular_speed)
+		
+			t0 = rospy.Time.now().to_sec()
+			current_angle = 0
+		
+			while velocity_publisher.get_num_connections() < 1:
+				rospy.sleep(0.1)
+		
+			while(current_angle < relative_angle):
+				velocity_publisher.publish(vel_msg)
+				t1 = rospy.Time.now().to_sec()
+				current_angle = angular_speed*(t1-t0)
+		
+			vel_msg.angular.z = 0
+			velocity_publisher.publish(vel_msg)
+		
+		
+		#direction (true)- forward, left, up
+		def move(speed, distance, direction, axis): 
+			vel_msg = Twist()
+			velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+		
+			vel_msg.linear.x=0
+			vel_msg.linear.y=0
+			vel_msg.linear.z=0
+			vel_msg.angular.x = 0
+			vel_msg.angular.y = 0
+			vel_msg.angular.z = 0
+		
+			if axis == "x":
+				if direction:
+					vel_msg.linear.x = abs(speed)
 				else:
-					vel_msg.angular.z = abs(angular_speed)
-			
-				t0 = rospy.Time.now().to_sec()
-				current_angle = 0
-			
-				while velocity_publisher.get_num_connections() < 1:
-					rospy.sleep(0.1)
-			
-				while(current_angle < relative_angle):
-					velocity_publisher.publish(vel_msg)
-					t1 = rospy.Time.now().to_sec()
-					current_angle = angular_speed*(t1-t0)
-			
-				vel_msg.angular.z = 0
+					vel_msg.linear.x = -abs(speed)
+			elif axis == "y":
+				if direction:
+					vel_msg.linear.y = abs(speed)
+				else:
+					vel_msg.linear.y = -abs(speed)
+			elif axis == "z":
+				if direction:
+					vel_msg.linear.z = abs(speed)
+				else:
+					vel_msg.linear.z = -abs(speed)
+		
+		
+			while velocity_publisher.get_num_connections() < 1:
+				rospy.sleep(0.1)
+		
+			t0 = rospy.Time.now().to_sec()
+			current_distance = 0
+		
+			while(current_distance < distance):
 				velocity_publisher.publish(vel_msg)
-			
-			
-			#direction (true)- forward, left, up
-			def move(speed, distance, direction, axis): 
-				vel_msg = Twist()
-				velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
-			
-				vel_msg.linear.x=0
-				vel_msg.linear.y=0
-				vel_msg.linear.z=0
-				vel_msg.angular.x = 0
-				vel_msg.angular.y = 0
-				vel_msg.angular.z = 0
-			
-				if axis == "x":
-					if direction:
-						vel_msg.linear.x = abs(speed)
-					else:
-						vel_msg.linear.x = -abs(speed)
-				elif axis == "y":
-					if direction:
-						vel_msg.linear.y = abs(speed)
-					else:
-						vel_msg.linear.y = -abs(speed)
-				elif axis == "z":
-					if direction:
-						vel_msg.linear.z = abs(speed)
-					else:
-						vel_msg.linear.z = -abs(speed)
-			
-			
-				while velocity_publisher.get_num_connections() < 1:
-					rospy.sleep(0.1)
-			
-				t0 = rospy.Time.now().to_sec()
-				current_distance = 0
-			
-				while(current_distance < distance):
-					velocity_publisher.publish(vel_msg)
-					t1 = rospy.Time.now().to_sec()
-					current_distance = speed*(t1-t0)
-			
-				vel_msg.linear.x=0
-				vel_msg.linear.y=0
-				vel_msg.linear.z=0
-				velocity_publisher.publish(vel_msg)
+				t1 = rospy.Time.now().to_sec()
+				current_distance = speed*(t1-t0)
+		
+			vel_msg.linear.x=0
+			vel_msg.linear.y=0
+			vel_msg.linear.z=0
+			velocity_publisher.publish(vel_msg)
 				
 		
 		rospy.init_node('test_node')
@@ -383,9 +470,10 @@ class XDroneGenerator extends AbstractGenerator {
 	  	rospy.sleep(«cmd.seconds»)
 	  	«ENDIF»
 	  	«IF cmd instanceof Move»
+	  	
+«««	  	Remember to change position and rotation of the drone
 	  	«ENDIF»
 	'''
-
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";

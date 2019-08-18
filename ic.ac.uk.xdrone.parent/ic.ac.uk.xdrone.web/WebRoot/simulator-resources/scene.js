@@ -615,8 +615,8 @@ function getDistanceToObject(objectName){
     }
   }
 
-  var x = getDistance(drone.position.x, object.position.x)
-  var z = getDistance(drone.position.z, object.position.z)
+  var x = Math.abs(drone.position.x - object.position.x) //getDistance(drone.position.x, object.position.x)
+  var z = Math.abs(drone.position.z - object.position.z) //getDistance(drone.position.z, object.position.z)
 
   var distance = Math.sqrt( x*x + z*z );
   if(object !== undefined){
