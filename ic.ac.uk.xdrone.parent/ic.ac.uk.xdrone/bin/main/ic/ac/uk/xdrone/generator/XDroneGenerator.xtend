@@ -76,36 +76,18 @@ class XDroneGenerator extends AbstractGenerator {
 		lineGeometry.vertices.push(
 			new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z)
 		);
-		//var lastX = drone.position.x, lastY = drone.position.y, lastZ = drone.position.z;
 		«FOR to : fly.takeoff»
 			commands.push("TAKEOFF");
-			//commands.push({y: 0.7}); 
-			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY + 0.7, lastZ));
-			//lastY += 0.7;
 		«ENDFOR»
-		
-		//commands.push({w: 2}); 
-		
-		//commands.push({x: 2}); 
-		//lineGeometry.vertices.push(new THREE.Vector3(lastX + 2, lastY, lastZ));
-		//lastX += 2;
 		
 		«FOR f : fly.commands»
 			«IF f instanceof Command»
 				«f.compileJS»
 			«ENDIF»
-		«ENDFOR»
-		
-		
-		//commands.push({r: 90 * (Math.PI/2)}); 
-		//commands.push({r: 90}); 
-								
+		«ENDFOR»	
 		
 		«FOR to : fly.land»
-			//commands.push({y: -0.7}); 
 			commands.push("LAND");
-			//lineGeometry.vertices.push(new THREE.Vector3(lastX, lastY - 0.7, lastZ));
-			//lastY -= 0.7;
 		«ENDFOR»
 		nextCommand();
 		
@@ -158,13 +140,13 @@ class XDroneGenerator extends AbstractGenerator {
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0] == "TAKEOFF"){
-					changeDroneCollisionBox(0.25,0,0.25)
+					//changeDroneCollisionBox(0.25,0,0.25)
 					destination = 0.7;
 					currentFunction = "MOVE_Y";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0] == "LAND"){
-					changeDroneCollisionBox(0.25,0,0.25)
+					//changeDroneCollisionBox(0.25,0,0.25)
 					currentFunction = "LAND";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
@@ -259,9 +241,9 @@ class XDroneGenerator extends AbstractGenerator {
 		«IF main.environment !== null»
 			«FOR ob : main.environment.objects»
 				objects['«ob.object_name»'] = {
-					'x': «ob.size.vector.z»,
-					'y': «ob.size.vector.x»,
-					'z': «ob.size.vector.y» + «ob.origin.vector.y»/2
+					'x': «ob.origin.vector.z»,
+					'y': «ob.origin.vector.x»,
+					'z': «ob.origin.vector.y» + «ob.size.vector.y»/2
 				}
 			«ENDFOR»
 		«ENDIF»
@@ -296,9 +278,9 @@ class XDroneGenerator extends AbstractGenerator {
 			if objects[objectName]:
 				obPosition = objects[objectName]
 			
-			if position['x'] and position['z']:
-				x = math.abs(dronePosition['x'] - obPosition['x'])
-				y = math.abs(dronePosition['y'] - obPosition['y'])
+			if 'x' in obPosition and 'z' in obPosition:
+				x = abs(dronePosition['x'] - obPosition['x'])
+				y = abs(dronePosition['y'] - obPosition['y'])
 				
 				return {
 					'x': math.sqrt( x*x + y*y ),
@@ -310,9 +292,9 @@ class XDroneGenerator extends AbstractGenerator {
 				
 		def getDistance(dronePos, obPos):
 		  if dronePos > obPos:
-		    return - math.abs(dronePos - obPos);
+		    return - abs(dronePos - obPos);
 		  else:
-		    return math.abs(dronePos - obPos);
+		    return abs(dronePos - obPos);
 		
 		
 		def getRotationToObject(objectName):
@@ -320,16 +302,16 @@ class XDroneGenerator extends AbstractGenerator {
 			obPosition = {}
 			if objects[objectName]:
 				obPosition = objects[objectName]
-			
-			if position['x'] and position['z']:
+				
+			if 'x' in obPosition and 'z' in obPosition:
 				angleToObject = math.atan2(dronePosition['x'] - obPosition['x'], dronePosition['y'] - obPosition['y']) * 180 / math.pi
 				
 				angleToObject = angleTo360(angleToObject)
-				isPositive = true;
+				isPositive = True;
 				if currentDroneAngle > angleToObject:
 					isPositive = False
 					
-				angleToObject = math.abs(currentDroneAngle - angleToObject)
+				angleToObject = abs(currentDroneAngle - angleToObject)
 				
 				if angleToObject > 180:
 					angleToObject = 360 - angleToObject;

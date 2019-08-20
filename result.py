@@ -2,15 +2,18 @@
 import sys
 sys.path.append('/opt/ros/indigo/lib/python2.7/dist-packages')
 import rospy
-import math
+import math  
 
 from std_msgs.msg import Empty
-from ardrone_autonomy.msg import Navdata
-from geometry_msgs.msg import Twist
+from ardrone_autonomy.msg import Navdata	
+from geometry_msgs.msg import Twist	
 PI = 3.1415926535897
-DISTANCE_ONE_AND_HALF_SECOND = 85
-DISTANCE_TWO_SECONDS = 120
-DISTANCE_TWO_AND_HALF_SECONDS = 165
+#Constants
+ACCEPTED_DISTANCE_ERROR = 20
+ACCEPTED_ALTITUDE_ERROR = 50
+DISTANCE_ONE_AND_HALF_SECOND = 0.85
+DISTANCE_TWO_SECONDS = 1.20
+DISTANCE_TWO_AND_HALF_SECONDS = 1.65
 
 state = -1
 dronePosition = {
@@ -24,6 +27,11 @@ currentDroneAngle = 0 #Real Life
 
 objects = {}
 
+objects['BED'] = {
+	'x': 2,
+	'y': 1,
+	'z': 0.6 + 0.3/2
+}
 
 #RotY:		RotX:
 #+ forward 	+ right
@@ -32,7 +40,7 @@ def ReceiveNavdata(data):
 	global state
 	global currentAngle
 	global currentAltitude
-
+	
 	currentAngle = data.rotZ
 	state = data.state
 	currentAltitude = data.altd
@@ -42,36 +50,35 @@ def getTimeFromDistance(distance):
 	global DISTANCE_ONE_AND_HALF_SECOND
 	global DISTANCE_TWO_SECONDS
 	global DISTANCE_TWO_AND_HALF_SECONDS
-
-  if distance <= DISTANCE_ONE_AND_HALF_SECOND:
-    return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
-  elif distance <= DISTANCE_TWO_SECONDS:
-    return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
-  else:
-    return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
-
+	if distance <= DISTANCE_ONE_AND_HALF_SECOND:
+		return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
+	elif distance <= DISTANCE_TWO_SECONDS:
+		return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
+	else:
+		return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
+		
 def getDistanceToObject(objectName):
 	global objects
 	obPosition = {}
 	if objects[objectName]:
 		obPosition = objects[objectName]
-
-	if position['x'] && position['z']:
+	
+	if position['x'] and position['z']:
 		x = math.abs(dronePosition['x'] - obPosition['x'])
 		y = math.abs(dronePosition['y'] - obPosition['y'])
-
+		
 		return {
 			'x': math.sqrt( x*x + y*y ),
 			'z': getDistance(dronePosition['z'], obPosition['z'])
 		}
 	else:
 		return {'x': 0, 'z': 0}
-
-
+		
+		
 def getDistance(dronePos, obPos):
-  if(dronePos > obPos)
+  if dronePos > obPos:
     return - math.abs(dronePos - obPos);
-  else
+  else:
     return math.abs(dronePos - obPos);
 
 
@@ -80,21 +87,22 @@ def getRotationToObject(objectName):
 	obPosition = {}
 	if objects[objectName]:
 		obPosition = objects[objectName]
-
-	if position['x'] && position['z']:
+	
+	if position['x'] and position['z']:
 		angleToObject = math.atan2(dronePosition['x'] - obPosition['x'], dronePosition['y'] - obPosition['y']) * 180 / math.pi
-
-	    angleToObject = angleTo360(angleToObject)
-	    isPositive = true;
-	    if currentDroneAngle > angleToObject:
-	      isPositive = False
-
-	    angleToObject = math.abs(currentDroneAngle - angleToObject)
-	    ifangleToObject > 180:
-	      angleToObject = 360 - angleToObject;
-	      isPositive = !isPositive;
-
-	    return (isPositive ? angleToObject : -angleToObject)
+		
+		angleToObject = angleTo360(angleToObject)
+		isPositive = true;
+		if currentDroneAngle > angleToObject:
+			isPositive = False
+			
+		angleToObject = math.abs(currentDroneAngle - angleToObject)
+		
+		if angleToObject > 180:
+			angleToObject = 360 - angleToObject;
+			isPositive = not isPositive;
+		
+		return angleToObject if isPositive else -angleToObject
 	else:
 		return 0
 
@@ -110,8 +118,8 @@ def checkAngle(angle):
     angle = 360 + angle;
   return angle
 
-
-def oppositeSigns(x, y):
+	
+def oppositeSigns(x, y): 
 	return (x < 0) if (y >= 0) else (y < 0)
 
 def rotate(speed, angle):
@@ -122,7 +130,7 @@ def rotate(speed, angle):
 	clockwise = True
 	if angle > 0:
 		clockwise = False
-
+	
 	vel_msg = Twist()
 
 	angular_speed = speed*PI/360
@@ -155,32 +163,32 @@ def rotate(speed, angle):
 	velocity_publisher.publish(vel_msg)
 
 
-def moveBaseOnTime(distane, x ,y):
+def moveBaseOnTime(distance, x ,y):
 	global velocity_publisher
 
 	while velocity_publisher.get_num_connections() < 1:
 		rospy.sleep(0.1)
 
 	vel_msg = Twist()
-	vel_msg.linear.x=x
-	vel_msg.linear.y=y  #y+ is left
+	vel_msg.linear.x= x if distance > 0 else -x
+	vel_msg.linear.y= y if distance > 0 else -y  #y+ is left
 	vel_msg.linear.z=0
 	vel_msg.angular.x = 0
 	vel_msg.angular.y = 0
 	vel_msg.angular.z = 0
-
+	
 	tStart = rospy.Time.now().to_sec()
 	tEnd = tStart;
-  	timeRequired = getTimeFromDistance(distane)
-
+  	timeRequired = getTimeFromDistance(abs(distance))
+  
 	while(tEnd-tStart) < timeRequired:
 		velocity_publisher.publish(vel_msg)
-		tEnd = rospy.Time.now().to_sec()
+		tEnd = rospy.Time.now().to_sec()	
 
 	vel_msg.linear.x=0
 	vel_msg.linear.y=0
 	velocity_publisher.publish(vel_msg)
-
+		
 def moveUpAndDown(distance):
 	global zLocation
 	global velocity_publisher
@@ -192,7 +200,7 @@ def moveUpAndDown(distance):
 	vel_msg.angular.y = 0
 	vel_msg.angular.z = 0
 	goalDistance = currentAltitude + (distance*1000)
-
+	
 	while abs(abs(currentAltitude) - abs(goalDistance)) > ACCEPTED_ALTITUDE_ERROR:
 		if(goalDistance > currentAltitude):
 			vel_msg.linear.z=0.15
@@ -203,7 +211,28 @@ def moveUpAndDown(distance):
 
 	vel_msg.linear.z=0
 	velocity_publisher.publish(vel_msg)
+	
+def noMove(timeRequired):
+	global velocity_publisher
 
+	while velocity_publisher.get_num_connections() < 1:
+		rospy.sleep(0.1)
+
+	vel_msg = Twist()
+	vel_msg.linear.x=0
+	vel_msg.linear.y=0
+	vel_msg.linear.z=0
+	vel_msg.angular.x = 0
+	vel_msg.angular.y = 0
+	vel_msg.angular.z = 0
+	
+	tStart = rospy.Time.now().to_sec()
+	tEnd = tStart;
+
+	while(tEnd-tStart) < timeRequired:
+		velocity_publisher.publish(vel_msg)
+		tEnd = rospy.Time.now().to_sec()
+		
 #Main
 rospy.init_node('test_node')
 empty = Empty()
@@ -227,40 +256,25 @@ takeoff = rospy.Publisher('/ardrone/takeoff', Empty, queue_size=1)
 while takeoff.get_num_connections() < 1:
 	rospy.sleep(0.1)
 
+dronePosition['z'] += 0.7
 takeoff.publish(empty)
-moveBaseOnTime(5, 0, 0)
+noMove(5)
 
-if 2 != 0:
-	dronePosition.z += 2
-	moveUpAndDown(2)
-if -1.5 != 0:
-	dronePosition.x += -1.5
-	moveBaseOnTime(-1.5, 0.15, 0)
-	moveBaseOnTime(1, 0, 0)
-if -2.5 != 0:
-	dronePosition.y += -2.5
-	moveBaseOnTime(-2.5, 0, 0.15)
-	moveBaseOnTime(1, 0, 0)
-currentDroneAngle += -90
-rotate(30, 90);
-if 0 != 0:
-	dronePosition.z += 0
-	moveUpAndDown(0)
-if 3 != 0:
-	dronePosition.x += 3
-	moveBaseOnTime(3, 0.15, 0)
-	moveBaseOnTime(1, 0, 0)
-if 6 != 0:
-	dronePosition.y += 6
-	moveBaseOnTime(6, 0, 0.15)
-	moveBaseOnTime(1, 0, 0)
-currentDroneAngle += --90
-rotate(30, -90);
+vector = getDistanceToObject("BED");
+angle = getRotationToObject("BED");
+currentDroneAngle += angle
+rotate(30, angle);
+dronePosition['z'] += vector['z']
+moveUpAndDown(vector['z'])
+dronePosition['x'] += vector['x']
+moveBaseOnTime(vector['x'], 0.15, 0)
+noMove(1)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
-
+			
 while land.get_num_connections() < 1:
 	rospy.sleep(0.1)
 
 land.publish(empty)
 rospy.sleep(3)
+
