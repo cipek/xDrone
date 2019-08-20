@@ -227,9 +227,12 @@ class XDroneGenerator extends AbstractGenerator {
 		from ardrone_autonomy.msg import Navdata	
 		from geometry_msgs.msg import Twist	
 		PI = 3.1415926535897
-		DISTANCE_ONE_AND_HALF_SECOND = 85
-		DISTANCE_TWO_SECONDS = 120
-		DISTANCE_TWO_AND_HALF_SECONDS = 165
+		#Constants
+		ACCEPTED_DISTANCE_ERROR = 20
+		ACCEPTED_ALTITUDE_ERROR = 50
+		DISTANCE_ONE_AND_HALF_SECOND = 0.85
+		DISTANCE_TWO_SECONDS = 1.20
+		DISTANCE_TWO_AND_HALF_SECONDS = 1.65
 		
 		state = -1
 		dronePosition = {
@@ -280,13 +283,12 @@ class XDroneGenerator extends AbstractGenerator {
 			global DISTANCE_ONE_AND_HALF_SECOND
 			global DISTANCE_TWO_SECONDS
 			global DISTANCE_TWO_AND_HALF_SECONDS
-			
-		  if distance <= DISTANCE_ONE_AND_HALF_SECOND:
-		    return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
-		  elif distance <= DISTANCE_TWO_SECONDS:
-		    return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
-		  else:
-		    return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
+			if distance <= DISTANCE_ONE_AND_HALF_SECOND:
+				return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
+			elif distance <= DISTANCE_TWO_SECONDS:
+				return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
+			else:
+				return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
 				
 		def getDistanceToObject(objectName):
 			global objects
@@ -294,7 +296,7 @@ class XDroneGenerator extends AbstractGenerator {
 			if objects[objectName]:
 				obPosition = objects[objectName]
 			
-			if position['x'] && position['z']:
+			if position['x'] and position['z']:
 				x = math.abs(dronePosition['x'] - obPosition['x'])
 				y = math.abs(dronePosition['y'] - obPosition['y'])
 				
@@ -307,9 +309,9 @@ class XDroneGenerator extends AbstractGenerator {
 				
 				
 		def getDistance(dronePos, obPos):
-		  if(dronePos > obPos)
+		  if dronePos > obPos:
 		    return - math.abs(dronePos - obPos);
-		  else
+		  else:
 		    return math.abs(dronePos - obPos);
 		
 		
@@ -319,20 +321,21 @@ class XDroneGenerator extends AbstractGenerator {
 			if objects[objectName]:
 				obPosition = objects[objectName]
 			
-			if position['x'] && position['z']:
+			if position['x'] and position['z']:
 				angleToObject = math.atan2(dronePosition['x'] - obPosition['x'], dronePosition['y'] - obPosition['y']) * 180 / math.pi
 				
-			    angleToObject = angleTo360(angleToObject)
-			    isPositive = true;
-			    if currentDroneAngle > angleToObject:
-			      isPositive = False
-			
-			    angleToObject = math.abs(currentDroneAngle - angleToObject)
-			    ifangleToObject > 180:
-			      angleToObject = 360 - angleToObject;
-			      isPositive = !isPositive;
-			
-			    return (isPositive ? angleToObject : -angleToObject)
+				angleToObject = angleTo360(angleToObject)
+				isPositive = true;
+				if currentDroneAngle > angleToObject:
+					isPositive = False
+					
+				angleToObject = math.abs(currentDroneAngle - angleToObject)
+				
+				if angleToObject > 180:
+					angleToObject = 360 - angleToObject;
+					isPositive = not isPositive;
+				
+				return angleToObject if isPositive else -angleToObject
 			else:
 				return 0
 		
@@ -393,15 +396,15 @@ class XDroneGenerator extends AbstractGenerator {
 			velocity_publisher.publish(vel_msg)
 		
 		
-		def moveBaseOnTime(distane, x ,y):
+		def moveBaseOnTime(distance, x ,y):
 			global velocity_publisher
 		
 			while velocity_publisher.get_num_connections() < 1:
 				rospy.sleep(0.1)
 		
 			vel_msg = Twist()
-			vel_msg.linear.x=x
-			vel_msg.linear.y=y  #y+ is left
+			vel_msg.linear.x= x if distance > 0 else -x
+			vel_msg.linear.y= y if distance > 0 else -y  #y+ is left
 			vel_msg.linear.z=0
 			vel_msg.angular.x = 0
 			vel_msg.angular.y = 0
@@ -409,7 +412,7 @@ class XDroneGenerator extends AbstractGenerator {
 			
 			tStart = rospy.Time.now().to_sec()
 			tEnd = tStart;
-		  	timeRequired = getTimeFromDistance(distane)
+		  	timeRequired = getTimeFromDistance(abs(distance))
 		  
 			while(tEnd-tStart) < timeRequired:
 				velocity_publisher.publish(vel_msg)
@@ -442,6 +445,27 @@ class XDroneGenerator extends AbstractGenerator {
 			vel_msg.linear.z=0
 			velocity_publisher.publish(vel_msg)
 			
+		def noMove(timeRequired):
+			global velocity_publisher
+		
+			while velocity_publisher.get_num_connections() < 1:
+				rospy.sleep(0.1)
+		
+			vel_msg = Twist()
+			vel_msg.linear.x=0
+			vel_msg.linear.y=0
+			vel_msg.linear.z=0
+			vel_msg.angular.x = 0
+			vel_msg.angular.y = 0
+			vel_msg.angular.z = 0
+			
+			tStart = rospy.Time.now().to_sec()
+			tEnd = tStart;
+		
+			while(tEnd-tStart) < timeRequired:
+				velocity_publisher.publish(vel_msg)
+				tEnd = rospy.Time.now().to_sec()
+				
 		#Main
 		rospy.init_node('test_node')
 		empty = Empty()
@@ -466,8 +490,9 @@ class XDroneGenerator extends AbstractGenerator {
 			while takeoff.get_num_connections() < 1:
 				rospy.sleep(0.1)
 			
+			dronePosition['z'] += 0.7
 			takeoff.publish(empty)
-			moveBaseOnTime(5, 0, 0)
+			noMove(5)
 		«ENDFOR»
 		
 		«FOR f : main.fly.commands»
@@ -517,21 +542,32 @@ class XDroneGenerator extends AbstractGenerator {
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
 	  		currentDroneAngle += -«cmd.angle»
-	  		rotate(30, «cmd.angle»);
+	  		rotate(30, -«cmd.angle»);
 	  	«ENDIF»
 	  	«IF cmd instanceof Move»
 	  		if «cmd.vector.y» != 0:
-	  			dronePosition.z += «cmd.vector.y»
+	  			dronePosition['z'] += «cmd.vector.y»
 	  			moveUpAndDown(«cmd.vector.y»)
 	  		if «cmd.vector.z» != 0:	
-	  			dronePosition.x += «cmd.vector.z»
+	  			dronePosition['x'] += «cmd.vector.z»
 	  			moveBaseOnTime(«cmd.vector.z», 0.15, 0)
-	  			moveBaseOnTime(1, 0, 0)
+	  			noMove(1)
 	  		if «cmd.vector.x» != 0:
-	  			dronePosition.y += «cmd.vector.x»
+	  			dronePosition['y']  += «cmd.vector.x»
 	  			moveBaseOnTime(«cmd.vector.x», 0, 0.15)
-	  			moveBaseOnTime(1, 0, 0)
+	  			noMove(1)
 	  	«ENDIF»
+	  	«IF cmd instanceof GoTo»
+		  	vector = getDistanceToObject("«cmd.object_name»");
+		  	angle = getRotationToObject("«cmd.object_name»");
+		  	currentDroneAngle += angle
+		  	rotate(30, angle);
+		  	dronePosition['z'] += vector['z']
+		  	moveUpAndDown(vector['z'])
+		  	dronePosition['x'] += vector['x']
+		  	moveBaseOnTime(vector['x'], 0.15, 0)
+		  	noMove(1)
+		«ENDIF»
 	'''
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
