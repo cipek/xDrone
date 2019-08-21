@@ -15,8 +15,11 @@ import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Wait;
@@ -614,22 +617,28 @@ public class XDroneGenerator extends AbstractGenerator {
         {
           EList<Drone> _drone = main.getEnvironment().getDrone();
           for(final Drone d : _drone) {
-            _builder.append("dronePosition.x = ");
-            String _z = d.getPosition().getVector().getZ();
-            _builder.append(_z);
-            _builder.newLineIfNotEmpty();
-            _builder.append("dronePosition.z = ");
-            String _y = d.getPosition().getVector().getY();
-            _builder.append(_y);
-            _builder.newLineIfNotEmpty();
-            _builder.append("dronePosition.y = ");
-            String _x = d.getPosition().getVector().getX();
-            _builder.append(_x);
-            _builder.newLineIfNotEmpty();
+            {
+              Position _position = d.getPosition();
+              boolean _tripleNotEquals_1 = (_position != null);
+              if (_tripleNotEquals_1) {
+                _builder.append("dronePosition.x = ");
+                String _z = d.getPosition().getVector().getZ();
+                _builder.append(_z);
+                _builder.newLineIfNotEmpty();
+                _builder.append("dronePosition.z = ");
+                String _y = d.getPosition().getVector().getY();
+                _builder.append(_y);
+                _builder.newLineIfNotEmpty();
+                _builder.append("dronePosition.y = ");
+                String _x = d.getPosition().getVector().getX();
+                _builder.append(_x);
+                _builder.newLineIfNotEmpty();
+              }
+            }
             {
               String _rotation = d.getRotation();
-              boolean _tripleNotEquals_1 = (_rotation != null);
-              if (_tripleNotEquals_1) {
+              boolean _tripleNotEquals_2 = (_rotation != null);
+              if (_tripleNotEquals_2) {
                 _builder.append("currentDroneAngle += ");
                 String _rotation_1 = d.getRotation();
                 _builder.append(_rotation_1);
@@ -646,39 +655,51 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     {
       Environment _environment_1 = main.getEnvironment();
-      boolean _tripleNotEquals_2 = (_environment_1 != null);
-      if (_tripleNotEquals_2) {
+      boolean _tripleNotEquals_3 = (_environment_1 != null);
+      if (_tripleNotEquals_3) {
         {
           EList<ic.ac.uk.xdrone.xDrone.Object> _objects = main.getEnvironment().getObjects();
           for(final ic.ac.uk.xdrone.xDrone.Object ob : _objects) {
-            _builder.append("objects[\'");
-            String _object_name = ob.getObject_name();
-            _builder.append(_object_name);
-            _builder.append("\'] = {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\'x\': ");
-            String _z_1 = ob.getOrigin().getVector().getZ();
-            _builder.append(_z_1, "\t");
-            _builder.append(",");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\'y\': ");
-            String _x_1 = ob.getOrigin().getVector().getX();
-            _builder.append(_x_1, "\t");
-            _builder.append(",");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("\'z\': ");
-            String _y_1 = ob.getOrigin().getVector().getY();
-            _builder.append(_y_1, "\t");
-            _builder.append(" + ");
-            String _y_2 = ob.getSize().getVector().getY();
-            _builder.append(_y_2, "\t");
-            _builder.append("/2");
-            _builder.newLineIfNotEmpty();
-            _builder.append("}");
-            _builder.newLine();
+            {
+              Origin _origin = ob.getOrigin();
+              boolean _tripleNotEquals_4 = (_origin != null);
+              if (_tripleNotEquals_4) {
+                {
+                  Size _size = ob.getSize();
+                  boolean _tripleNotEquals_5 = (_size != null);
+                  if (_tripleNotEquals_5) {
+                    _builder.append("objects[\'");
+                    String _object_name = ob.getObject_name();
+                    _builder.append(_object_name);
+                    _builder.append("\'] = {");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\'x\': ");
+                    String _z_1 = ob.getOrigin().getVector().getZ();
+                    _builder.append(_z_1, "\t");
+                    _builder.append(",");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\'y\': ");
+                    String _x_1 = ob.getOrigin().getVector().getX();
+                    _builder.append(_x_1, "\t");
+                    _builder.append(",");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("\t");
+                    _builder.append("\'z\': ");
+                    String _y_1 = ob.getOrigin().getVector().getY();
+                    _builder.append(_y_1, "\t");
+                    _builder.append(" + ");
+                    String _y_2 = ob.getSize().getVector().getY();
+                    _builder.append(_y_2, "\t");
+                    _builder.append("/2");
+                    _builder.newLineIfNotEmpty();
+                    _builder.append("}");
+                    _builder.newLine();
+                  }
+                }
+              }
+            }
           }
         }
       }

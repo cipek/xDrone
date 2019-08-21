@@ -247,9 +247,11 @@ commands.push({z: -«cmd.distance»});
 		
 		«IF main.environment !== null»
 			«FOR d : main.environment.drone»
-				dronePosition.x = «d.position.vector.z»
-				dronePosition.z = «d.position.vector.y»
-				dronePosition.y = «d.position.vector.x»
+				«IF d.position !== null»
+					dronePosition.x = «d.position.vector.z»
+					dronePosition.z = «d.position.vector.y»
+					dronePosition.y = «d.position.vector.x»
+				«ENDIF»
 				«IF d.rotation !== null»
 					currentDroneAngle += «d.rotation»
 				«ENDIF»
@@ -260,11 +262,15 @@ commands.push({z: -«cmd.distance»});
 		
 		«IF main.environment !== null»
 			«FOR ob : main.environment.objects»
-				objects['«ob.object_name»'] = {
-					'x': «ob.origin.vector.z»,
-					'y': «ob.origin.vector.x»,
-					'z': «ob.origin.vector.y» + «ob.size.vector.y»/2
-				}
+				«IF ob.origin !== null»
+					«IF ob.size !== null»
+						objects['«ob.object_name»'] = {
+							'x': «ob.origin.vector.z»,
+							'y': «ob.origin.vector.x»,
+							'z': «ob.origin.vector.y» + «ob.size.vector.y»/2
+						}
+					«ENDIF»
+				«ENDIF»
 			«ENDFOR»
 		«ENDIF»
 		
