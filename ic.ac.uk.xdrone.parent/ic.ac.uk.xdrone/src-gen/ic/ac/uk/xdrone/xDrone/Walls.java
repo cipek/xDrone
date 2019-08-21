@@ -36,12 +36,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Front</em>' containment reference.
-   * @see #setFront(Front)
+   * @see #setFront(FrontWall)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Front()
    * @model containment="true"
    * @generated
    */
-  Front getFront();
+  FrontWall getFront();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getFront <em>Front</em>}' containment reference.
@@ -51,7 +51,7 @@ public interface Walls extends EObject
    * @see #getFront()
    * @generated
    */
-  void setFront(Front value);
+  void setFront(FrontWall value);
 
   /**
    * Returns the value of the '<em><b>Right</b></em>' containment reference.
@@ -62,12 +62,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Right)
+   * @see #setRight(RightWall)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Right()
    * @model containment="true"
    * @generated
    */
-  Right getRight();
+  RightWall getRight();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}' containment reference.
@@ -77,7 +77,7 @@ public interface Walls extends EObject
    * @see #getRight()
    * @generated
    */
-  void setRight(Right value);
+  void setRight(RightWall value);
 
   /**
    * Returns the value of the '<em><b>Back</b></em>' containment reference.
@@ -88,12 +88,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Back</em>' containment reference.
-   * @see #setBack(Back)
+   * @see #setBack(BackWall)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Back()
    * @model containment="true"
    * @generated
    */
-  Back getBack();
+  BackWall getBack();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}' containment reference.
@@ -103,7 +103,7 @@ public interface Walls extends EObject
    * @see #getBack()
    * @generated
    */
-  void setBack(Back value);
+  void setBack(BackWall value);
 
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -114,12 +114,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(Left)
+   * @see #setLeft(LeftWall)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Left()
    * @model containment="true"
    * @generated
    */
-  Left getLeft();
+  LeftWall getLeft();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}' containment reference.
@@ -129,7 +129,7 @@ public interface Walls extends EObject
    * @see #getLeft()
    * @generated
    */
-  void setLeft(Left value);
+  void setLeft(LeftWall value);
 
   /**
    * Returns the value of the '<em><b>Up</b></em>' containment reference.
@@ -140,12 +140,12 @@ public interface Walls extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Up</em>' containment reference.
-   * @see #setUp(Up)
+   * @see #setUp(UpWall)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getWalls_Up()
    * @model containment="true"
    * @generated
    */
-  Up getUp();
+  UpWall getUp();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Walls#getUp <em>Up</em>}' containment reference.
@@ -155,6 +155,6 @@ public interface Walls extends EObject
    * @see #getUp()
    * @generated
    */
-  void setUp(Up value);
+  void setUp(UpWall value);
 
 } // Walls

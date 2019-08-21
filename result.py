@@ -22,15 +22,30 @@ dronePosition = {
 	'z': 0
 }
 currentAngle = 0.0 #Navdata
-currentDroneAngle = 0 #Real Life
+currentDroneAngle = 270.0 #Real Life
 
 
 objects = {}
 
-objects['BED'] = {
+objects['TABLE1'] = {
+	'x': -1,
+	'y': 5,
+	'z': 0.84 + 1.68/2
+}
+objects['TABLE2'] = {
+	'x': 2.5,
+	'y': 2,
+	'z': 0.738 + 1.476/2
+}
+objects['TABLE3'] = {
 	'x': 2,
-	'y': 1,
-	'z': 0.6 + 0.3/2
+	'y': 5,
+	'z': 0.5 + 1/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
 }
 
 #RotY:		RotX:
@@ -63,9 +78,9 @@ def getDistanceToObject(objectName):
 	if objects[objectName]:
 		obPosition = objects[objectName]
 	
-	if position['x'] and position['z']:
-		x = math.abs(dronePosition['x'] - obPosition['x'])
-		y = math.abs(dronePosition['y'] - obPosition['y'])
+	if 'x' in obPosition and 'z' in obPosition:
+		x = abs(dronePosition['x'] - obPosition['x'])
+		y = abs(dronePosition['y'] - obPosition['y'])
 		
 		return {
 			'x': math.sqrt( x*x + y*y ),
@@ -77,9 +92,9 @@ def getDistanceToObject(objectName):
 		
 def getDistance(dronePos, obPos):
   if dronePos > obPos:
-    return - math.abs(dronePos - obPos);
+    return - abs(dronePos - obPos);
   else:
-    return math.abs(dronePos - obPos);
+    return abs(dronePos - obPos);
 
 
 def getRotationToObject(objectName):
@@ -87,16 +102,16 @@ def getRotationToObject(objectName):
 	obPosition = {}
 	if objects[objectName]:
 		obPosition = objects[objectName]
-	
-	if position['x'] and position['z']:
+		
+	if 'x' in obPosition and 'z' in obPosition:
 		angleToObject = math.atan2(dronePosition['x'] - obPosition['x'], dronePosition['y'] - obPosition['y']) * 180 / math.pi
 		
 		angleToObject = angleTo360(angleToObject)
-		isPositive = true;
+		isPositive = True;
 		if currentDroneAngle > angleToObject:
 			isPositive = False
 			
-		angleToObject = math.abs(currentDroneAngle - angleToObject)
+		angleToObject = abs(currentDroneAngle - angleToObject)
 		
 		if angleToObject > 180:
 			angleToObject = 360 - angleToObject;
@@ -127,14 +142,14 @@ def rotate(speed, angle):
 	lastAngle = currentAngle
 	angleDone = 0.0
 	accuracy_modificator = 5
-	clockwise = True
-	if angle > 0:
-		clockwise = False
 	
 	vel_msg = Twist()
 
 	angular_speed = speed*PI/360
-	relative_angle = angle*PI/360
+
+	clockwise = False
+	if angle < 0:
+		clockwise = True
 
 	vel_msg.linear.x=0
 	vel_msg.linear.y=0
@@ -143,21 +158,23 @@ def rotate(speed, angle):
 	vel_msg.angular.y = 0
 
 	if clockwise:
-		vel_msg.angular.z = -abs(angular_speed)
+		vel_msg.angular.z = -angular_speed
 	else:
-		vel_msg.angular.z = abs(angular_speed)
+		vel_msg.angular.z = angular_speed*2 #For some reason rotates slower to left
 
 	while velocity_publisher.get_num_connections() < 1:
 		rospy.sleep(0.1)
 
-	while(angleDone < angle-accuracy_modificator):
+	while(angleDone < abs(angle)-accuracy_modificator):
 		if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):
 			angleDone += abs(abs(currentAngle)-180 + (abs(lastAngle)-180))
+			
 		else:
 			angleDone += abs(currentAngle - lastAngle)
 
-		lastAngle = currentAngle
+		lastAngle = currentAngle	
 		velocity_publisher.publish(vel_msg)
+
 
 	vel_msg.angular.z = 0
 	velocity_publisher.publish(vel_msg)
@@ -260,8 +277,16 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-vector = getDistanceToObject("BED");
-angle = getRotationToObject("BED");
+dronePosition['z'] += 2.5
+moveUpAndDown(2.5)
+dronePosition['x'] += -1.5
+moveBaseOnTime(-1.5, 0.15, 0)
+noMove(1)
+dronePosition['y']  += -3.5
+moveBaseOnTime(-3.5, 0, 0.15)
+noMove(1)
+vector = getDistanceToObject("TABLE1");
+angle = getRotationToObject("TABLE1");
 currentDroneAngle += angle
 rotate(30, angle);
 dronePosition['z'] += vector['z']

@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "DRONE|GOTO|MOVE|ROTATE|WAIT|WALLS|back|color|front|left|origin|position|right|rotation|size|up";
+		var keywords = "BACKWARD|DOWN|DRONE|FORWARD|GOTO|LEFT|RIGHT|ROTATE|UP|WAIT|WALLS|back|color|front|left|origin|position|right|rotation|size|up";
 		this.$rules = {
 			"start": [
 				{token: "comment", regex: "\\/\\/.*$"},

@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,32 +20,32 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.LeftImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.LeftImpl#getDistance <em>Distance</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LeftImpl extends MinimalEObjectImpl.Container implements Left
+public class LeftImpl extends CommandImpl implements Left
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getDistance() <em>Distance</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getDistance()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String DISTANCE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getDistance()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String distance = DISTANCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +73,9 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getDistance()
   {
-    return value;
+    return distance;
   }
 
   /**
@@ -84,12 +83,12 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setDistance(String newDistance)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldDistance = distance;
+    distance = newDistance;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.LEFT__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.LEFT__DISTANCE, oldDistance, distance));
   }
 
   /**
@@ -102,8 +101,8 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
   {
     switch (featureID)
     {
-      case XDronePackage.LEFT__VALUE:
-        return getValue();
+      case XDronePackage.LEFT__DISTANCE:
+        return getDistance();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +117,8 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
   {
     switch (featureID)
     {
-      case XDronePackage.LEFT__VALUE:
-        setValue((String)newValue);
+      case XDronePackage.LEFT__DISTANCE:
+        setDistance((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +134,8 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
   {
     switch (featureID)
     {
-      case XDronePackage.LEFT__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case XDronePackage.LEFT__DISTANCE:
+        setDistance(DISTANCE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +151,8 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
   {
     switch (featureID)
     {
-      case XDronePackage.LEFT__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case XDronePackage.LEFT__DISTANCE:
+        return DISTANCE_EDEFAULT == null ? distance != null : !DISTANCE_EDEFAULT.equals(distance);
     }
     return super.eIsSet(featureID);
   }
@@ -169,8 +168,8 @@ public class LeftImpl extends MinimalEObjectImpl.Container implements Left
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (distance: ");
+    result.append(distance);
     result.append(')');
     return result.toString();
   }

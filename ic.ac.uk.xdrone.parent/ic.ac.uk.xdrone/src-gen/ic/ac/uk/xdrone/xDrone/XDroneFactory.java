@@ -60,15 +60,6 @@ public interface XDroneFactory extends EFactory
   Environment createEnvironment();
 
   /**
-   * Returns a new object of class '<em>User Function</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>User Function</em>'.
-   * @generated
-   */
-  UserFunction createUserFunction();
-
-  /**
    * Returns a new object of class '<em>Super Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -96,15 +87,6 @@ public interface XDroneFactory extends EFactory
   GoTo createGoTo();
 
   /**
-   * Returns a new object of class '<em>Move</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Move</em>'.
-   * @generated
-   */
-  Move createMove();
-
-  /**
    * Returns a new object of class '<em>Rotate</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,6 +96,60 @@ public interface XDroneFactory extends EFactory
   Rotate createRotate();
 
   /**
+   * Returns a new object of class '<em>Up</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Up</em>'.
+   * @generated
+   */
+  Up createUp();
+
+  /**
+   * Returns a new object of class '<em>Down</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Down</em>'.
+   * @generated
+   */
+  Down createDown();
+
+  /**
+   * Returns a new object of class '<em>Left</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Left</em>'.
+   * @generated
+   */
+  Left createLeft();
+
+  /**
+   * Returns a new object of class '<em>Right</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Right</em>'.
+   * @generated
+   */
+  Right createRight();
+
+  /**
+   * Returns a new object of class '<em>Forward</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Forward</em>'.
+   * @generated
+   */
+  Forward createForward();
+
+  /**
+   * Returns a new object of class '<em>Backward</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Backward</em>'.
+   * @generated
+   */
+  Backward createBackward();
+
+  /**
    * Returns a new object of class '<em>Wait</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,15 +157,6 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Wait createWait();
-
-  /**
-   * Returns a new object of class '<em>Function Name</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Name</em>'.
-   * @generated
-   */
-  FunctionName createFunctionName();
 
   /**
    * Returns a new object of class '<em>Drone</em>'.
@@ -204,49 +231,49 @@ public interface XDroneFactory extends EFactory
   Walls createWalls();
 
   /**
-   * Returns a new object of class '<em>Front</em>'.
+   * Returns a new object of class '<em>Front Wall</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Front</em>'.
+   * @return a new object of class '<em>Front Wall</em>'.
    * @generated
    */
-  Front createFront();
+  FrontWall createFrontWall();
 
   /**
-   * Returns a new object of class '<em>Right</em>'.
+   * Returns a new object of class '<em>Right Wall</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Right</em>'.
+   * @return a new object of class '<em>Right Wall</em>'.
    * @generated
    */
-  Right createRight();
+  RightWall createRightWall();
 
   /**
-   * Returns a new object of class '<em>Left</em>'.
+   * Returns a new object of class '<em>Left Wall</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Left</em>'.
+   * @return a new object of class '<em>Left Wall</em>'.
    * @generated
    */
-  Left createLeft();
+  LeftWall createLeftWall();
 
   /**
-   * Returns a new object of class '<em>Back</em>'.
+   * Returns a new object of class '<em>Back Wall</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Back</em>'.
+   * @return a new object of class '<em>Back Wall</em>'.
    * @generated
    */
-  Back createBack();
+  BackWall createBackWall();
 
   /**
-   * Returns a new object of class '<em>Up</em>'.
+   * Returns a new object of class '<em>Up Wall</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Up</em>'.
+   * @return a new object of class '<em>Up Wall</em>'.
    * @generated
    */
-  Up createUp();
+  UpWall createUpWall();
 
   /**
    * Returns the package supported by this factory.

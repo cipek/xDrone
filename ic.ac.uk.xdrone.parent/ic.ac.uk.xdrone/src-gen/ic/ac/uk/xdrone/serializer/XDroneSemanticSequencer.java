@@ -5,25 +5,28 @@ package ic.ac.uk.xdrone.serializer;
 
 import com.google.inject.Inject;
 import ic.ac.uk.xdrone.services.XDroneGrammarAccess;
-import ic.ac.uk.xdrone.xDrone.Back;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Color;
+import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.Front;
-import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
 import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
 import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.Up;
-import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.UpWall;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.Walls;
@@ -53,11 +56,17 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == XDronePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case XDronePackage.BACK:
-				sequence_Back(context, (Back) semanticObject); 
+			case XDronePackage.BACK_WALL:
+				sequence_BackWall(context, (BackWall) semanticObject); 
+				return; 
+			case XDronePackage.BACKWARD:
+				sequence_Backward(context, (Backward) semanticObject); 
 				return; 
 			case XDronePackage.COLOR:
 				sequence_Color(context, (Color) semanticObject); 
+				return; 
+			case XDronePackage.DOWN:
+				sequence_Down(context, (Down) semanticObject); 
 				return; 
 			case XDronePackage.DRONE:
 				sequence_Drone(context, (Drone) semanticObject); 
@@ -68,11 +77,11 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.FLY:
 				sequence_Fly(context, (Fly) semanticObject); 
 				return; 
-			case XDronePackage.FRONT:
-				sequence_Front(context, (Front) semanticObject); 
+			case XDronePackage.FORWARD:
+				sequence_Forward(context, (Forward) semanticObject); 
 				return; 
-			case XDronePackage.FUNCTION_NAME:
-				sequence_FunctionName(context, (FunctionName) semanticObject); 
+			case XDronePackage.FRONT_WALL:
+				sequence_FrontWall(context, (FrontWall) semanticObject); 
 				return; 
 			case XDronePackage.GO_TO:
 				sequence_GoTo(context, (GoTo) semanticObject); 
@@ -80,11 +89,11 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.LEFT:
 				sequence_Left(context, (Left) semanticObject); 
 				return; 
+			case XDronePackage.LEFT_WALL:
+				sequence_LeftWall(context, (LeftWall) semanticObject); 
+				return; 
 			case XDronePackage.MAIN:
 				sequence_Main(context, (Main) semanticObject); 
-				return; 
-			case XDronePackage.MOVE:
-				sequence_Move(context, (Move) semanticObject); 
 				return; 
 			case XDronePackage.OBJECT:
 				sequence_Object(context, (ic.ac.uk.xdrone.xDrone.Object) semanticObject); 
@@ -101,6 +110,9 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.RIGHT:
 				sequence_Right(context, (Right) semanticObject); 
 				return; 
+			case XDronePackage.RIGHT_WALL:
+				sequence_RightWall(context, (RightWall) semanticObject); 
+				return; 
 			case XDronePackage.ROTATE:
 				sequence_Rotate(context, (Rotate) semanticObject); 
 				return; 
@@ -110,8 +122,8 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case XDronePackage.UP:
 				sequence_Up(context, (Up) semanticObject); 
 				return; 
-			case XDronePackage.USER_FUNCTION:
-				sequence_UserFunction(context, (UserFunction) semanticObject); 
+			case XDronePackage.UP_WALL:
+				sequence_UpWall(context, (UpWall) semanticObject); 
 				return; 
 			case XDronePackage.VECTOR:
 				sequence_Vector(context, (Vector) semanticObject); 
@@ -129,18 +141,38 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Back returns Back
+	 *     BackWall returns BackWall
 	 *
 	 * Constraint:
 	 *     value=POSITIVE_DOUBLE
 	 */
-	protected void sequence_Back(ISerializationContext context, Back semanticObject) {
+	protected void sequence_BackWall(ISerializationContext context, BackWall semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.BACK__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.BACK__VALUE));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.BACK_WALL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.BACK_WALL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBackAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getBackWallAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns Backward
+	 *     Command returns Backward
+	 *     Backward returns Backward
+	 *
+	 * Constraint:
+	 *     distance=DOUBLE
+	 */
+	protected void sequence_Backward(ISerializationContext context, Backward semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.BACKWARD__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.BACKWARD__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBackwardAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -159,6 +191,26 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getColorAccess().getColor_valueSTRINGTerminalRuleCall_2_0(), semanticObject.getColor_value());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns Down
+	 *     Command returns Down
+	 *     Down returns Down
+	 *
+	 * Constraint:
+	 *     distance=DOUBLE
+	 */
+	protected void sequence_Down(ISerializationContext context, Down semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.DOWN__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.DOWN__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDownAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -201,37 +253,38 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Front returns Front
+	 *     SuperCommand returns Forward
+	 *     Command returns Forward
+	 *     Forward returns Forward
 	 *
 	 * Constraint:
-	 *     value=POSITIVE_DOUBLE
+	 *     distance=DOUBLE
 	 */
-	protected void sequence_Front(ISerializationContext context, Front semanticObject) {
+	protected void sequence_Forward(ISerializationContext context, Forward semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FRONT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FRONT__VALUE));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FORWARD__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FORWARD__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFrontAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getForwardAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     SuperCommand returns FunctionName
-	 *     FunctionName returns FunctionName
+	 *     FrontWall returns FrontWall
 	 *
 	 * Constraint:
-	 *     func_name=ID
+	 *     value=POSITIVE_DOUBLE
 	 */
-	protected void sequence_FunctionName(ISerializationContext context, FunctionName semanticObject) {
+	protected void sequence_FrontWall(ISerializationContext context, FrontWall semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FUNCTION_NAME__FUNC_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FUNCTION_NAME__FUNC_NAME));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.FRONT_WALL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FRONT_WALL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFunctionNameAccess().getFunc_nameIDTerminalRuleCall_0_0(), semanticObject.getFunc_name());
+		feeder.accept(grammarAccess.getFrontWallAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -258,18 +311,38 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Left returns Left
+	 *     LeftWall returns LeftWall
 	 *
 	 * Constraint:
 	 *     value=POSITIVE_DOUBLE
 	 */
-	protected void sequence_Left(ISerializationContext context, Left semanticObject) {
+	protected void sequence_LeftWall(ISerializationContext context, LeftWall semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.LEFT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.LEFT__VALUE));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.LEFT_WALL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.LEFT_WALL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getLeftAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLeftWallAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns Left
+	 *     Command returns Left
+	 *     Left returns Left
+	 *
+	 * Constraint:
+	 *     distance=DOUBLE
+	 */
+	protected void sequence_Left(ISerializationContext context, Left semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.LEFT__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.LEFT__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getLeftAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -283,26 +356,6 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 */
 	protected void sequence_Main(ISerializationContext context, Main semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     SuperCommand returns Move
-	 *     Command returns Move
-	 *     Move returns Move
-	 *
-	 * Constraint:
-	 *     vector=Vector
-	 */
-	protected void sequence_Move(ISerializationContext context, Move semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.MOVE__VECTOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.MOVE__VECTOR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMoveAccess().getVectorVectorParserRuleCall_1_0(), semanticObject.getVector());
-		feeder.finish();
 	}
 	
 	
@@ -374,18 +427,38 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Right returns Right
+	 *     RightWall returns RightWall
 	 *
 	 * Constraint:
 	 *     value=POSITIVE_DOUBLE
 	 */
-	protected void sequence_Right(ISerializationContext context, Right semanticObject) {
+	protected void sequence_RightWall(ISerializationContext context, RightWall semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.RIGHT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.RIGHT__VALUE));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.RIGHT_WALL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.RIGHT_WALL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRightAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getRightWallAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SuperCommand returns Right
+	 *     Command returns Right
+	 *     Right returns Right
+	 *
+	 * Constraint:
+	 *     distance=DOUBLE
+	 */
+	protected void sequence_Right(ISerializationContext context, Right semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.RIGHT__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.RIGHT__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRightAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -430,31 +503,39 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	
 	/**
 	 * Contexts:
-	 *     Up returns Up
+	 *     UpWall returns UpWall
 	 *
 	 * Constraint:
 	 *     value=POSITIVE_DOUBLE
 	 */
-	protected void sequence_Up(ISerializationContext context, Up semanticObject) {
+	protected void sequence_UpWall(ISerializationContext context, UpWall semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.UP__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.UP__VALUE));
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.UP_WALL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.UP_WALL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getUpAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getUpWallAccess().getValuePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     UserFunction returns UserFunction
+	 *     SuperCommand returns Up
+	 *     Command returns Up
+	 *     Up returns Up
 	 *
 	 * Constraint:
-	 *     (name=ID func+=Command*)
+	 *     distance=DOUBLE
 	 */
-	protected void sequence_UserFunction(ISerializationContext context, UserFunction semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_Up(ISerializationContext context, Up semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XDronePackage.Literals.UP__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.UP__DISTANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUpAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.finish();
 	}
 	
 	
@@ -507,7 +588,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Walls returns Walls
 	 *
 	 * Constraint:
-	 *     (front=Front | right=Right | back=Back | left=Left | up=Up)+
+	 *     (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)+
 	 */
 	protected void sequence_Walls(ISerializationContext context, Walls semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

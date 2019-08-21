@@ -3,27 +3,30 @@
  */
 package ic.ac.uk.xdrone.xDrone.util;
 
-import ic.ac.uk.xdrone.xDrone.Back;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.Front;
-import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
 import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
 import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
-import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.UpWall;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.Walls;
@@ -120,11 +123,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createEnvironmentAdapter();
       }
       @Override
-      public Adapter caseUserFunction(UserFunction object)
-      {
-        return createUserFunctionAdapter();
-      }
-      @Override
       public Adapter caseSuperCommand(SuperCommand object)
       {
         return createSuperCommandAdapter();
@@ -140,24 +138,44 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createGoToAdapter();
       }
       @Override
-      public Adapter caseMove(Move object)
-      {
-        return createMoveAdapter();
-      }
-      @Override
       public Adapter caseRotate(Rotate object)
       {
         return createRotateAdapter();
       }
       @Override
+      public Adapter caseUp(Up object)
+      {
+        return createUpAdapter();
+      }
+      @Override
+      public Adapter caseDown(Down object)
+      {
+        return createDownAdapter();
+      }
+      @Override
+      public Adapter caseLeft(Left object)
+      {
+        return createLeftAdapter();
+      }
+      @Override
+      public Adapter caseRight(Right object)
+      {
+        return createRightAdapter();
+      }
+      @Override
+      public Adapter caseForward(Forward object)
+      {
+        return createForwardAdapter();
+      }
+      @Override
+      public Adapter caseBackward(Backward object)
+      {
+        return createBackwardAdapter();
+      }
+      @Override
       public Adapter caseWait(Wait object)
       {
         return createWaitAdapter();
-      }
-      @Override
-      public Adapter caseFunctionName(FunctionName object)
-      {
-        return createFunctionNameAdapter();
       }
       @Override
       public Adapter caseDrone(Drone object)
@@ -200,29 +218,29 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
         return createWallsAdapter();
       }
       @Override
-      public Adapter caseFront(Front object)
+      public Adapter caseFrontWall(FrontWall object)
       {
-        return createFrontAdapter();
+        return createFrontWallAdapter();
       }
       @Override
-      public Adapter caseRight(Right object)
+      public Adapter caseRightWall(RightWall object)
       {
-        return createRightAdapter();
+        return createRightWallAdapter();
       }
       @Override
-      public Adapter caseLeft(Left object)
+      public Adapter caseLeftWall(LeftWall object)
       {
-        return createLeftAdapter();
+        return createLeftWallAdapter();
       }
       @Override
-      public Adapter caseBack(Back object)
+      public Adapter caseBackWall(BackWall object)
       {
-        return createBackAdapter();
+        return createBackWallAdapter();
       }
       @Override
-      public Adapter caseUp(Up object)
+      public Adapter caseUpWall(UpWall object)
       {
-        return createUpAdapter();
+        return createUpWallAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -307,21 +325,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.UserFunction <em>User Function</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.UserFunction
-   * @generated
-   */
-  public Adapter createUserFunctionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.SuperCommand <em>Super Command</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -367,21 +370,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Move
-   * @generated
-   */
-  public Adapter createMoveAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Rotate <em>Rotate</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -397,6 +385,96 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Up
+   * @generated
+   */
+  public Adapter createUpAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Down <em>Down</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Down
+   * @generated
+   */
+  public Adapter createDownAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Left <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Left
+   * @generated
+   */
+  public Adapter createLeftAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Right <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Right
+   * @generated
+   */
+  public Adapter createRightAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Forward <em>Forward</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Forward
+   * @generated
+   */
+  public Adapter createForwardAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Backward <em>Backward</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ic.ac.uk.xdrone.xDrone.Backward
+   * @generated
+   */
+  public Adapter createBackwardAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Wait <em>Wait</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -407,21 +485,6 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWaitAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.FunctionName <em>Function Name</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.FunctionName
-   * @generated
-   */
-  public Adapter createFunctionNameAdapter()
   {
     return null;
   }
@@ -547,76 +610,76 @@ public class XDroneAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Front <em>Front</em>}'.
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.FrontWall <em>Front Wall</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Front
+   * @see ic.ac.uk.xdrone.xDrone.FrontWall
    * @generated
    */
-  public Adapter createFrontAdapter()
+  public Adapter createFrontWallAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Right <em>Right</em>}'.
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.RightWall <em>Right Wall</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Right
+   * @see ic.ac.uk.xdrone.xDrone.RightWall
    * @generated
    */
-  public Adapter createRightAdapter()
+  public Adapter createRightWallAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Left <em>Left</em>}'.
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.LeftWall <em>Left Wall</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Left
+   * @see ic.ac.uk.xdrone.xDrone.LeftWall
    * @generated
    */
-  public Adapter createLeftAdapter()
+  public Adapter createLeftWallAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Back <em>Back</em>}'.
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.BackWall <em>Back Wall</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Back
+   * @see ic.ac.uk.xdrone.xDrone.BackWall
    * @generated
    */
-  public Adapter createBackAdapter()
+  public Adapter createBackWallAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
+   * Creates a new adapter for an object of class '{@link ic.ac.uk.xdrone.xDrone.UpWall <em>Up Wall</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ic.ac.uk.xdrone.xDrone.Up
+   * @see ic.ac.uk.xdrone.xDrone.UpWall
    * @generated
    */
-  public Adapter createUpAdapter()
+  public Adapter createUpWallAdapter()
   {
     return null;
   }

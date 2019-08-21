@@ -3,27 +3,30 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.Back;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
-import ic.ac.uk.xdrone.xDrone.Front;
-import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
 import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Move;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
 import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
-import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.UpWall;
 import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.Walls;
@@ -94,14 +97,17 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.MAIN: return createMain();
       case XDronePackage.FLY: return createFly();
       case XDronePackage.ENVIRONMENT: return createEnvironment();
-      case XDronePackage.USER_FUNCTION: return createUserFunction();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
       case XDronePackage.GO_TO: return createGoTo();
-      case XDronePackage.MOVE: return createMove();
       case XDronePackage.ROTATE: return createRotate();
+      case XDronePackage.UP: return createUp();
+      case XDronePackage.DOWN: return createDown();
+      case XDronePackage.LEFT: return createLeft();
+      case XDronePackage.RIGHT: return createRight();
+      case XDronePackage.FORWARD: return createForward();
+      case XDronePackage.BACKWARD: return createBackward();
       case XDronePackage.WAIT: return createWait();
-      case XDronePackage.FUNCTION_NAME: return createFunctionName();
       case XDronePackage.DRONE: return createDrone();
       case XDronePackage.OBJECT: return createObject();
       case XDronePackage.ORIGIN: return createOrigin();
@@ -110,11 +116,11 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.VECTOR: return createVector();
       case XDronePackage.COLOR: return createColor();
       case XDronePackage.WALLS: return createWalls();
-      case XDronePackage.FRONT: return createFront();
-      case XDronePackage.RIGHT: return createRight();
-      case XDronePackage.LEFT: return createLeft();
-      case XDronePackage.BACK: return createBack();
-      case XDronePackage.UP: return createUp();
+      case XDronePackage.FRONT_WALL: return createFrontWall();
+      case XDronePackage.RIGHT_WALL: return createRightWall();
+      case XDronePackage.LEFT_WALL: return createLeftWall();
+      case XDronePackage.BACK_WALL: return createBackWall();
+      case XDronePackage.UP_WALL: return createUpWall();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -169,17 +175,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public UserFunction createUserFunction()
-  {
-    UserFunctionImpl userFunction = new UserFunctionImpl();
-    return userFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public SuperCommand createSuperCommand()
   {
     SuperCommandImpl superCommand = new SuperCommandImpl();
@@ -213,17 +208,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Move createMove()
-  {
-    MoveImpl move = new MoveImpl();
-    return move;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Rotate createRotate()
   {
     RotateImpl rotate = new RotateImpl();
@@ -235,10 +219,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Wait createWait()
+  public Up createUp()
   {
-    WaitImpl wait = new WaitImpl();
-    return wait;
+    UpImpl up = new UpImpl();
+    return up;
   }
 
   /**
@@ -246,10 +230,65 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionName createFunctionName()
+  public Down createDown()
   {
-    FunctionNameImpl functionName = new FunctionNameImpl();
-    return functionName;
+    DownImpl down = new DownImpl();
+    return down;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Left createLeft()
+  {
+    LeftImpl left = new LeftImpl();
+    return left;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Right createRight()
+  {
+    RightImpl right = new RightImpl();
+    return right;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Forward createForward()
+  {
+    ForwardImpl forward = new ForwardImpl();
+    return forward;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Backward createBackward()
+  {
+    BackwardImpl backward = new BackwardImpl();
+    return backward;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Wait createWait()
+  {
+    WaitImpl wait = new WaitImpl();
+    return wait;
   }
 
   /**
@@ -345,10 +384,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Front createFront()
+  public FrontWall createFrontWall()
   {
-    FrontImpl front = new FrontImpl();
-    return front;
+    FrontWallImpl frontWall = new FrontWallImpl();
+    return frontWall;
   }
 
   /**
@@ -356,10 +395,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Right createRight()
+  public RightWall createRightWall()
   {
-    RightImpl right = new RightImpl();
-    return right;
+    RightWallImpl rightWall = new RightWallImpl();
+    return rightWall;
   }
 
   /**
@@ -367,10 +406,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Left createLeft()
+  public LeftWall createLeftWall()
   {
-    LeftImpl left = new LeftImpl();
-    return left;
+    LeftWallImpl leftWall = new LeftWallImpl();
+    return leftWall;
   }
 
   /**
@@ -378,10 +417,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Back createBack()
+  public BackWall createBackWall()
   {
-    BackImpl back = new BackImpl();
-    return back;
+    BackWallImpl backWall = new BackWallImpl();
+    return backWall;
   }
 
   /**
@@ -389,10 +428,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Up createUp()
+  public UpWall createUpWall()
   {
-    UpImpl up = new UpImpl();
-    return up;
+    UpWallImpl upWall = new UpWallImpl();
+    return upWall;
   }
 
   /**

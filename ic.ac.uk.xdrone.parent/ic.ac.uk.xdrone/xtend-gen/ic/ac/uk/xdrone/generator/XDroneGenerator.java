@@ -4,16 +4,21 @@
 package ic.ac.uk.xdrone.generator;
 
 import com.google.common.collect.Iterables;
+import ic.ac.uk.xdrone.xDrone.Backward;
 import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
 import ic.ac.uk.xdrone.xDrone.Drone;
 import ic.ac.uk.xdrone.xDrone.Environment;
 import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.Forward;
 import ic.ac.uk.xdrone.xDrone.GoTo;
+import ic.ac.uk.xdrone.xDrone.Left;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.Rotate;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
+import ic.ac.uk.xdrone.xDrone.Up;
 import ic.ac.uk.xdrone.xDrone.Wait;
 import ic.ac.uk.xdrone.xDrone.Walls;
 import java.io.File;
@@ -465,41 +470,56 @@ public class XDroneGenerator extends AbstractGenerator {
   public CharSequence compileJS(final Command cmd) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      if ((cmd instanceof Move)) {
-        _builder.append("if(");
-        String _y = ((Move)cmd).getVector().getY();
-        _builder.append(_y);
-        _builder.append(" != 0)");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t");
+      if ((cmd instanceof Up)) {
         _builder.append("commands.push({y: ");
-        String _y_1 = ((Move)cmd).getVector().getY();
-        _builder.append(_y_1, "\t\t\t\t");
+        String _distance = ((Up)cmd).getDistance();
+        _builder.append(_distance);
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("if(");
-        String _z = ((Move)cmd).getVector().getZ();
-        _builder.append(_z, "\t\t\t");
-        _builder.append(" != 0)\t");
+      }
+    }
+    {
+      if ((cmd instanceof Down)) {
+        _builder.append("commands.push({y: -");
+        String _distance_1 = ((Down)cmd).getDistance();
+        _builder.append(_distance_1);
+        _builder.append("}); ");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t");
-        _builder.append("commands.push({z: ");
-        String _z_1 = ((Move)cmd).getVector().getZ();
-        _builder.append(_z_1, "\t\t\t\t");
+      }
+    }
+    {
+      if ((cmd instanceof Left)) {
+        _builder.append("commands.push({x: ");
+        String _distance_2 = ((Left)cmd).getDistance();
+        _builder.append(_distance_2);
         _builder.append("});");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("if(");
-        String _x = ((Move)cmd).getVector().getX();
-        _builder.append(_x, "\t\t\t");
-        _builder.append(" != 0)\t ");
+      }
+    }
+    {
+      if ((cmd instanceof Right)) {
+        _builder.append("commands.push({x: -");
+        String _distance_3 = ((Right)cmd).getDistance();
+        _builder.append(_distance_3);
+        _builder.append("});");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t\t");
-        _builder.append("commands.push({x: ");
-        String _x_1 = ((Move)cmd).getVector().getX();
-        _builder.append(_x_1, "\t\t\t\t");
-        _builder.append("}); ");
+      }
+    }
+    {
+      if ((cmd instanceof Forward)) {
+        _builder.append("commands.push({z: ");
+        String _distance_4 = ((Forward)cmd).getDistance();
+        _builder.append(_distance_4);
+        _builder.append("});");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Backward)) {
+        _builder.append("commands.push({z: -");
+        String _distance_5 = ((Backward)cmd).getDistance();
+        _builder.append(_distance_5);
+        _builder.append("});");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -584,7 +604,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("currentAngle = 0.0 #Navdata");
     _builder.newLine();
-    _builder.append("currentDroneAngle = 0 #Real Life");
+    _builder.append("currentDroneAngle = 270.0 #Real Life");
     _builder.newLine();
     _builder.newLine();
     {
@@ -905,15 +925,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("accuracy_modificator = 5");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("clockwise = True");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("if angle > 0:");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("clockwise = False");
-    _builder.newLine();
-    _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("vel_msg = Twist()");
@@ -922,8 +933,15 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("angular_speed = speed*PI/360");
     _builder.newLine();
+    _builder.newLine();
     _builder.append("\t");
-    _builder.append("relative_angle = angle*PI/360");
+    _builder.append("clockwise = False");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if angle < 0:");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("clockwise = True");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -946,13 +964,13 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("if clockwise:");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("vel_msg.angular.z = -abs(angular_speed)");
+    _builder.append("vel_msg.angular.z = -angular_speed");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("else:");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("vel_msg.angular.z = abs(angular_speed)");
+    _builder.append("vel_msg.angular.z = angular_speed*2 #For some reason rotates slower to left");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -963,13 +981,15 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("while(angleDone < angle-accuracy_modificator):");
+    _builder.append("while(angleDone < abs(angle)-accuracy_modificator):");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):");
     _builder.newLine();
     _builder.append("\t\t\t");
     _builder.append("angleDone += abs(abs(currentAngle)-180 + (abs(lastAngle)-180))");
+    _builder.newLine();
+    _builder.append("\t\t\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("else:");
@@ -979,10 +999,11 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("lastAngle = currentAngle");
+    _builder.append("lastAngle = currentAngle\t");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("velocity_publisher.publish(vel_msg)");
+    _builder.newLine();
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -1274,6 +1295,92 @@ public class XDroneGenerator extends AbstractGenerator {
   public CharSequence compile(final Command cmd) {
     StringConcatenation _builder = new StringConcatenation();
     {
+      if ((cmd instanceof Up)) {
+        _builder.append("dronePosition[\'z\'] += ");
+        String _distance = ((Up)cmd).getDistance();
+        _builder.append(_distance);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveUpAndDown(");
+        String _distance_1 = ((Up)cmd).getDistance();
+        _builder.append(_distance_1);
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Down)) {
+        _builder.append("dronePosition[\'z\'] += -");
+        String _distance_2 = ((Down)cmd).getDistance();
+        _builder.append(_distance_2);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveUpAndDown(-");
+        String _distance_3 = ((Down)cmd).getDistance();
+        _builder.append(_distance_3);
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof Left)) {
+        _builder.append("dronePosition[\'y\']  += ");
+        String _distance_4 = ((Left)cmd).getDistance();
+        _builder.append(_distance_4);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveBaseOnTime(");
+        String _distance_5 = ((Left)cmd).getDistance();
+        _builder.append(_distance_5);
+        _builder.append(", 0, 0.15)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("noMove(1)");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((cmd instanceof Right)) {
+        _builder.append("dronePosition[\'y\']  += -");
+        String _distance_6 = ((Right)cmd).getDistance();
+        _builder.append(_distance_6);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveBaseOnTime(-");
+        String _distance_7 = ((Right)cmd).getDistance();
+        _builder.append(_distance_7);
+        _builder.append(", 0, 0.15)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("noMove(1)");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((cmd instanceof Forward)) {
+        _builder.append("dronePosition[\'x\'] += ");
+        String _distance_8 = ((Forward)cmd).getDistance();
+        _builder.append(_distance_8);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveBaseOnTime(");
+        String _distance_9 = ((Forward)cmd).getDistance();
+        _builder.append(_distance_9);
+        _builder.append(", 0.15, 0)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("noMove(1)");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((cmd instanceof Backward)) {
+        _builder.append("dronePosition[\'x\'] += -");
+        String _distance_10 = ((Backward)cmd).getDistance();
+        _builder.append(_distance_10);
+        _builder.newLineIfNotEmpty();
+        _builder.append("moveBaseOnTime(-");
+        String _distance_11 = ((Backward)cmd).getDistance();
+        _builder.append(_distance_11);
+        _builder.append(", 0.15, 0)");
+        _builder.newLineIfNotEmpty();
+        _builder.append("noMove(1)");
+        _builder.newLine();
+      }
+    }
+    {
       if ((cmd instanceof Wait)) {
         _builder.append("moveBaseOnTime(");
         String _seconds = ((Wait)cmd).getSeconds();
@@ -1293,64 +1400,6 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append(_angle_1);
         _builder.append(");");
         _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((cmd instanceof Move)) {
-        _builder.append("if ");
-        String _y = ((Move)cmd).getVector().getY();
-        _builder.append(_y);
-        _builder.append(" != 0:");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("dronePosition[\'z\'] += ");
-        String _y_1 = ((Move)cmd).getVector().getY();
-        _builder.append(_y_1, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("moveUpAndDown(");
-        String _y_2 = ((Move)cmd).getVector().getY();
-        _builder.append(_y_2, "\t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-        _builder.append("if ");
-        String _z = ((Move)cmd).getVector().getZ();
-        _builder.append(_z);
-        _builder.append(" != 0:\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("dronePosition[\'x\'] += ");
-        String _z_1 = ((Move)cmd).getVector().getZ();
-        _builder.append(_z_1, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("moveBaseOnTime(");
-        String _z_2 = ((Move)cmd).getVector().getZ();
-        _builder.append(_z_2, "\t");
-        _builder.append(", 0.15, 0)");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("noMove(1)");
-        _builder.newLine();
-        _builder.append("if ");
-        String _x = ((Move)cmd).getVector().getX();
-        _builder.append(_x);
-        _builder.append(" != 0:");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("dronePosition[\'y\']  += ");
-        String _x_1 = ((Move)cmd).getVector().getX();
-        _builder.append(_x_1, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("moveBaseOnTime(");
-        String _x_2 = ((Move)cmd).getVector().getX();
-        _builder.append(_x_2, "\t");
-        _builder.append(", 0, 0.15)");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("noMove(1)");
-        _builder.newLine();
       }
     }
     {

@@ -3,11 +3,11 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.Back;
-import ic.ac.uk.xdrone.xDrone.Front;
-import ic.ac.uk.xdrone.xDrone.Left;
-import ic.ac.uk.xdrone.xDrone.Right;
-import ic.ac.uk.xdrone.xDrone.Up;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
+import ic.ac.uk.xdrone.xDrone.RightWall;
+import ic.ac.uk.xdrone.xDrone.UpWall;
 import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -47,7 +47,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected Front front;
+  protected FrontWall front;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -57,7 +57,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected Right right;
+  protected RightWall right;
 
   /**
    * The cached value of the '{@link #getBack() <em>Back</em>}' containment reference.
@@ -67,7 +67,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected Back back;
+  protected BackWall back;
 
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -77,7 +77,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected Left left;
+  protected LeftWall left;
 
   /**
    * The cached value of the '{@link #getUp() <em>Up</em>}' containment reference.
@@ -87,7 +87,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * @generated
    * @ordered
    */
-  protected Up up;
+  protected UpWall up;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,7 +115,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public Front getFront()
+  public FrontWall getFront()
   {
     return front;
   }
@@ -125,9 +125,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFront(Front newFront, NotificationChain msgs)
+  public NotificationChain basicSetFront(FrontWall newFront, NotificationChain msgs)
   {
-    Front oldFront = front;
+    FrontWall oldFront = front;
     front = newFront;
     if (eNotificationRequired())
     {
@@ -142,7 +142,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFront(Front newFront)
+  public void setFront(FrontWall newFront)
   {
     if (newFront != front)
     {
@@ -163,7 +163,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public Right getRight()
+  public RightWall getRight()
   {
     return right;
   }
@@ -173,9 +173,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Right newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(RightWall newRight, NotificationChain msgs)
   {
-    Right oldRight = right;
+    RightWall oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -190,7 +190,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRight(Right newRight)
+  public void setRight(RightWall newRight)
   {
     if (newRight != right)
     {
@@ -211,7 +211,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public Back getBack()
+  public BackWall getBack()
   {
     return back;
   }
@@ -221,9 +221,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetBack(Back newBack, NotificationChain msgs)
+  public NotificationChain basicSetBack(BackWall newBack, NotificationChain msgs)
   {
-    Back oldBack = back;
+    BackWall oldBack = back;
     back = newBack;
     if (eNotificationRequired())
     {
@@ -238,7 +238,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setBack(Back newBack)
+  public void setBack(BackWall newBack)
   {
     if (newBack != back)
     {
@@ -259,7 +259,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public Left getLeft()
+  public LeftWall getLeft()
   {
     return left;
   }
@@ -269,9 +269,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(Left newLeft, NotificationChain msgs)
+  public NotificationChain basicSetLeft(LeftWall newLeft, NotificationChain msgs)
   {
-    Left oldLeft = left;
+    LeftWall oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
     {
@@ -286,7 +286,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(Left newLeft)
+  public void setLeft(LeftWall newLeft)
   {
     if (newLeft != left)
     {
@@ -307,7 +307,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public Up getUp()
+  public UpWall getUp()
   {
     return up;
   }
@@ -317,9 +317,9 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetUp(Up newUp, NotificationChain msgs)
+  public NotificationChain basicSetUp(UpWall newUp, NotificationChain msgs)
   {
-    Up oldUp = up;
+    UpWall oldUp = up;
     up = newUp;
     if (eNotificationRequired())
     {
@@ -334,7 +334,7 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUp(Up newUp)
+  public void setUp(UpWall newUp)
   {
     if (newUp != up)
     {
@@ -409,19 +409,19 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        setFront((Front)newValue);
+        setFront((FrontWall)newValue);
         return;
       case XDronePackage.WALLS__RIGHT:
-        setRight((Right)newValue);
+        setRight((RightWall)newValue);
         return;
       case XDronePackage.WALLS__BACK:
-        setBack((Back)newValue);
+        setBack((BackWall)newValue);
         return;
       case XDronePackage.WALLS__LEFT:
-        setLeft((Left)newValue);
+        setLeft((LeftWall)newValue);
         return;
       case XDronePackage.WALLS__UP:
-        setUp((Up)newValue);
+        setUp((UpWall)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -438,19 +438,19 @@ public class WallsImpl extends MinimalEObjectImpl.Container implements Walls
     switch (featureID)
     {
       case XDronePackage.WALLS__FRONT:
-        setFront((Front)null);
+        setFront((FrontWall)null);
         return;
       case XDronePackage.WALLS__RIGHT:
-        setRight((Right)null);
+        setRight((RightWall)null);
         return;
       case XDronePackage.WALLS__BACK:
-        setBack((Back)null);
+        setBack((BackWall)null);
         return;
       case XDronePackage.WALLS__LEFT:
-        setLeft((Left)null);
+        setLeft((LeftWall)null);
         return;
       case XDronePackage.WALLS__UP:
-        setUp((Up)null);
+        setUp((UpWall)null);
         return;
     }
     super.eUnset(featureID);

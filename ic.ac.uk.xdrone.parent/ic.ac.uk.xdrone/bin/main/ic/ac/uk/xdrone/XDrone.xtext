@@ -33,12 +33,12 @@ Environment :
  ;
 
 
-UserFunction:
-	(name = ID) '()'
-	'{'
-	(func+=Command)*
-	'}'
-;
+//UserFunction:
+//	(name = ID) '()'
+//	'{'
+//	(func+=Command)*
+//	'}'
+//;
 
 
 Takeoff: 'TAKEOFF()';
@@ -46,20 +46,20 @@ Land : 'LAND()';
 
 SuperCommand:
 	Command
-	| FunctionName
+//	| FunctionName
 ;
 
 Command:
-//	Up 
-//	| Down 
-//	| Left 
-//	| Right 
-//	| Forward 
-//	| Backward
+	Up 
+	| Down 
+	| Left 
+	| Right 
+	| Forward 
+	| Backward
 //	| RotateL
 //	| RotateR
-	Wait
-	| Move
+	| Wait
+//	| Move
 	| Rotate
 	| GoTo
 ;
@@ -78,33 +78,33 @@ GoTo:
 	'GOTO' '(' object_name = STRING ')'
 ;
 
-Move:
-	'MOVE' vector=Vector
-;
+//Move:
+//	'MOVE' vector=Vector
+//;
 
 Rotate: 
 	'ROTATE' '('angle = DOUBLE')'
 ;
 
-//Up: 
-//	'UP' '('distance = DOUBLE')'
-//;
-//	
-//Down: 
-//	'DOWN' '('distance = DOUBLE')'
-//;
-//Left: 
-//	'LEFT' '('distance = DOUBLE')'
-//;
-//Right: 
-//	'RIGHT' '('distance = DOUBLE')'
-//;
-//Forward: 
-//	'FORWARD' '('distance = DOUBLE')'
-//;
-//Backward: 
-//	'BACKWARD' '('distance = DOUBLE')'
-//;
+Up: 
+	'UP' '('distance = DOUBLE')'
+;
+	
+Down: 
+	'DOWN' '('distance = DOUBLE')'
+;
+Left: 
+	'LEFT' '('distance = DOUBLE')'
+;
+Right: 
+	'RIGHT' '('distance = DOUBLE')'
+;
+Forward: 
+	'FORWARD' '('distance = DOUBLE')'
+;
+Backward: 
+	'BACKWARD' '('distance = DOUBLE')'
+;
 //RotateL: 
 //	'ROTATELEFT' '('angle = INT')'
 //;
@@ -115,9 +115,9 @@ Wait:
 	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'
 ;
 
-FunctionName:
-	func_name = ID '()'
-;
+//FunctionName:
+//	func_name = ID '()'
+//;
 
 
 Drone:
@@ -158,26 +158,26 @@ Color:
 Walls:
 //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 	'WALLS' '{'
-		front = Front & right = Right & back = Back & left = Left & up = Up
+		(front = FrontWall | right = RightWall | back = BackWall | left = LeftWall | up = UpWall)*
 	'}'
 ;
 
-Front:
+FrontWall:
 	'front' '=' value = POSITIVE_DOUBLE
 ;
 
-Right:
+RightWall:
 	'right' '=' value = POSITIVE_DOUBLE
 ;
 
-Left:
+LeftWall:
 	'left' '=' value = POSITIVE_DOUBLE
 ;
 
-Back:
+BackWall:
 	'back' '=' value = POSITIVE_DOUBLE
 ;
 
-Up:
+UpWall:
 	'up' '=' value = POSITIVE_DOUBLE
 ;

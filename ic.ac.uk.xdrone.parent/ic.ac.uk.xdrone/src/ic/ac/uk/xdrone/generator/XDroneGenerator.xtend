@@ -13,15 +13,17 @@ import ic.ac.uk.xdrone.xDrone.Up
 import ic.ac.uk.xdrone.xDrone.Left
 import ic.ac.uk.xdrone.xDrone.Right
 import ic.ac.uk.xdrone.xDrone.Wait
+import ic.ac.uk.xdrone.xDrone.Down
 import java.io.PrintWriter
 import java.io.IOException
 import java.io.File
-import ic.ac.uk.xdrone.xDrone.Move
 import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
 import ic.ac.uk.xdrone.xDrone.Rotate
 import ic.ac.uk.xdrone.xDrone.Main
 import ic.ac.uk.xdrone.xDrone.GoTo
+import ic.ac.uk.xdrone.xDrone.Forward
+import ic.ac.uk.xdrone.xDrone.Backward
 
 /**
  * Generates code from your model files on save.
@@ -178,13 +180,31 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compileJS(Command cmd) '''
-	  	«IF cmd instanceof Move»
-	  		if(«cmd.vector.y» != 0)
-				commands.push({y: «cmd.vector.y»}); 
-			if(«cmd.vector.z» != 0)	
-				commands.push({z: «cmd.vector.z»});
-			if(«cmd.vector.x» != 0)	 
-				commands.push({x: «cmd.vector.x»}); 
+«««	  	«IF cmd instanceof Move»
+«««	  		if(«cmd.vector.y» != 0)
+«««				commands.push({y: «cmd.vector.y»}); 
+«««			if(«cmd.vector.z» != 0)	
+«««				commands.push({z: «cmd.vector.z»});
+«««			if(«cmd.vector.x» != 0)	 
+«««				commands.push({x: «cmd.vector.x»}); 
+«««	  	«ENDIF»
+«IF cmd instanceof Up »
+		commands.push({y: «cmd.distance»}); 
+	  	«ENDIF»
+	  	«IF cmd instanceof Down»
+commands.push({y: -«cmd.distance»}); 
+	  	«ENDIF»
+	  	«IF cmd instanceof Left »
+commands.push({x: «cmd.distance»});
+	  	«ENDIF»
+	  	«IF cmd instanceof Right»
+commands.push({x: -«cmd.distance»});
+	  	«ENDIF»
+	  	«IF cmd instanceof Forward»	
+commands.push({z: «cmd.distance»});
+	  	«ENDIF»
+	  	«IF cmd instanceof Backward»
+commands.push({z: -«cmd.distance»});
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
 			commands.push({r: «cmd.angle»}); 
@@ -223,7 +243,7 @@ class XDroneGenerator extends AbstractGenerator {
 			'z': 0
 		}
 		currentAngle = 0.0 #Navdata
-		currentDroneAngle = 0 #Real Life
+		currentDroneAngle = 270.0 #Real Life
 		
 		«IF main.environment !== null»
 			«FOR d : main.environment.drone»
@@ -342,14 +362,14 @@ class XDroneGenerator extends AbstractGenerator {
 			lastAngle = currentAngle
 			angleDone = 0.0
 			accuracy_modificator = 5
-			clockwise = True
-			if angle > 0:
-				clockwise = False
 			
 			vel_msg = Twist()
 		
 			angular_speed = speed*PI/360
-			relative_angle = angle*PI/360
+		
+			clockwise = False
+			if angle < 0:
+				clockwise = True
 		
 			vel_msg.linear.x=0
 			vel_msg.linear.y=0
@@ -358,21 +378,23 @@ class XDroneGenerator extends AbstractGenerator {
 			vel_msg.angular.y = 0
 		
 			if clockwise:
-				vel_msg.angular.z = -abs(angular_speed)
+				vel_msg.angular.z = -angular_speed
 			else:
-				vel_msg.angular.z = abs(angular_speed)
+				vel_msg.angular.z = angular_speed*2 #For some reason rotates slower to left
 		
 			while velocity_publisher.get_num_connections() < 1:
 				rospy.sleep(0.1)
 		
-			while(angleDone < angle-accuracy_modificator):
+			while(angleDone < abs(angle)-accuracy_modificator):
 				if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):
 					angleDone += abs(abs(currentAngle)-180 + (abs(lastAngle)-180))
+					
 				else:
 					angleDone += abs(currentAngle - lastAngle)
 		
-				lastAngle = currentAngle
+				lastAngle = currentAngle	
 				velocity_publisher.publish(vel_msg)
+		
 		
 			vel_msg.angular.z = 0
 			velocity_publisher.publish(vel_msg)
@@ -495,24 +517,34 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compile(Command cmd) '''
-«««		«IF cmd instanceof Up »
-«««		move(0.1, «cmd.distance», True, "z")
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof Down»
-«««	  	move(0.1, «cmd.distance», False, "z")
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof Left »
-«««	  	move(0.1, «cmd.distance», True, "y")
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof Right»
-«««	  	move(0.1, «cmd.distance», False, "y")
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof Forward»	
-«««	  	move(0.1, «cmd.distance», True, "x")
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof Backward»	
-«««	  	move(0.1, «cmd.distance», False, "x")
-«««	  	«ENDIF»
+		«IF cmd instanceof Up »
+		dronePosition['z'] += «cmd.distance»
+		moveUpAndDown(«cmd.distance»)
+	  	«ENDIF»
+	  	«IF cmd instanceof Down»
+dronePosition['z'] += -«cmd.distance»
+moveUpAndDown(-«cmd.distance»)
+	  	«ENDIF»
+	  	«IF cmd instanceof Left »
+dronePosition['y']  += «cmd.distance»
+moveBaseOnTime(«cmd.distance», 0, 0.15)
+noMove(1)
+	  	«ENDIF»
+	  	«IF cmd instanceof Right»
+dronePosition['y']  += -«cmd.distance»
+moveBaseOnTime(-«cmd.distance», 0, 0.15)
+noMove(1)
+	  	«ENDIF»
+	  	«IF cmd instanceof Forward»	
+dronePosition['x'] += «cmd.distance»
+moveBaseOnTime(«cmd.distance», 0.15, 0)
+noMove(1)
+	  	«ENDIF»
+	  	«IF cmd instanceof Backward»	
+dronePosition['x'] += -«cmd.distance»
+moveBaseOnTime(-«cmd.distance», 0.15, 0)
+noMove(1)
+	  	«ENDIF»
 «««	  	«IF cmd instanceof RotateL»	
 «««		rotate(30, «cmd.angle», False)
 «««	  	«ENDIF»
@@ -523,22 +555,22 @@ class XDroneGenerator extends AbstractGenerator {
 	  		moveBaseOnTime(«cmd.seconds», 0, 0)
 	  	«ENDIF»
 	  	«IF cmd instanceof Rotate»
-	  		currentDroneAngle += -«cmd.angle»
-	  		rotate(30, -«cmd.angle»);
+currentDroneAngle += -«cmd.angle»
+rotate(30, -«cmd.angle»);
 	  	«ENDIF»
-	  	«IF cmd instanceof Move»
-	  		if «cmd.vector.y» != 0:
-	  			dronePosition['z'] += «cmd.vector.y»
-	  			moveUpAndDown(«cmd.vector.y»)
-	  		if «cmd.vector.z» != 0:	
-	  			dronePosition['x'] += «cmd.vector.z»
-	  			moveBaseOnTime(«cmd.vector.z», 0.15, 0)
-	  			noMove(1)
-	  		if «cmd.vector.x» != 0:
-	  			dronePosition['y']  += «cmd.vector.x»
-	  			moveBaseOnTime(«cmd.vector.x», 0, 0.15)
-	  			noMove(1)
-	  	«ENDIF»
+«««	  	«IF cmd instanceof Move»
+«««	  		if «cmd.vector.y» != 0:
+«««	  			dronePosition['z'] += «cmd.vector.y»
+«««	  			moveUpAndDown(«cmd.vector.y»)
+«««	  		if «cmd.vector.z» != 0:	
+«««	  			dronePosition['x'] += «cmd.vector.z»
+«««	  			moveBaseOnTime(«cmd.vector.z», 0.15, 0)
+«««	  			noMove(1)
+«««	  		if «cmd.vector.x» != 0:
+«««	  			dronePosition['y']  += «cmd.vector.x»
+«««	  			moveBaseOnTime(«cmd.vector.x», 0, 0.15)
+«««	  			noMove(1)
+«««	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
 		  	vector = getDistanceToObject("«cmd.object_name»");
 		  	angle = getRotationToObject("«cmd.object_name»");

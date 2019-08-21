@@ -23,26 +23,34 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/walls"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Environment/objects"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//UserFunction">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//UserFunction/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//UserFunction/func"/>
-    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//SuperCommand"/>
     <genClasses ecoreClass="XDrone.ecore#//Command"/>
     <genClasses ecoreClass="XDrone.ecore#//GoTo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//GoTo/object_name"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Move">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Move/vector"/>
-    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Rotate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Rotate/angle"/>
     </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Up">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Up/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Down">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Down/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Left">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Left/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Right">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Right/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Forward">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Forward/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//Backward">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Backward/distance"/>
+    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Wait">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Wait/seconds"/>
-    </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//FunctionName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FunctionName/func_name"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Drone">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Drone/position"/>
@@ -78,20 +86,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Walls/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XDrone.ecore#//Walls/up"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Front">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Front/value"/>
+    <genClasses ecoreClass="XDrone.ecore#//FrontWall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//FrontWall/value"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Right">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Right/value"/>
+    <genClasses ecoreClass="XDrone.ecore#//RightWall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//RightWall/value"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Left">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Left/value"/>
+    <genClasses ecoreClass="XDrone.ecore#//LeftWall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//LeftWall/value"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Back">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Back/value"/>
+    <genClasses ecoreClass="XDrone.ecore#//BackWall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//BackWall/value"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Up">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Up/value"/>
+    <genClasses ecoreClass="XDrone.ecore#//UpWall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//UpWall/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

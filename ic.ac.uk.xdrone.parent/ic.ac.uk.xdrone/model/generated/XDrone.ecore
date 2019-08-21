@@ -25,28 +25,34 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="objects" upperBound="-1"
         eType="#//Object" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserFunction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="func" upperBound="-1" eType="#//Command"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuperCommand"/>
   <eClassifiers xsi:type="ecore:EClass" name="Command" eSuperTypes="#//SuperCommand"/>
   <eClassifiers xsi:type="ecore:EClass" name="GoTo" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="object_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Move" eSuperTypes="#//Command">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vector" eType="#//Vector"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rotate" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="angle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Up" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Down" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Left" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Right" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Forward" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Backward" eSuperTypes="#//Command">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Wait" eSuperTypes="#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="seconds" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionName" eSuperTypes="#//SuperCommand">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="func_name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Drone">
     <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//Position"
@@ -82,27 +88,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Walls">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="front" eType="#//Front"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="front" eType="#//FrontWall"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Right"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//RightWall"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="back" eType="#//Back" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Left" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="up" eType="#//Up" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="back" eType="#//BackWall"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//LeftWall"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="up" eType="#//UpWall" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Front">
+  <eClassifiers xsi:type="ecore:EClass" name="FrontWall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Right">
+  <eClassifiers xsi:type="ecore:EClass" name="RightWall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Left">
+  <eClassifiers xsi:type="ecore:EClass" name="LeftWall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Back">
+  <eClassifiers xsi:type="ecore:EClass" name="BackWall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Up">
+  <eClassifiers xsi:type="ecore:EClass" name="UpWall">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
