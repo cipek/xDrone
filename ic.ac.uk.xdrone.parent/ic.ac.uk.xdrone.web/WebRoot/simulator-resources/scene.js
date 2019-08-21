@@ -248,6 +248,7 @@ function animate()
 {
     requestAnimationFrame ( animate );
 
+    getLineOfCode('GOTO("TABLE1")');
     controls.update();
     updateAxesSystem();
 

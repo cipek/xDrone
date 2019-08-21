@@ -153,7 +153,6 @@ class XDroneGenerator extends AbstractGenerator {
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].flyTo !== undefined){
-					
 					var vector = getDistanceToObject(commands[0].flyTo);
 					var angle = getRotationToObject(commands[0].flyTo);
 					
@@ -213,6 +212,7 @@ commands.push({z: -«cmd.distance»});
 			commands.push({w: «cmd.seconds»});
 	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
+«««	  		console.log(getLineOfCode('GOTO("«cmd.object_name»")' ));
 			commands.push({flyTo: "«cmd.object_name»"});
 	  	«ENDIF»
 	'''

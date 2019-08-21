@@ -47,6 +47,36 @@ objects['PLANT'] = {
 	'y': -3.5,
 	'z': 1 + 2/2
 }
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
+objects['PLANT'] = {
+	'x': -1.5,
+	'y': -3.5,
+	'z': 1 + 2/2
+}
 
 #RotY:		RotX:
 #+ forward 	+ right
@@ -277,23 +307,6 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-dronePosition['z'] += 2.5
-moveUpAndDown(2.5)
-dronePosition['x'] += -1.5
-moveBaseOnTime(-1.5, 0.15, 0)
-noMove(1)
-dronePosition['y']  += -3.5
-moveBaseOnTime(-3.5, 0, 0.15)
-noMove(1)
-vector = getDistanceToObject("TABLE1");
-angle = getRotationToObject("TABLE1");
-currentDroneAngle += angle
-rotate(30, angle);
-dronePosition['z'] += vector['z']
-moveUpAndDown(vector['z'])
-dronePosition['x'] += vector['x']
-moveBaseOnTime(vector['x'], 0.15, 0)
-noMove(1)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
 			

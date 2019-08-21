@@ -13,10 +13,13 @@
 	</head>
 	<body>
 		<script type="text/javascript">
+			var linesOfCode = [], lastFirstNumber = "-1";
 			var baseUrl = window.location.pathname;
 			var fileIndex = baseUrl.indexOf("index.html");
 			if (fileIndex > 0)
 				baseUrl = baseUrl.slice(0, fileIndex);
+
+			// document.getElementById("myDIV").onscroll = function() {myFunction()};
 			require.config({
 				baseUrl: baseUrl,
 				paths: {
@@ -32,6 +35,11 @@
 						syntaxDefinition: "xtext-resources/generated/mode-xdrone"
 					});
 
+					// var scroller = document.getElementsByClassName("ace_content");
+					// console.log(scroller[0]);
+					// scroller[0].onscroll = function() {console.log("INSCROLL");};
+
+
 					$('#generate-button').bind("click", function(e)
 						{
 							var data =
@@ -39,6 +47,8 @@
 								resource : editor.xtextServices.options.resourceId,
 								fullText : editor.getValue()
 							};
+							linesOfCode = editor.getValue().split(/\r\n|\r|\n/);
+
 							$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
 								console.log("resource generated", result);
 								// console.log(require.undef);
@@ -96,6 +106,39 @@
 
 				});
 			});
+
+			function getLineOfCode(text){
+				var lineNumbers = document.getElementsByClassName("ace_gutter-cell");
+				if(lineNumbers && lineNumbers[0] && lastFirstNumber != lineNumbers[0].innerHTML){
+					console.log(lineNumbers);
+					console.log(lastFirstNumber);
+					lastFirstNumber = lineNumbers[0].innerHTML;
+					// for (var i = 0; i < lineNumbers.length; i++) {
+					// 	removeGoToChilds(lineNumbers[i])
+					// }
+					removeGoToChilds();
+
+					for (var i = 0; i < linesOfCode.length; i++) {
+						if(linesOfCode[i].includes(text)){
+							for (var j = 0; j < lineNumbers.length; j++) {
+								if(lineNumbers[j].innerHTML == i+1+""){
+									// linesOfCode[i] = "";
+										console.log(text);
+									var node = document.createElement("div");
+									node.innerHTML = "CIP"
+									node.classList.add("goto_div");
+
+									lineNumbers[j].appendChild(node);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			function removeGoToChilds(){
+				[...document.getElementsByClassName("goto_div")].map(n => n && n.remove());
+			}
 		</script>
 
 		<div class="container">

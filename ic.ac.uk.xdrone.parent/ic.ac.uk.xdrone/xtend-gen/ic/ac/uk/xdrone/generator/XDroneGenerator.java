@@ -405,8 +405,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("else if(commands[0].flyTo !== undefined){");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.newLine();
-    _builder.append("\t\t\t");
     _builder.append("var vector = getDistanceToObject(commands[0].flyTo);");
     _builder.newLine();
     _builder.append("\t\t\t");
