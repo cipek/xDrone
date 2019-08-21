@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var linesOfCode = [], lastFirstNumber = "-1";
+			var linesOfCode = [], lastFirstNumber = "-1", listGoTo=[];
 			var baseUrl = window.location.pathname;
 			var fileIndex = baseUrl.indexOf("index.html");
 			if (fileIndex > 0)
@@ -48,7 +48,7 @@
 								fullText : editor.getValue()
 							};
 							linesOfCode = editor.getValue().split(/\r\n|\r|\n/);
-
+							listGoTo=[];
 							$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
 								console.log("resource generated", result);
 								// console.log(require.undef);
@@ -107,28 +107,32 @@
 				});
 			});
 
-			function getLineOfCode(text){
+			function addGoToToEditor(){
 				var lineNumbers = document.getElementsByClassName("ace_gutter-cell");
 				if(lineNumbers && lineNumbers[0] && lastFirstNumber != lineNumbers[0].innerHTML){
-					console.log(lineNumbers);
-					console.log(lastFirstNumber);
 					lastFirstNumber = lineNumbers[0].innerHTML;
-					// for (var i = 0; i < lineNumbers.length; i++) {
-					// 	removeGoToChilds(lineNumbers[i])
-					// }
 					removeGoToChilds();
 
-					for (var i = 0; i < linesOfCode.length; i++) {
-						if(linesOfCode[i].includes(text)){
-							for (var j = 0; j < lineNumbers.length; j++) {
-								if(lineNumbers[j].innerHTML == i+1+""){
-									// linesOfCode[i] = "";
-										console.log(text);
-									var node = document.createElement("div");
-									node.innerHTML = "CIP"
-									node.classList.add("goto_div");
+					for (var k = 0; k < listGoTo.length; k++) {
+						for (var i = 0; i < linesOfCode.length; i++) {
+							if(linesOfCode[i].includes('GOTO("' + listGoTo[k].object_name + '")')){ //'GOTO("' + listGoTo[k] + '"")')){
+								for (var j = 0; j < lineNumbers.length; j++) {
+									if(lineNumbers[j].innerHTML == i+1+""){
+										var node = document.createElement("div");
+										node.innerHTML = "&#8680;"
+										node.classList.add("goto_div");
 
-									lineNumbers[j].appendChild(node);
+										var child = document.createElement("div");
+										child.innerHTML=listGoTo[k].commands;
+										child.classList.add("goto_div_child");
+										node.appendChild(child);
+
+										node.onclick = function(e) {
+											console.log("CLICK", e.target.children[0]);
+										    e.target.children[0].classList.toggle("show");
+										};
+										lineNumbers[j].appendChild(node);
+									}
 								}
 							}
 						}

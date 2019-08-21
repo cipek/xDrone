@@ -155,7 +155,20 @@ class XDroneGenerator extends AbstractGenerator {
 				else if(commands[0].flyTo !== undefined){
 					var vector = getDistanceToObject(commands[0].flyTo);
 					var angle = getRotationToObject(commands[0].flyTo);
-					
+										
+					var commandSet = "ROTATE(" + Math.round( angle * 10) / 10 + ")\n";
+					if(vector.y < 0)
+						commandSet += "UP(" + Math.round( vector.y * 10) / 10 + ")\n";
+					else if(vector.y > 0)
+						commandSet += "DOWN(" + Math.round( vector.y * 10) / 10 + ")\n";
+					if(vector.z > 0)
+						commandSet += "FORWARD(" + Math.round( vector.z * 10) / 10 + ")\n";
+										
+					listGoTo.push({object_name: commands[0].flyTo, 
+					commands: commandSet});
+					console.log(listGoTo)
+					lastFirstNumber = "-1"; //Force refresh
+						
 					commands.shift();
 					
 					changeDroneCollisionBox(getDistanceErrorFromAngle(angle),0,getDistanceErrorFromAngle(angle))
