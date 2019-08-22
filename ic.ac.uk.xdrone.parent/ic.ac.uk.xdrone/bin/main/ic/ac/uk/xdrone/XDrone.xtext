@@ -14,7 +14,7 @@ Main:
 
 Fly :
 	
-  'fly(){'
+  'fly' '(' ')' '{'
 	((takeoff+=Takeoff)
  		((commands+=SuperCommand))*
 	(land+=Land))
@@ -24,7 +24,7 @@ Fly :
   
 Environment :
  
- {Environment} 'environment(){'
+ {Environment} 'environment' '(' ')' '{'
  	 (drone+=Drone | walls+=Walls | objects+=Object)*
 // 	(drone+=Drone)?
 //  	((objects+=Object))*
@@ -41,8 +41,8 @@ Environment :
 //;
 
 
-Takeoff: 'TAKEOFF()';
-Land : 'LAND()';
+Takeoff: 'TAKEOFF' '(' ')';
+Land : 'LAND' '(' ')';
 
 SuperCommand:
 	Command
@@ -56,11 +56,11 @@ Command:
 	| Right 
 	| Forward 
 	| Backward
-//	| RotateL
-//	| RotateR
+	| RotateL
+	| RotateR
 	| Wait
 //	| Move
-	| Rotate
+//	| Rotate
 	| GoTo
 ;
 
@@ -82,9 +82,9 @@ GoTo:
 //	'MOVE' vector=Vector
 //;
 
-Rotate: 
-	'ROTATE' '('angle = DOUBLE')'
-;
+//Rotate: 
+//	'ROTATE' '('angle = DOUBLE')'
+//;
 
 Up: 
 	'UP' '('distance = DOUBLE')'
@@ -105,12 +105,12 @@ Forward:
 Backward: 
 	'BACKWARD' '('distance = DOUBLE')'
 ;
-//RotateL: 
-//	'ROTATELEFT' '('angle = INT')'
-//;
-//RotateR: 
-//	'ROTATERIGHT' '('angle = INT')'
-//;
+RotateL: 
+	'ROTATELEFT' '('angle = INT')'
+;
+RotateR: 
+	'ROTATERIGHT' '('angle = INT')'
+;
 Wait:
 	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'
 ;
@@ -129,7 +129,7 @@ Drone:
 
 Object:
 //	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
-	object_name = ID '{'
+	object_name = ID '=' '{'
 		(origin=Origin | size=Size | color=Color)*
 	'}'
 ;

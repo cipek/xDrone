@@ -22,7 +22,8 @@ import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RightWall;
-import ic.ac.uk.xdrone.xDrone.Rotate;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
@@ -100,13 +101,14 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
       case XDronePackage.GO_TO: return createGoTo();
-      case XDronePackage.ROTATE: return createRotate();
       case XDronePackage.UP: return createUp();
       case XDronePackage.DOWN: return createDown();
       case XDronePackage.LEFT: return createLeft();
       case XDronePackage.RIGHT: return createRight();
       case XDronePackage.FORWARD: return createForward();
       case XDronePackage.BACKWARD: return createBackward();
+      case XDronePackage.ROTATE_L: return createRotateL();
+      case XDronePackage.ROTATE_R: return createRotateR();
       case XDronePackage.WAIT: return createWait();
       case XDronePackage.DRONE: return createDrone();
       case XDronePackage.OBJECT: return createObject();
@@ -208,17 +210,6 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Rotate createRotate()
-  {
-    RotateImpl rotate = new RotateImpl();
-    return rotate;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Up createUp()
   {
     UpImpl up = new UpImpl();
@@ -278,6 +269,28 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
   {
     BackwardImpl backward = new BackwardImpl();
     return backward;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RotateL createRotateL()
+  {
+    RotateLImpl rotateL = new RotateLImpl();
+    return rotateL;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RotateR createRotateR()
+  {
+    RotateRImpl rotateR = new RotateRImpl();
+    return rotateR;
   }
 
   /**

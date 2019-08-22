@@ -11,6 +11,7 @@ PI = 3.1415926535897
 #Constants
 ACCEPTED_DISTANCE_ERROR = 20
 ACCEPTED_ALTITUDE_ERROR = 50
+ACCEPTED_ROTATION_ERROR = 10
 DISTANCE_ONE_AND_HALF_SECOND = 0.85
 DISTANCE_TWO_SECONDS = 1.20
 DISTANCE_TWO_AND_HALF_SECONDS = 1.65
@@ -27,25 +28,25 @@ currentDroneAngle = 270.0 #Real Life
 
 objects = {}
 
-objects['TABLE1'] = {
-	'x': -1,
-	'y': 5,
-	'z': 0.84 + 1.68/2
-}
-objects['TABLE2'] = {
-	'x': 2.5,
-	'y': 2,
-	'z': 0.738 + 1.476/2
-}
-objects['TABLE3'] = {
-	'x': 2,
-	'y': 5,
+objects['table1'] = {
+	'x': 1.5,
+	'y': 2.5,
 	'z': 0.5 + 1/2
 }
-objects['PLANT'] = {
+objects['sofa1'] = {
+	'x': 0,
+	'y': 2.5,
+	'z': 0.5 + 1/2
+}
+objects['sofa2'] = {
+	'x': 1.5,
+	'y': 1,
+	'z': 0.5 + 1/2
+}
+objects['plant1'] = {
 	'x': -1.5,
-	'y': -3.5,
-	'z': 1 + 2/2
+	'y': -2.5,
+	'z': 0.5 + 2.5/2
 }
 
 #RotY:		RotX:
@@ -139,9 +140,9 @@ def oppositeSigns(x, y):
 
 def rotate(speed, angle):
 	global currentAngle
+	global ACCEPTED_ROTATION_ERROR
 	lastAngle = currentAngle
 	angleDone = 0.0
-	accuracy_modificator = 5
 	
 	vel_msg = Twist()
 
@@ -165,7 +166,7 @@ def rotate(speed, angle):
 	while velocity_publisher.get_num_connections() < 1:
 		rospy.sleep(0.1)
 
-	while(angleDone < abs(angle)-accuracy_modificator):
+	while(angleDone < abs(angle)-ACCEPTED_ROTATION_ERROR):
 		if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):
 			angleDone += abs(abs(currentAngle)-180 + (abs(lastAngle)-180))
 			
@@ -277,14 +278,25 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-vector = getDistanceToObject("TABLE1");
-angle = getRotationToObject("TABLE1");
-currentDroneAngle += angle
-rotate(30, angle);
-dronePosition['z'] += vector['z']
-moveUpAndDown(vector['z'])
-dronePosition['x'] += vector['x']
-moveBaseOnTime(vector['x'], 0.15, 0)
+currentDroneAngle += --90
+rotate(90, --90);
+dronePosition['z'] += 2
+moveUpAndDown(2)
+dronePosition['x'] += 2.5
+moveBaseOnTime(2.5, 0.15, 0)
+noMove(1)
+currentDroneAngle += --90
+rotate(90, --90);
+dronePosition['x'] += 1.5
+moveBaseOnTime(1.5, 0.15, 0)
+noMove(1)
+dronePosition['y']  += -5
+moveBaseOnTime(-5, 0, 0.15)
+noMove(1)
+currentDroneAngle += -180
+rotate(90, -180);
+dronePosition['x'] += 3
+moveBaseOnTime(3, 0.15, 0)
 noMove(1)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)

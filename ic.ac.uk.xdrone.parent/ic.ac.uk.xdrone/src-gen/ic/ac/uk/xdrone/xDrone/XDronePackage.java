@@ -281,34 +281,6 @@ public interface XDronePackage extends EPackage
   int GO_TO_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateImpl <em>Rotate</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.RotateImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotate()
-   * @generated
-   */
-  int ROTATE = 7;
-
-  /**
-   * The feature id for the '<em><b>Angle</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROTATE__ANGLE = COMMAND_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Rotate</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROTATE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -316,7 +288,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUp()
    * @generated
    */
-  int UP = 8;
+  int UP = 7;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -344,7 +316,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDown()
    * @generated
    */
-  int DOWN = 9;
+  int DOWN = 8;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -372,7 +344,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeft()
    * @generated
    */
-  int LEFT = 10;
+  int LEFT = 9;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -400,7 +372,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRight()
    * @generated
    */
-  int RIGHT = 11;
+  int RIGHT = 10;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -428,7 +400,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getForward()
    * @generated
    */
-  int FORWARD = 12;
+  int FORWARD = 11;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -456,7 +428,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackward()
    * @generated
    */
-  int BACKWARD = 13;
+  int BACKWARD = 12;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -477,6 +449,62 @@ public interface XDronePackage extends EPackage
   int BACKWARD_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateLImpl <em>Rotate L</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.RotateLImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateL()
+   * @generated
+   */
+  int ROTATE_L = 13;
+
+  /**
+   * The feature id for the '<em><b>Angle</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROTATE_L__ANGLE = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Rotate L</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROTATE_L_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateRImpl <em>Rotate R</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.RotateRImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateR()
+   * @generated
+   */
+  int ROTATE_R = 14;
+
+  /**
+   * The feature id for the '<em><b>Angle</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROTATE_R__ANGLE = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Rotate R</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROTATE_R_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.WaitImpl <em>Wait</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -484,7 +512,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWait()
    * @generated
    */
-  int WAIT = 14;
+  int WAIT = 15;
 
   /**
    * The feature id for the '<em><b>Seconds</b></em>' attribute.
@@ -512,7 +540,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDrone()
    * @generated
    */
-  int DRONE = 15;
+  int DRONE = 16;
 
   /**
    * The feature id for the '<em><b>Position</b></em>' containment reference.
@@ -549,7 +577,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 16;
+  int OBJECT = 17;
 
   /**
    * The feature id for the '<em><b>Object name</b></em>' attribute.
@@ -604,7 +632,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
    * @generated
    */
-  int ORIGIN = 17;
+  int ORIGIN = 18;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -632,7 +660,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
    * @generated
    */
-  int SIZE = 18;
+  int SIZE = 19;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -660,7 +688,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getPosition()
    * @generated
    */
-  int POSITION = 19;
+  int POSITION = 20;
 
   /**
    * The feature id for the '<em><b>Vector</b></em>' containment reference.
@@ -688,7 +716,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getVector()
    * @generated
    */
-  int VECTOR = 20;
+  int VECTOR = 21;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -734,7 +762,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
    * @generated
    */
-  int COLOR = 21;
+  int COLOR = 22;
 
   /**
    * The feature id for the '<em><b>Color value</b></em>' attribute.
@@ -762,7 +790,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWalls()
    * @generated
    */
-  int WALLS = 22;
+  int WALLS = 23;
 
   /**
    * The feature id for the '<em><b>Front</b></em>' containment reference.
@@ -826,7 +854,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFrontWall()
    * @generated
    */
-  int FRONT_WALL = 23;
+  int FRONT_WALL = 24;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -854,7 +882,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRightWall()
    * @generated
    */
-  int RIGHT_WALL = 24;
+  int RIGHT_WALL = 25;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -882,7 +910,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeftWall()
    * @generated
    */
-  int LEFT_WALL = 25;
+  int LEFT_WALL = 26;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -910,7 +938,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackWall()
    * @generated
    */
-  int BACK_WALL = 26;
+  int BACK_WALL = 27;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -938,7 +966,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUpWall()
    * @generated
    */
-  int UP_WALL = 27;
+  int UP_WALL = 28;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1140,27 +1168,6 @@ public interface XDronePackage extends EPackage
   EAttribute getGoTo_Object_name();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Rotate <em>Rotate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rotate</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Rotate
-   * @generated
-   */
-  EClass getRotate();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Rotate#getAngle <em>Angle</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Angle</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Rotate#getAngle()
-   * @see #getRotate()
-   * @generated
-   */
-  EAttribute getRotate_Angle();
-
-  /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1285,6 +1292,48 @@ public interface XDronePackage extends EPackage
    * @generated
    */
   EAttribute getBackward_Distance();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.RotateL <em>Rotate L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rotate L</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RotateL
+   * @generated
+   */
+  EClass getRotateL();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.RotateL#getAngle <em>Angle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Angle</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RotateL#getAngle()
+   * @see #getRotateL()
+   * @generated
+   */
+  EAttribute getRotateL_Angle();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.RotateR <em>Rotate R</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rotate R</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RotateR
+   * @generated
+   */
+  EClass getRotateR();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.RotateR#getAngle <em>Angle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Angle</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RotateR#getAngle()
+   * @see #getRotateR()
+   * @generated
+   */
+  EAttribute getRotateR_Angle();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Wait <em>Wait</em>}'.
@@ -1864,24 +1913,6 @@ public interface XDronePackage extends EPackage
     EAttribute GO_TO__OBJECT_NAME = eINSTANCE.getGoTo_Object_name();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateImpl <em>Rotate</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.RotateImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotate()
-     * @generated
-     */
-    EClass ROTATE = eINSTANCE.getRotate();
-
-    /**
-     * The meta object literal for the '<em><b>Angle</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ROTATE__ANGLE = eINSTANCE.getRotate_Angle();
-
-    /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1988,6 +2019,42 @@ public interface XDronePackage extends EPackage
      * @generated
      */
     EAttribute BACKWARD__DISTANCE = eINSTANCE.getBackward_Distance();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateLImpl <em>Rotate L</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.RotateLImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateL()
+     * @generated
+     */
+    EClass ROTATE_L = eINSTANCE.getRotateL();
+
+    /**
+     * The meta object literal for the '<em><b>Angle</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROTATE_L__ANGLE = eINSTANCE.getRotateL_Angle();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RotateRImpl <em>Rotate R</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.RotateRImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateR()
+     * @generated
+     */
+    EClass ROTATE_R = eINSTANCE.getRotateR();
+
+    /**
+     * The meta object literal for the '<em><b>Angle</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROTATE_R__ANGLE = eINSTANCE.getRotateR_Angle();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.WaitImpl <em>Wait</em>}' class.

@@ -3,7 +3,7 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.Rotate;
+import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Rotate</b></em>'.
+ * An implementation of the model object '<em><b>Rotate R</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.RotateImpl#getAngle <em>Angle</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.RotateRImpl#getAngle <em>Angle</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RotateImpl extends CommandImpl implements Rotate
+public class RotateRImpl extends CommandImpl implements RotateR
 {
   /**
    * The default value of the '{@link #getAngle() <em>Angle</em>}' attribute.
@@ -35,7 +35,7 @@ public class RotateImpl extends CommandImpl implements Rotate
    * @generated
    * @ordered
    */
-  protected static final String ANGLE_EDEFAULT = null;
+  protected static final int ANGLE_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getAngle() <em>Angle</em>}' attribute.
@@ -45,14 +45,14 @@ public class RotateImpl extends CommandImpl implements Rotate
    * @generated
    * @ordered
    */
-  protected String angle = ANGLE_EDEFAULT;
+  protected int angle = ANGLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RotateImpl()
+  protected RotateRImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class RotateImpl extends CommandImpl implements Rotate
   @Override
   protected EClass eStaticClass()
   {
-    return XDronePackage.Literals.ROTATE;
+    return XDronePackage.Literals.ROTATE_R;
   }
 
   /**
@@ -73,7 +73,7 @@ public class RotateImpl extends CommandImpl implements Rotate
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAngle()
+  public int getAngle()
   {
     return angle;
   }
@@ -83,12 +83,12 @@ public class RotateImpl extends CommandImpl implements Rotate
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAngle(String newAngle)
+  public void setAngle(int newAngle)
   {
-    String oldAngle = angle;
+    int oldAngle = angle;
     angle = newAngle;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.ROTATE__ANGLE, oldAngle, angle));
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.ROTATE_R__ANGLE, oldAngle, angle));
   }
 
   /**
@@ -101,7 +101,7 @@ public class RotateImpl extends CommandImpl implements Rotate
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE__ANGLE:
+      case XDronePackage.ROTATE_R__ANGLE:
         return getAngle();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,8 +117,8 @@ public class RotateImpl extends CommandImpl implements Rotate
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE__ANGLE:
-        setAngle((String)newValue);
+      case XDronePackage.ROTATE_R__ANGLE:
+        setAngle((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,7 +134,7 @@ public class RotateImpl extends CommandImpl implements Rotate
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE__ANGLE:
+      case XDronePackage.ROTATE_R__ANGLE:
         setAngle(ANGLE_EDEFAULT);
         return;
     }
@@ -151,8 +151,8 @@ public class RotateImpl extends CommandImpl implements Rotate
   {
     switch (featureID)
     {
-      case XDronePackage.ROTATE__ANGLE:
-        return ANGLE_EDEFAULT == null ? angle != null : !ANGLE_EDEFAULT.equals(angle);
+      case XDronePackage.ROTATE_R__ANGLE:
+        return angle != ANGLE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -174,4 +174,4 @@ public class RotateImpl extends CommandImpl implements Rotate
     return result.toString();
   }
 
-} //RotateImpl
+} //RotateRImpl

@@ -35,12 +35,6 @@ public class XDroneParsingTest {
       _builder.append("TAKEOFF()");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("MOVE(-2.5, 2, -1.5)");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("MOVE(6, 0, 3)");
-      _builder.newLine();
-      _builder.append("    ");
       _builder.append("LAND()");
       _builder.newLine();
       _builder.append("}");

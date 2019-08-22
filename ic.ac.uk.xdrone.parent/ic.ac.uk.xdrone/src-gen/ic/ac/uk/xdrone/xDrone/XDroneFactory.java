@@ -87,15 +87,6 @@ public interface XDroneFactory extends EFactory
   GoTo createGoTo();
 
   /**
-   * Returns a new object of class '<em>Rotate</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rotate</em>'.
-   * @generated
-   */
-  Rotate createRotate();
-
-  /**
    * Returns a new object of class '<em>Up</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -148,6 +139,24 @@ public interface XDroneFactory extends EFactory
    * @generated
    */
   Backward createBackward();
+
+  /**
+   * Returns a new object of class '<em>Rotate L</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rotate L</em>'.
+   * @generated
+   */
+  RotateL createRotateL();
+
+  /**
+   * Returns a new object of class '<em>Rotate R</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rotate R</em>'.
+   * @generated
+   */
+  RotateR createRotateR();
 
   /**
    * Returns a new object of class '<em>Wait</em>'.

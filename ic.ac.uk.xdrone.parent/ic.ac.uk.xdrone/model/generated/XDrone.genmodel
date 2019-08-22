@@ -28,9 +28,6 @@
     <genClasses ecoreClass="XDrone.ecore#//GoTo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//GoTo/object_name"/>
     </genClasses>
-    <genClasses ecoreClass="XDrone.ecore#//Rotate">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Rotate/angle"/>
-    </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Up">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Up/distance"/>
     </genClasses>
@@ -48,6 +45,12 @@
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Backward">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Backward/distance"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//RotateL">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//RotateL/angle"/>
+    </genClasses>
+    <genClasses ecoreClass="XDrone.ecore#//RotateR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//RotateR/angle"/>
     </genClasses>
     <genClasses ecoreClass="XDrone.ecore#//Wait">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XDrone.ecore#//Wait/seconds"/>

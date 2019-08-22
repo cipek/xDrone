@@ -23,8 +23,6 @@ class XDroneParsingTest {
 		val result = parseHelper.parse('''
 			fly(){
 			    TAKEOFF()
-			    MOVE(-2.5, 2, -1.5)
-			    MOVE(6, 0, 3)
 			    LAND()
 			}
 			

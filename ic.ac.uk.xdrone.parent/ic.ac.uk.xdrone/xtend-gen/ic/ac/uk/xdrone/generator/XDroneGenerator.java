@@ -18,7 +18,8 @@ import ic.ac.uk.xdrone.xDrone.Main;
 import ic.ac.uk.xdrone.xDrone.Origin;
 import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Right;
-import ic.ac.uk.xdrone.xDrone.Rotate;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
@@ -562,10 +563,19 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     {
-      if ((cmd instanceof Rotate)) {
+      if ((cmd instanceof RotateL)) {
         _builder.append("commands.push({r: ");
-        String _angle = ((Rotate)cmd).getAngle();
+        int _angle = ((RotateL)cmd).getAngle();
         _builder.append(_angle);
+        _builder.append("}); ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof RotateR)) {
+        _builder.append("commands.push({r: -");
+        int _angle_1 = ((RotateR)cmd).getAngle();
+        _builder.append(_angle_1);
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
       }
@@ -617,6 +627,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("ACCEPTED_DISTANCE_ERROR = 20");
     _builder.newLine();
     _builder.append("ACCEPTED_ALTITUDE_ERROR = 50");
+    _builder.newLine();
+    _builder.append("ACCEPTED_ROTATION_ERROR = 10");
     _builder.newLine();
     _builder.append("DISTANCE_ONE_AND_HALF_SECOND = 0.85");
     _builder.newLine();
@@ -972,13 +984,13 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("global currentAngle");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("global ACCEPTED_ROTATION_ERROR");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("lastAngle = currentAngle");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("angleDone = 0.0");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("accuracy_modificator = 5");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -1037,7 +1049,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("while(angleDone < abs(angle)-accuracy_modificator):");
+    _builder.append("while(angleDone < abs(angle)-ACCEPTED_ROTATION_ERROR):");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):");
@@ -1446,14 +1458,27 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     {
-      if ((cmd instanceof Rotate)) {
+      if ((cmd instanceof RotateL)) {
         _builder.append("currentDroneAngle += -");
-        String _angle = ((Rotate)cmd).getAngle();
+        int _angle = ((RotateL)cmd).getAngle();
         _builder.append(_angle);
         _builder.newLineIfNotEmpty();
-        _builder.append("rotate(30, -");
-        String _angle_1 = ((Rotate)cmd).getAngle();
+        _builder.append("rotate(90, -");
+        int _angle_1 = ((RotateL)cmd).getAngle();
         _builder.append(_angle_1);
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((cmd instanceof RotateR)) {
+        _builder.append("currentDroneAngle += ");
+        int _angle_2 = ((RotateR)cmd).getAngle();
+        _builder.append(_angle_2);
+        _builder.newLineIfNotEmpty();
+        _builder.append("rotate(90, ");
+        int _angle_3 = ((RotateR)cmd).getAngle();
+        _builder.append(_angle_3);
         _builder.append(");");
         _builder.newLineIfNotEmpty();
       }

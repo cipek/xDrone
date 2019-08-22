@@ -60,6 +60,12 @@
   left: 50%;
   margin-left: -80px;
   z-index: 9999;
+
+  -ms-user-select: all !important;
+  /* text instead of all*/
+  -moz-user-select: all !important;
+  -webkit-user-select: all !important;
+   user-select: all !important;
 }
 
 .show {

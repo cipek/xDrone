@@ -22,7 +22,8 @@ import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
 import ic.ac.uk.xdrone.xDrone.Right;
 import ic.ac.uk.xdrone.xDrone.RightWall;
-import ic.ac.uk.xdrone.xDrone.Rotate;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
 import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
@@ -152,15 +153,6 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.ROTATE:
-      {
-        Rotate rotate = (Rotate)theEObject;
-        T result = caseRotate(rotate);
-        if (result == null) result = caseCommand(rotate);
-        if (result == null) result = caseSuperCommand(rotate);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case XDronePackage.UP:
       {
         Up up = (Up)theEObject;
@@ -212,6 +204,24 @@ public class XDroneSwitch<T> extends Switch<T>
         T result = caseBackward(backward);
         if (result == null) result = caseCommand(backward);
         if (result == null) result = caseSuperCommand(backward);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.ROTATE_L:
+      {
+        RotateL rotateL = (RotateL)theEObject;
+        T result = caseRotateL(rotateL);
+        if (result == null) result = caseCommand(rotateL);
+        if (result == null) result = caseSuperCommand(rotateL);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.ROTATE_R:
+      {
+        RotateR rotateR = (RotateR)theEObject;
+        T result = caseRotateR(rotateR);
+        if (result == null) result = caseCommand(rotateR);
+        if (result == null) result = caseSuperCommand(rotateR);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -432,22 +442,6 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rotate</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rotate</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRotate(Rotate object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Up</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -539,6 +533,38 @@ public class XDroneSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBackward(Backward object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rotate L</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rotate L</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRotateL(RotateL object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rotate R</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rotate R</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRotateR(RotateR object)
   {
     return null;
   }

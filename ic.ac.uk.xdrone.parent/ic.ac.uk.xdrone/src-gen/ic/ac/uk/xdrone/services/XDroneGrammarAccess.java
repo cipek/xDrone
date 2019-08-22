@@ -70,73 +70,88 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Fly");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFlyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cTakeoffAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cTakeoffTakeoffParserRuleCall_1_0_0 = (RuleCall)cTakeoffAssignment_1_0.eContents().get(0);
-		private final Assignment cCommandsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cCommandsSuperCommandParserRuleCall_1_1_0 = (RuleCall)cCommandsAssignment_1_1.eContents().get(0);
-		private final Assignment cLandAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cLandLandParserRuleCall_1_2_0 = (RuleCall)cLandAssignment_1_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cTakeoffAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cTakeoffTakeoffParserRuleCall_4_0_0 = (RuleCall)cTakeoffAssignment_4_0.eContents().get(0);
+		private final Assignment cCommandsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCommandsSuperCommandParserRuleCall_4_1_0 = (RuleCall)cCommandsAssignment_4_1.eContents().get(0);
+		private final Assignment cLandAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cLandLandParserRuleCall_4_2_0 = (RuleCall)cLandAssignment_4_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Fly:
-		//	'fly(){' (takeoff+=Takeoff commands+=SuperCommand*
+		//	'fly' '(' ')' '{' (takeoff+=Takeoff commands+=SuperCommand*
 		//	land+=Land)
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'fly(){' (takeoff+=Takeoff commands+=SuperCommand* land+=Land) '}'
+		//'fly' '(' ')' '{' (takeoff+=Takeoff commands+=SuperCommand* land+=Land) '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'fly(){'
+		//'fly'
 		public Keyword getFlyKeyword_0() { return cFlyKeyword_0; }
 		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
 		//takeoff+=Takeoff commands+=SuperCommand* land+=Land
-		public Group getGroup_1() { return cGroup_1; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//takeoff+=Takeoff
-		public Assignment getTakeoffAssignment_1_0() { return cTakeoffAssignment_1_0; }
+		public Assignment getTakeoffAssignment_4_0() { return cTakeoffAssignment_4_0; }
 		
 		//Takeoff
-		public RuleCall getTakeoffTakeoffParserRuleCall_1_0_0() { return cTakeoffTakeoffParserRuleCall_1_0_0; }
+		public RuleCall getTakeoffTakeoffParserRuleCall_4_0_0() { return cTakeoffTakeoffParserRuleCall_4_0_0; }
 		
 		//commands+=SuperCommand*
-		public Assignment getCommandsAssignment_1_1() { return cCommandsAssignment_1_1; }
+		public Assignment getCommandsAssignment_4_1() { return cCommandsAssignment_4_1; }
 		
 		//SuperCommand
-		public RuleCall getCommandsSuperCommandParserRuleCall_1_1_0() { return cCommandsSuperCommandParserRuleCall_1_1_0; }
+		public RuleCall getCommandsSuperCommandParserRuleCall_4_1_0() { return cCommandsSuperCommandParserRuleCall_4_1_0; }
 		
 		//land+=Land
-		public Assignment getLandAssignment_1_2() { return cLandAssignment_1_2; }
+		public Assignment getLandAssignment_4_2() { return cLandAssignment_4_2; }
 		
 		//Land
-		public RuleCall getLandLandParserRuleCall_1_2_0() { return cLandLandParserRuleCall_1_2_0; }
+		public RuleCall getLandLandParserRuleCall_4_2_0() { return cLandLandParserRuleCall_4_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	public class EnvironmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Environment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cEnvironmentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cEnvironmentKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cDroneAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cDroneDroneParserRuleCall_2_0_0 = (RuleCall)cDroneAssignment_2_0.eContents().get(0);
-		private final Assignment cWallsAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cWallsWallsParserRuleCall_2_1_0 = (RuleCall)cWallsAssignment_2_1.eContents().get(0);
-		private final Assignment cObjectsAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
-		private final RuleCall cObjectsObjectParserRuleCall_2_2_0 = (RuleCall)cObjectsAssignment_2_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Assignment cDroneAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
+		private final RuleCall cDroneDroneParserRuleCall_5_0_0 = (RuleCall)cDroneAssignment_5_0.eContents().get(0);
+		private final Assignment cWallsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
+		private final RuleCall cWallsWallsParserRuleCall_5_1_0 = (RuleCall)cWallsAssignment_5_1.eContents().get(0);
+		private final Assignment cObjectsAssignment_5_2 = (Assignment)cAlternatives_5.eContents().get(2);
+		private final RuleCall cObjectsObjectParserRuleCall_5_2_0 = (RuleCall)cObjectsAssignment_5_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Environment:
-		//	{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)*
+		//	{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)*
 		//	// 	(drone+=Drone)?
 		//	//  	((objects+=Object))*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)* // 	(drone+=Drone)?
+		//{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)* // 	(drone+=Drone)?
 		////  	((objects+=Object))*
 		//'}'
 		public Group getGroup() { return cGroup; }
@@ -144,38 +159,50 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//{Environment}
 		public Action getEnvironmentAction_0() { return cEnvironmentAction_0; }
 		
-		//'environment(){'
+		//'environment'
 		public Keyword getEnvironmentKeyword_1() { return cEnvironmentKeyword_1; }
 		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		
 		//(drone+=Drone | walls+=Walls | objects+=Object)*
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
 		//drone+=Drone
-		public Assignment getDroneAssignment_2_0() { return cDroneAssignment_2_0; }
+		public Assignment getDroneAssignment_5_0() { return cDroneAssignment_5_0; }
 		
 		//Drone
-		public RuleCall getDroneDroneParserRuleCall_2_0_0() { return cDroneDroneParserRuleCall_2_0_0; }
+		public RuleCall getDroneDroneParserRuleCall_5_0_0() { return cDroneDroneParserRuleCall_5_0_0; }
 		
 		//walls+=Walls
-		public Assignment getWallsAssignment_2_1() { return cWallsAssignment_2_1; }
+		public Assignment getWallsAssignment_5_1() { return cWallsAssignment_5_1; }
 		
 		//Walls
-		public RuleCall getWallsWallsParserRuleCall_2_1_0() { return cWallsWallsParserRuleCall_2_1_0; }
+		public RuleCall getWallsWallsParserRuleCall_5_1_0() { return cWallsWallsParserRuleCall_5_1_0; }
 		
 		//objects+=Object
-		public Assignment getObjectsAssignment_2_2() { return cObjectsAssignment_2_2; }
+		public Assignment getObjectsAssignment_5_2() { return cObjectsAssignment_5_2; }
 		
 		//Object
-		public RuleCall getObjectsObjectParserRuleCall_2_2_0() { return cObjectsObjectParserRuleCall_2_2_0; }
+		public RuleCall getObjectsObjectParserRuleCall_5_2_0() { return cObjectsObjectParserRuleCall_5_2_0; }
 		
 		//// 	(drone+=Drone)?
 		////  	((objects+=Object))*
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class TakeoffElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Takeoff");
-		private final Keyword cTAKEOFFKeyword = (Keyword)rule.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTAKEOFFKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		////UserFunction:
 		////	(name = ID) '()'
@@ -184,22 +211,43 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		////	'}'
 		////;
 		//Takeoff:
-		//	'TAKEOFF()';
+		//	'TAKEOFF' '(' ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'TAKEOFF()'
-		public Keyword getTAKEOFFKeyword() { return cTAKEOFFKeyword; }
+		//'TAKEOFF' '(' ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'TAKEOFF'
+		public Keyword getTAKEOFFKeyword_0() { return cTAKEOFFKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 	public class LandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Land");
-		private final Keyword cLANDKeyword = (Keyword)rule.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLANDKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Land:
-		//	'LAND()';
+		//	'LAND' '(' ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'LAND()'
-		public Keyword getLANDKeyword() { return cLANDKeyword; }
+		//'LAND' '(' ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'LAND'
+		public Keyword getLANDKeyword_0() { return cLANDKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 	public class SuperCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.SuperCommand");
@@ -223,9 +271,10 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRightParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cForwardParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cBackwardParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cWaitParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cRotateParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cGoToParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cRotateLParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cRotateRParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cWaitParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cGoToParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//Command:
 		//	Up
@@ -234,18 +283,17 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//	| Right
 		//	| Forward
 		//	| Backward
-		//	//	| RotateL
-		//	//	| RotateR
+		//	| RotateL
+		//	| RotateR
 		//	| Wait
 		//	//	| Move
-		//	| Rotate
+		//	//	| Rotate
 		//	| GoTo;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Up | Down | Left | Right | Forward | Backward //	| RotateL
-		////	| RotateR
-		//| Wait //	| Move
-		//| Rotate | GoTo
+		//Up | Down | Left | Right | Forward | Backward | RotateL | RotateR | Wait //	| Move
+		////	| Rotate
+		//| GoTo
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Up
@@ -266,14 +314,17 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//Backward
 		public RuleCall getBackwardParserRuleCall_5() { return cBackwardParserRuleCall_5; }
 		
-		//Wait
-		public RuleCall getWaitParserRuleCall_6() { return cWaitParserRuleCall_6; }
+		//RotateL
+		public RuleCall getRotateLParserRuleCall_6() { return cRotateLParserRuleCall_6; }
 		
-		//Rotate
-		public RuleCall getRotateParserRuleCall_7() { return cRotateParserRuleCall_7; }
+		//RotateR
+		public RuleCall getRotateRParserRuleCall_7() { return cRotateRParserRuleCall_7; }
+		
+		//Wait
+		public RuleCall getWaitParserRuleCall_8() { return cWaitParserRuleCall_8; }
 		
 		//GoTo
-		public RuleCall getGoToParserRuleCall_8() { return cGoToParserRuleCall_8; }
+		public RuleCall getGoToParserRuleCall_9() { return cGoToParserRuleCall_9; }
 	}
 	public class DOUBLEElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.DOUBLE");
@@ -366,40 +417,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
-	public class RotateElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Rotate");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cROTATEKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAngleAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAngleDOUBLEParserRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		////Move:
-		////	'MOVE' vector=Vector
-		////;
-		//Rotate:
-		//	'ROTATE' '(' angle=DOUBLE ')';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'ROTATE' '(' angle=DOUBLE ')'
-		public Group getGroup() { return cGroup; }
-		
-		//'ROTATE'
-		public Keyword getROTATEKeyword_0() { return cROTATEKeyword_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
-		
-		//angle=DOUBLE
-		public Assignment getAngleAssignment_2() { return cAngleAssignment_2; }
-		
-		//DOUBLE
-		public RuleCall getAngleDOUBLEParserRuleCall_2_0() { return cAngleDOUBLEParserRuleCall_2_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
-	}
 	public class UpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Up");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -409,6 +426,12 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
+		////Move:
+		////	'MOVE' vector=Vector
+		////;
+		////Rotate: 
+		////	'ROTATE' '('angle = DOUBLE')'
+		////;
 		//Up:
 		//	'UP' '(' distance=DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
@@ -586,6 +609,68 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
+	public class RotateLElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.RotateL");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cROTATELEFTKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAngleAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAngleINTTerminalRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//RotateL:
+		//	'ROTATELEFT' '(' angle=INT ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'ROTATELEFT' '(' angle=INT ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'ROTATELEFT'
+		public Keyword getROTATELEFTKeyword_0() { return cROTATELEFTKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//angle=INT
+		public Assignment getAngleAssignment_2() { return cAngleAssignment_2; }
+		
+		//INT
+		public RuleCall getAngleINTTerminalRuleCall_2_0() { return cAngleINTTerminalRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+	public class RotateRElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.RotateR");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cROTATERIGHTKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAngleAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAngleINTTerminalRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//RotateR:
+		//	'ROTATERIGHT' '(' angle=INT ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'ROTATERIGHT' '(' angle=INT ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'ROTATERIGHT'
+		public Keyword getROTATERIGHTKeyword_0() { return cROTATERIGHTKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//angle=INT
+		public Assignment getAngleAssignment_2() { return cAngleAssignment_2; }
+		
+		//INT
+		public RuleCall getAngleINTTerminalRuleCall_2_0() { return cAngleINTTerminalRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
 	public class WaitElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Wait");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -595,12 +680,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSecondsPOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cSecondsAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		////RotateL: 
-		////	'ROTATELEFT' '('angle = INT')'
-		////;
-		////RotateR: 
-		////	'ROTATERIGHT' '('angle = INT')'
-		////;
 		//Wait:
 		//	'WAIT' '(' seconds=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
@@ -688,23 +767,24 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cObject_nameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cObject_nameIDTerminalRuleCall_0_0 = (RuleCall)cObject_nameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cOriginAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cOriginOriginParserRuleCall_2_0_0 = (RuleCall)cOriginAssignment_2_0.eContents().get(0);
-		private final Assignment cSizeAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cSizeSizeParserRuleCall_2_1_0 = (RuleCall)cSizeAssignment_2_1.eContents().get(0);
-		private final Assignment cColorAssignment_2_2 = (Assignment)cAlternatives_2.eContents().get(2);
-		private final RuleCall cColorColorParserRuleCall_2_2_0 = (RuleCall)cColorAssignment_2_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cOriginAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cOriginOriginParserRuleCall_3_0_0 = (RuleCall)cOriginAssignment_3_0.eContents().get(0);
+		private final Assignment cSizeAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final RuleCall cSizeSizeParserRuleCall_3_1_0 = (RuleCall)cSizeAssignment_3_1.eContents().get(0);
+		private final Assignment cColorAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
+		private final RuleCall cColorColorParserRuleCall_3_2_0 = (RuleCall)cColorAssignment_3_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Object:
-		//	object_name=ID '{' (origin=Origin | size=Size | color=Color)*
+		//	object_name=ID '=' '{' (origin=Origin | size=Size | color=Color)*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		////	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
-		//object_name=ID '{' (origin=Origin | size=Size | color=Color)* '}'
+		//object_name=ID '=' '{' (origin=Origin | size=Size | color=Color)* '}'
 		public Group getGroup() { return cGroup; }
 		
 		////	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
@@ -714,32 +794,35 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getObject_nameIDTerminalRuleCall_0_0() { return cObject_nameIDTerminalRuleCall_0_0; }
 		
+		//'='
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//(origin=Origin | size=Size | color=Color)*
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
 		//origin=Origin
-		public Assignment getOriginAssignment_2_0() { return cOriginAssignment_2_0; }
+		public Assignment getOriginAssignment_3_0() { return cOriginAssignment_3_0; }
 		
 		//Origin
-		public RuleCall getOriginOriginParserRuleCall_2_0_0() { return cOriginOriginParserRuleCall_2_0_0; }
+		public RuleCall getOriginOriginParserRuleCall_3_0_0() { return cOriginOriginParserRuleCall_3_0_0; }
 		
 		//size=Size
-		public Assignment getSizeAssignment_2_1() { return cSizeAssignment_2_1; }
+		public Assignment getSizeAssignment_3_1() { return cSizeAssignment_3_1; }
 		
 		//Size
-		public RuleCall getSizeSizeParserRuleCall_2_1_0() { return cSizeSizeParserRuleCall_2_1_0; }
+		public RuleCall getSizeSizeParserRuleCall_3_1_0() { return cSizeSizeParserRuleCall_3_1_0; }
 		
 		//color=Color
-		public Assignment getColorAssignment_2_2() { return cColorAssignment_2_2; }
+		public Assignment getColorAssignment_3_2() { return cColorAssignment_3_2; }
 		
 		//Color
-		public RuleCall getColorColorParserRuleCall_2_2_0() { return cColorColorParserRuleCall_2_2_0; }
+		public RuleCall getColorColorParserRuleCall_3_2_0() { return cColorColorParserRuleCall_3_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class OriginElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ic.ac.uk.xdrone.XDrone.Origin");
@@ -1117,13 +1200,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	private final DOUBLEElements pDOUBLE;
 	private final POSITIVE_DOUBLEElements pPOSITIVE_DOUBLE;
 	private final GoToElements pGoTo;
-	private final RotateElements pRotate;
 	private final UpElements pUp;
 	private final DownElements pDown;
 	private final LeftElements pLeft;
 	private final RightElements pRight;
 	private final ForwardElements pForward;
 	private final BackwardElements pBackward;
+	private final RotateLElements pRotateL;
+	private final RotateRElements pRotateR;
 	private final WaitElements pWait;
 	private final DroneElements pDrone;
 	private final ObjectElements pObject;
@@ -1159,13 +1243,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDOUBLE = new DOUBLEElements();
 		this.pPOSITIVE_DOUBLE = new POSITIVE_DOUBLEElements();
 		this.pGoTo = new GoToElements();
-		this.pRotate = new RotateElements();
 		this.pUp = new UpElements();
 		this.pDown = new DownElements();
 		this.pLeft = new LeftElements();
 		this.pRight = new RightElements();
 		this.pForward = new ForwardElements();
 		this.pBackward = new BackwardElements();
+		this.pRotateL = new RotateLElements();
+		this.pRotateR = new RotateRElements();
 		this.pWait = new WaitElements();
 		this.pDrone = new DroneElements();
 		this.pObject = new ObjectElements();
@@ -1231,7 +1316,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Fly:
-	//	'fly(){' (takeoff+=Takeoff commands+=SuperCommand*
+	//	'fly' '(' ')' '{' (takeoff+=Takeoff commands+=SuperCommand*
 	//	land+=Land)
 	//	'}';
 	public FlyElements getFlyAccess() {
@@ -1243,7 +1328,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Environment:
-	//	{Environment} 'environment(){' (drone+=Drone | walls+=Walls | objects+=Object)*
+	//	{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)*
 	//	// 	(drone+=Drone)?
 	//	//  	((objects+=Object))*
 	//	'}';
@@ -1262,7 +1347,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	////	'}'
 	////;
 	//Takeoff:
-	//	'TAKEOFF()';
+	//	'TAKEOFF' '(' ')';
 	public TakeoffElements getTakeoffAccess() {
 		return pTakeoff;
 	}
@@ -1272,7 +1357,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Land:
-	//	'LAND()';
+	//	'LAND' '(' ')';
 	public LandElements getLandAccess() {
 		return pLand;
 	}
@@ -1300,11 +1385,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	//	| Right
 	//	| Forward
 	//	| Backward
-	//	//	| RotateL
-	//	//	| RotateR
+	//	| RotateL
+	//	| RotateR
 	//	| Wait
 	//	//	| Move
-	//	| Rotate
+	//	//	| Rotate
 	//	| GoTo;
 	public CommandElements getCommandAccess() {
 		return pCommand;
@@ -1349,16 +1434,9 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	////Move:
 	////	'MOVE' vector=Vector
 	////;
-	//Rotate:
-	//	'ROTATE' '(' angle=DOUBLE ')';
-	public RotateElements getRotateAccess() {
-		return pRotate;
-	}
-	
-	public ParserRule getRotateRule() {
-		return getRotateAccess().getRule();
-	}
-	
+	////Rotate: 
+	////	'ROTATE' '('angle = DOUBLE')'
+	////;
 	//Up:
 	//	'UP' '(' distance=DOUBLE ')';
 	public UpElements getUpAccess() {
@@ -1419,12 +1497,26 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getBackwardAccess().getRule();
 	}
 	
-	////RotateL: 
-	////	'ROTATELEFT' '('angle = INT')'
-	////;
-	////RotateR: 
-	////	'ROTATERIGHT' '('angle = INT')'
-	////;
+	//RotateL:
+	//	'ROTATELEFT' '(' angle=INT ')';
+	public RotateLElements getRotateLAccess() {
+		return pRotateL;
+	}
+	
+	public ParserRule getRotateLRule() {
+		return getRotateLAccess().getRule();
+	}
+	
+	//RotateR:
+	//	'ROTATERIGHT' '(' angle=INT ')';
+	public RotateRElements getRotateRAccess() {
+		return pRotateR;
+	}
+	
+	public ParserRule getRotateRRule() {
+		return getRotateRAccess().getRule();
+	}
+	
 	//Wait:
 	//	'WAIT' '(' seconds=POSITIVE_DOUBLE ')';
 	public WaitElements getWaitAccess() {
@@ -1449,7 +1541,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Object:
-	//	object_name=ID '{' (origin=Origin | size=Size | color=Color)*
+	//	object_name=ID '=' '{' (origin=Origin | size=Size | color=Color)*
 	//	'}';
 	public ObjectElements getObjectAccess() {
 		return pObject;

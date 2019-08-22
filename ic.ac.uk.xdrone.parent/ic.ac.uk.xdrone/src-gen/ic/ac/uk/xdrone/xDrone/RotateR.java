@@ -6,21 +6,21 @@ package ic.ac.uk.xdrone.xDrone;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Rotate</b></em>'.
+ * A representation of the model object '<em><b>Rotate R</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.Rotate#getAngle <em>Angle</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.RotateR#getAngle <em>Angle</em>}</li>
  * </ul>
  *
- * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRotate()
+ * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRotateR()
  * @model
  * @generated
  */
-public interface Rotate extends Command
+public interface RotateR extends Command
 {
   /**
    * Returns the value of the '<em><b>Angle</b></em>' attribute.
@@ -31,21 +31,21 @@ public interface Rotate extends Command
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Angle</em>' attribute.
-   * @see #setAngle(String)
-   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRotate_Angle()
+   * @see #setAngle(int)
+   * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRotateR_Angle()
    * @model
    * @generated
    */
-  String getAngle();
+  int getAngle();
 
   /**
-   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.Rotate#getAngle <em>Angle</em>}' attribute.
+   * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.RotateR#getAngle <em>Angle</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Angle</em>' attribute.
    * @see #getAngle()
    * @generated
    */
-  void setAngle(String value);
+  void setAngle(int value);
 
-} // Rotate
+} // RotateR

@@ -19,11 +19,12 @@ import java.io.IOException
 import java.io.File
 import ic.ac.uk.xdrone.xDrone.Environment
 import ic.ac.uk.xdrone.xDrone.Drone
-import ic.ac.uk.xdrone.xDrone.Rotate
 import ic.ac.uk.xdrone.xDrone.Main
 import ic.ac.uk.xdrone.xDrone.GoTo
 import ic.ac.uk.xdrone.xDrone.Forward
 import ic.ac.uk.xdrone.xDrone.Backward
+import ic.ac.uk.xdrone.xDrone.RotateL
+import ic.ac.uk.xdrone.xDrone.RotateR
 
 /**
  * Generates code from your model files on save.
@@ -218,8 +219,11 @@ commands.push({z: «cmd.distance»});
 	  	«IF cmd instanceof Backward»
 commands.push({z: -«cmd.distance»});
 	  	«ENDIF»
-	  	«IF cmd instanceof Rotate»
+	  	«IF cmd instanceof RotateL»
 			commands.push({r: «cmd.angle»}); 
+	  	«ENDIF»
+	  	«IF cmd instanceof RotateR»
+			commands.push({r: -«cmd.angle»}); 
 	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 			commands.push({w: «cmd.seconds»});
@@ -245,6 +249,7 @@ commands.push({z: -«cmd.distance»});
 		#Constants
 		ACCEPTED_DISTANCE_ERROR = 20
 		ACCEPTED_ALTITUDE_ERROR = 50
+		ACCEPTED_ROTATION_ERROR = 10
 		DISTANCE_ONE_AND_HALF_SECOND = 0.85
 		DISTANCE_TWO_SECONDS = 1.20
 		DISTANCE_TWO_AND_HALF_SECONDS = 1.65
@@ -378,9 +383,9 @@ commands.push({z: -«cmd.distance»});
 		
 		def rotate(speed, angle):
 			global currentAngle
+			global ACCEPTED_ROTATION_ERROR
 			lastAngle = currentAngle
 			angleDone = 0.0
-			accuracy_modificator = 5
 			
 			vel_msg = Twist()
 		
@@ -404,7 +409,7 @@ commands.push({z: -«cmd.distance»});
 			while velocity_publisher.get_num_connections() < 1:
 				rospy.sleep(0.1)
 		
-			while(angleDone < abs(angle)-accuracy_modificator):
+			while(angleDone < abs(angle)-ACCEPTED_ROTATION_ERROR):
 				if oppositeSigns(lastAngle, currentAngle) and abs(currentAngle > 90):
 					angleDone += abs(abs(currentAngle)-180 + (abs(lastAngle)-180))
 					
@@ -572,10 +577,14 @@ noMove(1)
 «««	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 	  		moveBaseOnTime(«cmd.seconds», 0, 0)
-	  	«ENDIF»
-	  	«IF cmd instanceof Rotate»
+	  	«ENDIF» 	
+	  	«IF cmd instanceof RotateL»
 currentDroneAngle += -«cmd.angle»
-rotate(30, -«cmd.angle»);
+rotate(90, -«cmd.angle»);
+	  	«ENDIF»
+	  	«IF cmd instanceof RotateR»
+currentDroneAngle += «cmd.angle»
+rotate(90, «cmd.angle»);
 	  	«ENDIF»
 «««	  	«IF cmd instanceof Move»
 «««	  		if «cmd.vector.y» != 0:
