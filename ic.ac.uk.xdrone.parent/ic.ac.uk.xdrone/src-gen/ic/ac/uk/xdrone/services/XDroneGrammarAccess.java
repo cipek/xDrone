@@ -423,7 +423,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cUPKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		////Move:
@@ -433,10 +433,10 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		////	'ROTATE' '('angle = DOUBLE')'
 		////;
 		//Up:
-		//	'UP' '(' distance=DOUBLE ')';
+		//	'UP' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'UP' '(' distance=DOUBLE ')'
+		//'UP' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'UP'
@@ -445,11 +445,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -460,14 +460,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDOWNKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Down:
-		//	'DOWN' '(' distance=DOUBLE ')';
+		//	'DOWN' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'DOWN' '(' distance=DOUBLE ')'
+		//'DOWN' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'DOWN'
@@ -476,11 +476,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -491,14 +491,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLEFTKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Left:
-		//	'LEFT' '(' distance=DOUBLE ')';
+		//	'LEFT' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'LEFT' '(' distance=DOUBLE ')'
+		//'LEFT' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'LEFT'
@@ -507,11 +507,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -522,14 +522,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRIGHTKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Right:
-		//	'RIGHT' '(' distance=DOUBLE ')';
+		//	'RIGHT' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'RIGHT' '(' distance=DOUBLE ')'
+		//'RIGHT' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'RIGHT'
@@ -538,11 +538,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -553,14 +553,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFORWARDKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Forward:
-		//	'FORWARD' '(' distance=DOUBLE ')';
+		//	'FORWARD' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'FORWARD' '(' distance=DOUBLE ')'
+		//'FORWARD' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'FORWARD'
@@ -569,11 +569,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -584,14 +584,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBACKWARDKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cDistanceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDistanceDOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
+		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Backward:
-		//	'BACKWARD' '(' distance=DOUBLE ')';
+		//	'BACKWARD' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'BACKWARD' '(' distance=DOUBLE ')'
+		//'BACKWARD' '(' distance=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'BACKWARD'
@@ -600,11 +600,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//distance=DOUBLE
+		//distance=POSITIVE_DOUBLE
 		public Assignment getDistanceAssignment_2() { return cDistanceAssignment_2; }
 		
-		//DOUBLE
-		public RuleCall getDistanceDOUBLEParserRuleCall_2_0() { return cDistanceDOUBLEParserRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getDistancePOSITIVE_DOUBLEParserRuleCall_2_0() { return cDistancePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -615,14 +615,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cROTATELEFTKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cAngleAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAngleINTTerminalRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
+		private final RuleCall cAnglePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//RotateL:
-		//	'ROTATELEFT' '(' angle=INT ')';
+		//	'ROTATELEFT' '(' angle=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'ROTATELEFT' '(' angle=INT ')'
+		//'ROTATELEFT' '(' angle=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'ROTATELEFT'
@@ -631,11 +631,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//angle=INT
+		//angle=POSITIVE_DOUBLE
 		public Assignment getAngleAssignment_2() { return cAngleAssignment_2; }
 		
-		//INT
-		public RuleCall getAngleINTTerminalRuleCall_2_0() { return cAngleINTTerminalRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getAnglePOSITIVE_DOUBLEParserRuleCall_2_0() { return cAnglePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -646,14 +646,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cROTATERIGHTKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cAngleAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAngleINTTerminalRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
+		private final RuleCall cAnglePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cAngleAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//RotateR:
-		//	'ROTATERIGHT' '(' angle=INT ')';
+		//	'ROTATERIGHT' '(' angle=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'ROTATERIGHT' '(' angle=INT ')'
+		//'ROTATERIGHT' '(' angle=POSITIVE_DOUBLE ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'ROTATERIGHT'
@@ -662,11 +662,11 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//angle=INT
+		//angle=POSITIVE_DOUBLE
 		public Assignment getAngleAssignment_2() { return cAngleAssignment_2; }
 		
-		//INT
-		public RuleCall getAngleINTTerminalRuleCall_2_0() { return cAngleINTTerminalRuleCall_2_0; }
+		//POSITIVE_DOUBLE
+		public RuleCall getAnglePOSITIVE_DOUBLEParserRuleCall_2_0() { return cAnglePOSITIVE_DOUBLEParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -1438,7 +1438,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	////	'ROTATE' '('angle = DOUBLE')'
 	////;
 	//Up:
-	//	'UP' '(' distance=DOUBLE ')';
+	//	'UP' '(' distance=POSITIVE_DOUBLE ')';
 	public UpElements getUpAccess() {
 		return pUp;
 	}
@@ -1448,7 +1448,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Down:
-	//	'DOWN' '(' distance=DOUBLE ')';
+	//	'DOWN' '(' distance=POSITIVE_DOUBLE ')';
 	public DownElements getDownAccess() {
 		return pDown;
 	}
@@ -1458,7 +1458,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Left:
-	//	'LEFT' '(' distance=DOUBLE ')';
+	//	'LEFT' '(' distance=POSITIVE_DOUBLE ')';
 	public LeftElements getLeftAccess() {
 		return pLeft;
 	}
@@ -1468,7 +1468,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Right:
-	//	'RIGHT' '(' distance=DOUBLE ')';
+	//	'RIGHT' '(' distance=POSITIVE_DOUBLE ')';
 	public RightElements getRightAccess() {
 		return pRight;
 	}
@@ -1478,7 +1478,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Forward:
-	//	'FORWARD' '(' distance=DOUBLE ')';
+	//	'FORWARD' '(' distance=POSITIVE_DOUBLE ')';
 	public ForwardElements getForwardAccess() {
 		return pForward;
 	}
@@ -1488,7 +1488,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Backward:
-	//	'BACKWARD' '(' distance=DOUBLE ')';
+	//	'BACKWARD' '(' distance=POSITIVE_DOUBLE ')';
 	public BackwardElements getBackwardAccess() {
 		return pBackward;
 	}
@@ -1498,7 +1498,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//RotateL:
-	//	'ROTATELEFT' '(' angle=INT ')';
+	//	'ROTATELEFT' '(' angle=POSITIVE_DOUBLE ')';
 	public RotateLElements getRotateLAccess() {
 		return pRotateL;
 	}
@@ -1508,7 +1508,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//RotateR:
-	//	'ROTATERIGHT' '(' angle=INT ')';
+	//	'ROTATERIGHT' '(' angle=POSITIVE_DOUBLE ')';
 	public RotateRElements getRotateRAccess() {
 		return pRotateR;
 	}

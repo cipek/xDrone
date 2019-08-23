@@ -65,6 +65,11 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compileJS(Fly fly)'''
+		var ANGLE_MARIGIN = 1.2;
+		var MOVE_MARIGIN_MAIN = 0.6;
+		var MOVE_MARIGIN_SECOND = 0.6;
+		var MOVE_MARIGIN_UP_DOWN = 0.2;
+		
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
 		//var goalDroneLocation = currentDroneLocation;
@@ -157,10 +162,15 @@ class XDroneGenerator extends AbstractGenerator {
 					var vector = getDistanceToObject(commands[0].flyTo);
 					var angle = getRotationToObject(commands[0].flyTo);
 										
-					var commandSet = "ROTATE(" + Math.round( angle * 10) / 10 + ")\n";
-					if(vector.y < 0)
+					var commandSet = "";
+					
+					if(angle > 0)
+						commandSet += "ROTATELEFT(" + Math.round( angle * 10) / 10 + ")\n";
+					else if(angle < 0)
+						commandSet += "ROTATERIGHT(" + Math.round( angle * 10) / 10 + ")\n";
+					if(vector.y > 0)
 						commandSet += "UP(" + Math.round( vector.y * 10) / 10 + ")\n";
-					else if(vector.y > 0)
+					else if(vector.y < 0)
 						commandSet += "DOWN(" + Math.round( vector.y * 10) / 10 + ")\n";
 					if(vector.z > 0)
 						commandSet += "FORWARD(" + Math.round( vector.z * 10) / 10 + ")\n";
@@ -188,7 +198,7 @@ class XDroneGenerator extends AbstractGenerator {
 		}
 		
 		function getDistanceErrorFromAngle(angle){
-			return 1.2 * angle /90
+			return 1.2 * Math.abs(angle) /90
 		}
 	'''
 	

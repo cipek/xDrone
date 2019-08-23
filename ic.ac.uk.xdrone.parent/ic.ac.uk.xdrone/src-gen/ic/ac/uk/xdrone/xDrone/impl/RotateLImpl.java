@@ -35,7 +35,7 @@ public class RotateLImpl extends CommandImpl implements RotateL
    * @generated
    * @ordered
    */
-  protected static final int ANGLE_EDEFAULT = 0;
+  protected static final String ANGLE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getAngle() <em>Angle</em>}' attribute.
@@ -45,7 +45,7 @@ public class RotateLImpl extends CommandImpl implements RotateL
    * @generated
    * @ordered
    */
-  protected int angle = ANGLE_EDEFAULT;
+  protected String angle = ANGLE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public class RotateLImpl extends CommandImpl implements RotateL
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getAngle()
+  public String getAngle()
   {
     return angle;
   }
@@ -83,9 +83,9 @@ public class RotateLImpl extends CommandImpl implements RotateL
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAngle(int newAngle)
+  public void setAngle(String newAngle)
   {
-    int oldAngle = angle;
+    String oldAngle = angle;
     angle = newAngle;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.ROTATE_L__ANGLE, oldAngle, angle));
@@ -118,7 +118,7 @@ public class RotateLImpl extends CommandImpl implements RotateL
     switch (featureID)
     {
       case XDronePackage.ROTATE_L__ANGLE:
-        setAngle((Integer)newValue);
+        setAngle((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -152,7 +152,7 @@ public class RotateLImpl extends CommandImpl implements RotateL
     switch (featureID)
     {
       case XDronePackage.ROTATE_L__ANGLE:
-        return angle != ANGLE_EDEFAULT;
+        return ANGLE_EDEFAULT == null ? angle != null : !ANGLE_EDEFAULT.equals(angle);
     }
     return super.eIsSet(featureID);
   }

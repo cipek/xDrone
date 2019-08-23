@@ -87,29 +87,29 @@ GoTo:
 //;
 
 Up: 
-	'UP' '('distance = DOUBLE')'
+	'UP' '('distance = POSITIVE_DOUBLE')'
 ;
 	
 Down: 
-	'DOWN' '('distance = DOUBLE')'
+	'DOWN' '('distance = POSITIVE_DOUBLE')'
 ;
 Left: 
-	'LEFT' '('distance = DOUBLE')'
+	'LEFT' '('distance = POSITIVE_DOUBLE')'
 ;
 Right: 
-	'RIGHT' '('distance = DOUBLE')'
+	'RIGHT' '('distance = POSITIVE_DOUBLE')'
 ;
 Forward: 
-	'FORWARD' '('distance = DOUBLE')'
+	'FORWARD' '('distance = POSITIVE_DOUBLE')'
 ;
 Backward: 
-	'BACKWARD' '('distance = DOUBLE')'
+	'BACKWARD' '('distance = POSITIVE_DOUBLE')'
 ;
 RotateL: 
-	'ROTATELEFT' '('angle = INT')'
+	'ROTATELEFT' '('angle = POSITIVE_DOUBLE')'
 ;
 RotateR: 
-	'ROTATERIGHT' '('angle = INT')'
+	'ROTATERIGHT' '('angle = POSITIVE_DOUBLE')'
 ;
 Wait:
 	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'

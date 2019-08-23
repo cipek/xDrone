@@ -543,6 +543,7 @@ function removeEntity(object) {
 
 function drawSphere(){
   var geometry = new THREE.SphereGeometry(collisionBox.scale.x/2, 32, 32 );
+  // geometry.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 2, 4 ) );
   var material = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true,
     opacity: 0.5 } );
@@ -601,9 +602,11 @@ function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
 }
 
 function changeDroneCollisionBox(additionalX, additionalY, additionalZ) {
+  console.log(additionalX, additionalY, additionalZ);
   collisionBox.scale.x += additionalX; // SCALE
   collisionBox.scale.y += additionalY; // SCALE
   collisionBox.scale.z += additionalZ; // SCALE
+  console.log(collisionBox.scale);
 }
 
 function getDistanceToObject(objectName){

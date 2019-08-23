@@ -168,7 +168,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Backward returns Backward
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Backward(ISerializationContext context, Backward semanticObject) {
 		if (errorAcceptor != null) {
@@ -176,7 +176,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.BACKWARD__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBackwardAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getBackwardAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -206,7 +206,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Down returns Down
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Down(ISerializationContext context, Down semanticObject) {
 		if (errorAcceptor != null) {
@@ -214,7 +214,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.DOWN__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDownAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getDownAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -262,7 +262,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Forward returns Forward
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Forward(ISerializationContext context, Forward semanticObject) {
 		if (errorAcceptor != null) {
@@ -270,7 +270,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.FORWARD__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getForwardAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getForwardAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -338,7 +338,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Left returns Left
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Left(ISerializationContext context, Left semanticObject) {
 		if (errorAcceptor != null) {
@@ -346,7 +346,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.LEFT__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getLeftAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getLeftAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -454,7 +454,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Right returns Right
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Right(ISerializationContext context, Right semanticObject) {
 		if (errorAcceptor != null) {
@@ -462,7 +462,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.RIGHT__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRightAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getRightAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	
@@ -474,7 +474,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     RotateL returns RotateL
 	 *
 	 * Constraint:
-	 *     angle=INT
+	 *     angle=POSITIVE_DOUBLE
 	 */
 	protected void sequence_RotateL(ISerializationContext context, RotateL semanticObject) {
 		if (errorAcceptor != null) {
@@ -482,7 +482,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.ROTATE_L__ANGLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRotateLAccess().getAngleINTTerminalRuleCall_2_0(), semanticObject.getAngle());
+		feeder.accept(grammarAccess.getRotateLAccess().getAnglePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getAngle());
 		feeder.finish();
 	}
 	
@@ -494,7 +494,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     RotateR returns RotateR
 	 *
 	 * Constraint:
-	 *     angle=INT
+	 *     angle=POSITIVE_DOUBLE
 	 */
 	protected void sequence_RotateR(ISerializationContext context, RotateR semanticObject) {
 		if (errorAcceptor != null) {
@@ -502,7 +502,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.ROTATE_R__ANGLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRotateRAccess().getAngleINTTerminalRuleCall_2_0(), semanticObject.getAngle());
+		feeder.accept(grammarAccess.getRotateRAccess().getAnglePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getAngle());
 		feeder.finish();
 	}
 	
@@ -550,7 +550,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Up returns Up
 	 *
 	 * Constraint:
-	 *     distance=DOUBLE
+	 *     distance=POSITIVE_DOUBLE
 	 */
 	protected void sequence_Up(ISerializationContext context, Up semanticObject) {
 		if (errorAcceptor != null) {
@@ -558,7 +558,7 @@ public class XDroneSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XDronePackage.Literals.UP__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getUpAccess().getDistanceDOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
+		feeder.accept(grammarAccess.getUpAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	

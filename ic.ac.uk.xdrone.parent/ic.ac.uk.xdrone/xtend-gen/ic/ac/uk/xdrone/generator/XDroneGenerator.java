@@ -179,6 +179,15 @@ public class XDroneGenerator extends AbstractGenerator {
   
   public CharSequence compileJS(final Fly fly) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("var ANGLE_MARIGIN = 1.2;");
+    _builder.newLine();
+    _builder.append("var MOVE_MARIGIN_MAIN = 0.6;");
+    _builder.newLine();
+    _builder.append("var MOVE_MARIGIN_SECOND = 0.6;");
+    _builder.newLine();
+    _builder.append("var MOVE_MARIGIN_UP_DOWN = 0.2;");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("var commands = [];");
     _builder.newLine();
     _builder.append("var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};");
@@ -414,16 +423,30 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t\t\t\t\t\t\t");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("var commandSet = \"ROTATE(\" + Math.round( angle * 10) / 10 + \")\\n\";");
+    _builder.append("var commandSet = \"\";");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("if(vector.y < 0)");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("if(angle > 0)");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("commandSet += \"ROTATELEFT(\" + Math.round( angle * 10) / 10 + \")\\n\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("else if(angle < 0)");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("commandSet += \"ROTATERIGHT(\" + Math.round( angle * 10) / 10 + \")\\n\";");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("if(vector.y > 0)");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     _builder.append("commandSet += \"UP(\" + Math.round( vector.y * 10) / 10 + \")\\n\";");
     _builder.newLine();
     _builder.append("\t\t\t");
-    _builder.append("else if(vector.y > 0)");
+    _builder.append("else if(vector.y < 0)");
     _builder.newLine();
     _builder.append("\t\t\t\t");
     _builder.append("commandSet += \"DOWN(\" + Math.round( vector.y * 10) / 10 + \")\\n\";");
@@ -499,7 +522,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("function getDistanceErrorFromAngle(angle){");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("return 1.2 * angle /90");
+    _builder.append("return 1.2 * Math.abs(angle) /90");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -565,7 +588,7 @@ public class XDroneGenerator extends AbstractGenerator {
     {
       if ((cmd instanceof RotateL)) {
         _builder.append("commands.push({r: ");
-        int _angle = ((RotateL)cmd).getAngle();
+        String _angle = ((RotateL)cmd).getAngle();
         _builder.append(_angle);
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
@@ -574,7 +597,7 @@ public class XDroneGenerator extends AbstractGenerator {
     {
       if ((cmd instanceof RotateR)) {
         _builder.append("commands.push({r: -");
-        int _angle_1 = ((RotateR)cmd).getAngle();
+        String _angle_1 = ((RotateR)cmd).getAngle();
         _builder.append(_angle_1);
         _builder.append("}); ");
         _builder.newLineIfNotEmpty();
@@ -1460,11 +1483,11 @@ public class XDroneGenerator extends AbstractGenerator {
     {
       if ((cmd instanceof RotateL)) {
         _builder.append("currentDroneAngle += -");
-        int _angle = ((RotateL)cmd).getAngle();
+        String _angle = ((RotateL)cmd).getAngle();
         _builder.append(_angle);
         _builder.newLineIfNotEmpty();
         _builder.append("rotate(90, -");
-        int _angle_1 = ((RotateL)cmd).getAngle();
+        String _angle_1 = ((RotateL)cmd).getAngle();
         _builder.append(_angle_1);
         _builder.append(");");
         _builder.newLineIfNotEmpty();
@@ -1473,11 +1496,11 @@ public class XDroneGenerator extends AbstractGenerator {
     {
       if ((cmd instanceof RotateR)) {
         _builder.append("currentDroneAngle += ");
-        int _angle_2 = ((RotateR)cmd).getAngle();
+        String _angle_2 = ((RotateR)cmd).getAngle();
         _builder.append(_angle_2);
         _builder.newLineIfNotEmpty();
         _builder.append("rotate(90, ");
-        int _angle_3 = ((RotateR)cmd).getAngle();
+        String _angle_3 = ((RotateR)cmd).getAngle();
         _builder.append(_angle_3);
         _builder.append(");");
         _builder.newLineIfNotEmpty();

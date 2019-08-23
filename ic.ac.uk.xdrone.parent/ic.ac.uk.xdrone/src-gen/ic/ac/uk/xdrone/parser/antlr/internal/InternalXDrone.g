@@ -730,9 +730,9 @@ ruleUp returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getUpAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getUpAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getUpRule());
@@ -741,7 +741,7 @@ ruleUp returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -780,9 +780,9 @@ ruleDown returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getDownAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getDownAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getDownRule());
@@ -791,7 +791,7 @@ ruleDown returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -830,9 +830,9 @@ ruleLeft returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getLeftAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getLeftAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getLeftRule());
@@ -841,7 +841,7 @@ ruleLeft returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -880,9 +880,9 @@ ruleRight returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRightAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getRightAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRightRule());
@@ -891,7 +891,7 @@ ruleRight returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -930,9 +930,9 @@ ruleForward returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getForwardAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getForwardAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getForwardRule());
@@ -941,7 +941,7 @@ ruleForward returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -980,9 +980,9 @@ ruleBackward returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBackwardAccess().getDistanceDOUBLEParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getBackwardAccess().getDistancePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
-				lv_distance_2_0=ruleDOUBLE
+				lv_distance_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBackwardRule());
@@ -991,7 +991,7 @@ ruleBackward returns [EObject current=null]
 						$current,
 						"distance",
 						lv_distance_2_0,
-						"ic.ac.uk.xdrone.XDrone.DOUBLE");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1029,19 +1029,20 @@ ruleRotateL returns [EObject current=null]
 		}
 		(
 			(
-				lv_angle_2_0=RULE_INT
 				{
-					newLeafNode(lv_angle_2_0, grammarAccess.getRotateLAccess().getAngleINTTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getRotateLAccess().getAnglePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
+				lv_angle_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRotateLRule());
+						$current = createModelElementForParent(grammarAccess.getRotateLRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"angle",
 						lv_angle_2_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1078,19 +1079,20 @@ ruleRotateR returns [EObject current=null]
 		}
 		(
 			(
-				lv_angle_2_0=RULE_INT
 				{
-					newLeafNode(lv_angle_2_0, grammarAccess.getRotateRAccess().getAngleINTTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getRotateRAccess().getAnglePOSITIVE_DOUBLEParserRuleCall_2_0());
 				}
+				lv_angle_2_0=rulePOSITIVE_DOUBLE
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRotateRRule());
+						$current = createModelElementForParent(grammarAccess.getRotateRRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"angle",
 						lv_angle_2_0,
-						"org.eclipse.xtext.common.Terminals.INT");
+						"ic.ac.uk.xdrone.XDrone.POSITIVE_DOUBLE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)

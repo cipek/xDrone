@@ -122,13 +122,43 @@
 										node.innerHTML = "&#8680;"
 										node.classList.add("goto_div");
 
-										var child = document.createElement("div");
-										child.innerHTML=listGoTo[k].commands;
-										child.classList.add("goto_div_child");
-										node.appendChild(child);
+										var popup = document.createElement("div");
+										popup.classList.add("goto_div_child");
+										popup.onclick = function(e) {
+    									event.stopPropagation();
+										};
+
+										var popupInput = document.createElement("textarea");
+										popupInput.classList.add("goto_input");
+										popupInput.value = listGoTo[k].commands;
+										popupInput.disabled = true;
+										popupInput.onclick = function(e) {
+    									event.stopPropagation();
+										};
+										popup.appendChild(popupInput);
+
+										var copyBtn = document.createElement("button");
+										copyBtn.innerHTML="Copy";
+										// copyBtn.classList.add("goto_div_child");
+										copyBtn.onclick = function(e) {
+									    event.stopPropagation();
+											if(e && e.path && e.path[1] && e.path[1].children && e.path[1].children[0]){
+												e.path[1].children[0].disabled = false;
+												e.path[1].children[0].select();
+											  e.path[1].children[0].setSelectionRange(0, 99999); /*For mobile devices*/
+
+											  /* Copy the text inside the text field */
+											  document.execCommand("copy");
+												e.path[1].children[0].disabled = true;
+											}
+										};
+										popup.appendChild(copyBtn);
+
+										node.appendChild(popup);
 
 										node.onclick = function(e) {
-											console.log("CLICK", e.target.children[0]);
+    									event.stopPropagation();
+											if(e.target && e.target.children[0])
 										    e.target.children[0].classList.toggle("show");
 										};
 										lineNumbers[j].appendChild(node);

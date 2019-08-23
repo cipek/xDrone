@@ -31,12 +31,12 @@ public interface RotateL extends Command
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Angle</em>' attribute.
-   * @see #setAngle(int)
+   * @see #setAngle(String)
    * @see ic.ac.uk.xdrone.xDrone.XDronePackage#getRotateL_Angle()
    * @model
    * @generated
    */
-  int getAngle();
+  String getAngle();
 
   /**
    * Sets the value of the '{@link ic.ac.uk.xdrone.xDrone.RotateL#getAngle <em>Angle</em>}' attribute.
@@ -46,6 +46,6 @@ public interface RotateL extends Command
    * @see #getAngle()
    * @generated
    */
-  void setAngle(int value);
+  void setAngle(String value);
 
 } // RotateL

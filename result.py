@@ -33,21 +33,6 @@ objects['table1'] = {
 	'y': 2.5,
 	'z': 0.5 + 1/2
 }
-objects['sofa1'] = {
-	'x': 0,
-	'y': 2.5,
-	'z': 0.5 + 1/2
-}
-objects['sofa2'] = {
-	'x': 1.5,
-	'y': 1,
-	'z': 0.5 + 1/2
-}
-objects['plant1'] = {
-	'x': -1.5,
-	'y': -2.5,
-	'z': 0.5 + 2.5/2
-}
 
 #RotY:		RotX:
 #+ forward 	+ right
@@ -278,25 +263,12 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-currentDroneAngle += --90
-rotate(90, --90);
-dronePosition['z'] += 2
-moveUpAndDown(2)
-dronePosition['x'] += 2.5
-moveBaseOnTime(2.5, 0.15, 0)
-noMove(1)
-currentDroneAngle += --90
-rotate(90, --90);
-dronePosition['x'] += 1.5
-moveBaseOnTime(1.5, 0.15, 0)
-noMove(1)
-dronePosition['y']  += -5
-moveBaseOnTime(-5, 0, 0.15)
-noMove(1)
-currentDroneAngle += -180
-rotate(90, -180);
-dronePosition['x'] += 3
-moveBaseOnTime(3, 0.15, 0)
+currentDroneAngle += -59
+rotate(90, -59);
+dronePosition['z'] += 0.7
+moveUpAndDown(0.7)
+dronePosition['x'] += 2.9
+moveBaseOnTime(2.9, 0.15, 0)
 noMove(1)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)

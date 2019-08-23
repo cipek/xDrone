@@ -26,13 +26,22 @@
   padding: 8px;
 }
 
+.ace_gutter{
+  overflow: visible !important;
+}
+
 .ace_gutter-cell{
   /* padding-left: 8px !important; */
   text-align: left !important;
 }
 
+.ace_editor{
+  overflow: visible !important;
+}
+
 .ace_gutter-layer{
   width: 80px !important;
+  overflow: visible !important;
 }
 
 .ace_scroller{
@@ -56,9 +65,8 @@
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
+  top: -100%;
+  margin-left: 20px;
   z-index: 9999;
 
   -ms-user-select: all !important;
@@ -70,4 +78,15 @@
 
 .show {
   visibility: visible !important;
+}
+
+.goto_input{
+  height: 50px;
+  background: transparent;
+  color: white;
+  border: none;
+  text-align: center;
+  margin-bottom: 5px;
+  overflow: hidden;
+  resize: none;
 }
