@@ -122,7 +122,7 @@ Wait:
 
 Drone:
 //	'DRONE' vector=Vector
-	'DRONE' '{'
+	'DRONE' '=' '{'
 		(position=Position | ('rotation' '=' rotation = DOUBLE))*
 	'}'
 ;
@@ -157,7 +157,7 @@ Color:
 
 Walls:
 //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
-	'WALLS' '{'
+	'WALLS' '=' '{'
 		(front = FrontWall | right = RightWall | back = BackWall | left = LeftWall | up = UpWall)*
 	'}'
 ;

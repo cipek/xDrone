@@ -3,7 +3,7 @@
 ','=37
 '-'=19
 '.'=20
-'='=33
+'='=32
 'BACKWARD'=27
 'DOWN'=23
 'DRONE'=31
@@ -27,7 +27,7 @@
 'origin'=34
 'position'=36
 'right'=41
-'rotation'=32
+'rotation'=33
 'size'=35
 'up'=44
 '{'=14

@@ -66,6 +66,7 @@
 										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
 								})
 
+								lastFirstNumber = "-1";
 								flySimulation = undefined;
 								if(pathEnvironment && pathEnvironment != '')
 									require(['./' + pathEnvironment], function(module){
@@ -142,6 +143,7 @@
 										// copyBtn.classList.add("goto_div_child");
 										copyBtn.onclick = function(e) {
 									    event.stopPropagation();
+											console.log(e);
 											if(e && e.path && e.path[1] && e.path[1].children && e.path[1].children[0]){
 												e.path[1].children[0].disabled = false;
 												e.path[1].children[0].select();
@@ -150,6 +152,8 @@
 											  /* Copy the text inside the text field */
 											  document.execCommand("copy");
 												e.path[1].children[0].disabled = true;
+
+												e.path[1].classList.toggle("show");
 											}
 										};
 										popup.appendChild(copyBtn);

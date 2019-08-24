@@ -66,9 +66,11 @@ class XDroneGenerator extends AbstractGenerator {
 	
 	def compileJS(Fly fly)'''
 		var ANGLE_MARIGIN = 1.2;
-		var MOVE_MARIGIN_MAIN = 0.6;
-		var MOVE_MARIGIN_SECOND = 0.6;
-		var MOVE_MARIGIN_UP_DOWN = 0.2;
+		var MOVE_MARIGIN = 1.25;
+		var MOVE_MARIGIN_ADD = 0.6;
+		var MOVE_MARIGIN_NEXT = 0.95;
+		var MOVE_MARIGIN_NEXT_ADD = 0.1;
+		
 		
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
@@ -136,13 +138,13 @@ class XDroneGenerator extends AbstractGenerator {
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].x !== undefined){
-					changeDroneCollisionBox(0.6,0,0.6)
+					changeDroneCollisionBox(getDistanceErrorFromDistance(Math.abs(commands[0].x)),0,0)
 					destination = commands[0].x;
 					currentFunction = "MOVE_X";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
 				}
 				else if(commands[0].z !== undefined){
-					changeDroneCollisionBox(0.6,0,0.6)
+					changeDroneCollisionBox(0, 0, getDistanceErrorFromDistance(Math.abs(commands[0].z)))
 					destination = commands[0].z;
 					currentFunction = "MOVE_Z";
 					lineGeometry.vertices.push(new THREE.Vector3( drone.position.x, drone.position.y, drone.position.z))
@@ -165,13 +167,13 @@ class XDroneGenerator extends AbstractGenerator {
 					var commandSet = "";
 					
 					if(angle > 0)
-						commandSet += "ROTATELEFT(" + Math.round( angle * 10) / 10 + ")\n";
+						commandSet += "ROTATELEFT(" + Math.round( Math.abs(angle) * 10) / 10 + ")\n";
 					else if(angle < 0)
-						commandSet += "ROTATERIGHT(" + Math.round( angle * 10) / 10 + ")\n";
+						commandSet += "ROTATERIGHT(" + Math.round( Math.abs(angle) * 10) / 10 + ")\n";
 					if(vector.y > 0)
-						commandSet += "UP(" + Math.round( vector.y * 10) / 10 + ")\n";
+						commandSet += "UP(" + Math.round( Math.abs(vector.y) * 10) / 10 + ")\n";
 					else if(vector.y < 0)
-						commandSet += "DOWN(" + Math.round( vector.y * 10) / 10 + ")\n";
+						commandSet += "DOWN(" + Math.round( Math.abs(vector.y) * 10) / 10 + ")\n";
 					if(vector.z > 0)
 						commandSet += "FORWARD(" + Math.round( vector.z * 10) / 10 + ")\n";
 										
@@ -193,12 +195,23 @@ class XDroneGenerator extends AbstractGenerator {
 				commands.shift();
 			}
 			else{
-				finishSimulation = true;	
+				finishSimulation = true;
 			}
 		}
 		
 		function getDistanceErrorFromAngle(angle){
 			return 1.2 * Math.abs(angle) /90
+		}
+				var MOVE_MARIGIN = 1.25;
+				var MOVE_MARIGIN_ADD = 0.6;
+				var MOVE_MARIGIN_NEXT = 0.95;
+				var MOVE_MARIGIN_NEXT_ADD = 0.1;
+		
+		function getDistanceErrorFromDistance(distance){
+			if(distance < MOVE_MARIGIN)
+				return MOVE_MARIGIN_ADD;
+			else
+				return MOVE_MARIGIN_ADD + (((distance-MOVE_MARIGIN) * MOVE_MARIGIN_NEXT_ADD) / MOVE_MARIGIN_NEXT)
 		}
 	'''
 	
@@ -260,9 +273,9 @@ commands.push({z: -«cmd.distance»});
 		ACCEPTED_DISTANCE_ERROR = 20
 		ACCEPTED_ALTITUDE_ERROR = 50
 		ACCEPTED_ROTATION_ERROR = 10
-		DISTANCE_ONE_AND_HALF_SECOND = 0.85
-		DISTANCE_TWO_SECONDS = 1.20
-		DISTANCE_TWO_AND_HALF_SECONDS = 1.65
+		DISTANCE_ONE_AND_HALF_SECOND = 1.25
+		DISTANCE_TWO_SECONDS = 2.20
+		#DISTANCE_TWO_AND_HALF_SECONDS = 1.65
 		
 		state = -1
 		dronePosition = {
@@ -323,8 +336,8 @@ commands.push({z: -«cmd.distance»});
 				return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
 			elif distance <= DISTANCE_TWO_SECONDS:
 				return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
-			else:
-				return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
+			#else:
+			#	return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
 				
 		def getDistanceToObject(objectName):
 			global objects

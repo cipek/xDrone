@@ -542,8 +542,9 @@ function removeEntity(object) {
 }
 
 function drawSphere(){
-  var geometry = new THREE.SphereGeometry(collisionBox.scale.x/2, 32, 32 );
-  // geometry.applyMatrix( new THREE.Matrix4().makeScale( 1.0, 2, 4 ) );
+  var geometry = new THREE.SphereGeometry(1, 32, 32 );
+  geometry.applyMatrix( new THREE.Matrix4().makeScale(
+    collisionBox.scale.x/2, collisionBox.scale.y/2, collisionBox.scale.z/2) );
   var material = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true,
     opacity: 0.5 } );
@@ -690,7 +691,8 @@ function checkAngle(angle){
 
 function drawOutput(){
   if(finishSimulation && !isOutputVisible){
-    outputDiv.appendChild (createDiv("Radius of the sphere is " + collisionBox.scale.x + "m"));
+    outputDiv.appendChild (createDiv("Estimated landing area: x= " + (Math.round( Math.abs(collisionBox.scale.x) * 10) / 10) +
+      " m, z = " + (Math.round( Math.abs(collisionBox.scale.z) * 10) / 10) + " m"));
     if(collidedWith && collidedWith.length > 0)
       outputDiv.appendChild (createDiv("Possilbe collison with objects: " + collidedWith.join(','), "red"));
     if(wallsColision)

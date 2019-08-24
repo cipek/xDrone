@@ -12,9 +12,9 @@ PI = 3.1415926535897
 ACCEPTED_DISTANCE_ERROR = 20
 ACCEPTED_ALTITUDE_ERROR = 50
 ACCEPTED_ROTATION_ERROR = 10
-DISTANCE_ONE_AND_HALF_SECOND = 0.85
-DISTANCE_TWO_SECONDS = 1.20
-DISTANCE_TWO_AND_HALF_SECONDS = 1.65
+DISTANCE_ONE_AND_HALF_SECOND = 1.25
+DISTANCE_TWO_SECONDS = 2.20
+#DISTANCE_TWO_AND_HALF_SECONDS = 1.65
 
 state = -1
 dronePosition = {
@@ -28,11 +28,6 @@ currentDroneAngle = 270.0 #Real Life
 
 objects = {}
 
-objects['table1'] = {
-	'x': 1.5,
-	'y': 2.5,
-	'z': 0.5 + 1/2
-}
 
 #RotY:		RotX:
 #+ forward 	+ right
@@ -55,8 +50,8 @@ def getTimeFromDistance(distance):
 		return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
 	elif distance <= DISTANCE_TWO_SECONDS:
 		return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
-	else:
-		return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
+	#else:
+	#	return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
 		
 def getDistanceToObject(objectName):
 	global objects
@@ -263,12 +258,14 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-currentDroneAngle += -59
-rotate(90, -59);
-dronePosition['z'] += 0.7
-moveUpAndDown(0.7)
-dronePosition['x'] += 2.9
-moveBaseOnTime(2.9, 0.15, 0)
+dronePosition['x'] += 1
+moveBaseOnTime(1, 0.15, 0)
+noMove(1)
+dronePosition['y']  += 2
+moveBaseOnTime(2, 0, 0.15)
+noMove(1)
+dronePosition['y']  += -3
+moveBaseOnTime(-3, 0, 0.15)
 noMove(1)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
