@@ -3,7 +3,35 @@
  */
 package ic.ac.uk.xdrone.xDrone.util;
 
-import ic.ac.uk.xdrone.xDrone.*;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
+import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
+import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
+import ic.ac.uk.xdrone.xDrone.GoTo;
+import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
+import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
+import ic.ac.uk.xdrone.xDrone.Program;
+import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
+import ic.ac.uk.xdrone.xDrone.SuperCommand;
+import ic.ac.uk.xdrone.xDrone.Up;
+import ic.ac.uk.xdrone.xDrone.UpWall;
+import ic.ac.uk.xdrone.xDrone.Vector;
+import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
+import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -87,24 +115,17 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.RECORDED_FLIGHT:
+      case XDronePackage.FLY:
       {
-        RecordedFlight recordedFlight = (RecordedFlight)theEObject;
-        T result = caseRecordedFlight(recordedFlight);
+        Fly fly = (Fly)theEObject;
+        T result = caseFly(fly);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.USER_FUNCTION:
+      case XDronePackage.ENVIRONMENT:
       {
-        UserFunction userFunction = (UserFunction)theEObject;
-        T result = caseUserFunction(userFunction);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case XDronePackage.FEATURE_MATCH:
-      {
-        FeatureMatch featureMatch = (FeatureMatch)theEObject;
-        T result = caseFeatureMatch(featureMatch);
+        Environment environment = (Environment)theEObject;
+        T result = caseEnvironment(environment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -123,12 +144,12 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.SNAPSHOT:
+      case XDronePackage.GO_TO:
       {
-        Snapshot snapshot = (Snapshot)theEObject;
-        T result = caseSnapshot(snapshot);
-        if (result == null) result = caseCommand(snapshot);
-        if (result == null) result = caseSuperCommand(snapshot);
+        GoTo goTo = (GoTo)theEObject;
+        T result = caseGoTo(goTo);
+        if (result == null) result = caseCommand(goTo);
+        if (result == null) result = caseSuperCommand(goTo);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -213,18 +234,94 @@ public class XDroneSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.MOVE:
+      case XDronePackage.DRONE:
       {
-        Move move = (Move)theEObject;
-        T result = caseMove(move);
+        Drone drone = (Drone)theEObject;
+        T result = caseDrone(drone);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case XDronePackage.FUNCTION_NAME:
+      case XDronePackage.OBJECT:
       {
-        FunctionName functionName = (FunctionName)theEObject;
-        T result = caseFunctionName(functionName);
-        if (result == null) result = caseSuperCommand(functionName);
+        ic.ac.uk.xdrone.xDrone.Object object = (ic.ac.uk.xdrone.xDrone.Object)theEObject;
+        T result = caseObject(object);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.ORIGIN:
+      {
+        Origin origin = (Origin)theEObject;
+        T result = caseOrigin(origin);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.SIZE:
+      {
+        Size size = (Size)theEObject;
+        T result = caseSize(size);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.POSITION:
+      {
+        Position position = (Position)theEObject;
+        T result = casePosition(position);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.VECTOR:
+      {
+        Vector vector = (Vector)theEObject;
+        T result = caseVector(vector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.COLOR:
+      {
+        Color color = (Color)theEObject;
+        T result = caseColor(color);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.WALLS:
+      {
+        Walls walls = (Walls)theEObject;
+        T result = caseWalls(walls);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.FRONT_WALL:
+      {
+        FrontWall frontWall = (FrontWall)theEObject;
+        T result = caseFrontWall(frontWall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.RIGHT_WALL:
+      {
+        RightWall rightWall = (RightWall)theEObject;
+        T result = caseRightWall(rightWall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.LEFT_WALL:
+      {
+        LeftWall leftWall = (LeftWall)theEObject;
+        T result = caseLeftWall(leftWall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.BACK_WALL:
+      {
+        BackWall backWall = (BackWall)theEObject;
+        T result = caseBackWall(backWall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XDronePackage.UP_WALL:
+      {
+        UpWall upWall = (UpWall)theEObject;
+        T result = caseUpWall(upWall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -265,49 +362,33 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Recorded Flight</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Fly</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Recorded Flight</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Fly</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRecordedFlight(RecordedFlight object)
+  public T caseFly(Fly object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>User Function</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Environment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>User Function</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Environment</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseUserFunction(UserFunction object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature Match</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Feature Match</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFeatureMatch(FeatureMatch object)
+  public T caseEnvironment(Environment object)
   {
     return null;
   }
@@ -345,17 +426,17 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Snapshot</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Go To</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Snapshot</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Go To</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSnapshot(Snapshot object)
+  public T caseGoTo(GoTo object)
   {
     return null;
   }
@@ -505,33 +586,209 @@ public class XDroneSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Move</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Drone</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Move</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Drone</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMove(Move object)
+  public T caseDrone(Drone object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function Name</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function Name</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Object</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFunctionName(FunctionName object)
+  public T caseObject(ic.ac.uk.xdrone.xDrone.Object object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Origin</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Origin</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOrigin(Origin object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Size</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Size</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSize(Size object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Position</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Position</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePosition(Position object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Vector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Vector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVector(Vector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Color</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Color</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColor(Color object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Walls</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Walls</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWalls(Walls object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Front Wall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Front Wall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFrontWall(FrontWall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Right Wall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Right Wall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRightWall(RightWall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Left Wall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Left Wall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLeftWall(LeftWall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Back Wall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Back Wall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBackWall(BackWall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Up Wall</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Up Wall</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpWall(UpWall object)
   {
     return null;
   }

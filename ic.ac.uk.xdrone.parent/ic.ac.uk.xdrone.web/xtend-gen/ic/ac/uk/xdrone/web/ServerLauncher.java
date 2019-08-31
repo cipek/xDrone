@@ -24,7 +24,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 @SuppressWarnings("all")
 public class ServerLauncher {
   public static void main(final String[] args) {
-    InetSocketAddress _inetSocketAddress = new InetSocketAddress("localhost", 8080);
+    InetSocketAddress _inetSocketAddress = new InetSocketAddress("0.0.0.0", 8080);
     final Server server = new Server(_inetSocketAddress);
     WebAppContext _webAppContext = new WebAppContext();
     final Procedure1<WebAppContext> _function = (WebAppContext it) -> {

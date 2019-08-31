@@ -1,0 +1,92 @@
+#SIMULATOR_CONTAINER{
+  height: 650px;
+  width: 600px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+#SIMULATOR{
+  position: fixed;
+  width: 600px;
+  height: 550px;
+}
+
+#AXES_SYSTEM{
+  position: absolute;
+  top: 130px;
+  left: 10px;
+}
+
+#SIMULATOR_OUTPUT{
+  height: 100px;
+  width: auto;
+  border: 2px grey solid;
+  border-bottom: none;
+  padding: 8px;
+}
+
+.ace_gutter{
+  overflow: visible !important;
+}
+
+.ace_gutter-cell{
+  /* padding-left: 8px !important; */
+  text-align: left !important;
+}
+
+.ace_editor{
+  overflow: visible !important;
+}
+
+.ace_gutter-layer{
+  width: 80px !important;
+  overflow: visible !important;
+}
+
+.ace_scroller{
+  left: 82px;
+}
+
+.goto_div{
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding-left: 15px;
+}
+
+.goto_div_child{
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: -200%;
+  margin-left: 20px;
+  z-index: 9999;
+
+  -ms-user-select: all !important;
+  /* text instead of all*/
+  -moz-user-select: all !important;
+  -webkit-user-select: all !important;
+   user-select: all !important;
+}
+
+.show {
+  visibility: visible !important;
+}
+
+.goto_input{
+  height: 50px;
+  background: transparent;
+  color: white;
+  border: none;
+  text-align: center;
+  margin-bottom: 5px;
+  overflow: hidden;
+  resize: none;
+}

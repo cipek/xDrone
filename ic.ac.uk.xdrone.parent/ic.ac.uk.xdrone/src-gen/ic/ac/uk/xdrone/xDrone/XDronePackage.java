@@ -96,31 +96,22 @@ public interface XDronePackage extends EPackage
   int MAIN = 1;
 
   /**
-   * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+   * The feature id for the '<em><b>Fly</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAIN__COMMANDS = 0;
+  int MAIN__FLY = 0;
 
   /**
-   * The feature id for the '<em><b>Takeoff</b></em>' attribute list.
+   * The feature id for the '<em><b>Environment</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAIN__TAKEOFF = 1;
-
-  /**
-   * The feature id for the '<em><b>Land</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAIN__LAND = 2;
+  int MAIN__ENVIRONMENT = 1;
 
   /**
    * The number of structural features of the '<em>Main</em>' class.
@@ -129,100 +120,99 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAIN_FEATURE_COUNT = 3;
+  int MAIN_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl <em>Recorded Flight</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyImpl <em>Fly</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRecordedFlight()
+   * @see ic.ac.uk.xdrone.xDrone.impl.FlyImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFly()
    * @generated
    */
-  int RECORDED_FLIGHT = 2;
+  int FLY = 2;
 
   /**
-   * The feature id for the '<em><b>Video name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORDED_FLIGHT__VIDEO_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Recorded Flight</em>' class.
+   * The feature id for the '<em><b>Takeoff</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECORDED_FLIGHT_FEATURE_COUNT = 1;
+  int FLY__TAKEOFF = 0;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl <em>User Function</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUserFunction()
-   * @generated
-   */
-  int USER_FUNCTION = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Commands</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int USER_FUNCTION__NAME = 0;
+  int FLY__COMMANDS = 1;
 
   /**
-   * The feature id for the '<em><b>Func</b></em>' containment reference list.
+   * The feature id for the '<em><b>Land</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int USER_FUNCTION__FUNC = 1;
+  int FLY__LAND = 2;
 
   /**
-   * The number of structural features of the '<em>User Function</em>' class.
+   * The number of structural features of the '<em>Fly</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int USER_FUNCTION_FEATURE_COUNT = 2;
+  int FLY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl <em>Feature Match</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl <em>Environment</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFeatureMatch()
+   * @see ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getEnvironment()
    * @generated
    */
-  int FEATURE_MATCH = 4;
+  int ENVIRONMENT = 3;
 
   /**
-   * The feature id for the '<em><b>Image name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE_MATCH__IMAGE_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Feature Match</em>' class.
+   * The feature id for the '<em><b>Drone</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE_MATCH_FEATURE_COUNT = 1;
+  int ENVIRONMENT__DRONE = 0;
+
+  /**
+   * The feature id for the '<em><b>Walls</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__WALLS = 1;
+
+  /**
+   * The feature id for the '<em><b>Objects</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT__OBJECTS = 2;
+
+  /**
+   * The number of structural features of the '<em>Environment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SuperCommandImpl <em>Super Command</em>}' class.
@@ -232,7 +222,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSuperCommand()
    * @generated
    */
-  int SUPER_COMMAND = 5;
+  int SUPER_COMMAND = 4;
 
   /**
    * The number of structural features of the '<em>Super Command</em>' class.
@@ -251,7 +241,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 6;
+  int COMMAND = 5;
 
   /**
    * The number of structural features of the '<em>Command</em>' class.
@@ -263,32 +253,32 @@ public interface XDronePackage extends EPackage
   int COMMAND_FEATURE_COUNT = SUPER_COMMAND_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl <em>Snapshot</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.GoToImpl <em>Go To</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSnapshot()
+   * @see ic.ac.uk.xdrone.xDrone.impl.GoToImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getGoTo()
    * @generated
    */
-  int SNAPSHOT = 7;
+  int GO_TO = 6;
 
   /**
-   * The feature id for the '<em><b>Image name</b></em>' attribute.
+   * The feature id for the '<em><b>Object name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SNAPSHOT__IMAGE_NAME = COMMAND_FEATURE_COUNT + 0;
+  int GO_TO__OBJECT_NAME = COMMAND_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Snapshot</em>' class.
+   * The number of structural features of the '<em>Go To</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SNAPSHOT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+  int GO_TO_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.
@@ -298,7 +288,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUp()
    * @generated
    */
-  int UP = 8;
+  int UP = 7;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -326,7 +316,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDown()
    * @generated
    */
-  int DOWN = 9;
+  int DOWN = 8;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -354,7 +344,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeft()
    * @generated
    */
-  int LEFT = 10;
+  int LEFT = 9;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -382,7 +372,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRight()
    * @generated
    */
-  int RIGHT = 11;
+  int RIGHT = 10;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -410,7 +400,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getForward()
    * @generated
    */
-  int FORWARD = 12;
+  int FORWARD = 11;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -438,7 +428,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackward()
    * @generated
    */
-  int BACKWARD = 13;
+  int BACKWARD = 12;
 
   /**
    * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -466,7 +456,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateL()
    * @generated
    */
-  int ROTATE_L = 14;
+  int ROTATE_L = 13;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -494,7 +484,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRotateR()
    * @generated
    */
-  int ROTATE_R = 15;
+  int ROTATE_R = 14;
 
   /**
    * The feature id for the '<em><b>Angle</b></em>' attribute.
@@ -522,7 +512,7 @@ public interface XDronePackage extends EPackage
    * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWait()
    * @generated
    */
-  int WAIT = 16;
+  int WAIT = 15;
 
   /**
    * The feature id for the '<em><b>Seconds</b></em>' attribute.
@@ -543,14 +533,190 @@ public interface XDronePackage extends EPackage
   int WAIT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl <em>Drone</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.MoveImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
+   * @see ic.ac.uk.xdrone.xDrone.impl.DroneImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDrone()
    * @generated
    */
-  int MOVE = 17;
+  int DRONE = 16;
+
+  /**
+   * The feature id for the '<em><b>Position</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__POSITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Rotation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE__ROTATION = 1;
+
+  /**
+   * The number of structural features of the '<em>Drone</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DRONE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.ObjectImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getObject()
+   * @generated
+   */
+  int OBJECT = 17;
+
+  /**
+   * The feature id for the '<em><b>Object name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__OBJECT_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Origin</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__ORIGIN = 1;
+
+  /**
+   * The feature id for the '<em><b>Size</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__SIZE = 2;
+
+  /**
+   * The feature id for the '<em><b>Color</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__COLOR = 3;
+
+  /**
+   * The number of structural features of the '<em>Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.OriginImpl <em>Origin</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.OriginImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
+   * @generated
+   */
+  int ORIGIN = 18;
+
+  /**
+   * The feature id for the '<em><b>Vector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN__VECTOR = 0;
+
+  /**
+   * The number of structural features of the '<em>Origin</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORIGIN_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl <em>Size</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.SizeImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
+   * @generated
+   */
+  int SIZE = 19;
+
+  /**
+   * The feature id for the '<em><b>Vector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE__VECTOR = 0;
+
+  /**
+   * The number of structural features of the '<em>Size</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIZE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.PositionImpl <em>Position</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.PositionImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getPosition()
+   * @generated
+   */
+  int POSITION = 20;
+
+  /**
+   * The feature id for the '<em><b>Vector</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POSITION__VECTOR = 0;
+
+  /**
+   * The number of structural features of the '<em>Position</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POSITION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl <em>Vector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.VectorImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getVector()
+   * @generated
+   */
+  int VECTOR = 21;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -559,7 +725,7 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MOVE__X = 0;
+  int VECTOR__X = 0;
 
   /**
    * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -568,7 +734,7 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MOVE__Y = 1;
+  int VECTOR__Y = 1;
 
   /**
    * The feature id for the '<em><b>Z</b></em>' attribute.
@@ -577,44 +743,248 @@ public interface XDronePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MOVE__Z = 2;
+  int VECTOR__Z = 2;
 
   /**
-   * The number of structural features of the '<em>Move</em>' class.
+   * The number of structural features of the '<em>Vector</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MOVE_FEATURE_COUNT = 3;
+  int VECTOR_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl <em>Function Name</em>}' class.
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.ColorImpl <em>Color</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl
-   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFunctionName()
+   * @see ic.ac.uk.xdrone.xDrone.impl.ColorImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
    * @generated
    */
-  int FUNCTION_NAME = 18;
+  int COLOR = 22;
 
   /**
-   * The feature id for the '<em><b>Func name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_NAME__FUNC_NAME = SUPER_COMMAND_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Function Name</em>' class.
+   * The feature id for the '<em><b>Color value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_NAME_FEATURE_COUNT = SUPER_COMMAND_FEATURE_COUNT + 1;
+  int COLOR__COLOR_VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Color</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl <em>Walls</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.WallsImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWalls()
+   * @generated
+   */
+  int WALLS = 23;
+
+  /**
+   * The feature id for the '<em><b>Front</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS__FRONT = 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS__RIGHT = 1;
+
+  /**
+   * The feature id for the '<em><b>Back</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS__BACK = 2;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS__LEFT = 3;
+
+  /**
+   * The feature id for the '<em><b>Up</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS__UP = 4;
+
+  /**
+   * The number of structural features of the '<em>Walls</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WALLS_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.FrontWallImpl <em>Front Wall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.FrontWallImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFrontWall()
+   * @generated
+   */
+  int FRONT_WALL = 24;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FRONT_WALL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Front Wall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FRONT_WALL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.RightWallImpl <em>Right Wall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.RightWallImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRightWall()
+   * @generated
+   */
+  int RIGHT_WALL = 25;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RIGHT_WALL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Right Wall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RIGHT_WALL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.LeftWallImpl <em>Left Wall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.LeftWallImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeftWall()
+   * @generated
+   */
+  int LEFT_WALL = 26;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEFT_WALL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Left Wall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEFT_WALL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.BackWallImpl <em>Back Wall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.BackWallImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackWall()
+   * @generated
+   */
+  int BACK_WALL = 27;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACK_WALL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Back Wall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACK_WALL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpWallImpl <em>Up Wall</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ic.ac.uk.xdrone.xDrone.impl.UpWallImpl
+   * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUpWall()
+   * @generated
+   */
+  int UP_WALL = 28;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UP_WALL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Up Wall</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UP_WALL_FEATURE_COUNT = 1;
 
 
   /**
@@ -649,111 +1019,112 @@ public interface XDronePackage extends EPackage
   EClass getMain();
 
   /**
-   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Main#getCommands <em>Commands</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Main#getFly <em>Fly</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Commands</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Main#getCommands()
+   * @return the meta object for the containment reference '<em>Fly</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Main#getFly()
    * @see #getMain()
    * @generated
    */
-  EReference getMain_Commands();
+  EReference getMain_Fly();
 
   /**
-   * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Main#getTakeoff <em>Takeoff</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Main#getEnvironment <em>Environment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Environment</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Main#getEnvironment()
+   * @see #getMain()
+   * @generated
+   */
+  EReference getMain_Environment();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Fly <em>Fly</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Fly</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Fly
+   * @generated
+   */
+  EClass getFly();
+
+  /**
+   * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Fly#getTakeoff <em>Takeoff</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Takeoff</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Main#getTakeoff()
-   * @see #getMain()
+   * @see ic.ac.uk.xdrone.xDrone.Fly#getTakeoff()
+   * @see #getFly()
    * @generated
    */
-  EAttribute getMain_Takeoff();
+  EAttribute getFly_Takeoff();
 
   /**
-   * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Main#getLand <em>Land</em>}'.
+   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Fly#getCommands <em>Commands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Commands</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Fly#getCommands()
+   * @see #getFly()
+   * @generated
+   */
+  EReference getFly_Commands();
+
+  /**
+   * Returns the meta object for the attribute list '{@link ic.ac.uk.xdrone.xDrone.Fly#getLand <em>Land</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Land</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Main#getLand()
-   * @see #getMain()
+   * @see ic.ac.uk.xdrone.xDrone.Fly#getLand()
+   * @see #getFly()
    * @generated
    */
-  EAttribute getMain_Land();
+  EAttribute getFly_Land();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.RecordedFlight <em>Recorded Flight</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Environment <em>Environment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Recorded Flight</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.RecordedFlight
+   * @return the meta object for class '<em>Environment</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Environment
    * @generated
    */
-  EClass getRecordedFlight();
+  EClass getEnvironment();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.RecordedFlight#getVideo_name <em>Video name</em>}'.
+   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Environment#getDrone <em>Drone</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Video name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.RecordedFlight#getVideo_name()
-   * @see #getRecordedFlight()
+   * @return the meta object for the containment reference list '<em>Drone</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Environment#getDrone()
+   * @see #getEnvironment()
    * @generated
    */
-  EAttribute getRecordedFlight_Video_name();
+  EReference getEnvironment_Drone();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.UserFunction <em>User Function</em>}'.
+   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Environment#getWalls <em>Walls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>User Function</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.UserFunction
+   * @return the meta object for the containment reference list '<em>Walls</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Environment#getWalls()
+   * @see #getEnvironment()
    * @generated
    */
-  EClass getUserFunction();
+  EReference getEnvironment_Walls();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.UserFunction#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.Environment#getObjects <em>Objects</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.UserFunction#getName()
-   * @see #getUserFunction()
+   * @return the meta object for the containment reference list '<em>Objects</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Environment#getObjects()
+   * @see #getEnvironment()
    * @generated
    */
-  EAttribute getUserFunction_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link ic.ac.uk.xdrone.xDrone.UserFunction#getFunc <em>Func</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Func</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.UserFunction#getFunc()
-   * @see #getUserFunction()
-   * @generated
-   */
-  EReference getUserFunction_Func();
-
-  /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FeatureMatch <em>Feature Match</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Feature Match</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FeatureMatch
-   * @generated
-   */
-  EClass getFeatureMatch();
-
-  /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FeatureMatch#getImage_name <em>Image name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Image name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FeatureMatch#getImage_name()
-   * @see #getFeatureMatch()
-   * @generated
-   */
-  EAttribute getFeatureMatch_Image_name();
+  EReference getEnvironment_Objects();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.SuperCommand <em>Super Command</em>}'.
@@ -776,25 +1147,25 @@ public interface XDronePackage extends EPackage
   EClass getCommand();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Snapshot <em>Snapshot</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.GoTo <em>Go To</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Snapshot</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Snapshot
+   * @return the meta object for class '<em>Go To</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.GoTo
    * @generated
    */
-  EClass getSnapshot();
+  EClass getGoTo();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Snapshot#getImage_name <em>Image name</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.GoTo#getObject_name <em>Object name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Image name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Snapshot#getImage_name()
-   * @see #getSnapshot()
+   * @return the meta object for the attribute '<em>Object name</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.GoTo#getObject_name()
+   * @see #getGoTo()
    * @generated
    */
-  EAttribute getSnapshot_Image_name();
+  EAttribute getGoTo_Object_name();
 
   /**
    * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Up <em>Up</em>}'.
@@ -986,68 +1357,387 @@ public interface XDronePackage extends EPackage
   EAttribute getWait_Seconds();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Move <em>Move</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Drone <em>Drone</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Move</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Move
+   * @return the meta object for class '<em>Drone</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone
    * @generated
    */
-  EClass getMove();
+  EClass getDrone();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getX <em>X</em>}'.
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Drone#getPosition <em>Position</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Position</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getPosition()
+   * @see #getDrone()
+   * @generated
+   */
+  EReference getDrone_Position();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Drone#getRotation <em>Rotation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Rotation</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Drone#getRotation()
+   * @see #getDrone()
+   * @generated
+   */
+  EAttribute getDrone_Rotation();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Object <em>Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Object</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object
+   * @generated
+   */
+  EClass getObject();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Object#getObject_name <em>Object name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Object name</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getObject_name()
+   * @see #getObject()
+   * @generated
+   */
+  EAttribute getObject_Object_name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Object#getOrigin <em>Origin</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Origin</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getOrigin()
+   * @see #getObject()
+   * @generated
+   */
+  EReference getObject_Origin();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Object#getSize <em>Size</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Size</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getSize()
+   * @see #getObject()
+   * @generated
+   */
+  EReference getObject_Size();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Object#getColor <em>Color</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Color</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Object#getColor()
+   * @see #getObject()
+   * @generated
+   */
+  EReference getObject_Color();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Origin <em>Origin</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Origin</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin
+   * @generated
+   */
+  EClass getOrigin();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Origin#getVector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Vector</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Origin#getVector()
+   * @see #getOrigin()
+   * @generated
+   */
+  EReference getOrigin_Vector();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Size <em>Size</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Size</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size
+   * @generated
+   */
+  EClass getSize();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Size#getVector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Vector</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Size#getVector()
+   * @see #getSize()
+   * @generated
+   */
+  EReference getSize_Vector();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Position <em>Position</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Position</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Position
+   * @generated
+   */
+  EClass getPosition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Position#getVector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Vector</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Position#getVector()
+   * @see #getPosition()
+   * @generated
+   */
+  EReference getPosition_Vector();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Vector <em>Vector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Vector</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Vector
+   * @generated
+   */
+  EClass getVector();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>X</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Move#getX()
-   * @see #getMove()
+   * @see ic.ac.uk.xdrone.xDrone.Vector#getX()
+   * @see #getVector()
    * @generated
    */
-  EAttribute getMove_X();
+  EAttribute getVector_X();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getY <em>Y</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getY <em>Y</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Y</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Move#getY()
-   * @see #getMove()
+   * @see ic.ac.uk.xdrone.xDrone.Vector#getY()
+   * @see #getVector()
    * @generated
    */
-  EAttribute getMove_Y();
+  EAttribute getVector_Y();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Move#getZ <em>Z</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Vector#getZ <em>Z</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Z</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.Move#getZ()
-   * @see #getMove()
+   * @see ic.ac.uk.xdrone.xDrone.Vector#getZ()
+   * @see #getVector()
    * @generated
    */
-  EAttribute getMove_Z();
+  EAttribute getVector_Z();
 
   /**
-   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FunctionName <em>Function Name</em>}'.
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Color <em>Color</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Function Name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FunctionName
+   * @return the meta object for class '<em>Color</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Color
    * @generated
    */
-  EClass getFunctionName();
+  EClass getColor();
 
   /**
-   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FunctionName#getFunc_name <em>Func name</em>}'.
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.Color#getColor_value <em>Color value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Func name</em>'.
-   * @see ic.ac.uk.xdrone.xDrone.FunctionName#getFunc_name()
-   * @see #getFunctionName()
+   * @return the meta object for the attribute '<em>Color value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Color#getColor_value()
+   * @see #getColor()
    * @generated
    */
-  EAttribute getFunctionName_Func_name();
+  EAttribute getColor_Color_value();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.Walls <em>Walls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Walls</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls
+   * @generated
+   */
+  EClass getWalls();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Walls#getFront <em>Front</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Front</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls#getFront()
+   * @see #getWalls()
+   * @generated
+   */
+  EReference getWalls_Front();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Walls#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls#getRight()
+   * @see #getWalls()
+   * @generated
+   */
+  EReference getWalls_Right();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Walls#getBack <em>Back</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Back</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls#getBack()
+   * @see #getWalls()
+   * @generated
+   */
+  EReference getWalls_Back();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Walls#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls#getLeft()
+   * @see #getWalls()
+   * @generated
+   */
+  EReference getWalls_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ic.ac.uk.xdrone.xDrone.Walls#getUp <em>Up</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Up</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.Walls#getUp()
+   * @see #getWalls()
+   * @generated
+   */
+  EReference getWalls_Up();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.FrontWall <em>Front Wall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Front Wall</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.FrontWall
+   * @generated
+   */
+  EClass getFrontWall();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.FrontWall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.FrontWall#getValue()
+   * @see #getFrontWall()
+   * @generated
+   */
+  EAttribute getFrontWall_Value();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.RightWall <em>Right Wall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Right Wall</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RightWall
+   * @generated
+   */
+  EClass getRightWall();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.RightWall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.RightWall#getValue()
+   * @see #getRightWall()
+   * @generated
+   */
+  EAttribute getRightWall_Value();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.LeftWall <em>Left Wall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Left Wall</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.LeftWall
+   * @generated
+   */
+  EClass getLeftWall();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.LeftWall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.LeftWall#getValue()
+   * @see #getLeftWall()
+   * @generated
+   */
+  EAttribute getLeftWall_Value();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.BackWall <em>Back Wall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Back Wall</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.BackWall
+   * @generated
+   */
+  EClass getBackWall();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.BackWall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.BackWall#getValue()
+   * @see #getBackWall()
+   * @generated
+   */
+  EAttribute getBackWall_Value();
+
+  /**
+   * Returns the meta object for class '{@link ic.ac.uk.xdrone.xDrone.UpWall <em>Up Wall</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Up Wall</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.UpWall
+   * @generated
+   */
+  EClass getUpWall();
+
+  /**
+   * Returns the meta object for the attribute '{@link ic.ac.uk.xdrone.xDrone.UpWall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see ic.ac.uk.xdrone.xDrone.UpWall#getValue()
+   * @see #getUpWall()
+   * @generated
+   */
+  EAttribute getUpWall_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1101,12 +1791,30 @@ public interface XDronePackage extends EPackage
     EClass MAIN = eINSTANCE.getMain();
 
     /**
-     * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Fly</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MAIN__COMMANDS = eINSTANCE.getMain_Commands();
+    EReference MAIN__FLY = eINSTANCE.getMain_Fly();
+
+    /**
+     * The meta object literal for the '<em><b>Environment</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAIN__ENVIRONMENT = eINSTANCE.getMain_Environment();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FlyImpl <em>Fly</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.FlyImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFly()
+     * @generated
+     */
+    EClass FLY = eINSTANCE.getFly();
 
     /**
      * The meta object literal for the '<em><b>Takeoff</b></em>' attribute list feature.
@@ -1114,7 +1822,15 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MAIN__TAKEOFF = eINSTANCE.getMain_Takeoff();
+    EAttribute FLY__TAKEOFF = eINSTANCE.getFly_Takeoff();
+
+    /**
+     * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FLY__COMMANDS = eINSTANCE.getFly_Commands();
 
     /**
      * The meta object literal for the '<em><b>Land</b></em>' attribute list feature.
@@ -1122,69 +1838,41 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MAIN__LAND = eINSTANCE.getMain_Land();
+    EAttribute FLY__LAND = eINSTANCE.getFly_Land();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl <em>Recorded Flight</em>}' class.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl <em>Environment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.RecordedFlightImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRecordedFlight()
+     * @see ic.ac.uk.xdrone.xDrone.impl.EnvironmentImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getEnvironment()
      * @generated
      */
-    EClass RECORDED_FLIGHT = eINSTANCE.getRecordedFlight();
+    EClass ENVIRONMENT = eINSTANCE.getEnvironment();
 
     /**
-     * The meta object literal for the '<em><b>Video name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RECORDED_FLIGHT__VIDEO_NAME = eINSTANCE.getRecordedFlight_Video_name();
-
-    /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl <em>User Function</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.UserFunctionImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUserFunction()
-     * @generated
-     */
-    EClass USER_FUNCTION = eINSTANCE.getUserFunction();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Drone</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute USER_FUNCTION__NAME = eINSTANCE.getUserFunction_Name();
+    EReference ENVIRONMENT__DRONE = eINSTANCE.getEnvironment_Drone();
 
     /**
-     * The meta object literal for the '<em><b>Func</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Walls</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference USER_FUNCTION__FUNC = eINSTANCE.getUserFunction_Func();
+    EReference ENVIRONMENT__WALLS = eINSTANCE.getEnvironment_Walls();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl <em>Feature Match</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.FeatureMatchImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFeatureMatch()
-     * @generated
-     */
-    EClass FEATURE_MATCH = eINSTANCE.getFeatureMatch();
-
-    /**
-     * The meta object literal for the '<em><b>Image name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Objects</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FEATURE_MATCH__IMAGE_NAME = eINSTANCE.getFeatureMatch_Image_name();
+    EReference ENVIRONMENT__OBJECTS = eINSTANCE.getEnvironment_Objects();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SuperCommandImpl <em>Super Command</em>}' class.
@@ -1207,22 +1895,22 @@ public interface XDronePackage extends EPackage
     EClass COMMAND = eINSTANCE.getCommand();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl <em>Snapshot</em>}' class.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.GoToImpl <em>Go To</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.SnapshotImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSnapshot()
+     * @see ic.ac.uk.xdrone.xDrone.impl.GoToImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getGoTo()
      * @generated
      */
-    EClass SNAPSHOT = eINSTANCE.getSnapshot();
+    EClass GO_TO = eINSTANCE.getGoTo();
 
     /**
-     * The meta object literal for the '<em><b>Image name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Object name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SNAPSHOT__IMAGE_NAME = eINSTANCE.getSnapshot_Image_name();
+    EAttribute GO_TO__OBJECT_NAME = eINSTANCE.getGoTo_Object_name();
 
     /**
      * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpImpl <em>Up</em>}' class.
@@ -1387,14 +2075,136 @@ public interface XDronePackage extends EPackage
     EAttribute WAIT__SECONDS = eINSTANCE.getWait_Seconds();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.MoveImpl <em>Move</em>}' class.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.DroneImpl <em>Drone</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.MoveImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getMove()
+     * @see ic.ac.uk.xdrone.xDrone.impl.DroneImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getDrone()
      * @generated
      */
-    EClass MOVE = eINSTANCE.getMove();
+    EClass DRONE = eINSTANCE.getDrone();
+
+    /**
+     * The meta object literal for the '<em><b>Position</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DRONE__POSITION = eINSTANCE.getDrone_Position();
+
+    /**
+     * The meta object literal for the '<em><b>Rotation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DRONE__ROTATION = eINSTANCE.getDrone_Rotation();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ObjectImpl <em>Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.ObjectImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getObject()
+     * @generated
+     */
+    EClass OBJECT = eINSTANCE.getObject();
+
+    /**
+     * The meta object literal for the '<em><b>Object name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OBJECT__OBJECT_NAME = eINSTANCE.getObject_Object_name();
+
+    /**
+     * The meta object literal for the '<em><b>Origin</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OBJECT__ORIGIN = eINSTANCE.getObject_Origin();
+
+    /**
+     * The meta object literal for the '<em><b>Size</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OBJECT__SIZE = eINSTANCE.getObject_Size();
+
+    /**
+     * The meta object literal for the '<em><b>Color</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OBJECT__COLOR = eINSTANCE.getObject_Color();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.OriginImpl <em>Origin</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.OriginImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getOrigin()
+     * @generated
+     */
+    EClass ORIGIN = eINSTANCE.getOrigin();
+
+    /**
+     * The meta object literal for the '<em><b>Vector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ORIGIN__VECTOR = eINSTANCE.getOrigin_Vector();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.SizeImpl <em>Size</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.SizeImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getSize()
+     * @generated
+     */
+    EClass SIZE = eINSTANCE.getSize();
+
+    /**
+     * The meta object literal for the '<em><b>Vector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SIZE__VECTOR = eINSTANCE.getSize_Vector();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.PositionImpl <em>Position</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.PositionImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getPosition()
+     * @generated
+     */
+    EClass POSITION = eINSTANCE.getPosition();
+
+    /**
+     * The meta object literal for the '<em><b>Vector</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POSITION__VECTOR = eINSTANCE.getPosition_Vector();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.VectorImpl <em>Vector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.VectorImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getVector()
+     * @generated
+     */
+    EClass VECTOR = eINSTANCE.getVector();
 
     /**
      * The meta object literal for the '<em><b>X</b></em>' attribute feature.
@@ -1402,7 +2212,7 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MOVE__X = eINSTANCE.getMove_X();
+    EAttribute VECTOR__X = eINSTANCE.getVector_X();
 
     /**
      * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
@@ -1410,7 +2220,7 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MOVE__Y = eINSTANCE.getMove_Y();
+    EAttribute VECTOR__Y = eINSTANCE.getVector_Y();
 
     /**
      * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
@@ -1418,25 +2228,165 @@ public interface XDronePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MOVE__Z = eINSTANCE.getMove_Z();
+    EAttribute VECTOR__Z = eINSTANCE.getVector_Z();
 
     /**
-     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl <em>Function Name</em>}' class.
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.ColorImpl <em>Color</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ic.ac.uk.xdrone.xDrone.impl.FunctionNameImpl
-     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFunctionName()
+     * @see ic.ac.uk.xdrone.xDrone.impl.ColorImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getColor()
      * @generated
      */
-    EClass FUNCTION_NAME = eINSTANCE.getFunctionName();
+    EClass COLOR = eINSTANCE.getColor();
 
     /**
-     * The meta object literal for the '<em><b>Func name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Color value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION_NAME__FUNC_NAME = eINSTANCE.getFunctionName_Func_name();
+    EAttribute COLOR__COLOR_VALUE = eINSTANCE.getColor_Color_value();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.WallsImpl <em>Walls</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.WallsImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getWalls()
+     * @generated
+     */
+    EClass WALLS = eINSTANCE.getWalls();
+
+    /**
+     * The meta object literal for the '<em><b>Front</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WALLS__FRONT = eINSTANCE.getWalls_Front();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WALLS__RIGHT = eINSTANCE.getWalls_Right();
+
+    /**
+     * The meta object literal for the '<em><b>Back</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WALLS__BACK = eINSTANCE.getWalls_Back();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WALLS__LEFT = eINSTANCE.getWalls_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Up</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WALLS__UP = eINSTANCE.getWalls_Up();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.FrontWallImpl <em>Front Wall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.FrontWallImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getFrontWall()
+     * @generated
+     */
+    EClass FRONT_WALL = eINSTANCE.getFrontWall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FRONT_WALL__VALUE = eINSTANCE.getFrontWall_Value();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.RightWallImpl <em>Right Wall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.RightWallImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getRightWall()
+     * @generated
+     */
+    EClass RIGHT_WALL = eINSTANCE.getRightWall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RIGHT_WALL__VALUE = eINSTANCE.getRightWall_Value();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.LeftWallImpl <em>Left Wall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.LeftWallImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getLeftWall()
+     * @generated
+     */
+    EClass LEFT_WALL = eINSTANCE.getLeftWall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LEFT_WALL__VALUE = eINSTANCE.getLeftWall_Value();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.BackWallImpl <em>Back Wall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.BackWallImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getBackWall()
+     * @generated
+     */
+    EClass BACK_WALL = eINSTANCE.getBackWall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BACK_WALL__VALUE = eINSTANCE.getBackWall_Value();
+
+    /**
+     * The meta object literal for the '{@link ic.ac.uk.xdrone.xDrone.impl.UpWallImpl <em>Up Wall</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ic.ac.uk.xdrone.xDrone.impl.UpWallImpl
+     * @see ic.ac.uk.xdrone.xDrone.impl.XDronePackageImpl#getUpWall()
+     * @generated
+     */
+    EClass UP_WALL = eINSTANCE.getUpWall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UP_WALL__VALUE = eINSTANCE.getUpWall_Value();
 
   }
 

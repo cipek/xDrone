@@ -3,24 +3,19 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,9 +25,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getCommands <em>Commands</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getTakeoff <em>Takeoff</em>}</li>
- *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getLand <em>Land</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getFly <em>Fly</em>}</li>
+ *   <li>{@link ic.ac.uk.xdrone.xDrone.impl.MainImpl#getEnvironment <em>Environment</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,34 +34,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class MainImpl extends MinimalEObjectImpl.Container implements Main
 {
   /**
-   * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
+   * The cached value of the '{@link #getFly() <em>Fly</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCommands()
+   * @see #getFly()
    * @generated
    * @ordered
    */
-  protected EList<SuperCommand> commands;
+  protected Fly fly;
 
   /**
-   * The cached value of the '{@link #getTakeoff() <em>Takeoff</em>}' attribute list.
+   * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTakeoff()
+   * @see #getEnvironment()
    * @generated
    * @ordered
    */
-  protected EList<String> takeoff;
-
-  /**
-   * The cached value of the '{@link #getLand() <em>Land</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLand()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> land;
+  protected Environment environment;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,13 +79,9 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SuperCommand> getCommands()
+  public Fly getFly()
   {
-    if (commands == null)
-    {
-      commands = new EObjectContainmentEList<SuperCommand>(SuperCommand.class, this, XDronePackage.MAIN__COMMANDS);
-    }
-    return commands;
+    return fly;
   }
 
   /**
@@ -109,13 +89,16 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getTakeoff()
+  public NotificationChain basicSetFly(Fly newFly, NotificationChain msgs)
   {
-    if (takeoff == null)
+    Fly oldFly = fly;
+    fly = newFly;
+    if (eNotificationRequired())
     {
-      takeoff = new EDataTypeEList<String>(String.class, this, XDronePackage.MAIN__TAKEOFF);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.MAIN__FLY, oldFly, newFly);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return takeoff;
+    return msgs;
   }
 
   /**
@@ -123,13 +106,68 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getLand()
+  public void setFly(Fly newFly)
   {
-    if (land == null)
+    if (newFly != fly)
     {
-      land = new EDataTypeEList<String>(String.class, this, XDronePackage.MAIN__LAND);
+      NotificationChain msgs = null;
+      if (fly != null)
+        msgs = ((InternalEObject)fly).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MAIN__FLY, null, msgs);
+      if (newFly != null)
+        msgs = ((InternalEObject)newFly).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MAIN__FLY, null, msgs);
+      msgs = basicSetFly(newFly, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return land;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MAIN__FLY, newFly, newFly));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Environment getEnvironment()
+  {
+    return environment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEnvironment(Environment newEnvironment, NotificationChain msgs)
+  {
+    Environment oldEnvironment = environment;
+    environment = newEnvironment;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, XDronePackage.MAIN__ENVIRONMENT, oldEnvironment, newEnvironment);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnvironment(Environment newEnvironment)
+  {
+    if (newEnvironment != environment)
+    {
+      NotificationChain msgs = null;
+      if (environment != null)
+        msgs = ((InternalEObject)environment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MAIN__ENVIRONMENT, null, msgs);
+      if (newEnvironment != null)
+        msgs = ((InternalEObject)newEnvironment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - XDronePackage.MAIN__ENVIRONMENT, null, msgs);
+      msgs = basicSetEnvironment(newEnvironment, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XDronePackage.MAIN__ENVIRONMENT, newEnvironment, newEnvironment));
   }
 
   /**
@@ -142,8 +180,10 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
+      case XDronePackage.MAIN__FLY:
+        return basicSetFly(null, msgs);
+      case XDronePackage.MAIN__ENVIRONMENT:
+        return basicSetEnvironment(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -158,12 +198,10 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        return getCommands();
-      case XDronePackage.MAIN__TAKEOFF:
-        return getTakeoff();
-      case XDronePackage.MAIN__LAND:
-        return getLand();
+      case XDronePackage.MAIN__FLY:
+        return getFly();
+      case XDronePackage.MAIN__ENVIRONMENT:
+        return getEnvironment();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -173,23 +211,16 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        getCommands().clear();
-        getCommands().addAll((Collection<? extends SuperCommand>)newValue);
+      case XDronePackage.MAIN__FLY:
+        setFly((Fly)newValue);
         return;
-      case XDronePackage.MAIN__TAKEOFF:
-        getTakeoff().clear();
-        getTakeoff().addAll((Collection<? extends String>)newValue);
-        return;
-      case XDronePackage.MAIN__LAND:
-        getLand().clear();
-        getLand().addAll((Collection<? extends String>)newValue);
+      case XDronePackage.MAIN__ENVIRONMENT:
+        setEnvironment((Environment)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -205,14 +236,11 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        getCommands().clear();
+      case XDronePackage.MAIN__FLY:
+        setFly((Fly)null);
         return;
-      case XDronePackage.MAIN__TAKEOFF:
-        getTakeoff().clear();
-        return;
-      case XDronePackage.MAIN__LAND:
-        getLand().clear();
+      case XDronePackage.MAIN__ENVIRONMENT:
+        setEnvironment((Environment)null);
         return;
     }
     super.eUnset(featureID);
@@ -228,33 +256,12 @@ public class MainImpl extends MinimalEObjectImpl.Container implements Main
   {
     switch (featureID)
     {
-      case XDronePackage.MAIN__COMMANDS:
-        return commands != null && !commands.isEmpty();
-      case XDronePackage.MAIN__TAKEOFF:
-        return takeoff != null && !takeoff.isEmpty();
-      case XDronePackage.MAIN__LAND:
-        return land != null && !land.isEmpty();
+      case XDronePackage.MAIN__FLY:
+        return fly != null;
+      case XDronePackage.MAIN__ENVIRONMENT:
+        return environment != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (takeoff: ");
-    result.append(takeoff);
-    result.append(", land: ");
-    result.append(land);
-    result.append(')');
-    return result.toString();
   }
 
 } //MainImpl

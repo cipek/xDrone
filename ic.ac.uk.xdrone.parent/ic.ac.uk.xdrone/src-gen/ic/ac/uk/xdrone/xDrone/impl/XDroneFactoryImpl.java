@@ -3,7 +3,36 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
-import ic.ac.uk.xdrone.xDrone.*;
+import ic.ac.uk.xdrone.xDrone.BackWall;
+import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
+import ic.ac.uk.xdrone.xDrone.Command;
+import ic.ac.uk.xdrone.xDrone.Down;
+import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
+import ic.ac.uk.xdrone.xDrone.Forward;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
+import ic.ac.uk.xdrone.xDrone.GoTo;
+import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
+import ic.ac.uk.xdrone.xDrone.Main;
+import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
+import ic.ac.uk.xdrone.xDrone.Program;
+import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
+import ic.ac.uk.xdrone.xDrone.RotateL;
+import ic.ac.uk.xdrone.xDrone.RotateR;
+import ic.ac.uk.xdrone.xDrone.Size;
+import ic.ac.uk.xdrone.xDrone.SuperCommand;
+import ic.ac.uk.xdrone.xDrone.Up;
+import ic.ac.uk.xdrone.xDrone.UpWall;
+import ic.ac.uk.xdrone.xDrone.Vector;
+import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
+import ic.ac.uk.xdrone.xDrone.XDroneFactory;
+import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -67,12 +96,11 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
     {
       case XDronePackage.PROGRAM: return createProgram();
       case XDronePackage.MAIN: return createMain();
-      case XDronePackage.RECORDED_FLIGHT: return createRecordedFlight();
-      case XDronePackage.USER_FUNCTION: return createUserFunction();
-      case XDronePackage.FEATURE_MATCH: return createFeatureMatch();
+      case XDronePackage.FLY: return createFly();
+      case XDronePackage.ENVIRONMENT: return createEnvironment();
       case XDronePackage.SUPER_COMMAND: return createSuperCommand();
       case XDronePackage.COMMAND: return createCommand();
-      case XDronePackage.SNAPSHOT: return createSnapshot();
+      case XDronePackage.GO_TO: return createGoTo();
       case XDronePackage.UP: return createUp();
       case XDronePackage.DOWN: return createDown();
       case XDronePackage.LEFT: return createLeft();
@@ -82,8 +110,19 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
       case XDronePackage.ROTATE_L: return createRotateL();
       case XDronePackage.ROTATE_R: return createRotateR();
       case XDronePackage.WAIT: return createWait();
-      case XDronePackage.MOVE: return createMove();
-      case XDronePackage.FUNCTION_NAME: return createFunctionName();
+      case XDronePackage.DRONE: return createDrone();
+      case XDronePackage.OBJECT: return createObject();
+      case XDronePackage.ORIGIN: return createOrigin();
+      case XDronePackage.SIZE: return createSize();
+      case XDronePackage.POSITION: return createPosition();
+      case XDronePackage.VECTOR: return createVector();
+      case XDronePackage.COLOR: return createColor();
+      case XDronePackage.WALLS: return createWalls();
+      case XDronePackage.FRONT_WALL: return createFrontWall();
+      case XDronePackage.RIGHT_WALL: return createRightWall();
+      case XDronePackage.LEFT_WALL: return createLeftWall();
+      case XDronePackage.BACK_WALL: return createBackWall();
+      case XDronePackage.UP_WALL: return createUpWall();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -116,10 +155,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordedFlight createRecordedFlight()
+  public Fly createFly()
   {
-    RecordedFlightImpl recordedFlight = new RecordedFlightImpl();
-    return recordedFlight;
+    FlyImpl fly = new FlyImpl();
+    return fly;
   }
 
   /**
@@ -127,21 +166,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public UserFunction createUserFunction()
+  public Environment createEnvironment()
   {
-    UserFunctionImpl userFunction = new UserFunctionImpl();
-    return userFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FeatureMatch createFeatureMatch()
-  {
-    FeatureMatchImpl featureMatch = new FeatureMatchImpl();
-    return featureMatch;
+    EnvironmentImpl environment = new EnvironmentImpl();
+    return environment;
   }
 
   /**
@@ -171,10 +199,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Snapshot createSnapshot()
+  public GoTo createGoTo()
   {
-    SnapshotImpl snapshot = new SnapshotImpl();
-    return snapshot;
+    GoToImpl goTo = new GoToImpl();
+    return goTo;
   }
 
   /**
@@ -281,10 +309,10 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Move createMove()
+  public Drone createDrone()
   {
-    MoveImpl move = new MoveImpl();
-    return move;
+    DroneImpl drone = new DroneImpl();
+    return drone;
   }
 
   /**
@@ -292,10 +320,131 @@ public class XDroneFactoryImpl extends EFactoryImpl implements XDroneFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionName createFunctionName()
+  public ic.ac.uk.xdrone.xDrone.Object createObject()
   {
-    FunctionNameImpl functionName = new FunctionNameImpl();
-    return functionName;
+    ObjectImpl object = new ObjectImpl();
+    return object;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Origin createOrigin()
+  {
+    OriginImpl origin = new OriginImpl();
+    return origin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Size createSize()
+  {
+    SizeImpl size = new SizeImpl();
+    return size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Position createPosition()
+  {
+    PositionImpl position = new PositionImpl();
+    return position;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Vector createVector()
+  {
+    VectorImpl vector = new VectorImpl();
+    return vector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Color createColor()
+  {
+    ColorImpl color = new ColorImpl();
+    return color;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Walls createWalls()
+  {
+    WallsImpl walls = new WallsImpl();
+    return walls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FrontWall createFrontWall()
+  {
+    FrontWallImpl frontWall = new FrontWallImpl();
+    return frontWall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RightWall createRightWall()
+  {
+    RightWallImpl rightWall = new RightWallImpl();
+    return rightWall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LeftWall createLeftWall()
+  {
+    LeftWallImpl leftWall = new LeftWallImpl();
+    return leftWall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BackWall createBackWall()
+  {
+    BackWallImpl backWall = new BackWallImpl();
+    return backWall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpWall createUpWall()
+  {
+    UpWallImpl upWall = new UpWallImpl();
+    return upWall;
   }
 
   /**

@@ -1,81 +1,217 @@
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="Content-Language" content="en-us">
-	<title>Web Editor</title>
-	<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<script src="webjars/requirejs/2.3.6/require.min.js"></script>
-	<script type="text/javascript">
-		var baseUrl = window.location.pathname;
-		var fileIndex = baseUrl.indexOf("index.html");
-		if (fileIndex > 0)
-			baseUrl = baseUrl.slice(0, fileIndex);
-		require.config({
-			baseUrl: baseUrl,
-			paths: {
-				"jquery": "webjars/jquery/3.3.1-1/jquery.min",
-				"ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
-				"xtext/xtext-ace": "xtext/2.17.0/xtext-ace"
-			}
-		});
-		require(["webjars/ace/1.3.3/src/ace"], function() {
-			require(["xtext/xtext-ace"], function(xtext) {
-				editor = xtext.createEditor({
-					baseUrl: baseUrl,
-					syntaxDefinition: "xtext-resources/generated/mode-xdrone"
-				});
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Language" content="en-us">
+		<title>Web Editor</title>
+		<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="./simulator-resources/index.css"/>
 
-				$('#generate-button').bind("click", function(e)
-					{
-						var data =
-						{
-							resource : editor.xtextServices.options.resourceId,
-							fullText : editor.getValue()
-						};
-						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
-							console.log("resource generated");
+		<script src="webjars/requirejs/2.3.6/require.min.js"></script>
 
-						});
 
-						e.preventDefault();
+	</head>
+	<body>
+		<script type="text/javascript">
+			var linesOfCode = [], lastFirstNumber = "-1", listGoTo=[];
+			var baseUrl = window.location.pathname;
+			var fileIndex = baseUrl.indexOf("index.html");
+			if (fileIndex > 0)
+				baseUrl = baseUrl.slice(0, fileIndex);
+
+			// document.getElementById("myDIV").onscroll = function() {myFunction()};
+			require.config({
+				baseUrl: baseUrl,
+				paths: {
+					"jquery": "webjars/jquery/3.3.1-1/jquery.min",
+					"ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
+					"xtext/xtext-ace": "xtext/2.17.0/xtext-ace"
+				}
+			});
+			require(["webjars/ace/1.3.3/src/ace"], function() {
+				require(["xtext/xtext-ace"], function(xtext) {
+					editor = xtext.createEditor({
+						baseUrl: baseUrl,
+						syntaxDefinition: "xtext-resources/generated/mode-xdrone"
 					});
 
- 					$('#deploy-button').bind("click", function(e){
- 						var data = {
- 							resource : editor.xtextServices.options.resourceId,
- 							fullText : editor.getValue()
- 						};
+					// var scroller = document.getElementsByClassName("ace_content");
+					// console.log(scroller[0]);
+					// scroller[0].onscroll = function() {console.log("INSCROLL");};
 
- 	 						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
- 								console.log("resource generated");
 
- 								console.log("deploying resource");
+					$('#generate-button').bind("click", function(e)
+						{
+							var data =
+							{
+								resource : editor.xtextServices.options.resourceId,
+								fullText : editor.getValue()
+							};
+							linesOfCode = editor.getValue().split(/\r\n|\r|\n/);
+							listGoTo=[];
+							$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
+								console.log("resource generated", result);
+								// console.log(require.undef);
+								// require.undef('./simulator.js');
+								// console.log(require.cache);
+								// console.log(require.cache['./simulator.js']);
+								// if(require.cache['./simulator.js'])
+								// 	delete require.cache['./simulator.js']
 
- 		 						$.post(baseUrl+'xtext-service/deploy?resource='+editor.xtextServices.options.resourceId, data, function(result){
- 		 							console.log("deployment finished");
+								var pathSimulator = '', pathEnvironment = '';
+								result.artifacts.forEach(a =>{
+									if(a.name.includes('simulator'))
+										pathSimulator = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+									if(a.name.includes('environment'))
+										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+								})
 
- 								});
- 							});
- 							e.preventDefault();
- 					});
+								lastFirstNumber = "-1";
+								flySimulation = undefined;
+								if(pathEnvironment && pathEnvironment != '')
+									require(['./' + pathEnvironment], function(module){
+										init();
+										environment();
+										require(['./' + pathSimulator], function(module){
+										})
+									})
+								else
+									init();
+									require(['./' + pathSimulator], function(module){
+									})
 
+							});
+
+							e.preventDefault();
+						});
+
+	 					$('#deploy-button').bind("click", function(e){
+	 						var data = {
+	 							resource : editor.xtextServices.options.resourceId,
+	 							fullText : editor.getValue()
+	 						};
+
+	 						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
+								console.log("resource generated");
+
+								console.log("deploying resource");
+
+		 						$.post(baseUrl+'xtext-service/deploy?resource='+editor.xtextServices.options.resourceId, data, function(result){
+		 							console.log("deployment finished");
+
+								});
+							});
+							e.preventDefault();
+	 					});
+
+
+				});
 			});
-		});
-	</script>
-</head>
-<body>
 
-	<div class="container">
-		<!-- <div class="header">
-			<h1>Web Editor</h1>
-		</div> -->
-		<button id="generate-button" value="Generate" title="Generate">Generate</button>
-		<button id="deploy-button" value="Deploy" title="Deploy">Deploy</button>
-		<div class="content">
-			<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
+			function addGoToToEditor(){
+				var lineNumbers = document.getElementsByClassName("ace_gutter-cell");
+				if(lineNumbers && lineNumbers[0] && lastFirstNumber != lineNumbers[0].innerHTML){
+					lastFirstNumber = lineNumbers[0].innerHTML;
+					removeGoToChilds();
+
+					for (var k = 0; k < listGoTo.length; k++) {
+						for (var i = 0; i < linesOfCode.length; i++) {
+							if(linesOfCode[i].includes('GOTO("' + listGoTo[k].object_name + '")')){ //'GOTO("' + listGoTo[k] + '"")')){
+								for (var j = 0; j < lineNumbers.length; j++) {
+									if(lineNumbers[j].innerHTML == i+1+""){
+										var node = document.createElement("div");
+										node.innerHTML = "&#8680;"
+										node.classList.add("goto_div");
+
+										var popup = document.createElement("div");
+										popup.classList.add("goto_div_child");
+										popup.onclick = function(e) {
+    									event.stopPropagation();
+										};
+
+										var popupInput = document.createElement("textarea");
+										popupInput.classList.add("goto_input");
+										popupInput.value = listGoTo[k].commands;
+										popupInput.disabled = true;
+										popupInput.onclick = function(e) {
+    									event.stopPropagation();
+										};
+										popup.appendChild(popupInput);
+
+										var copyBtn = document.createElement("button");
+										copyBtn.innerHTML="Copy";
+										// copyBtn.classList.add("goto_div_child");
+										copyBtn.onclick = function(e) {
+									    event.stopPropagation();
+											console.log(e);
+											if(e && e.path && e.path[1] && e.path[1].children && e.path[1].children[0]){
+												e.path[1].children[0].disabled = false;
+												e.path[1].children[0].select();
+											  e.path[1].children[0].setSelectionRange(0, 99999); /*For mobile devices*/
+
+											  /* Copy the text inside the text field */
+											  document.execCommand("copy");
+												e.path[1].children[0].disabled = true;
+
+												e.path[1].classList.toggle("show");
+											}
+										};
+										popup.appendChild(copyBtn);
+
+										node.appendChild(popup);
+
+										node.onclick = function(e) {
+    									event.stopPropagation();
+											if(e.target && e.target.children[0])
+										    e.target.children[0].classList.toggle("show");
+										};
+										lineNumbers[j].appendChild(node);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			function removeGoToChilds(){
+				[...document.getElementsByClassName("goto_div")].map(n => n && n.remove());
+			}
+		</script>
+
+		<!-- Simulator -->
+		<script src="./simulator-resources/scene.js"></script>
+
+		<div class="container">
+
+			<button id="generate-button" value="Simulate" title="Generate">Simulate</button>
+			<button id="deploy-button" value="Fly" title="Deploy">Fly</button>
+			<div class="content">
+				<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
+			</div>
+
+			<div id="SIMULATOR_CONTAINER">
+				<div id="SIMULATOR_OUTPUT">
+				</div>
+				<div id="SIMULATOR">
+						<script>
+							let THREE;
+							require(['./simulator-resources/three.js'], function(moduleThree){
+								THREE = moduleThree;
+								require(['./simulator-resources/OrbitControls.js'], function(module){
+									require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
+										init();
+										animate();
+									})
+								})
+							})
+						</script>
+				</div>
+				<div id="AXES_SYSTEM">
+				</div>
+			</div>
+
 		</div>
-	</div>
-</body>
+
+	</body>
 </html>
-l>

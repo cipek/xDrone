@@ -42,31 +42,22 @@ public interface XDroneFactory extends EFactory
   Main createMain();
 
   /**
-   * Returns a new object of class '<em>Recorded Flight</em>'.
+   * Returns a new object of class '<em>Fly</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Recorded Flight</em>'.
+   * @return a new object of class '<em>Fly</em>'.
    * @generated
    */
-  RecordedFlight createRecordedFlight();
+  Fly createFly();
 
   /**
-   * Returns a new object of class '<em>User Function</em>'.
+   * Returns a new object of class '<em>Environment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>User Function</em>'.
+   * @return a new object of class '<em>Environment</em>'.
    * @generated
    */
-  UserFunction createUserFunction();
-
-  /**
-   * Returns a new object of class '<em>Feature Match</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature Match</em>'.
-   * @generated
-   */
-  FeatureMatch createFeatureMatch();
+  Environment createEnvironment();
 
   /**
    * Returns a new object of class '<em>Super Command</em>'.
@@ -87,13 +78,13 @@ public interface XDroneFactory extends EFactory
   Command createCommand();
 
   /**
-   * Returns a new object of class '<em>Snapshot</em>'.
+   * Returns a new object of class '<em>Go To</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Snapshot</em>'.
+   * @return a new object of class '<em>Go To</em>'.
    * @generated
    */
-  Snapshot createSnapshot();
+  GoTo createGoTo();
 
   /**
    * Returns a new object of class '<em>Up</em>'.
@@ -177,22 +168,121 @@ public interface XDroneFactory extends EFactory
   Wait createWait();
 
   /**
-   * Returns a new object of class '<em>Move</em>'.
+   * Returns a new object of class '<em>Drone</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Move</em>'.
+   * @return a new object of class '<em>Drone</em>'.
    * @generated
    */
-  Move createMove();
+  Drone createDrone();
 
   /**
-   * Returns a new object of class '<em>Function Name</em>'.
+   * Returns a new object of class '<em>Object</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Name</em>'.
+   * @return a new object of class '<em>Object</em>'.
    * @generated
    */
-  FunctionName createFunctionName();
+  Object createObject();
+
+  /**
+   * Returns a new object of class '<em>Origin</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Origin</em>'.
+   * @generated
+   */
+  Origin createOrigin();
+
+  /**
+   * Returns a new object of class '<em>Size</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Size</em>'.
+   * @generated
+   */
+  Size createSize();
+
+  /**
+   * Returns a new object of class '<em>Position</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Position</em>'.
+   * @generated
+   */
+  Position createPosition();
+
+  /**
+   * Returns a new object of class '<em>Vector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vector</em>'.
+   * @generated
+   */
+  Vector createVector();
+
+  /**
+   * Returns a new object of class '<em>Color</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Color</em>'.
+   * @generated
+   */
+  Color createColor();
+
+  /**
+   * Returns a new object of class '<em>Walls</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Walls</em>'.
+   * @generated
+   */
+  Walls createWalls();
+
+  /**
+   * Returns a new object of class '<em>Front Wall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Front Wall</em>'.
+   * @generated
+   */
+  FrontWall createFrontWall();
+
+  /**
+   * Returns a new object of class '<em>Right Wall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Right Wall</em>'.
+   * @generated
+   */
+  RightWall createRightWall();
+
+  /**
+   * Returns a new object of class '<em>Left Wall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Left Wall</em>'.
+   * @generated
+   */
+  LeftWall createLeftWall();
+
+  /**
+   * Returns a new object of class '<em>Back Wall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Back Wall</em>'.
+   * @generated
+   */
+  BackWall createBackWall();
+
+  /**
+   * Returns a new object of class '<em>Up Wall</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Up Wall</em>'.
+   * @generated
+   */
+  UpWall createUpWall();
 
   /**
    * Returns the package supported by this factory.

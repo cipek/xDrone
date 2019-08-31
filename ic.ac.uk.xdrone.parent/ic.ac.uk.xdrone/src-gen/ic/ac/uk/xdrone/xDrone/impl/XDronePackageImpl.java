@@ -3,25 +3,34 @@
  */
 package ic.ac.uk.xdrone.xDrone.impl;
 
+import ic.ac.uk.xdrone.xDrone.BackWall;
 import ic.ac.uk.xdrone.xDrone.Backward;
+import ic.ac.uk.xdrone.xDrone.Color;
 import ic.ac.uk.xdrone.xDrone.Command;
 import ic.ac.uk.xdrone.xDrone.Down;
-import ic.ac.uk.xdrone.xDrone.FeatureMatch;
+import ic.ac.uk.xdrone.xDrone.Drone;
+import ic.ac.uk.xdrone.xDrone.Environment;
+import ic.ac.uk.xdrone.xDrone.Fly;
 import ic.ac.uk.xdrone.xDrone.Forward;
-import ic.ac.uk.xdrone.xDrone.FunctionName;
+import ic.ac.uk.xdrone.xDrone.FrontWall;
+import ic.ac.uk.xdrone.xDrone.GoTo;
 import ic.ac.uk.xdrone.xDrone.Left;
+import ic.ac.uk.xdrone.xDrone.LeftWall;
 import ic.ac.uk.xdrone.xDrone.Main;
-import ic.ac.uk.xdrone.xDrone.Move;
+import ic.ac.uk.xdrone.xDrone.Origin;
+import ic.ac.uk.xdrone.xDrone.Position;
 import ic.ac.uk.xdrone.xDrone.Program;
-import ic.ac.uk.xdrone.xDrone.RecordedFlight;
 import ic.ac.uk.xdrone.xDrone.Right;
+import ic.ac.uk.xdrone.xDrone.RightWall;
 import ic.ac.uk.xdrone.xDrone.RotateL;
 import ic.ac.uk.xdrone.xDrone.RotateR;
-import ic.ac.uk.xdrone.xDrone.Snapshot;
+import ic.ac.uk.xdrone.xDrone.Size;
 import ic.ac.uk.xdrone.xDrone.SuperCommand;
 import ic.ac.uk.xdrone.xDrone.Up;
-import ic.ac.uk.xdrone.xDrone.UserFunction;
+import ic.ac.uk.xdrone.xDrone.UpWall;
+import ic.ac.uk.xdrone.xDrone.Vector;
 import ic.ac.uk.xdrone.xDrone.Wait;
+import ic.ac.uk.xdrone.xDrone.Walls;
 import ic.ac.uk.xdrone.xDrone.XDroneFactory;
 import ic.ac.uk.xdrone.xDrone.XDronePackage;
 
@@ -59,21 +68,14 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass recordedFlightEClass = null;
+  private EClass flyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass userFunctionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass featureMatchEClass = null;
+  private EClass environmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -94,7 +96,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass snapshotEClass = null;
+  private EClass goToEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -164,14 +166,91 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass moveEClass = null;
+  private EClass droneEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionNameEClass = null;
+  private EClass objectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass originEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sizeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass positionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass vectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass colorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wallsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass frontWallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rightWallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass leftWallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass backWallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass upWallEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -271,7 +350,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMain_Commands()
+  public EReference getMain_Fly()
   {
     return (EReference)mainEClass.getEStructuralFeatures().get(0);
   }
@@ -281,9 +360,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMain_Takeoff()
+  public EReference getMain_Environment()
   {
-    return (EAttribute)mainEClass.getEStructuralFeatures().get(1);
+    return (EReference)mainEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -291,9 +370,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMain_Land()
+  public EClass getFly()
   {
-    return (EAttribute)mainEClass.getEStructuralFeatures().get(2);
+    return flyEClass;
   }
 
   /**
@@ -301,9 +380,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRecordedFlight()
+  public EAttribute getFly_Takeoff()
   {
-    return recordedFlightEClass;
+    return (EAttribute)flyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -311,9 +390,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRecordedFlight_Video_name()
+  public EReference getFly_Commands()
   {
-    return (EAttribute)recordedFlightEClass.getEStructuralFeatures().get(0);
+    return (EReference)flyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -321,9 +400,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getUserFunction()
+  public EAttribute getFly_Land()
   {
-    return userFunctionEClass;
+    return (EAttribute)flyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -331,9 +410,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getUserFunction_Name()
+  public EClass getEnvironment()
   {
-    return (EAttribute)userFunctionEClass.getEStructuralFeatures().get(0);
+    return environmentEClass;
   }
 
   /**
@@ -341,9 +420,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUserFunction_Func()
+  public EReference getEnvironment_Drone()
   {
-    return (EReference)userFunctionEClass.getEStructuralFeatures().get(1);
+    return (EReference)environmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -351,9 +430,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFeatureMatch()
+  public EReference getEnvironment_Walls()
   {
-    return featureMatchEClass;
+    return (EReference)environmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -361,9 +440,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFeatureMatch_Image_name()
+  public EReference getEnvironment_Objects()
   {
-    return (EAttribute)featureMatchEClass.getEStructuralFeatures().get(0);
+    return (EReference)environmentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -391,9 +470,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSnapshot()
+  public EClass getGoTo()
   {
-    return snapshotEClass;
+    return goToEClass;
   }
 
   /**
@@ -401,9 +480,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSnapshot_Image_name()
+  public EAttribute getGoTo_Object_name()
   {
-    return (EAttribute)snapshotEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)goToEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -591,9 +670,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMove()
+  public EClass getDrone()
   {
-    return moveEClass;
+    return droneEClass;
   }
 
   /**
@@ -601,9 +680,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMove_X()
+  public EReference getDrone_Position()
   {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(0);
+    return (EReference)droneEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -611,9 +690,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMove_Y()
+  public EAttribute getDrone_Rotation()
   {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)droneEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -621,9 +700,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMove_Z()
+  public EClass getObject()
   {
-    return (EAttribute)moveEClass.getEStructuralFeatures().get(2);
+    return objectEClass;
   }
 
   /**
@@ -631,9 +710,9 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunctionName()
+  public EAttribute getObject_Object_name()
   {
-    return functionNameEClass;
+    return (EAttribute)objectEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -641,9 +720,309 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionName_Func_name()
+  public EReference getObject_Origin()
   {
-    return (EAttribute)functionNameEClass.getEStructuralFeatures().get(0);
+    return (EReference)objectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getObject_Size()
+  {
+    return (EReference)objectEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getObject_Color()
+  {
+    return (EReference)objectEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOrigin()
+  {
+    return originEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOrigin_Vector()
+  {
+    return (EReference)originEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSize()
+  {
+    return sizeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSize_Vector()
+  {
+    return (EReference)sizeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPosition()
+  {
+    return positionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPosition_Vector()
+  {
+    return (EReference)positionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVector()
+  {
+    return vectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVector_X()
+  {
+    return (EAttribute)vectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVector_Y()
+  {
+    return (EAttribute)vectorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVector_Z()
+  {
+    return (EAttribute)vectorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getColor()
+  {
+    return colorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColor_Color_value()
+  {
+    return (EAttribute)colorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWalls()
+  {
+    return wallsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWalls_Front()
+  {
+    return (EReference)wallsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWalls_Right()
+  {
+    return (EReference)wallsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWalls_Back()
+  {
+    return (EReference)wallsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWalls_Left()
+  {
+    return (EReference)wallsEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWalls_Up()
+  {
+    return (EReference)wallsEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFrontWall()
+  {
+    return frontWallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFrontWall_Value()
+  {
+    return (EAttribute)frontWallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRightWall()
+  {
+    return rightWallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRightWall_Value()
+  {
+    return (EAttribute)rightWallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLeftWall()
+  {
+    return leftWallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLeftWall_Value()
+  {
+    return (EAttribute)leftWallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBackWall()
+  {
+    return backWallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBackWall_Value()
+  {
+    return (EAttribute)backWallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUpWall()
+  {
+    return upWallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpWall_Value()
+  {
+    return (EAttribute)upWallEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -680,26 +1059,25 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     createEReference(programEClass, PROGRAM__MAIN);
 
     mainEClass = createEClass(MAIN);
-    createEReference(mainEClass, MAIN__COMMANDS);
-    createEAttribute(mainEClass, MAIN__TAKEOFF);
-    createEAttribute(mainEClass, MAIN__LAND);
+    createEReference(mainEClass, MAIN__FLY);
+    createEReference(mainEClass, MAIN__ENVIRONMENT);
 
-    recordedFlightEClass = createEClass(RECORDED_FLIGHT);
-    createEAttribute(recordedFlightEClass, RECORDED_FLIGHT__VIDEO_NAME);
+    flyEClass = createEClass(FLY);
+    createEAttribute(flyEClass, FLY__TAKEOFF);
+    createEReference(flyEClass, FLY__COMMANDS);
+    createEAttribute(flyEClass, FLY__LAND);
 
-    userFunctionEClass = createEClass(USER_FUNCTION);
-    createEAttribute(userFunctionEClass, USER_FUNCTION__NAME);
-    createEReference(userFunctionEClass, USER_FUNCTION__FUNC);
-
-    featureMatchEClass = createEClass(FEATURE_MATCH);
-    createEAttribute(featureMatchEClass, FEATURE_MATCH__IMAGE_NAME);
+    environmentEClass = createEClass(ENVIRONMENT);
+    createEReference(environmentEClass, ENVIRONMENT__DRONE);
+    createEReference(environmentEClass, ENVIRONMENT__WALLS);
+    createEReference(environmentEClass, ENVIRONMENT__OBJECTS);
 
     superCommandEClass = createEClass(SUPER_COMMAND);
 
     commandEClass = createEClass(COMMAND);
 
-    snapshotEClass = createEClass(SNAPSHOT);
-    createEAttribute(snapshotEClass, SNAPSHOT__IMAGE_NAME);
+    goToEClass = createEClass(GO_TO);
+    createEAttribute(goToEClass, GO_TO__OBJECT_NAME);
 
     upEClass = createEClass(UP);
     createEAttribute(upEClass, UP__DISTANCE);
@@ -728,13 +1106,54 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     waitEClass = createEClass(WAIT);
     createEAttribute(waitEClass, WAIT__SECONDS);
 
-    moveEClass = createEClass(MOVE);
-    createEAttribute(moveEClass, MOVE__X);
-    createEAttribute(moveEClass, MOVE__Y);
-    createEAttribute(moveEClass, MOVE__Z);
+    droneEClass = createEClass(DRONE);
+    createEReference(droneEClass, DRONE__POSITION);
+    createEAttribute(droneEClass, DRONE__ROTATION);
 
-    functionNameEClass = createEClass(FUNCTION_NAME);
-    createEAttribute(functionNameEClass, FUNCTION_NAME__FUNC_NAME);
+    objectEClass = createEClass(OBJECT);
+    createEAttribute(objectEClass, OBJECT__OBJECT_NAME);
+    createEReference(objectEClass, OBJECT__ORIGIN);
+    createEReference(objectEClass, OBJECT__SIZE);
+    createEReference(objectEClass, OBJECT__COLOR);
+
+    originEClass = createEClass(ORIGIN);
+    createEReference(originEClass, ORIGIN__VECTOR);
+
+    sizeEClass = createEClass(SIZE);
+    createEReference(sizeEClass, SIZE__VECTOR);
+
+    positionEClass = createEClass(POSITION);
+    createEReference(positionEClass, POSITION__VECTOR);
+
+    vectorEClass = createEClass(VECTOR);
+    createEAttribute(vectorEClass, VECTOR__X);
+    createEAttribute(vectorEClass, VECTOR__Y);
+    createEAttribute(vectorEClass, VECTOR__Z);
+
+    colorEClass = createEClass(COLOR);
+    createEAttribute(colorEClass, COLOR__COLOR_VALUE);
+
+    wallsEClass = createEClass(WALLS);
+    createEReference(wallsEClass, WALLS__FRONT);
+    createEReference(wallsEClass, WALLS__RIGHT);
+    createEReference(wallsEClass, WALLS__BACK);
+    createEReference(wallsEClass, WALLS__LEFT);
+    createEReference(wallsEClass, WALLS__UP);
+
+    frontWallEClass = createEClass(FRONT_WALL);
+    createEAttribute(frontWallEClass, FRONT_WALL__VALUE);
+
+    rightWallEClass = createEClass(RIGHT_WALL);
+    createEAttribute(rightWallEClass, RIGHT_WALL__VALUE);
+
+    leftWallEClass = createEClass(LEFT_WALL);
+    createEAttribute(leftWallEClass, LEFT_WALL__VALUE);
+
+    backWallEClass = createEClass(BACK_WALL);
+    createEAttribute(backWallEClass, BACK_WALL__VALUE);
+
+    upWallEClass = createEClass(UP_WALL);
+    createEAttribute(upWallEClass, UP_WALL__VALUE);
   }
 
   /**
@@ -767,7 +1186,7 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
 
     // Add supertypes to classes
     commandEClass.getESuperTypes().add(this.getSuperCommand());
-    snapshotEClass.getESuperTypes().add(this.getCommand());
+    goToEClass.getESuperTypes().add(this.getCommand());
     upEClass.getESuperTypes().add(this.getCommand());
     downEClass.getESuperTypes().add(this.getCommand());
     leftEClass.getESuperTypes().add(this.getCommand());
@@ -777,33 +1196,31 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     rotateLEClass.getESuperTypes().add(this.getCommand());
     rotateREClass.getESuperTypes().add(this.getCommand());
     waitEClass.getESuperTypes().add(this.getCommand());
-    functionNameEClass.getESuperTypes().add(this.getSuperCommand());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProgram_Main(), this.getMain(), null, "main", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mainEClass, Main.class, "Main", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMain_Commands(), this.getSuperCommand(), null, "commands", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMain_Takeoff(), ecorePackage.getEString(), "takeoff", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMain_Land(), ecorePackage.getEString(), "land", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMain_Fly(), this.getFly(), null, "fly", null, 0, 1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMain_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(recordedFlightEClass, RecordedFlight.class, "RecordedFlight", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRecordedFlight_Video_name(), ecorePackage.getEString(), "video_name", null, 0, 1, RecordedFlight.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(flyEClass, Fly.class, "Fly", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFly_Takeoff(), ecorePackage.getEString(), "takeoff", null, 0, -1, Fly.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFly_Commands(), this.getSuperCommand(), null, "commands", null, 0, -1, Fly.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFly_Land(), ecorePackage.getEString(), "land", null, 0, -1, Fly.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(userFunctionEClass, UserFunction.class, "UserFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUserFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, UserFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUserFunction_Func(), this.getCommand(), null, "func", null, 0, -1, UserFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(featureMatchEClass, FeatureMatch.class, "FeatureMatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFeatureMatch_Image_name(), ecorePackage.getEString(), "image_name", null, 0, 1, FeatureMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnvironment_Drone(), this.getDrone(), null, "drone", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironment_Walls(), this.getWalls(), null, "walls", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironment_Objects(), this.getObject(), null, "objects", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(superCommandEClass, SuperCommand.class, "SuperCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(snapshotEClass, Snapshot.class, "Snapshot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSnapshot_Image_name(), ecorePackage.getEString(), "image_name", null, 0, 1, Snapshot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(goToEClass, GoTo.class, "GoTo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGoTo_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, GoTo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(upEClass, Up.class, "Up", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUp_Distance(), ecorePackage.getEString(), "distance", null, 0, 1, Up.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -824,21 +1241,62 @@ public class XDronePackageImpl extends EPackageImpl implements XDronePackage
     initEAttribute(getBackward_Distance(), ecorePackage.getEString(), "distance", null, 0, 1, Backward.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rotateLEClass, RotateL.class, "RotateL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRotateL_Angle(), ecorePackage.getEInt(), "angle", null, 0, 1, RotateL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRotateL_Angle(), ecorePackage.getEString(), "angle", null, 0, 1, RotateL.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rotateREClass, RotateR.class, "RotateR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRotateR_Angle(), ecorePackage.getEInt(), "angle", null, 0, 1, RotateR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRotateR_Angle(), ecorePackage.getEString(), "angle", null, 0, 1, RotateR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(waitEClass, Wait.class, "Wait", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWait_Seconds(), ecorePackage.getEString(), "seconds", null, 0, 1, Wait.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMove_X(), ecorePackage.getEInt(), "x", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMove_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMove_Z(), ecorePackage.getEInt(), "z", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(droneEClass, Drone.class, "Drone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDrone_Position(), this.getPosition(), null, "position", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDrone_Rotation(), ecorePackage.getEString(), "rotation", null, 0, 1, Drone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionNameEClass, FunctionName.class, "FunctionName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionName_Func_name(), ecorePackage.getEString(), "func_name", null, 0, 1, FunctionName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(objectEClass, ic.ac.uk.xdrone.xDrone.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getObject_Object_name(), ecorePackage.getEString(), "object_name", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Origin(), this.getOrigin(), null, "origin", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Size(), this.getSize(), null, "size", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Color(), this.getColor(), null, "color", null, 0, 1, ic.ac.uk.xdrone.xDrone.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(originEClass, Origin.class, "Origin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrigin_Vector(), this.getVector(), null, "vector", null, 0, 1, Origin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sizeEClass, Size.class, "Size", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSize_Vector(), this.getVector(), null, "vector", null, 0, 1, Size.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(positionEClass, Position.class, "Position", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPosition_Vector(), this.getVector(), null, "vector", null, 0, 1, Position.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(vectorEClass, Vector.class, "Vector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVector_X(), ecorePackage.getEString(), "x", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVector_Y(), ecorePackage.getEString(), "y", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVector_Z(), ecorePackage.getEString(), "z", null, 0, 1, Vector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getColor_Color_value(), ecorePackage.getEString(), "color_value", null, 0, 1, Color.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wallsEClass, Walls.class, "Walls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWalls_Front(), this.getFrontWall(), null, "front", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWalls_Right(), this.getRightWall(), null, "right", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWalls_Back(), this.getBackWall(), null, "back", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWalls_Left(), this.getLeftWall(), null, "left", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWalls_Up(), this.getUpWall(), null, "up", null, 0, 1, Walls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(frontWallEClass, FrontWall.class, "FrontWall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFrontWall_Value(), ecorePackage.getEString(), "value", null, 0, 1, FrontWall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rightWallEClass, RightWall.class, "RightWall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRightWall_Value(), ecorePackage.getEString(), "value", null, 0, 1, RightWall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(leftWallEClass, LeftWall.class, "LeftWall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLeftWall_Value(), ecorePackage.getEString(), "value", null, 0, 1, LeftWall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(backWallEClass, BackWall.class, "BackWall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBackWall_Value(), ecorePackage.getEString(), "value", null, 0, 1, BackWall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(upWallEClass, UpWall.class, "UpWall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUpWall_Value(), ecorePackage.getEString(), "value", null, 0, 1, UpWall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
