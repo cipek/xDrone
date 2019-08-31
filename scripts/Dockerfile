@@ -33,12 +33,10 @@ COPY tomcat_install_script.sh /tomcat-install-script.sh
 RUN ["chmod", "+x", "tomcat-install-script.sh"]
 RUN /tomcat-install-script.sh
 
-RUN ls
-
 WORKDIR /xdrone
 
 COPY xdrone-deploy.sh /xdrone/xdrone-deploy.sh
-RUN ls
+COPY run_ardrone.sh /xdrone/run_ardrone.sh
 RUN ["chmod", "+x", "xdrone-deploy.sh"]
 
 WORKDIR /opt/tomcat/8_0/webapps
