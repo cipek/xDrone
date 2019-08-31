@@ -65,7 +65,7 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compileJS(Fly fly)'''
-		var ANGLE_MARIGIN = 1.2;
+		var ANGLE_MARIGIN = 0.4;
 		var MOVE_MARIGIN = 1.25;
 		var MOVE_MARIGIN_ADD = 0.6;
 		var MOVE_MARIGIN_NEXT = 0.95;
@@ -270,9 +270,9 @@ commands.push({z: -«cmd.distance»});
 		from geometry_msgs.msg import Twist	
 		PI = 3.1415926535897
 		#Constants
-		ACCEPTED_DISTANCE_ERROR = 20
-		ACCEPTED_ALTITUDE_ERROR = 50
-		ACCEPTED_ROTATION_ERROR = 10
+		ACCEPTED_DISTANCE_ERROR = 20 # 20 cm
+		ACCEPTED_ALTITUDE_ERROR = 50 # 5 cm
+		ACCEPTED_ROTATION_ERROR = 10 # 10 degrees
 		DISTANCE_ONE_AND_HALF_SECOND = 1.25
 		DISTANCE_TWO_SECONDS = 2.20
 		#DISTANCE_TWO_AND_HALF_SECONDS = 1.65
@@ -574,23 +574,23 @@ moveUpAndDown(-«cmd.distance»)
 	  	«ENDIF»
 	  	«IF cmd instanceof Left »
 dronePosition['y']  += «cmd.distance»
-moveBaseOnTime(«cmd.distance», 0, 0.15)
-noMove(1)
+moveBaseOnTime(«cmd.distance», 0, 0.25)
+noMove(1.5)
 	  	«ENDIF»
 	  	«IF cmd instanceof Right»
 dronePosition['y']  += -«cmd.distance»
-moveBaseOnTime(-«cmd.distance», 0, 0.15)
-noMove(1)
+moveBaseOnTime(-«cmd.distance», 0, 0.25)
+noMove(1.5)
 	  	«ENDIF»
 	  	«IF cmd instanceof Forward»	
 dronePosition['x'] += «cmd.distance»
-moveBaseOnTime(«cmd.distance», 0.15, 0)
-noMove(1)
+moveBaseOnTime(«cmd.distance», 0.25, 0)
+noMove(1.5)
 	  	«ENDIF»
 	  	«IF cmd instanceof Backward»	
 dronePosition['x'] += -«cmd.distance»
-moveBaseOnTime(-«cmd.distance», 0.15, 0)
-noMove(1)
+moveBaseOnTime(-«cmd.distance», 0.25, 0)
+noMove(1.5)
 	  	«ENDIF»
 «««	  	«IF cmd instanceof RotateL»	
 «««		rotate(30, «cmd.angle», False)
@@ -616,11 +616,11 @@ rotate(90, «cmd.angle»);
 «««	  		if «cmd.vector.z» != 0:	
 «««	  			dronePosition['x'] += «cmd.vector.z»
 «««	  			moveBaseOnTime(«cmd.vector.z», 0.15, 0)
-«««	  			noMove(1)
+«««	  			noMove(1.5)
 «««	  		if «cmd.vector.x» != 0:
 «««	  			dronePosition['y']  += «cmd.vector.x»
 «««	  			moveBaseOnTime(«cmd.vector.x», 0, 0.15)
-«««	  			noMove(1)
+«««	  			noMove(1.5)
 «««	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
 		  	vector = getDistanceToObject("«cmd.object_name»");
@@ -631,13 +631,14 @@ rotate(90, «cmd.angle»);
 		  	moveUpAndDown(vector['z'])
 		  	dronePosition['x'] += vector['x']
 		  	moveBaseOnTime(vector['x'], 0.15, 0)
-		  	noMove(1)
+		  	noMove(1.5)
 		«ENDIF»
 	'''
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
-		var time = System.currentTimeMillis();
+		var time = System.currentTimeMillis(); //Replace with "" if running tests
+		
 		for(main : resource.allContents.toIterable.filter(Main)) {
 			result = main.compilePython.toString; 
 			fsa.generateFile('/xdrone/result.py', result); //Locally change path to 'result.py'

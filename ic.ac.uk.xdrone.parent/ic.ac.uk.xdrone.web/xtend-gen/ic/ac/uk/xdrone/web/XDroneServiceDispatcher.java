@@ -39,9 +39,6 @@ public class XDroneServiceDispatcher extends XtextServiceDispatcher {
         case "compile":
           _switchResult = this.getCompileService(context);
           break;
-        case "emergencystop":
-          _switchResult = this.getStopService(context);
-          break;
         default:
           _switchResult = super.createServiceDescriptor(serviceType, context);
           break;
@@ -78,71 +75,6 @@ public class XDroneServiceDispatcher extends XtextServiceDispatcher {
           return _xtrycatchfinallyexpression;
         };
         it.setService(_function_1);
-      };
-      _xblockexpression = ObjectExtensions.<XtextServiceDispatcher.ServiceDescriptor>operator_doubleArrow(_serviceDescriptor, _function);
-    }
-    return _xblockexpression;
-  }
-  
-  protected XtextServiceDispatcher.ServiceDescriptor getStopService(final IServiceContext context) throws InvalidRequestException {
-    XtextServiceDispatcher.ServiceDescriptor _xblockexpression = null;
-    {
-      final String resourceId = context.getParameter("resource");
-      if ((resourceId == null)) {
-        throw new InvalidRequestException("The parameter \'resource\' is required.");
-      }
-      XtextServiceDispatcher.ServiceDescriptor _serviceDescriptor = new XtextServiceDispatcher.ServiceDescriptor();
-      final Procedure1<XtextServiceDispatcher.ServiceDescriptor> _function = (XtextServiceDispatcher.ServiceDescriptor it) -> {
-        final Function0<IServiceResult> _function_1 = () -> {
-          ServiceConflictResult _xtrycatchfinallyexpression = null;
-          try {
-            final URI uri = this.resourceBaseProvider.getFileURI(resourceId);
-            String _fileString = uri.toFileString();
-            final File file = new File(_fileString);
-            FileWriter writer = null;
-            try {
-              FileWriter _fileWriter = new FileWriter(file);
-              writer = _fileWriter;
-              final String fullText = context.getParameter("fullText");
-              if ((fullText != null)) {
-                writer.write(fullText);
-              }
-            } finally {
-              if ((writer != null)) {
-                writer.close();
-              }
-            }
-            final XtextWebDocument document = this.getResourceDocument(resourceId, context);
-            String _absolutePath = file.getAbsolutePath();
-            String _plus = ("preparing to run command: /bin/bash -c /xdrone-emergencyland.sh " + _absolutePath);
-            String _plus_1 = (_plus + " > /tmp/xdrone.log");
-            InputOutput.<String>println(_plus_1);
-            ProcessBuilder _inheritIO = new ProcessBuilder().inheritIO();
-            String _property = System.getProperty("user.dir");
-            String _plus_2 = (_property + "/xdrone-emergencyland.sh");
-            String _plus_3 = (_plus_2 + " > /tmp/xdrone.log");
-            final Process pb = _inheritIO.command("/bin/bash", "-c", _plus_3).start();
-            boolean _isAlive = pb.isAlive();
-            boolean _not = (!_isAlive);
-            if (_not) {
-              int _exitValue = pb.exitValue();
-              String _plus_4 = ("exit code: " + Integer.valueOf(_exitValue));
-              InputOutput.<String>println(_plus_4);
-            }
-            String _stateId = document.getStateId();
-            return new DocumentStateResult(_stateId);
-          } catch (final Throwable _t) {
-            if (_t instanceof Throwable) {
-              final Throwable throwable = (Throwable)_t;
-              _xtrycatchfinallyexpression = this.handleError(it, throwable);
-            } else {
-              throw Exceptions.sneakyThrow(_t);
-            }
-          }
-          return _xtrycatchfinallyexpression;
-        };
-        it.setService(_function_1);
-        it.setHasSideEffects(true);
       };
       _xblockexpression = ObjectExtensions.<XtextServiceDispatcher.ServiceDescriptor>operator_doubleArrow(_serviceDescriptor, _function);
     }

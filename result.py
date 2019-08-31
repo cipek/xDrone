@@ -9,9 +9,9 @@ from ardrone_autonomy.msg import Navdata
 from geometry_msgs.msg import Twist	
 PI = 3.1415926535897
 #Constants
-ACCEPTED_DISTANCE_ERROR = 20
-ACCEPTED_ALTITUDE_ERROR = 50
-ACCEPTED_ROTATION_ERROR = 10
+ACCEPTED_DISTANCE_ERROR = 20 # 20 cm
+ACCEPTED_ALTITUDE_ERROR = 50 # 5 cm
+ACCEPTED_ROTATION_ERROR = 10 # 10 degrees
 DISTANCE_ONE_AND_HALF_SECOND = 1.25
 DISTANCE_TWO_SECONDS = 2.20
 #DISTANCE_TWO_AND_HALF_SECONDS = 1.65
@@ -258,15 +258,9 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-dronePosition['x'] += 1
-moveBaseOnTime(1, 0.15, 0)
-noMove(1)
-dronePosition['y']  += 2
-moveBaseOnTime(2, 0, 0.15)
-noMove(1)
-dronePosition['y']  += -3
-moveBaseOnTime(-3, 0, 0.15)
-noMove(1)
+dronePosition['x'] += 1.25
+moveBaseOnTime(1.25, 0.15, 0)
+noMove(1.5)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
 			

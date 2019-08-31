@@ -179,44 +179,39 @@
 			}
 		</script>
 
+		<!-- Simulator -->
+		<script src="./simulator-resources/scene.js"></script>
+
 		<div class="container">
-			<!-- <div class="header">
-				<h1>Web Editor</h1>
-			</div> -->
+
 			<button id="generate-button" value="Simulate" title="Generate">Simulate</button>
 			<button id="deploy-button" value="Fly" title="Deploy">Fly</button>
 			<div class="content">
 				<div id="xtext-editor" data-editor-xtext-lang="xdrone"></div>
 			</div>
-		</div>
 
-		<!-- Simulator -->
-		<!-- <script src="./simulator-resources/three.js"></script> -->
-		<!-- <script src="./simulator-resources/LegacyJSONLoader.js"></script>
-		<script src="./simulator-resources/OrbitControls.js"></script> -->
-		<script src="./simulator-resources/scene.js"></script>
-
-		<div id="SIMULATOR_CONTAINER">
-			<div id="SIMULATOR_OUTPUT">
-			</div>
-			<div id="SIMULATOR">
-					<script>
-						let THREE;
-						require(['./simulator-resources/three.js'], function(moduleThree){
-							THREE = moduleThree;
-							require(['./simulator-resources/OrbitControls.js'], function(module){
-								require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
-									init();
-									animate();
+			<div id="SIMULATOR_CONTAINER">
+				<div id="SIMULATOR_OUTPUT">
+				</div>
+				<div id="SIMULATOR">
+						<script>
+							let THREE;
+							require(['./simulator-resources/three.js'], function(moduleThree){
+								THREE = moduleThree;
+								require(['./simulator-resources/OrbitControls.js'], function(module){
+									require(['./simulator-resources/LegacyJSONLoader.js'], function(module){
+										init();
+										animate();
+									})
 								})
 							})
-						})
-					</script>
+						</script>
+				</div>
+				<div id="AXES_SYSTEM">
+				</div>
 			</div>
-			<div id="AXES_SYSTEM">
-			</div>
-		</div>
 
+		</div>
 
 	</body>
 </html>

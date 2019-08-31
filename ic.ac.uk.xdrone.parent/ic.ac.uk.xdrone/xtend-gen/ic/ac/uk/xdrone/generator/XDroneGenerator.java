@@ -179,7 +179,7 @@ public class XDroneGenerator extends AbstractGenerator {
   
   public CharSequence compileJS(final Fly fly) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("var ANGLE_MARIGIN = 1.2;");
+    _builder.append("var ANGLE_MARIGIN = 0.4;");
     _builder.newLine();
     _builder.append("var MOVE_MARIGIN = 1.25;");
     _builder.newLine();
@@ -679,11 +679,11 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("#Constants");
     _builder.newLine();
-    _builder.append("ACCEPTED_DISTANCE_ERROR = 20");
+    _builder.append("ACCEPTED_DISTANCE_ERROR = 20 # 20 cm");
     _builder.newLine();
-    _builder.append("ACCEPTED_ALTITUDE_ERROR = 50");
+    _builder.append("ACCEPTED_ALTITUDE_ERROR = 50 # 5 cm");
     _builder.newLine();
-    _builder.append("ACCEPTED_ROTATION_ERROR = 10");
+    _builder.append("ACCEPTED_ROTATION_ERROR = 10 # 10 degrees");
     _builder.newLine();
     _builder.append("DISTANCE_ONE_AND_HALF_SECOND = 1.25");
     _builder.newLine();
@@ -1452,9 +1452,9 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("moveBaseOnTime(");
         String _distance_5 = ((Left)cmd).getDistance();
         _builder.append(_distance_5);
-        _builder.append(", 0, 0.15)");
+        _builder.append(", 0, 0.25)");
         _builder.newLineIfNotEmpty();
-        _builder.append("noMove(1)");
+        _builder.append("noMove(1.5)");
         _builder.newLine();
       }
     }
@@ -1467,9 +1467,9 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("moveBaseOnTime(-");
         String _distance_7 = ((Right)cmd).getDistance();
         _builder.append(_distance_7);
-        _builder.append(", 0, 0.15)");
+        _builder.append(", 0, 0.25)");
         _builder.newLineIfNotEmpty();
-        _builder.append("noMove(1)");
+        _builder.append("noMove(1.5)");
         _builder.newLine();
       }
     }
@@ -1482,9 +1482,9 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("moveBaseOnTime(");
         String _distance_9 = ((Forward)cmd).getDistance();
         _builder.append(_distance_9);
-        _builder.append(", 0.15, 0)");
+        _builder.append(", 0.25, 0)");
         _builder.newLineIfNotEmpty();
-        _builder.append("noMove(1)");
+        _builder.append("noMove(1.5)");
         _builder.newLine();
       }
     }
@@ -1497,9 +1497,9 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append("moveBaseOnTime(-");
         String _distance_11 = ((Backward)cmd).getDistance();
         _builder.append(_distance_11);
-        _builder.append(", 0.15, 0)");
+        _builder.append(", 0.25, 0)");
         _builder.newLineIfNotEmpty();
-        _builder.append("noMove(1)");
+        _builder.append("noMove(1.5)");
         _builder.newLine();
       }
     }
@@ -1562,7 +1562,7 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.newLine();
         _builder.append("moveBaseOnTime(vector[\'x\'], 0.15, 0)");
         _builder.newLine();
-        _builder.append("noMove(1)");
+        _builder.append("noMove(1.5)");
         _builder.newLine();
       }
     }
