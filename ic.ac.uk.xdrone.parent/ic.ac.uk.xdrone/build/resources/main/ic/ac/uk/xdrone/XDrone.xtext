@@ -6,31 +6,47 @@ Program :
   main = Main
 ;
   
-Main :
-	
-
-  ((takeoff+=Takeoff';'?)
- 		 ((commands+=SuperCommand) ';'?)*
-  (land+=Land';'?))?
- 
   
+Main:
+	fly = Fly
+	environment = Environment?
 ;
 
-
-UserFunction:
-	(name = ID) '()'
-	'{'
-	(func+=Command';'?)*
-	'}'
+Fly :
+	
+  'fly' '(' ')' '{'
+	((takeoff+=Takeoff)
+ 		((commands+=SuperCommand))*
+	(land+=Land))
+  '}'
 ;
 
+  
+Environment :
+ 
+ {Environment} 'environment' '(' ')' '{'
+ 	 (drone+=Drone | walls+=Walls | objects+=Object)*
+// 	(drone+=Drone)?
+//  	((objects+=Object))*
+  '}'
+   
+ ;
 
-Takeoff: 'TAKEOFF';
-Land : 'LAND';
+
+//UserFunction:
+//	(name = ID) '()'
+//	'{'
+//	(func+=Command)*
+//	'}'
+//;
+
+
+Takeoff: 'TAKEOFF' '(' ')';
+Land : 'LAND' '(' ')';
 
 SuperCommand:
 	Command
-	| FunctionName
+//	| FunctionName
 ;
 
 Command:
@@ -43,45 +59,125 @@ Command:
 	| RotateL
 	| RotateR
 	| Wait
+//	| Move
+//	| Rotate
+	| GoTo
 ;
 
 DOUBLE:
-	INT '.' INT
+	'-' POSITIVE_DOUBLE
+	| POSITIVE_DOUBLE
 ;
 
+POSITIVE_DOUBLE:
+	INT '.' INT
+	| INT
+;
+
+GoTo:
+	'GOTO' '(' object_name = STRING ')'
+;
+
+//Move:
+//	'MOVE' vector=Vector
+//;
+
+//Rotate: 
+//	'ROTATE' '('angle = DOUBLE')'
+//;
+
 Up: 
-	'UP' '('distance = DOUBLE')'
+	'UP' '('distance = POSITIVE_DOUBLE')'
 ;
 	
 Down: 
-	'DOWN' '('distance = DOUBLE')'
+	'DOWN' '('distance = POSITIVE_DOUBLE')'
 ;
 Left: 
-	'LEFT' '('distance = DOUBLE')'
+	'LEFT' '('distance = POSITIVE_DOUBLE')'
 ;
 Right: 
-	'RIGHT' '('distance = DOUBLE')'
+	'RIGHT' '('distance = POSITIVE_DOUBLE')'
 ;
 Forward: 
-	'FORWARD' '('distance = DOUBLE')'
+	'FORWARD' '('distance = POSITIVE_DOUBLE')'
 ;
 Backward: 
-	'BACKWARD' '('distance = DOUBLE')'
+	'BACKWARD' '('distance = POSITIVE_DOUBLE')'
 ;
 RotateL: 
-	'ROTATELEFT' '('angle = INT')'
+	'ROTATELEFT' '('angle = POSITIVE_DOUBLE')'
 ;
 RotateR: 
-	'ROTATERIGHT' '('angle = INT')'
+	'ROTATERIGHT' '('angle = POSITIVE_DOUBLE')'
 ;
 Wait:
-	'WAIT' '(' seconds = DOUBLE ')'
+	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'
 ;
 
-Move: 
-	'MOVE' '('x = INT ',' y = INT ',' z = INT')'
+//FunctionName:
+//	func_name = ID '()'
+//;
+
+
+Drone:
+//	'DRONE' vector=Vector
+	'DRONE' '=' '{'
+		(position=Position | ('rotation' '=' rotation = DOUBLE))*
+	'}'
 ;
 
-FunctionName:
-	func_name = ID '()'
+Object:
+//	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
+	object_name = ID '=' '{'
+		(origin=Origin | size=Size | color=Color)*
+	'}'
+;
+
+Origin:
+	'origin' '=' vector=Vector
+;
+
+Size:
+	'size' '=' vector=Vector
+;
+
+Position:
+	'position' '=' vector=Vector
+;
+
+Vector:
+	'(' x = DOUBLE ',' y = DOUBLE ',' z = DOUBLE ')'
+;
+
+Color:
+	'color' '=' color_value = STRING
+	
+;
+
+Walls:
+//	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
+	'WALLS' '=' '{'
+		(front = FrontWall | right = RightWall | back = BackWall | left = LeftWall | up = UpWall)*
+	'}'
+;
+
+FrontWall:
+	'front' '=' value = POSITIVE_DOUBLE
+;
+
+RightWall:
+	'right' '=' value = POSITIVE_DOUBLE
+;
+
+LeftWall:
+	'left' '=' value = POSITIVE_DOUBLE
+;
+
+BackWall:
+	'back' '=' value = POSITIVE_DOUBLE
+;
+
+UpWall:
+	'up' '=' value = POSITIVE_DOUBLE
 ;

@@ -2,24 +2,24 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="Content-Language" content="en-us">
-		<title>Web Editor</title>
+		<title>xDrone</title>
 		<link rel="stylesheet" type="text/css" href="xtext/2.17.0/xtext-ace.css"/>
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<link rel="stylesheet" type="text/css" href="./simulator-resources/index.css"/>
 
 		<script src="webjars/requirejs/2.3.6/require.min.js"></script>
 
-
 	</head>
 	<body>
 		<script type="text/javascript">
 			var linesOfCode = [], lastFirstNumber = "-1", listGoTo=[];
 			var baseUrl = window.location.pathname;
+			var warfile = "DEFAULT_OUTPUT/opt/tomcat/8_0/webapps/ROOT/",
+				local = "DEFAULT_OUTPUTWebroot/"
+
 			var fileIndex = baseUrl.indexOf("index.html");
 			if (fileIndex > 0)
 				baseUrl = baseUrl.slice(0, fileIndex);
-
-			// document.getElementById("myDIV").onscroll = function() {myFunction()};
 			require.config({
 				baseUrl: baseUrl,
 				paths: {
@@ -35,10 +35,6 @@
 						syntaxDefinition: "xtext-resources/generated/mode-xdrone"
 					});
 
-					// var scroller = document.getElementsByClassName("ace_content");
-					// console.log(scroller[0]);
-					// scroller[0].onscroll = function() {console.log("INSCROLL");};
-
 
 					$('#generate-button').bind("click", function(e)
 						{
@@ -47,26 +43,21 @@
 								resource : editor.xtextServices.options.resourceId,
 								fullText : editor.getValue()
 							};
+							//Get every line of code separatly
 							linesOfCode = editor.getValue().split(/\r\n|\r|\n/);
 							listGoTo=[];
+
 							$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
-								console.log("resource generated", result);
-								// console.log(require.undef);
-								// require.undef('./simulator.js');
-								// console.log(require.cache);
-								// console.log(require.cache['./simulator.js']);
-								// if(require.cache['./simulator.js'])
-								// 	delete require.cache['./simulator.js']
 
 								var pathSimulator = '', pathEnvironment = '';
 								result.artifacts.forEach(a =>{
 									if(a.name.includes('simulator'))
-										pathSimulator = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+										pathSimulator = a.name.replace(warfile, "") //change warfile to local if run locally
 									if(a.name.includes('environment'))
-										pathEnvironment = a.name.replace("DEFAULT_OUTPUTWebroot/", "")
+										pathEnvironment = a.name.replace(warfile, "") //change warfile to local if run locally
 								})
 
-								lastFirstNumber = "-1";
+								lastFirstNumber = "-1"; //Force goto update
 								flySimulation = undefined;
 								if(pathEnvironment && pathEnvironment != '')
 									require(['./' + pathEnvironment], function(module){
@@ -92,13 +83,9 @@
 	 						};
 
 	 						$.post(baseUrl+'xtext-service/compile?resource='+editor.xtextServices.options.resourceId, data, function(result){
-								console.log("resource generated");
-
-								console.log("deploying resource");
 
 		 						$.post(baseUrl+'xtext-service/deploy?resource='+editor.xtextServices.options.resourceId, data, function(result){
-		 							console.log("deployment finished");
-
+									//success
 								});
 							});
 							e.preventDefault();
@@ -108,6 +95,7 @@
 				});
 			});
 
+			//Updates GOTO commands layout
 			function addGoToToEditor(){
 				var lineNumbers = document.getElementsByClassName("ace_gutter-cell");
 				if(lineNumbers && lineNumbers[0] && lastFirstNumber != lineNumbers[0].innerHTML){

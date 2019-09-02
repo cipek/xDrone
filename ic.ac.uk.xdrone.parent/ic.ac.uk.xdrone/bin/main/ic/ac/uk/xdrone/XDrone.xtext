@@ -6,7 +6,6 @@ Program :
   main = Main
 ;
   
-  
 Main:
 	fly = Fly
 	environment = Environment?
@@ -26,19 +25,9 @@ Environment :
  
  {Environment} 'environment' '(' ')' '{'
  	 (drone+=Drone | walls+=Walls | objects+=Object)*
-// 	(drone+=Drone)?
-//  	((objects+=Object))*
   '}'
    
  ;
-
-
-//UserFunction:
-//	(name = ID) '()'
-//	'{'
-//	(func+=Command)*
-//	'}'
-//;
 
 
 Takeoff: 'TAKEOFF' '(' ')';
@@ -46,7 +35,6 @@ Land : 'LAND' '(' ')';
 
 SuperCommand:
 	Command
-//	| FunctionName
 ;
 
 Command:
@@ -59,8 +47,6 @@ Command:
 	| RotateL
 	| RotateR
 	| Wait
-//	| Move
-//	| Rotate
 	| GoTo
 ;
 
@@ -77,14 +63,6 @@ POSITIVE_DOUBLE:
 GoTo:
 	'GOTO' '(' object_name = STRING ')'
 ;
-
-//Move:
-//	'MOVE' vector=Vector
-//;
-
-//Rotate: 
-//	'ROTATE' '('angle = DOUBLE')'
-//;
 
 Up: 
 	'UP' '('distance = POSITIVE_DOUBLE')'
@@ -115,20 +93,14 @@ Wait:
 	'WAIT' '(' seconds = POSITIVE_DOUBLE ')'
 ;
 
-//FunctionName:
-//	func_name = ID '()'
-//;
-
 
 Drone:
-//	'DRONE' vector=Vector
 	'DRONE' '=' '{'
 		(position=Position | ('rotation' '=' rotation = DOUBLE))*
 	'}'
 ;
 
 Object:
-//	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 	object_name = ID '=' '{'
 		(origin=Origin | size=Size | color=Color)*
 	'}'
@@ -156,7 +128,6 @@ Color:
 ;
 
 Walls:
-//	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 	'WALLS' '=' '{'
 		(front = FrontWall | right = RightWall | back = BackWall | left = LeftWall | up = UpWall)*
 	'}'

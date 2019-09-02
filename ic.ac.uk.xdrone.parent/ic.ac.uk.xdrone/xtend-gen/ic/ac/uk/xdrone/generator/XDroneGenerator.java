@@ -195,8 +195,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};");
     _builder.newLine();
-    _builder.append("//var goalDroneLocation = currentDroneLocation;");
-    _builder.newLine();
     _builder.append("var goalDroneRotation = drone.rotation.y;");
     _builder.newLine();
     _builder.append("var currentFunction = \"\";");
@@ -257,8 +255,10 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("line = new THREE.Line( lineGeometry, lineMaterial );");
     _builder.newLine();
-    _builder.newLine();
     _builder.append("scene.add( line );");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("//Function which is called by simultor and execute flying comands one by one");
     _builder.newLine();
     _builder.append("function flySimulation(){");
     _builder.newLine();
@@ -291,6 +291,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("//Returns appropriate commadns based on array entry");
     _builder.newLine();
     _builder.append("function nextCommand(){");
     _builder.newLine();
@@ -522,6 +524,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("//Calcualtes the distance margin error caused by rotating the drone");
+    _builder.newLine();
     _builder.append("function getDistanceErrorFromAngle(angle){");
     _builder.newLine();
     _builder.append("\t");
@@ -529,18 +533,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("var MOVE_MARIGIN = 1.25;");
     _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("var MOVE_MARIGIN_ADD = 0.6;");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("var MOVE_MARIGIN_NEXT = 0.95;");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("var MOVE_MARIGIN_NEXT_ADD = 0.1;");
-    _builder.newLine();
+    _builder.append("//Calcualtes the distance margin error caused by movement of the drone");
     _builder.newLine();
     _builder.append("function getDistanceErrorFromDistance(distance){");
     _builder.newLine();
@@ -689,8 +683,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("DISTANCE_TWO_SECONDS = 2.20");
     _builder.newLine();
-    _builder.append("#DISTANCE_TWO_AND_HALF_SECONDS = 1.65");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("state = -1");
     _builder.newLine();
@@ -711,6 +703,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("currentDroneAngle = 270.0 #Real Life");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("#maps drone\'s position");
     _builder.newLine();
     {
       Environment _environment = main.getEnvironment();
@@ -754,6 +748,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("objects = {}");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("#maps all objects");
     _builder.newLine();
     {
       Environment _environment_1 = main.getEnvironment();
@@ -813,6 +809,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("#- backwards\t- left");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("#Tracks data provide by the drone");
+    _builder.newLine();
     _builder.append("def ReceiveNavdata(data):");
     _builder.newLine();
     _builder.append("\t");
@@ -836,6 +835,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("currentAltitude = data.altd");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("#Returns time that drone should fly to reach travel given distance");
     _builder.newLine();
     _builder.append("def getTimeFromDistance(distance):");
     _builder.newLine();
@@ -860,13 +860,6 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     _builder.append("return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#else:");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("#\treturn 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))");
-    _builder.newLine();
-    _builder.append("\t\t");
     _builder.newLine();
     _builder.append("def getDistanceToObject(objectName):");
     _builder.newLine();
@@ -1033,6 +1026,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("return (x < 0) if (y >= 0) else (y < 0)");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("#Rotates the drone");
+    _builder.newLine();
     _builder.append("def rotate(speed, angle):");
     _builder.newLine();
     _builder.append("\t");
@@ -1136,6 +1131,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("velocity_publisher.publish(vel_msg)");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("#Moves the drone by given distance. x and y are speeds in eeach direction. ");
+    _builder.newLine();
+    _builder.append("#Set one of the to zero if wants to move drone just in one direction at a time");
     _builder.newLine();
     _builder.append("def moveBaseOnTime(distance, x ,y):");
     _builder.newLine();
@@ -1203,7 +1201,9 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("velocity_publisher.publish(vel_msg)");
     _builder.newLine();
-    _builder.append("\t\t");
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("#Vertical movement");
     _builder.newLine();
     _builder.append("def moveUpAndDown(distance):");
     _builder.newLine();
@@ -1265,7 +1265,8 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.append("velocity_publisher.publish(vel_msg)");
     _builder.newLine();
-    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("#Hover mode- no movement");
     _builder.newLine();
     _builder.append("def noMove(timeRequired):");
     _builder.newLine();
@@ -1505,9 +1506,10 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     {
       if ((cmd instanceof Wait)) {
+        _builder.append("\t  \t");
         _builder.append("moveBaseOnTime(");
         String _seconds = ((Wait)cmd).getSeconds();
-        _builder.append(_seconds);
+        _builder.append(_seconds, "\t  \t");
         _builder.append(", 0, 0)");
         _builder.newLineIfNotEmpty();
       }
@@ -1573,6 +1575,8 @@ public class XDroneGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
     long time = System.currentTimeMillis();
+    String locally = "Webroot";
+    String warFile = "/opt/tomcat/8_0/webapps/ROOT";
     Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
     for (final Main main : _filter) {
       {
@@ -1597,11 +1601,11 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Fly fly : _filter_1) {
       {
         result = this.compileJS(fly).toString();
-        fsa.generateFile((("Webroot/simulator" + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((warFile + "/simulator") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file = new File((("Webroot/simulator" + Long.valueOf(time)) + ".js"));
+      File file = new File((((warFile + "/simulator") + Long.valueOf(time)) + ".js"));
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
@@ -1617,11 +1621,11 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Environment environment : _filter_2) {
       {
         result = this.compile(environment).toString();
-        fsa.generateFile((("Webroot/environment" + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((warFile + "/environment") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file = new File((("Webroot/environment" + Long.valueOf(time)) + ".js"));
+      File file = new File((((warFile + "/environment") + Long.valueOf(time)) + ".js"));
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);

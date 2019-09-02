@@ -31,7 +31,6 @@
 }
 
 .ace_gutter-cell{
-  /* padding-left: 8px !important; */
   text-align: left !important;
 }
 
@@ -70,7 +69,6 @@
   z-index: 9999;
 
   -ms-user-select: all !important;
-  /* text instead of all*/
   -moz-user-select: all !important;
   -webkit-user-select: all !important;
    user-select: all !important;

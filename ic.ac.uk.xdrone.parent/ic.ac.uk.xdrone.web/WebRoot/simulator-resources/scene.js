@@ -2,29 +2,18 @@
 //y and z axis are swapped in respect to ROS. Y is down and up axis
 var scene, renderer, camera, drone, simulator, outputDiv;
 var modelHeight = 0.1;
-var cube;
-var controls;
-var execute = true;
+var cube, controls, execute = true;
 var globalDroneRotation = 90, currentDroneRotation = 0;
 var coveredXDistance = 0, coveredYDistance = 0, coveredZDistance = 0;
 var coveredDistance = 0, coveredAngle = 0;
-var line;
-var raycaster;
-var mouse, INTERSECTED;
-var radius = 500, theta = 0;
-var frustumSize = 1000;
-var objects;
-var labelPoistion, centerLabel, labelObjects, labelAxes;
+var line, raycaster, mouse, INTERSECTED;
+var radius = 500, theta = 0, frustumSize = 1000;
+var objects, labelPoistion, centerLabel, labelObjects, labelAxes;
 var CANVAS_WIDTH = 130, CANVAS_HEIGHT = 100, CAM_DISTANCE = 15;
 var axesContainer, camera2, scene2, renderer2, axes2;
-var collisionBox;
-var collisions, collidedWith, wallsColision, walls;
-var lastCameraPosition;
-var landHeight;
-var currentDroneAngle;
+var collisionBox, collisions, collidedWith, wallsColision, walls;
+var lastCameraPosition, landHeight, currentDroneAngle;
 var isOutputVisible = false;
-// Axes in the corner
-// http://jsfiddle.net/aqnL1mx9/
 
 function init()
 {
@@ -107,7 +96,6 @@ function init()
 
     addCollisionBoxToDrone(0.5,0.36,0.5)
     collisions = [], collidedWith = [], wallsColision = false, walls = {};
-    // changeDroneCollisionBox(0.5,0,0.5);
 
     var axesDrone = new THREE.AxisHelper(0.5);
     drone.add(axesDrone);
@@ -121,30 +109,26 @@ function init()
     centerLabel = addText(0, 0.7, 0, "(0,0,0)");
     scene.add( centerLabel );
 
-    // drawSphere();
     axesSystem();
 
     //Resets distance
     coveredDistance = 0, coveredAngle = 0;
 }
 
+//Add axes system in the left top corner
 function axesSystem(){
-  // dom
   axesContainer = document.getElementById('AXES_SYSTEM');
   removeChilds(axesContainer);
-  // renderer
   renderer2 = new THREE.WebGLRenderer();
   renderer2.setClearColor( 0xf0f0f0, 1 );
   renderer2.setSize( CANVAS_WIDTH, CANVAS_HEIGHT );
   axesContainer.appendChild( renderer2.domElement );
 
-  // scene
   scene2 = new THREE.Scene();
 
   camera2 = new THREE.PerspectiveCamera( 45, CANVAS_WIDTH / CANVAS_HEIGHT, 0.1, 600 );
   camera2.up = camera.up; // important!
 
-  // axes
   axes2 = new THREE.AxisHelper( 5 );
   scene2.add( axes2 );
 
@@ -175,8 +159,6 @@ function drawWalls(front, right, back, left, up){
 }
 
 function onDocumentMouseMove(event) {
-  // the following line would stop any other event handler from firing
-  // (such as the mouse's TrackballControls)
   event.preventDefault();
 
   var rect = renderer.domElement.getBoundingClientRect();
@@ -189,8 +171,6 @@ function addText(x, y, z, text, color){
   const labelGeometry = new THREE.PlaneBufferGeometry(1, 1);
 
   const texture = new THREE.CanvasTexture(canvas);
-  // because our canvas is likely not a power of 2
-  // in both dimensions set the filtering appropriately.
   texture.minFilter = THREE.LinearFilter;
   texture.wrapS = THREE.ClampToEdgeWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
@@ -207,7 +187,6 @@ function addText(x, y, z, text, color){
   label.position.z = z;
 
   return label;
-  // scene.add(label);
 }
 
 
@@ -266,14 +245,16 @@ function animate()
     renderer2.render( scene2, camera2 );
 }
 
+//Copy camera rotation of the simulator into axes system window
 function updateAxesSystem(){
   camera2.position.copy( camera.position );
-  camera2.position.sub( controls.target ); // added by @libe
+  camera2.position.sub( controls.target );
   camera2.position.setLength( CAM_DISTANCE );
 
   camera2.lookAt( new THREE.Vector3(0,0,0));
 }
 
+//Rotates labels to always face the camera
 function rotateLabels(){
   if(centerLabel)
     centerLabel.lookAt(camera.position);
@@ -285,13 +266,9 @@ function rotateLabels(){
 
 function flySupporter(currentLocation, endPoint, speed){
   if(endPoint > currentLocation){
-    // if(drone.position[axis] < endPoint)
-      // drone.position[axis] += 0.01;
     return speed;
   }
   else{
-    // if(drone.position[axis] > endPoint)
-      // drone.position[axis] -= 0.01;
     return -speed;
   }
 }
@@ -320,6 +297,7 @@ function fly(destination, axis){
   return stopped;
 }
 
+//Redraws last line segment to match the new drone's position
 function drawNewLineSegment(){
   var vertices = lineGeometry.vertices;
   vertices.pop();
@@ -333,9 +311,9 @@ function drawNewLineSegment(){
 	scene.add( line );
 }
 
+//Rotates the drone
 function rotation(goalRotation){
   var stopped = true;
-  // if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
   if(Math.abs(coveredAngle-goalRotation) > 0.02){
     var additionalAngle = flySupporter(coveredAngle, goalRotation, 0.02)
     coveredAngle += additionalAngle;
@@ -347,66 +325,8 @@ function rotation(goalRotation){
     currentDroneAngle = checkAngle(currentDroneAngle + radiansToDegrees(goalRotation));
   }
 
-
-  // var stopped = true;
-  // if(Math.abs(drone.rotation.y - goalRotation) > 0.04){
-  //   if(drone.rotation.y > goalRotation){
-  //       drone.rotateY(-0.02);
-  //   }
-  //   else{
-  //       drone.rotateY(0.02);
-  //   }
-  //   stopped = false;
-  // }
-  // if(stopped){
-  //
-  // }
-
-
-  // if(Math.abs(currentDroneRotation - goalRotation) > 1){
-  //   if(currentDroneRotation < goalRotation){
-  //       currentDroneRotation += 1;
-  //       globalDroneRotation += 1;
-  //       drone.lookAt(getPointOnCircleX(globalDroneRotation), drone.position.y, getPointOnCircleZ(globalDroneRotation));
-  //   }
-  //   else{
-  //       currentDroneRotation -= 1;
-  //       globalDroneRotation -= 1;
-  //       drone.lookAt(getPointOnCircleX(globalDroneRotation), drone.position.y, getPointOnCircleZ(globalDroneRotation));
-  //   }
-  //   stopped = false;
-  // }
-  // if(stopped)
-  //   currentDroneRotation = 0;
-
   return stopped;
 }
-
-// function getPointOnCircleX(angle){
-//   return Math.cos(angle /180 * Math.PI) + drone.position.x;
-// }
-//
-// function getPointOnCircleZ(angle){
-//   return Math.sin(angle /180 * Math.PI) + drone.position.z;
-// }
-// var rotObjectMatrix;
-// function rotateAroundObjectAxis(object, axis, radians) {
-//     rotObjectMatrix = new THREE.Matrix4();
-//     rotObjectMatrix.makeRotationAxis(new THREE.Vector3(0,1,0).normalize(), radians);
-//
-//     // old code for Three.JS pre r54:
-//     // object.matrix.multiplySelf(rotObjectMatrix);      // post-multiply
-//     // new code for Three.JS r55+:
-//     object.matrix.multiply(rotObjectMatrix);
-//
-//     // old code for Three.js pre r49:
-//     // object.rotation.getRotationFromMatrix(object.matrix, object.scale);
-//     // old code for Three.js r50-r58:
-//     // object.rotation.setEulerFromRotationMatrix(object.matrix);
-//     // new code for Three.js r59+:
-//     object.rotation.setFromRotationMatrix(object.matrix);
-//     return true;
-// }
 
 function takeoff(){
   return fly('y', 0.7);
@@ -426,6 +346,7 @@ function land(){
   }
 }
 
+//Finds the nearest surface below the drone
 function findSurface(){
   var highestSurface = modelHeight;
 
@@ -440,6 +361,7 @@ function findSurface(){
   return highestSurface;
 }
 
+//Draws a cube on a scene
 function addCube(objectName, sizeX, sizeY, sizeZ, locX, locY, locZ, color){
   var cubeGeometry = new THREE.BoxGeometry (sizeX, sizeY, sizeZ);
   var cubeMaterial = new THREE.MeshBasicMaterial ({color: color});
@@ -474,7 +396,7 @@ function calculateCollisionPoints( mesh, objectName) {
   collisions.push( bounds );
 }
 
-
+//Shows labels on a grid
 function raycating() {
 	// find intersections
 	raycaster.setFromCamera( mouse, camera );
@@ -519,7 +441,6 @@ function createPointsOnGrid(){
     alphaTest: 0.5,
     transparent: true,
   });
-  // var material = new THREE.MeshBasicMaterial ({color: 0x1ec876});
 
   var sphere = new THREE.Mesh (geometry, material);
   sphere.name = 'POINT_ON_GRID';
@@ -533,7 +454,7 @@ function createPointsOnGrid(){
   }
 }
 
-//removes object from scene
+//removes object from the scene
 function removeEntity(object) {
   if(object && object.name){
     var selectedObject = scene.getObjectByName(object.name);
@@ -541,6 +462,7 @@ function removeEntity(object) {
   }
 }
 
+//Drwas the ellispoide after the simulaotion
 function drawSphere(){
   var geometry = new THREE.SphereGeometry(1, 32, 32 );
   geometry.applyMatrix( new THREE.Matrix4().makeScale(
@@ -555,9 +477,7 @@ function drawSphere(){
 }
 
 
-/**
- * Collision detection for every solid object.
- */
+//Detects drone's collisons with other objects
 function detectCollisions() {
   // Get the drone's current collision area.
   var bounds = {
@@ -592,22 +512,19 @@ function addCollisionBoxToDrone(sizeX, sizeY, sizeZ){
   var cubeMaterial = new THREE.MeshBasicMaterial( {
     color: 0xffffff, transparent: true, alphaTest: 0.5,
     opacity: 0.0 } );
-  // var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0xff0000});
   collisionBox = new THREE.Mesh (cubeGeometry, cubeMaterial);
   collisionBox.position.copy(drone.position);
-  collisionBox.scale.x = sizeX; // SCALE
-  collisionBox.scale.y = sizeY; // SCALE
-  collisionBox.scale.z = sizeZ; // SCALE
+  collisionBox.scale.x = sizeX;
+  collisionBox.scale.y = sizeY;
+  collisionBox.scale.z = sizeZ;
 
   drone.add(collisionBox);
 }
 
 function changeDroneCollisionBox(additionalX, additionalY, additionalZ) {
-  console.log(additionalX, additionalY, additionalZ);
-  collisionBox.scale.x += additionalX; // SCALE
-  collisionBox.scale.y += additionalY; // SCALE
-  collisionBox.scale.z += additionalZ; // SCALE
-  console.log(collisionBox.scale);
+  collisionBox.scale.x += additionalX;
+  collisionBox.scale.y += additionalY;
+  collisionBox.scale.z += additionalZ;
 }
 
 function getDistanceToObject(objectName){
@@ -620,13 +537,12 @@ function getDistanceToObject(objectName){
     }
   }
 
-  var x = Math.abs(drone.position.x - object.position.x) //getDistance(drone.position.x, object.position.x)
-  var z = Math.abs(drone.position.z - object.position.z) //getDistance(drone.position.z, object.position.z)
+  var x = Math.abs(drone.position.x - object.position.x)
+  var z = Math.abs(drone.position.z - object.position.z)
 
   var distance = Math.sqrt( x*x + z*z );
   if(object !== undefined){
     return {
-      //x: getDistance(drone.position.x, object.position.x),
       y: getDistance(drone.position.y, object.position.y) + object.geometry.parameters.height/2 + 0.5,
       z: distance
     }

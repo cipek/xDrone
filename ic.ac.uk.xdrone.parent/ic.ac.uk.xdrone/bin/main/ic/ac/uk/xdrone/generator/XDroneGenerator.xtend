@@ -53,7 +53,6 @@ class XDroneGenerator extends AbstractGenerator {
 			drawWalls(«d.front.value», «d.right.value», «d.back.value», «d.left.value»,  «d.up.value»)
 		«ENDFOR»
 		«FOR ob : environment.objects»
-«««			addCube("«ob.object_name»",«ob.sx», «ob.sy», «ob.sz», «ob.lx», «ob.ly», «ob.lz»)
 			addCube("«ob.object_name»",«ob.size.vector.x», «ob.size.vector.y», «ob.size.vector.z», 
 				«ob.origin.vector.x», «ob.origin.vector.y», «ob.origin.vector.z»,
 			«IF ob.color !== null»
@@ -74,7 +73,6 @@ class XDroneGenerator extends AbstractGenerator {
 		
 		var commands = [];
 		var currentDroneLocation = {x: drone.position.x, y: drone.position.y, z: drone.position.z};
-		//var goalDroneLocation = currentDroneLocation;
 		var goalDroneRotation = drone.rotation.y;
 		var currentFunction = "";
 		var finishSimulation = false;
@@ -104,8 +102,9 @@ class XDroneGenerator extends AbstractGenerator {
 		if(line)
 			scene.remove( line );
 		line = new THREE.Line( lineGeometry, lineMaterial );
-		
 		scene.add( line );
+		
+		//Function which is called by simultor and execute flying comands one by one
 		function flySimulation(){
 			if(!finishSimulation){
 				if((currentFunction == "MOVE_Y" && fly(destination, 'y'))
@@ -113,12 +112,12 @@ class XDroneGenerator extends AbstractGenerator {
 					|| (currentFunction == "MOVE_Z" && fly(destination, 'z'))
 					|| (currentFunction == "LAND" && land())
 					|| (currentFunction == "ROTATION" && rotation(goalDroneRotation))){
-«««					console.log(currentFunction, collisionBox);
 					nextCommand();
 				}
 			}
 		}
 		
+		//Returns appropriate commadns based on array entry
 		function nextCommand(){
 			if(commands && commands[0]){
 				if(commands[0].r !== undefined){
@@ -199,14 +198,12 @@ class XDroneGenerator extends AbstractGenerator {
 			}
 		}
 		
+		//Calcualtes the distance margin error caused by rotating the drone
 		function getDistanceErrorFromAngle(angle){
 			return 1.2 * Math.abs(angle) /90
 		}
-				var MOVE_MARIGIN = 1.25;
-				var MOVE_MARIGIN_ADD = 0.6;
-				var MOVE_MARIGIN_NEXT = 0.95;
-				var MOVE_MARIGIN_NEXT_ADD = 0.1;
 		
+		//Calcualtes the distance margin error caused by movement of the drone
 		function getDistanceErrorFromDistance(distance){
 			if(distance < MOVE_MARIGIN)
 				return MOVE_MARIGIN_ADD;
@@ -216,14 +213,6 @@ class XDroneGenerator extends AbstractGenerator {
 	'''
 	
 	def compileJS(Command cmd) '''
-«««	  	«IF cmd instanceof Move»
-«««	  		if(«cmd.vector.y» != 0)
-«««				commands.push({y: «cmd.vector.y»}); 
-«««			if(«cmd.vector.z» != 0)	
-«««				commands.push({z: «cmd.vector.z»});
-«««			if(«cmd.vector.x» != 0)	 
-«««				commands.push({x: «cmd.vector.x»}); 
-«««	  	«ENDIF»
 «IF cmd instanceof Up »
 		commands.push({y: «cmd.distance»}); 
 	  	«ENDIF»
@@ -252,7 +241,6 @@ commands.push({z: -«cmd.distance»});
 			commands.push({w: «cmd.seconds»});
 	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
-«««	  		console.log(getLineOfCode('GOTO("«cmd.object_name»")' ));
 			commands.push({flyTo: "«cmd.object_name»"});
 	  	«ENDIF»
 	'''
@@ -275,7 +263,6 @@ commands.push({z: -«cmd.distance»});
 		ACCEPTED_ROTATION_ERROR = 10 # 10 degrees
 		DISTANCE_ONE_AND_HALF_SECOND = 1.25
 		DISTANCE_TWO_SECONDS = 2.20
-		#DISTANCE_TWO_AND_HALF_SECONDS = 1.65
 		
 		state = -1
 		dronePosition = {
@@ -286,6 +273,7 @@ commands.push({z: -«cmd.distance»});
 		currentAngle = 0.0 #Navdata
 		currentDroneAngle = 270.0 #Real Life
 		
+		#maps drone's position
 		«IF main.environment !== null»
 			«FOR d : main.environment.drone»
 				«IF d.position !== null»
@@ -301,6 +289,7 @@ commands.push({z: -«cmd.distance»});
 		
 		objects = {}
 		
+		#maps all objects
 		«IF main.environment !== null»
 			«FOR ob : main.environment.objects»
 				«IF ob.origin !== null»
@@ -318,6 +307,8 @@ commands.push({z: -«cmd.distance»});
 		#RotY:		RotX:
 		#+ forward 	+ right
 		#- backwards	- left
+		
+		#Tracks data provide by the drone
 		def ReceiveNavdata(data):
 			global state
 			global currentAngle
@@ -327,7 +318,7 @@ commands.push({z: -«cmd.distance»});
 			state = data.state
 			currentAltitude = data.altd
 		
-		
+		#Returns time that drone should fly to reach travel given distance
 		def getTimeFromDistance(distance):
 			global DISTANCE_ONE_AND_HALF_SECOND
 			global DISTANCE_TWO_SECONDS
@@ -336,9 +327,7 @@ commands.push({z: -«cmd.distance»});
 				return 1.5 * distance /DISTANCE_ONE_AND_HALF_SECOND
 			elif distance <= DISTANCE_TWO_SECONDS:
 				return 1.5 + ((distance- DISTANCE_ONE_AND_HALF_SECOND) * 0.5 / (DISTANCE_TWO_SECONDS-DISTANCE_ONE_AND_HALF_SECOND))
-			#else:
-			#	return 2 + ((distance- DISTANCE_TWO_SECONDS) * 0.5 / (DISTANCE_TWO_AND_HALF_SECONDS-DISTANCE_TWO_SECONDS))
-				
+		
 		def getDistanceToObject(objectName):
 			global objects
 			obPosition = {}
@@ -404,6 +393,7 @@ commands.push({z: -«cmd.distance»});
 		def oppositeSigns(x, y): 
 			return (x < 0) if (y >= 0) else (y < 0)
 		
+		#Rotates the drone
 		def rotate(speed, angle):
 			global currentAngle
 			global ACCEPTED_ROTATION_ERROR
@@ -446,7 +436,8 @@ commands.push({z: -«cmd.distance»});
 			vel_msg.angular.z = 0
 			velocity_publisher.publish(vel_msg)
 		
-		
+		#Moves the drone by given distance. x and y are speeds in eeach direction. 
+		#Set one of the to zero if wants to move drone just in one direction at a time
 		def moveBaseOnTime(distance, x ,y):
 			global velocity_publisher
 		
@@ -472,7 +463,8 @@ commands.push({z: -«cmd.distance»});
 			vel_msg.linear.x=0
 			vel_msg.linear.y=0
 			velocity_publisher.publish(vel_msg)
-				
+			
+		#Vertical movement
 		def moveUpAndDown(distance):
 			global zLocation
 			global velocity_publisher
@@ -495,7 +487,8 @@ commands.push({z: -«cmd.distance»});
 		
 			vel_msg.linear.z=0
 			velocity_publisher.publish(vel_msg)
-			
+		
+		#Hover mode- no movement
 		def noMove(timeRequired):
 			global velocity_publisher
 		
@@ -592,12 +585,6 @@ dronePosition['x'] += -«cmd.distance»
 moveBaseOnTime(-«cmd.distance», 0.25, 0)
 noMove(1.5)
 	  	«ENDIF»
-«««	  	«IF cmd instanceof RotateL»	
-«««		rotate(30, «cmd.angle», False)
-«««	  	«ENDIF»
-«««	  	«IF cmd instanceof RotateR»	
-«««	  	rotate(30, «cmd.angle», True)
-«««	  	«ENDIF»
 	  	«IF cmd instanceof Wait»
 	  		moveBaseOnTime(«cmd.seconds», 0, 0)
 	  	«ENDIF» 	
@@ -609,19 +596,6 @@ rotate(90, -«cmd.angle»);
 currentDroneAngle += «cmd.angle»
 rotate(90, «cmd.angle»);
 	  	«ENDIF»
-«««	  	«IF cmd instanceof Move»
-«««	  		if «cmd.vector.y» != 0:
-«««	  			dronePosition['z'] += «cmd.vector.y»
-«««	  			moveUpAndDown(«cmd.vector.y»)
-«««	  		if «cmd.vector.z» != 0:	
-«««	  			dronePosition['x'] += «cmd.vector.z»
-«««	  			moveBaseOnTime(«cmd.vector.z», 0.15, 0)
-«««	  			noMove(1.5)
-«««	  		if «cmd.vector.x» != 0:
-«««	  			dronePosition['y']  += «cmd.vector.x»
-«««	  			moveBaseOnTime(«cmd.vector.x», 0, 0.15)
-«««	  			noMove(1.5)
-«««	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
 		  	vector = getDistanceToObject("«cmd.object_name»");
 		  	angle = getRotationToObject("«cmd.object_name»");
@@ -638,14 +612,17 @@ rotate(90, «cmd.angle»);
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
 		var time = System.currentTimeMillis(); //Replace with "" if running tests
+		var locally = "Webroot"; //use if run locally
+		var warFile = "/opt/tomcat/8_0/webapps/ROOT" //use if building a war file
 		
+		//Generating python script which controls AR Drone
 		for(main : resource.allContents.toIterable.filter(Main)) {
 			result = main.compilePython.toString; 
 			fsa.generateFile('/xdrone/result.py', result); //Locally change path to 'result.py'
 		}
 		
 		try {
-			var file = new File("/xdrone/result.py");
+			var file = new File("/xdrone/result.py"); //Locally change path to 'result.py'
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -654,17 +631,17 @@ rotate(90, «cmd.angle»);
 		} catch (IOException e) {
 		   // do something
 		}
-//		fsa.generateFile('result.py', result)
 
 		
+		//FLying commands for controlling drone in simulator
 		result = "";
 		for(fly : resource.allContents.toIterable.filter(Fly)) {
 			result = fly.compileJS.toString; 
-			fsa.generateFile('Webroot/simulator' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
+			fsa.generateFile(warFile+'/simulator' + time +'.js', result);
 		}
 		
 		try {
-			var file = new File('Webroot/simulator' + time +'.js');
+			var file = new File(warFile+'/simulator' + time +'.js');
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -673,17 +650,17 @@ rotate(90, «cmd.angle»);
 		} catch (IOException e) {
 		   // do something
 		}
-//		fsa.generateFile('result.py', result)
 		
 		
+		//Script with objects mapped to the simulator
 		result = "";
 		for(environment : resource.allContents.toIterable.filter(Environment)) {
 			result = environment.compile.toString; 
-			fsa.generateFile('Webroot/environment' + time +'.js', result); //locally change path to 'Webroot/simulator' + time +'.js'
+			fsa.generateFile(warFile+'/environment' + time +'.js', result); 
 		}
 		
 		try {
-			var file = new File('Webroot/environment' + time +'.js'); //locally change path to 'Webroot/simulator' + time +'.js'
+			var file = new File(warFile+'/environment' + time +'.js'); 
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -693,6 +670,5 @@ rotate(90, «cmd.angle»);
 		   // do something
 		}
 		
-//		fsa.generateFile('Webroot/simulator' + time +'.js', simulator)
 	}
 }

@@ -28,6 +28,16 @@ currentDroneAngle = 270.0 #Real Life
 
 objects = {}
 
+objects['CHAIR'] = {
+	'x': -1.5,
+	'y': -1.5,
+	'z': 0.5 + 1/2
+}
+objects['TABLE'] = {
+	'x': 1.5,
+	'y': 1,
+	'z': 0.5 + 1/2
+}
 
 #RotY:		RotX:
 #+ forward 	+ right
@@ -258,8 +268,10 @@ dronePosition['z'] += 0.7
 takeoff.publish(empty)
 noMove(5)
 
-dronePosition['x'] += 1.25
-moveBaseOnTime(1.25, 0.15, 0)
+currentDroneAngle += -90
+rotate(90, -90);
+dronePosition['x'] += 1.5
+moveBaseOnTime(1.5, 0.25, 0)
 noMove(1.5)
 
 land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
