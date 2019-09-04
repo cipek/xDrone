@@ -18,5 +18,5 @@ services:
       - "ROS_HOSTNAME=tomcat"
       - "ROS_MASTER_URI=http://master:11311"
     ports: 
-    - "8888:8080"
+    - "8080:8080"
     command: /bin/bash /opt/tomcat/8_0/bin/catalina.sh run 

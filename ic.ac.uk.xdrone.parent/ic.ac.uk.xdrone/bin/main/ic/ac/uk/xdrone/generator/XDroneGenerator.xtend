@@ -200,7 +200,7 @@ class XDroneGenerator extends AbstractGenerator {
 		
 		//Calcualtes the distance margin error caused by rotating the drone
 		function getDistanceErrorFromAngle(angle){
-			return 1.2 * Math.abs(angle) /90
+			return ANGLE_MARIGIN * Math.abs(angle) /90
 		}
 		
 		//Calcualtes the distance margin error caused by movement of the drone
@@ -589,22 +589,25 @@ noMove(1.5)
 	  		moveBaseOnTime(«cmd.seconds», 0, 0)
 	  	«ENDIF» 	
 	  	«IF cmd instanceof RotateL»
-currentDroneAngle += -«cmd.angle»
-rotate(90, -«cmd.angle»);
+currentDroneAngle += «cmd.angle»
+rotate(90, «cmd.angle»)
+noMove(0.5)
 	  	«ENDIF»
 	  	«IF cmd instanceof RotateR»
-currentDroneAngle += «cmd.angle»
-rotate(90, «cmd.angle»);
+currentDroneAngle += -«cmd.angle»
+rotate(90, -«cmd.angle»)
+noMove(0.5)
 	  	«ENDIF»
 	  	«IF cmd instanceof GoTo»
 		  	vector = getDistanceToObject("«cmd.object_name»");
 		  	angle = getRotationToObject("«cmd.object_name»");
-		  	currentDroneAngle += angle
-		  	rotate(30, angle);
-		  	dronePosition['z'] += vector['z']
-		  	moveUpAndDown(vector['z'])
+		  	currentDroneAngle += -angle
+		  	rotate(90, -angle);
+		  	noMove(0.5)
+		  	dronePosition['z'] += vector['z'] + 0.5
+		  	moveUpAndDown(vector['z'] + 0.5)
 		  	dronePosition['x'] += vector['x']
-		  	moveBaseOnTime(vector['x'], 0.15, 0)
+		  	moveBaseOnTime(vector['x'], 0.25, 0)
 		  	noMove(1.5)
 		«ENDIF»
 	'''

@@ -529,7 +529,7 @@ public class XDroneGenerator extends AbstractGenerator {
     _builder.append("function getDistanceErrorFromAngle(angle){");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("return 1.2 * Math.abs(angle) /90");
+    _builder.append("return ANGLE_MARIGIN * Math.abs(angle) /90");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
@@ -1516,28 +1516,32 @@ public class XDroneGenerator extends AbstractGenerator {
     }
     {
       if ((cmd instanceof RotateL)) {
-        _builder.append("currentDroneAngle += -");
+        _builder.append("currentDroneAngle += ");
         String _angle = ((RotateL)cmd).getAngle();
         _builder.append(_angle);
         _builder.newLineIfNotEmpty();
-        _builder.append("rotate(90, -");
+        _builder.append("rotate(90, ");
         String _angle_1 = ((RotateL)cmd).getAngle();
         _builder.append(_angle_1);
-        _builder.append(");");
+        _builder.append(")");
         _builder.newLineIfNotEmpty();
+        _builder.append("noMove(0.5)");
+        _builder.newLine();
       }
     }
     {
       if ((cmd instanceof RotateR)) {
-        _builder.append("currentDroneAngle += ");
+        _builder.append("currentDroneAngle += -");
         String _angle_2 = ((RotateR)cmd).getAngle();
         _builder.append(_angle_2);
         _builder.newLineIfNotEmpty();
-        _builder.append("rotate(90, ");
+        _builder.append("rotate(90, -");
         String _angle_3 = ((RotateR)cmd).getAngle();
         _builder.append(_angle_3);
-        _builder.append(");");
+        _builder.append(")");
         _builder.newLineIfNotEmpty();
+        _builder.append("noMove(0.5)");
+        _builder.newLine();
       }
     }
     {
@@ -1552,17 +1556,19 @@ public class XDroneGenerator extends AbstractGenerator {
         _builder.append(_object_name_1);
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
-        _builder.append("currentDroneAngle += angle");
+        _builder.append("currentDroneAngle += -angle");
         _builder.newLine();
-        _builder.append("rotate(30, angle);");
+        _builder.append("rotate(90, -angle);");
         _builder.newLine();
-        _builder.append("dronePosition[\'z\'] += vector[\'z\']");
+        _builder.append("noMove(0.5)");
         _builder.newLine();
-        _builder.append("moveUpAndDown(vector[\'z\'])");
+        _builder.append("dronePosition[\'z\'] += vector[\'z\'] + 0.5");
+        _builder.newLine();
+        _builder.append("moveUpAndDown(vector[\'z\'] + 0.5)");
         _builder.newLine();
         _builder.append("dronePosition[\'x\'] += vector[\'x\']");
         _builder.newLine();
-        _builder.append("moveBaseOnTime(vector[\'x\'], 0.15, 0)");
+        _builder.append("moveBaseOnTime(vector[\'x\'], 0.25, 0)");
         _builder.newLine();
         _builder.append("noMove(1.5)");
         _builder.newLine();
@@ -1605,15 +1611,15 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     try {
-      File file = new File((((warFile + "/simulator") + Long.valueOf(time)) + ".js"));
-      file.getParentFile().mkdirs();
-      PrintWriter writer = new PrintWriter(file, "UTF-8");
-      writer.println(result);
-      writer.close();
-    } catch (final Throwable _t) {
-      if (_t instanceof IOException) {
+      File file_1 = new File((((warFile + "/simulator") + Long.valueOf(time)) + ".js"));
+      file_1.getParentFile().mkdirs();
+      PrintWriter writer_1 = new PrintWriter(file_1, "UTF-8");
+      writer_1.println(result);
+      writer_1.close();
+    } catch (final Throwable _t_1) {
+      if (_t_1 instanceof IOException) {
       } else {
-        throw Exceptions.sneakyThrow(_t);
+        throw Exceptions.sneakyThrow(_t_1);
       }
     }
     result = "";
@@ -1625,15 +1631,15 @@ public class XDroneGenerator extends AbstractGenerator {
       }
     }
     try {
-      File file = new File((((warFile + "/environment") + Long.valueOf(time)) + ".js"));
-      file.getParentFile().mkdirs();
-      PrintWriter writer = new PrintWriter(file, "UTF-8");
-      writer.println(result);
-      writer.close();
-    } catch (final Throwable _t) {
-      if (_t instanceof IOException) {
+      File file_2 = new File((((warFile + "/environment") + Long.valueOf(time)) + ".js"));
+      file_2.getParentFile().mkdirs();
+      PrintWriter writer_2 = new PrintWriter(file_2, "UTF-8");
+      writer_2.println(result);
+      writer_2.close();
+    } catch (final Throwable _t_2) {
+      if (_t_2 instanceof IOException) {
       } else {
-        throw Exceptions.sneakyThrow(_t);
+        throw Exceptions.sneakyThrow(_t_2);
       }
     }
   }

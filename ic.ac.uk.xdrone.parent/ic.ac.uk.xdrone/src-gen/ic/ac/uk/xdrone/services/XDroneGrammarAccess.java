@@ -146,14 +146,10 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Environment:
 		//	{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)*
-		//	// 	(drone+=Drone)?
-		//	//  	((objects+=Object))*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)* // 	(drone+=Drone)?
-		////  	((objects+=Object))*
-		//'}'
+		//{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Environment}
@@ -192,8 +188,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//Object
 		public RuleCall getObjectsObjectParserRuleCall_5_2_0() { return cObjectsObjectParserRuleCall_5_2_0; }
 		
-		//// 	(drone+=Drone)?
-		////  	((objects+=Object))*
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
@@ -204,12 +198,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		////UserFunction:
-		////	(name = ID) '()'
-		////	'{'
-		////	(func+=Command)*
-		////	'}'
-		////;
 		//Takeoff:
 		//	'TAKEOFF' '(' ')';
 		@Override public ParserRule getRule() { return rule; }
@@ -254,9 +242,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCommandParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//SuperCommand:
-		//	Command
-		//	//	| FunctionName
-		//;
+		//	Command;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//Command
@@ -286,14 +272,10 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//	| RotateL
 		//	| RotateR
 		//	| Wait
-		//	//	| Move
-		//	//	| Rotate
 		//	| GoTo;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Up | Down | Left | Right | Forward | Backward | RotateL | RotateR | Wait //	| Move
-		////	| Rotate
-		//| GoTo
+		//Up | Down | Left | Right | Forward | Backward | RotateL | RotateR | Wait | GoTo
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Up
@@ -426,12 +408,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDistancePOSITIVE_DOUBLEParserRuleCall_2_0 = (RuleCall)cDistanceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		////Move:
-		////	'MOVE' vector=Vector
-		////;
-		////Rotate: 
-		////	'ROTATE' '('angle = DOUBLE')'
-		////;
 		//Up:
 		//	'UP' '(' distance=POSITIVE_DOUBLE ')';
 		@Override public ParserRule getRule() { return rule; }
@@ -718,18 +694,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRotationDOUBLEParserRuleCall_3_1_2_0 = (RuleCall)cRotationAssignment_3_1_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		////FunctionName:
-		////	func_name = ID '()'
-		////;
-		//Drone: //	'DRONE' vector=Vector
-		//	'DRONE' '=' '{' (position=Position | 'rotation' '=' rotation=DOUBLE)* '}';
+		//Drone:
+		//	'DRONE' '=' '{' (position=Position | 'rotation' '=' rotation=DOUBLE)*
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		////	'DRONE' vector=Vector
 		//'DRONE' '=' '{' (position=Position | 'rotation' '=' rotation=DOUBLE)* '}'
 		public Group getGroup() { return cGroup; }
 		
-		////	'DRONE' vector=Vector
 		//'DRONE'
 		public Keyword getDRONEKeyword_0() { return cDRONEKeyword_0; }
 		
@@ -787,11 +759,9 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		////	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 		//object_name=ID '=' '{' (origin=Origin | size=Size | color=Color)* '}'
 		public Group getGroup() { return cGroup; }
 		
-		////	object_name = ID '(' sx = DOUBLE ',' sz = DOUBLE ',' sy = DOUBLE ',' lx = DOUBLE ',' lz = DOUBLE ',' ly = DOUBLE')' 
 		//object_name=ID
 		public Assignment getObject_nameAssignment_0() { return cObject_nameAssignment_0; }
 		
@@ -1006,15 +976,14 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpUpWallParserRuleCall_3_4_0 = (RuleCall)cUpAssignment_3_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Walls: //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
-		//	'WALLS' '=' '{' (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)* '}';
+		//Walls:
+		//	'WALLS' '=' '{' (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)*
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		////	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//'WALLS' '=' '{' (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)* '}'
 		public Group getGroup() { return cGroup; }
 		
-		////	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
 		//'WALLS'
 		public Keyword getWALLSKeyword_0() { return cWALLSKeyword_0; }
 		
@@ -1337,8 +1306,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Environment:
 	//	{Environment} 'environment' '(' ')' '{' (drone+=Drone | walls+=Walls | objects+=Object)*
-	//	// 	(drone+=Drone)?
-	//	//  	((objects+=Object))*
 	//	'}';
 	public EnvironmentElements getEnvironmentAccess() {
 		return pEnvironment;
@@ -1348,12 +1315,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnvironmentAccess().getRule();
 	}
 	
-	////UserFunction:
-	////	(name = ID) '()'
-	////	'{'
-	////	(func+=Command)*
-	////	'}'
-	////;
 	//Takeoff:
 	//	'TAKEOFF' '(' ')';
 	public TakeoffElements getTakeoffAccess() {
@@ -1375,9 +1336,7 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SuperCommand:
-	//	Command
-	//	//	| FunctionName
-	//;
+	//	Command;
 	public SuperCommandElements getSuperCommandAccess() {
 		return pSuperCommand;
 	}
@@ -1396,8 +1355,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 	//	| RotateL
 	//	| RotateR
 	//	| Wait
-	//	//	| Move
-	//	//	| Rotate
 	//	| GoTo;
 	public CommandElements getCommandAccess() {
 		return pCommand;
@@ -1439,12 +1396,6 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getGoToAccess().getRule();
 	}
 	
-	////Move:
-	////	'MOVE' vector=Vector
-	////;
-	////Rotate: 
-	////	'ROTATE' '('angle = DOUBLE')'
-	////;
 	//Up:
 	//	'UP' '(' distance=POSITIVE_DOUBLE ')';
 	public UpElements getUpAccess() {
@@ -1535,11 +1486,9 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getWaitAccess().getRule();
 	}
 	
-	////FunctionName:
-	////	func_name = ID '()'
-	////;
-	//Drone: //	'DRONE' vector=Vector
-	//	'DRONE' '=' '{' (position=Position | 'rotation' '=' rotation=DOUBLE)* '}';
+	//Drone:
+	//	'DRONE' '=' '{' (position=Position | 'rotation' '=' rotation=DOUBLE)*
+	//	'}';
 	public DroneElements getDroneAccess() {
 		return pDrone;
 	}
@@ -1609,8 +1558,9 @@ public class XDroneGrammarAccess extends AbstractGrammarElementFinder {
 		return getColorAccess().getRule();
 	}
 	
-	//Walls: //	'WALLS' '(' front = POSITIVE_DOUBLE ',' right = POSITIVE_DOUBLE ','  back = POSITIVE_DOUBLE ',' left = POSITIVE_DOUBLE ')'
-	//	'WALLS' '=' '{' (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)* '}';
+	//Walls:
+	//	'WALLS' '=' '{' (front=FrontWall | right=RightWall | back=BackWall | left=LeftWall | up=UpWall)*
+	//	'}';
 	public WallsElements getWallsAccess() {
 		return pWalls;
 	}
