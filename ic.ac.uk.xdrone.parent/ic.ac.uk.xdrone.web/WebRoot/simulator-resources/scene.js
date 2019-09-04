@@ -39,7 +39,7 @@ function init()
 
     if(camera)
       lastCameraPosition = camera.position;
-    camera = new THREE.PerspectiveCamera (45, width/height, 0.1, 600);
+    camera = new THREE.PerspectiveCamera (45, width/height, 0.01, 600);
     if(lastCameraPosition)
       camera.position.copy(lastCameraPosition);
     else{
@@ -50,14 +50,14 @@ function init()
     camera.lookAt (new THREE.Vector3(0,0,0));
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 1;
+    controls.minDistance = 0.01;
 		controls.maxDistance = 600;
 		controls.maxPolarAngle = Math.PI / 2;
     controls.target.y = 0;
     controls.update();
 
     var gridXZ = new THREE.GridHelper(20, 20);
-    gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+    gridXZ.setColors( new THREE.Color(0xffffff), new THREE.Color(0xffffff) );
     gridXZ.name="GRID";
     scene.add(gridXZ);
 
