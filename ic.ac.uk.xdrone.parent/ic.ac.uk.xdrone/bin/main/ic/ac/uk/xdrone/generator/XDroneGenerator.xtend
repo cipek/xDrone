@@ -621,11 +621,11 @@ noMove(0.5)
 		//Generating python script which controls AR Drone
 		for(main : resource.allContents.toIterable.filter(Main)) {
 			result = main.compilePython.toString; 
-			fsa.generateFile('/xdrone/result.py', result); //Locally change path to 'result.py'
+			fsa.generateFile('result.py', result); //Locally change path to 'result.py'
 		}
 		
 		try {
-			var file = new File("/xdrone/result.py"); //Locally change path to 'result.py'
+			var file = new File("result.py"); //Locally change path to 'result.py'
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -640,11 +640,11 @@ noMove(0.5)
 		result = "";
 		for(fly : resource.allContents.toIterable.filter(Fly)) {
 			result = fly.compileJS.toString; 
-			fsa.generateFile(warFile+'/simulator' + time +'.js', result);
+			fsa.generateFile(locally+'/simulator' + time +'.js', result);
 		}
 		
 		try {
-			var file = new File(warFile+'/simulator' + time +'.js');
+			var file = new File(locally+'/simulator' + time +'.js');
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -659,11 +659,11 @@ noMove(0.5)
 		result = "";
 		for(environment : resource.allContents.toIterable.filter(Environment)) {
 			result = environment.compile.toString; 
-			fsa.generateFile(warFile+'/environment' + time +'.js', result); 
+			fsa.generateFile(locally+'/environment' + time +'.js', result); 
 		}
 		
 		try {
-			var file = new File(warFile+'/environment' + time +'.js'); 
+			var file = new File(locally+'/environment' + time +'.js'); 
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");

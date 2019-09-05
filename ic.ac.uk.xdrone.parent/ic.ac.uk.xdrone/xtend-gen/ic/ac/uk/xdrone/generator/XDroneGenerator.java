@@ -1587,11 +1587,11 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Main main : _filter) {
       {
         result = this.compilePython(main).toString();
-        fsa.generateFile("/xdrone/result.py", result);
+        fsa.generateFile("result.py", result);
       }
     }
     try {
-      File file = new File("/xdrone/result.py");
+      File file = new File("result.py");
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
@@ -1607,19 +1607,19 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Fly fly : _filter_1) {
       {
         result = this.compileJS(fly).toString();
-        fsa.generateFile((((warFile + "/simulator") + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((locally + "/simulator") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file_1 = new File((((warFile + "/simulator") + Long.valueOf(time)) + ".js"));
-      file_1.getParentFile().mkdirs();
-      PrintWriter writer_1 = new PrintWriter(file_1, "UTF-8");
-      writer_1.println(result);
-      writer_1.close();
-    } catch (final Throwable _t_1) {
-      if (_t_1 instanceof IOException) {
+      File file = new File((((locally + "/simulator") + Long.valueOf(time)) + ".js"));
+      file.getParentFile().mkdirs();
+      PrintWriter writer = new PrintWriter(file, "UTF-8");
+      writer.println(result);
+      writer.close();
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
       } else {
-        throw Exceptions.sneakyThrow(_t_1);
+        throw Exceptions.sneakyThrow(_t);
       }
     }
     result = "";
@@ -1627,19 +1627,19 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Environment environment : _filter_2) {
       {
         result = this.compile(environment).toString();
-        fsa.generateFile((((warFile + "/environment") + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((locally + "/environment") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file_2 = new File((((warFile + "/environment") + Long.valueOf(time)) + ".js"));
-      file_2.getParentFile().mkdirs();
-      PrintWriter writer_2 = new PrintWriter(file_2, "UTF-8");
-      writer_2.println(result);
-      writer_2.close();
-    } catch (final Throwable _t_2) {
-      if (_t_2 instanceof IOException) {
+      File file = new File((((locally + "/environment") + Long.valueOf(time)) + ".js"));
+      file.getParentFile().mkdirs();
+      PrintWriter writer = new PrintWriter(file, "UTF-8");
+      writer.println(result);
+      writer.close();
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
       } else {
-        throw Exceptions.sneakyThrow(_t_2);
+        throw Exceptions.sneakyThrow(_t);
       }
     }
   }
