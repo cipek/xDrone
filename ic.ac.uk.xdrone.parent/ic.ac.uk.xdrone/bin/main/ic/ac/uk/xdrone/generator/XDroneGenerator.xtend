@@ -615,17 +615,19 @@ noMove(0.5)
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		var result = "";
 		var time = System.currentTimeMillis(); //Replace with "" if running tests
-		var locally = "Webroot"; //use if run locally
-		var warFile = "/opt/tomcat/8_0/webapps/ROOT" //use if building a war file
+		var localJS = "Webroot"; //use if run locally
+		var warFileJS = "/opt/tomcat/8_0/webapps/ROOT" //use if building a war file
+		var localPython = "WebRoot/result.py"; //use if run locally
+		var warFilePython = "/xdrone/result.py" //use if building a war file
 		
 		//Generating python script which controls AR Drone
 		for(main : resource.allContents.toIterable.filter(Main)) {
 			result = main.compilePython.toString; 
-			fsa.generateFile('result.py', result); //Locally change path to 'result.py'
+			fsa.generateFile(localPython, result); //If building a warfile change to warFilePython
 		}
 		
 		try {
-			var file = new File("result.py"); //Locally change path to 'result.py'
+			var file = new File(localPython); //If building a warfile change to warFilePython
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -640,11 +642,11 @@ noMove(0.5)
 		result = "";
 		for(fly : resource.allContents.toIterable.filter(Fly)) {
 			result = fly.compileJS.toString; 
-			fsa.generateFile(locally+'/simulator' + time +'.js', result);
+			fsa.generateFile(localJS+'/simulator' + time +'.js', result); //If building a warfile change to warFileJS
 		}
 		
 		try {
-			var file = new File(locally+'/simulator' + time +'.js');
+			var file = new File(localJS+'/simulator' + time +'.js');//If building a warfile change to warFileJS
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");
@@ -659,11 +661,11 @@ noMove(0.5)
 		result = "";
 		for(environment : resource.allContents.toIterable.filter(Environment)) {
 			result = environment.compile.toString; 
-			fsa.generateFile(locally+'/environment' + time +'.js', result); 
+			fsa.generateFile(localJS+'/environment' + time +'.js', result); //If building a warfile change to warFileJS
 		}
 		
 		try {
-			var file = new File(locally+'/environment' + time +'.js'); 
+			var file = new File(localJS+'/environment' + time +'.js'); //If building a warfile change to warFileJS
 			file.getParentFile().mkdirs();
 			
 			var writer = new PrintWriter(file, "UTF-8");

@@ -1581,17 +1581,19 @@ public class XDroneGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     String result = "";
     long time = System.currentTimeMillis();
-    String locally = "Webroot";
-    String warFile = "/opt/tomcat/8_0/webapps/ROOT";
+    String localJS = "Webroot";
+    String warFileJS = "/opt/tomcat/8_0/webapps/ROOT";
+    String localPython = "WebRoot/result.py";
+    String warFilePython = "/xdrone/result.py";
     Iterable<Main> _filter = Iterables.<Main>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Main.class);
     for (final Main main : _filter) {
       {
         result = this.compilePython(main).toString();
-        fsa.generateFile("result.py", result);
+        fsa.generateFile(localPython, result);
       }
     }
     try {
-      File file = new File("result.py");
+      File file = new File(localPython);
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
@@ -1607,11 +1609,11 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Fly fly : _filter_1) {
       {
         result = this.compileJS(fly).toString();
-        fsa.generateFile((((locally + "/simulator") + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((localJS + "/simulator") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file = new File((((locally + "/simulator") + Long.valueOf(time)) + ".js"));
+      File file = new File((((localJS + "/simulator") + Long.valueOf(time)) + ".js"));
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);
@@ -1627,11 +1629,11 @@ public class XDroneGenerator extends AbstractGenerator {
     for (final Environment environment : _filter_2) {
       {
         result = this.compile(environment).toString();
-        fsa.generateFile((((locally + "/environment") + Long.valueOf(time)) + ".js"), result);
+        fsa.generateFile((((localJS + "/environment") + Long.valueOf(time)) + ".js"), result);
       }
     }
     try {
-      File file = new File((((locally + "/environment") + Long.valueOf(time)) + ".js"));
+      File file = new File((((localJS + "/environment") + Long.valueOf(time)) + ".js"));
       file.getParentFile().mkdirs();
       PrintWriter writer = new PrintWriter(file, "UTF-8");
       writer.println(result);

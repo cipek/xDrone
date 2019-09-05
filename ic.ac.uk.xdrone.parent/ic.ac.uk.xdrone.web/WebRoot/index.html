@@ -52,9 +52,9 @@
 								var pathSimulator = '', pathEnvironment = '';
 								result.artifacts.forEach(a =>{
 									if(a.name.includes('simulator'))
-										pathSimulator = a.name.replace(warfile, "") //change warfile to local if run locally
+										pathSimulator = a.name.replace(local, "") //change warfile to local if run locally
 									if(a.name.includes('environment'))
-										pathEnvironment = a.name.replace(warfile, "") //change warfile to local if run locally
+										pathEnvironment = a.name.replace(local, "") //change warfile to local if run locally
 								})
 
 								lastFirstNumber = "-1"; //Force goto update
